@@ -16,26 +16,35 @@ SMODS.Joker {
     config = {
 		suit = {},
 		rank = {},
-		mcount = 1
+		mcount = 0,
+		tsuit = "ne",
+		trank = "No"
     },
     loc_txt = {
         name = "Memory Card",
-        text = {"Memorizes the {C:attention}first{} scored card",  
-                "each round up to {C:attention}8 times{}",
-				"Sell this Joker to convert a card in hand",
-				"into each memorized card, in order"
+        text = {"Memorizes the {C:attention}first{} scored card each round",  
+                "up to {C:attention}8 times{}. Sell this Joker to convert a",
+				"card in hand into each memorized card, in order",
+				"{C:inactive}Memorized #3#. Last: #5##4#{}",
 				}
     },
 	loc_vars = function(self, info_queue, card)
         return {
-            vars = {card.ability.suit, card.ability.rank, card.ability.mcount}
+            vars = {card.ability.suit, 
+					card.ability.rank, 
+					card.ability.mcount,
+					card.ability.tsuit, 
+					card.ability.trank
+			}
         }
     end,
     calculate = function(self, card, context)
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and G.GAME.current_round.hands_played == 0 then
-			if card.ability.mcount <= 8 then  --limits to 8 cards memorized
-				local _card = context.scoring_hand[1]  --see Strength code @ card.lua
+		if context.before then --and G.GAME.current_round.hands_played == 0 then
+			if card.ability.mcount < 8 then  --limits to 8 cards memorized
+				card.ability.mcount = card.ability.mcount + 1 
+				local _card = context.scoring_hand[1]				--see Strength code @ card.lua
+				card.ability.tsuit = _card.base.suit
 				card.ability.suit[card.ability.mcount] = string.sub(_card.base.suit, 1, 1)..'_'
 				card.ability.rank[card.ability.mcount] = _card.base.id
 				if card.ability.rank[card.ability.mcount] < 10 then card.ability.rank[card.ability.mcount] = tostring(card.ability.rank[card.ability.mcount])
@@ -45,12 +54,12 @@ SMODS.Joker {
 				elseif card.ability.rank[card.ability.mcount] == 13 then card.ability.rank[card.ability.mcount] = 'K'
 				elseif card.ability.rank[card.ability.mcount] == 14 then card.ability.rank[card.ability.mcount] = 'A'
 				end
-				card.ability.mcount = card.ability.mcount + 1 
+				card.ability.trank = card.ability.rank[card.ability.mcount]..' of '
 				return {
 					message = "Memorized!",
 					colour = G.C.GREEN 
 				}
-			elseif card.ability.mcount > 8 then
+			elseif card.ability.mcount >= 8 then
 				return {
 					message = "Memory Full!",
 					colour = G.C.RED
@@ -60,7 +69,7 @@ SMODS.Joker {
 		
 		-- CONVERT INTO MEMORIZED CARDS WHEN SELLING
 		if context.selling_self then
-			local j = math.min((card.ability.mcount - 1), 8) -- prevents getting a nil value for suit[i] and rank[i] because of line 71
+			local j = math.min((card.ability.mcount), 8) -- prevents getting a nil value for suit[i] and rank[i]
 			if j > 0 then
 				for i = 1, j do
 					G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function()
