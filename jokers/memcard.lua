@@ -40,7 +40,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before then --and G.GAME.current_round.hands_played == 0 then
+		if context.before and G.GAME.current_round.hands_played == 0 then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				local _card = context.scoring_hand[1]				--see Strength code @ card.lua
