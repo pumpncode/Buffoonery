@@ -9,6 +9,6 @@ PinkMaggit's first mod
 From left to right:
 + *White Pony:* +3 Mult. Doubles each ante (uncommon)
 + *Rerollin':* Gives +$20 on your 5th reroll per shop (uncommon)
-+ *Korny Joker:* Gives +50 Chips during Small Blind, +100 during Big Blind and +160 during Boss Blind. (common)
++ *Korny Joker:* Gives +50 Chips during Small Blind, +100 during Big Blind and +160 during Boss Blind. Hidden chance to get destroyed at the end of turn(common)
 + *Memory Card:* Memorizes the first card scored each round up to 8 times. When you sell it, converts each card in hand into a memorized one, in order (rare)
 + *Cashout Voucher:* If winning hand triples the Blind's requirement, this Joker gives 0,25% of that requirement as money and destroys itself. (common)
