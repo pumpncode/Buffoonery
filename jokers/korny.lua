@@ -13,6 +13,7 @@ SMODS.Joker {
     eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = true,
+	no_pool_flag = 'korny_dead',
     config = {
         extra = { 
 		chips = 50, 
@@ -78,7 +79,7 @@ SMODS.Joker {
                         return true
                     end
                 }))
-
+				G.GAME.pool_flags.korny_dead = true
                 return {
                     message = "Dead!",
                     colour = G.C.RED,
@@ -94,5 +95,3 @@ SMODS.Joker {
         end
     end
 }
-
--- TODO: ADD FLAGS TO PREVENT RESPAWN
