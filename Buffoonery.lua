@@ -16,7 +16,7 @@ SMODS.Atlas {
 NFS.load(SMODS.current_mod.path .. 'jokers/cashout.lua')()
 --NFS.load(SMODS.current_mod.path .. 'jokers/cotom.lua')()
 --NFS.load(SMODS.current_mod.path .. 'jokers/integral.lua')()
---NFS.load(SMODS.current_mod.path .. 'jokers/korny.lua')()
+NFS.load(SMODS.current_mod.path .. 'jokers/korny.lua')()
 NFS.load(SMODS.current_mod.path .. 'jokers/memcard.lua')()
 NFS.load(SMODS.current_mod.path .. 'jokers/rerollin.lua')()
 NFS.load(SMODS.current_mod.path .. 'jokers/whitepony.lua')()
