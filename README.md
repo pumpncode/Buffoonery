@@ -4,7 +4,8 @@ PinkMaggit's first mod
 *This mod currently adds 5 jokers to the game. There will be more jokers in the near future and other types of cards.*
 
 ## Jokers
-![github](https://github.com/user-attachments/assets/08987a7d-47a9-47dd-9ea8-adb2fb6ed98f)
+![github](https://github.com/user-attachments/assets/96323c11-44f8-4921-8fb5-7f7607cd4666)
+
 
 From left to right:
 + *White Pony:* +3 Mult. Doubles each ante (uncommon)
