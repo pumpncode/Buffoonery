@@ -22,9 +22,9 @@ SMODS.Joker {
     },
     loc_txt = {
         name = "Memory Card",
-        text = {"Memorizes the {C:attention}first{} scored card each round",  
-                "up to {C:attention}8 times{}. Sell this Joker to convert a",
-				"card in hand into each memorized card, in order",
+        text = {"Memorizes up to {C:attention}8{} of the {C:attention}first{} scored",  
+                "card each round. Sell to convert a card",
+				"in hand into each memorized card, {C:attention}in order{}",
 				"{C:inactive}Memorized #3#. Last: #5##4#{}",
 				}
     },

@@ -24,13 +24,14 @@ SMODS.Joker {
     },
     loc_txt = {
         name = "Korny Joker",
-        text = {"{C:chips}+#1#{} Chips during {C:attention}Small Blind{}",
-                "{C:chips}+#2#{} Chips during Big Blind and {C:chips}+#3#{} during {C:attention}Boss Blind{}",
+        text = {"{C:chips}+#1#{}, {C:chips}+#2#{} and {C:chips}+#3#{} Chips during {C:attention}Small Blind{}",
+                "{C:attention}Big Blind{} and {C:attention}Boss Blind{}, respectively.",
 				"{C:green}Unknown{} chance to die at the end of round",
 				"{C:inactive}You don't know the chances...{}"
 				}
     },
     loc_vars = function(self, info_queue, card)
+		--info_queue[#info_queue+1] = {set = 'Jokers', key = 'korny_info'}   CREDIT ORIGINAL ARTWORK AUTHOR (SNAKEY)
         return {
             vars = {card.ability.extra.chips, 
 					card.ability.extra.bgchips,
