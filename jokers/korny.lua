@@ -31,7 +31,7 @@ SMODS.Joker {
 				}
     },
     loc_vars = function(self, info_queue, card)
-		--info_queue[#info_queue+1] = {set = 'Jokers', key = 'korny_info'}   CREDIT ORIGINAL ARTWORK AUTHOR (SNAKEY)
+		info_queue[#info_queue+1] = {set = 'Other', key = 'korny_info'}   --Credit original artwork author [Snakey] (adapted by me for balatro)
         return {
             vars = {card.ability.extra.chips, 
 					card.ability.extra.bgchips,

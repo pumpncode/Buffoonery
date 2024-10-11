@@ -18,8 +18,7 @@ SMODS.Joker {
 		rank = {},
 		mcount = 0,
 		tsuit = "ne",
-		trank = "No",
-		cards = {}
+		trank = "No"
     },
     loc_txt = {
         name = "Memory Card",
@@ -44,8 +43,7 @@ SMODS.Joker {
 		if context.before and G.GAME.current_round.hands_played == 0 then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
-				card.ability.cards[card.ability.mcount] = context.scoring_hand[1]	--see Strength code @ card.lua [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
-				local _card = context.scoring_hand[1]	                            
+				local _card = context.scoring_hand[1]				--see Strength code @ card.lua
 				card.ability.tsuit = _card.base.suit
 				card.ability.suit[card.ability.mcount] = string.sub(_card.base.suit, 1, 1)..'_'
 				card.ability.rank[card.ability.mcount] = _card.base.id
@@ -76,8 +74,9 @@ SMODS.Joker {
 				for i = 1, j do
 					G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function()
 						local hcard = G.hand.cards[i]
-						local mcard = card.ability.cards[i]
-						copy_card(mcard, hcard)
+						local msuit = card.ability.suit[i]
+						local mrank = card.ability.rank[i]
+						hcard:set_base(G.P_CARDS[msuit..mrank])
 						G.hand.cards[i]:flip();play_sound('tarot2', percent, 0.6);G.hand.cards[i]:juice_up(0.3, 0.3);G.hand.cards[i]:flip(); -- Animation stuff
 						return true 
 					end }))
@@ -88,3 +87,6 @@ SMODS.Joker {
 		end
     end
 }
+
+-- Relevant vanilla (card.lua) code:
+-- Strength, Death, Hanging Chad, Sixth Sense
