@@ -53,3 +53,4 @@ NFS.load(SMODS.current_mod.path .. 'jokers/whitepony.lua')()
 ------------------- LAST UPDATES ------------------------ 13/10/2024, v0.5.2
 
 -- Improved memcard's code and added better compat with modded suits
+

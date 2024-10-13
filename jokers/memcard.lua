@@ -12,7 +12,7 @@ SMODS.Joker {
     discovered = true,
     eternal_compat = true,
     perishable_compat = true,
-    blueprint_compat = true,
+    blueprint_compat = false,
     config = {
 		mcount = 0,
 		tsuit = "ne",
@@ -63,7 +63,7 @@ SMODS.Joker {
 		end
 		
 		-- CONVERT INTO MEMORIZED CARDS WHEN SELLING
-		if context.selling_self then
+		if context.selling_self and #G.hand.cards ~= 0 then
 			local j = math.min((card.ability.mcount), 8) -- prevents getting a nil value for suit[i] and rank[i]
 			if j > 0 then
 				for i = 1, j do
