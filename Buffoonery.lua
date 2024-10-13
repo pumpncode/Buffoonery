@@ -6,7 +6,7 @@
 --- PREFIX: buf
 --- BADGE_COLOUR: 662222
 --- LOADER_VERSION_GEQ: 1.0.0
---- VERSION: 0.5.0
+--- VERSION: 0.5.2
 
 SMODS.Atlas {
     key = 'maggitsjokeratlas',
@@ -26,7 +26,7 @@ NFS.load(SMODS.current_mod.path .. 'jokers/whitepony.lua')()
 
 -- Relevant vanilla (card.lua) code:
 -- Strength, Death, Hanging Chad, Sixth Sense
--- copy_card function @ funtions/common_events.lua[
+-- copy_card function @ funtions/common_events.lua
 
 -- TODO LIST
 -- Code and draw Chip Off The Old Mult
@@ -50,15 +50,6 @@ NFS.load(SMODS.current_mod.path .. 'jokers/whitepony.lua')()
 -- 4. Have every artwork credited in info_queue (D O N E)
 
 
-------------------- LAST UPDATES ------------------------ 10/10/2024
+------------------- LAST UPDATES ------------------------ 13/10/2024, v0.5.2
 
--- ADDITIONS
--- [J] PERTINENT ARGUMENT
--- [J] LAIDBACK JOKER
--- [J] FIVE FINGERS
-
--- CHANGES
--- ADDED ORIGINAL ARTWORK CREDITS (korny and rerollin)
--- Updated Rerollin's description adding reroll count
--- Updated Rerrolin's artwork, making pinky finger more rounded
--- Updated Memory Card. It now copies enhancement and edition (modded ones too)
+-- Improved memcard's code and added better compat with modded suits

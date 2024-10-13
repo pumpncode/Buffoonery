@@ -14,8 +14,6 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-		suit = {},
-		rank = {},
 		mcount = 0,
 		tsuit = "ne",
 		trank = "No",
@@ -26,13 +24,12 @@ SMODS.Joker {
         text = {"Memorizes up to {C:attention}8{} of the {C:attention}first{} scored",  
                 "card each round. Sell to convert a card",
 				"in hand into each memorized card, {C:attention}in order{}",
-				"{C:inactive}Memorized #3#. Last: #5##4#{}",
+				"{C:inactive}Memorized #1#. Last: #3##2#{}",
 				}
     },
 	loc_vars = function(self, info_queue, card)
         return {
-            vars = {card.ability.suit, 
-					card.ability.rank, 
+            vars = {
 					card.ability.mcount,
 					card.ability.tsuit, 
 					card.ability.trank
@@ -41,22 +38,18 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and G.GAME.current_round.hands_played == 0 then
+		if context.before then --and G.GAME.current_round.hands_played == 0 then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
-				card.ability.cards[card.ability.mcount] = context.scoring_hand[1]	--see Strength code @ card.lua [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
-				local _card = context.scoring_hand[1]	                            
-				card.ability.tsuit = _card.base.suit
-				card.ability.suit[card.ability.mcount] = string.sub(_card.base.suit, 1, 1)..'_'
-				card.ability.rank[card.ability.mcount] = _card.base.id
-				if card.ability.rank[card.ability.mcount] < 10 then card.ability.rank[card.ability.mcount] = tostring(card.ability.rank[card.ability.mcount])
-				elseif card.ability.rank[card.ability.mcount] == 10 then card.ability.rank[card.ability.mcount] = 'T'
-				elseif card.ability.rank[card.ability.mcount] == 11 then card.ability.rank[card.ability.mcount] = 'J'
-				elseif card.ability.rank[card.ability.mcount] == 12 then card.ability.rank[card.ability.mcount] = 'Q'
-				elseif card.ability.rank[card.ability.mcount] == 13 then card.ability.rank[card.ability.mcount] = 'K'
-				elseif card.ability.rank[card.ability.mcount] == 14 then card.ability.rank[card.ability.mcount] = 'A'
+				card.ability.cards[card.ability.mcount] = context.scoring_hand[1]  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
+				local _card = context.scoring_hand[1]
+				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
+				if underscore_pos then
+					card.ability.tsuit = string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1)  
+				else
+					card.ability.tsuit = SMODS.Suits[_card.base.suit].key  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
 				end
-				card.ability.trank = card.ability.rank[card.ability.mcount]..' of '
+				card.ability.trank = SMODS.Ranks[_card.base.value].key..' of '
 				return {
 					message = "Memorized!",
 					colour = G.C.GREEN 
