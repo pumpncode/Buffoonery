@@ -25,9 +25,20 @@ SMODS.Joker {
     },
     calculate = function(self, card, context)
 		if context.after and not context.blueprint and not context.repetition and not context.other_card then
-			if (hand_chips * mult) > (card.ability.extra.xscore * G.GAME.blind.chips) then
+			local hand_score = hand_chips * mult
+			local req_chips = G.GAME.blind.chips
+			if buf.compat.talisman then
+				hand_score = to_number(hand_score)
+				req_chips = to_number(req_chips)
+			end
+			if hand_score > card.ability.extra.xscore * req_chips then
 				local earned = card.ability.extra.money * G.GAME.blind.chips
-				if earned > 50 then
+				local check = 50
+				if buf.compat.talisman then
+					earned = to_number(earned)
+					check = to_number(check)
+				end
+				if earned > check then
 					earned = 50
 				end
 				ease_dollars(earned)
@@ -60,10 +71,3 @@ SMODS.Joker {
 		end
     end
 }
-
--- SHOULD I PREVENT RESPAWN WITH FLAGS?
--- IF SO THEN
---     TODO: ADD FLAGS
--- ELSE
---     DONE
--- END

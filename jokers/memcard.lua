@@ -36,6 +36,14 @@ SMODS.Joker {
 			}
         }
     end,
+	set_ability = function(self, card, initial, delay_sprites)
+            local W = card.T.w
+			local H = card.T.h
+            local scale = 1
+            card.children.center.scale.y = 1.174*card.children.center.scale.x
+            card.T.h = H*scale/1.174*scale
+            card.T.w = W*scale
+    end,
     calculate = function(self, card, context)
 		-- MEMORIZE FIRST SCORING CARD
 		if context.before and G.GAME.current_round.hands_played == 0 then

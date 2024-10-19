@@ -12,7 +12,7 @@ SMODS.Joker{
     discovered = true,
     eternal_compat = true,
     perishable_compat = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     config = {
         extra = { Xmult = 2 }        
     },
@@ -20,7 +20,7 @@ SMODS.Joker{
         name = "Laidback Joker",
         text = {
 			"{X:mult,C:white}X#1#{} Mult",
-            "{C:dark_edition}-1{} Joker Slot",
+            "Occupies 2 slots",
         },
     },
 	loc_vars = function(self, info_queue, card)

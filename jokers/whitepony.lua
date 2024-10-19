@@ -14,7 +14,8 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { mult = 3, mult_gain = 2 }        
+        extra = { mult = 3, mult_gain = 2 },
+		numetal = true
     },
     loc_txt = {
         name = "White Pony",

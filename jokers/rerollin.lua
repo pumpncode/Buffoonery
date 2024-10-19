@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = 20, rcount = 0, needed = 5   
+        extra = 20, rcount = 0, needed = 5, numetal = true   
     },
     loc_txt = {
         name = "Rerollin'",

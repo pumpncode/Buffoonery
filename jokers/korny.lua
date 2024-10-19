@@ -19,15 +19,17 @@ SMODS.Joker {
 		chips = 50, 
 		bgchips = 90, 
 		bschips = 160, 
-		odds = 7 
-		}        
+		odds = 8 
+		},
+		numetal = true
     },
     loc_txt = {
         name = "Korny Joker",
-        text = {"{C:chips}+#1#{}, {C:chips}+#2#{} and {C:chips}+#3#{} Chips during {C:attention}Small Blind{}",
-                "{C:attention}Big Blind{} and {C:attention}Boss Blind{}, respectively.",
-				"{C:green}Unknown{} chance to die at the end of round",
-				"{C:inactive}You don't know the chances...{}"
+        text = {"{C:chips}+#1#{}, {C:chips}+#2#{} and {C:chips}+#3#{} Chips",
+                "during {C:attention}Small Blind{}, {C:attention}Big Blind{} and",
+				"{C:attention}Boss Blind{}, respectively. {C:green}Unknown{}",
+				"chance to die at the end of round",
+				"{C:inactive,s:0.7}You don't know the chances...{}"
 				}
     },
     loc_vars = function(self, info_queue, card)
@@ -63,7 +65,8 @@ SMODS.Joker {
 			end
 		end
 		if context.end_of_round and not context.blueprint and not (context.individual or context.repetition) then
-            if pseudorandom("korny") < G.GAME.probabilities.normal/card.ability.extra.odds then
+			local rand_min = 2
+            if pseudorandom("korny") < G.GAME.probabilities.normal/math.random(rand_min, card.ability.extra.odds) then
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('tarot1')

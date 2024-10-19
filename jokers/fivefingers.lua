@@ -13,14 +13,18 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = true,
+	
     config = {
-        extra = { Xmult = 2.5 }        
+        extra = { Xmult = 2.5 },
+		numetal = true
     },
     loc_txt = {
         name = "Five Fingers",
-        text = {"{X:mult,C:white}X#1#{} Mult if you have",
-                "exactly {C:attention}5 Jokers{} and scored",
-				"hand has exactly {C:attention}5 cards{}"}
+        text = {"{X:mult,C:white}X#1#{} Mult if you own a",
+                "multiple of {C:attention}5 Jokers{}",
+				"and scored hand",
+				"has exactly {C:attention}5 cards{}"
+		}
     },
     loc_vars = function(self, info_queue, card)
         return {
@@ -29,7 +33,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main and context.cardarea == G.jokers then
-			if #context.scoring_hand == 5 and #G.jokers.cards == 5 then
+			if #context.scoring_hand == 5 and math.fmod(#G.jokers.cards, 5) == 0 then
 				return {
 					message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
 					Xmult_mod = card.ability.extra.Xmult
