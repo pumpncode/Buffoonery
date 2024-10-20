@@ -22,3 +22,15 @@ From left to right:
 + Five Fingers: X2.5 Mult if you have exactly 5 jokers and scoring hand has exactly 5 cards. (common)
 + Laidback Joker: X2 Mult. -1 Joker Slot. (common)
 + Pertinent Argument: When played hand is a two pair and has 5 cards, 1 in 2 chance of converting the unpaired card into a paired one. (uncommon)
+
+### v0.8.0 Update:
+![Showcase0-8-0](https://github.com/user-attachments/assets/dc676cf6-f4c2-4397-8773-007cddc7a4b1)
+
+From left to right:
++ Jebediah Kerman: Gains +10 Mult whenever a Planet card is used. 1 in 5 chance to EXPLODE instead. (common)
++ Arstotzkan Denial: Gains +4 Mult and +20 Chips for each red and blue seal, respectively, in full deck. (uncommon)
++ Clown: +20 Chips. Gains +20 Chips whenever a joker is added. (uncommon)
++ Patronizing Joker: X4 Chips. Selects as many cards as he can for you. (rare)
++ Maggit: ^1.5 Mult if you own a  Nu Metal Joker. If you don't, creates one for you when Blind is selected, but only once. (Rare)
+
+--> *(Nu Metal Jokers: Clown, Five Fingers, Korny Joker, Rerollin' and White Pony.)*
