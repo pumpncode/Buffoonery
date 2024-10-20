@@ -16,13 +16,7 @@ SMODS.Joker {
     config = {
         extra = { money = 0.0025, xscore = 3 }        
     },
-    loc_txt = {
-        name = "Cashout Voucher",
-        text = {"If {C:attention}winning hand{} triples the Blind's",
-				"score {C:attention}requirement{}, earn 0.25% of it",
-				"as {C:money}money{} and destroy this Joker",
-				"{C:inactive}(Max of{} {C:money}$50{}{C:inactive}){}"}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_cashout'},
     calculate = function(self, card, context)
 		if context.after and not context.blueprint and not context.repetition and not context.other_card then
 			local hand_score = hand_chips * mult

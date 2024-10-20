@@ -16,12 +16,7 @@ SMODS.Joker {
     config = {
         extra = 20, rcount = 0, needed = 5, numetal = true   
     },
-    loc_txt = {
-        name = "Rerollin'",
-        text = {"Earn {C:money}$#1#{} for your",          
-                "{C:attention}5th reroll{} each shop",
-				"{C:inactive}(#3# rerolls required){}"}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_rerollin'},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = 'Other', key = 'korny_info'}   --Credit original artwork author [Snakey] (adapted by me for balatro)
         return {

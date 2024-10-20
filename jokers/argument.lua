@@ -16,13 +16,7 @@ SMODS.Joker {
     config = {
         extra = 2 
     },
-    loc_txt = {
-        name = "Pertinent Argument",
-        text = {"{C:green}1 in 2{} chance to convert",
-				"an unscored card into one",
-				"of the scored ones, if",
-                "played hand is a {C:attention}Two Pair{}"}  
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_argument'},
 	loc_vars = function(self, info_queue, card)
 		return { 
 			vars = { G.GAME.probabilities.normal or 1, card.ability.extra}

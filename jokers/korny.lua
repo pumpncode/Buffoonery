@@ -23,15 +23,7 @@ SMODS.Joker {
 		},
 		numetal = true
     },
-    loc_txt = {
-        name = "Korny Joker",
-        text = {"{C:chips}+#1#{}, {C:chips}+#2#{} and {C:chips}+#3#{} Chips",
-                "during {C:attention}Small Blind{}, {C:attention}Big Blind{} and",
-				"{C:attention}Boss Blind{}, respectively. {C:green}Unknown{}",
-				"chance to die at the end of round",
-				"{C:inactive,s:0.7}You don't know the chances...{}"
-				}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_korny'},
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = 'Other', key = 'korny_info'}   --Credit original artwork author [Snakey] (adapted by me for balatro)
         return {

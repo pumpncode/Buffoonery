@@ -17,14 +17,7 @@ SMODS.Joker {
         extra = { chip_mod = 20, jokers = 0, chips = 20 },
 		numetal = true
     },
-    loc_txt = {
-        name = "Clown",
-        text = {"This Joker gains {C:chips}+#1#{} Chips ",
-                "when another Joker is added",
-				"{C:inactive}(Currently{} {C:chips}+#2#{} {C:inactive}Chips){}",
-				"{C:inactive,s:0.7}Jimbo = Chips{}"
-		}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_clown'},
     loc_vars = function(self, info_queue, center)
         return {
             vars = { center.ability.extra.chip_mod, center.ability.extra.chips }

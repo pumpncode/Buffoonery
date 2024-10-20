@@ -19,14 +19,7 @@ SMODS.Joker {
     config = {
         extra = { mult = 0, gain = 10, odds = 5 },
     },
-    loc_txt = {
-        name = "Jebediah Kerman",
-        text = {"Gains {C:mult}+#2#{} Mult every time",
-                "any {C:planet}Planet{} card is used",
-				"{C:green}1 in 5{} chance to {C:attention}explode{} on use",
-				"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}"
-		}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_kerman'},
     loc_vars = function(card, info_queue, card)
         return {
             vars = {card.ability.extra.mult, card.ability.extra.gain, card.ability.extra.odds, (G.GAME.probabilities.normal or 1)}

@@ -18,14 +18,7 @@ SMODS.Joker {
         extra = { Xmult = 2.5 },
 		numetal = true
     },
-    loc_txt = {
-        name = "Five Fingers",
-        text = {"{X:mult,C:white}X#1#{} Mult if you own a",
-                "multiple of {C:attention}5 Jokers{}",
-				"and scored hand",
-				"has exactly {C:attention}5 cards{}"
-		}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_fivefingers'},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {card.ability.extra.Xmult}

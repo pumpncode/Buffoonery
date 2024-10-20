@@ -16,13 +16,7 @@ SMODS.Joker{
     config = {
         extra = { Xmult = 2 }        
     },
-    loc_txt = { 
-        name = "Laidback Joker",
-        text = {
-			"{X:mult,C:white}X#1#{} Mult",
-            "Occupies 2 slots",
-        },
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_laidback'},
 	loc_vars = function(self, info_queue, card)
         return {
             vars = {card.ability.extra.Xmult}

@@ -16,15 +16,7 @@ SMODS.Joker {
     config = {
         extra = { mult = 0, chips = 0 }        
     },
-    loc_txt = {
-        name = "Arstotzkan Denial",
-        text = {"{C:mult}+4{} Mult and {C:chips}+20#{} Chips",
-				"for each {C:red}Red{} and {C:blue}Blue{} seal",
-				"in full deck, respectively",
-				"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult /{} {C:chips}+#2#{} {C:inactive}Chips){}",
-				}
-    },
-	
+    loc_txt = {set = 'Joker', key = 'j_buf_denial'},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {card.ability.extra.mult, card.ability.extra.chips }

@@ -16,13 +16,7 @@ SMODS.Joker {
     config = {
         extra = { Xchip = 5 }        
     },
-    loc_txt = {
-        name = "Patronizing Joker",
-        text = {"{X:chips,C:white}X#1#{} Chips",
-                "{C:attention}Selects{} as many cards",
-				"for you as possible"
-		}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_patronizing'},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {card.ability.extra.Xchip}

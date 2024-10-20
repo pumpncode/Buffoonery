@@ -20,16 +20,7 @@ SMODS.Joker{
     config = {
         extra = { Emult = 1.5, once = "Not yet" }        
     },
-    loc_txt = { 
-        name = "Maggit",
-        text = {
-			"{X:dark_edition,C:white}^#1#{} Mult if you own a",
-			"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
-			"{C:attention}only once{}, create one",
-			"when {C:attention}Blind{} is selected{}",
-			"{C:inactive,s:0.7}(Must have room. #2# created.){}",
-        },
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_maggit'},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = 'Other', key = 'maggit_info'}
         return {
@@ -62,7 +53,7 @@ SMODS.Joker{
                         end
                         return true
                     end}))   
-                    card_eval_status_text(context.blueprint_card or self, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
 					card.ability.extra.once = "Already"
 			end
 		end
@@ -85,4 +76,3 @@ SMODS.Joker{
 		end
 	end
 }
-

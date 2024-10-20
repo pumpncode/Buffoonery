@@ -15,18 +15,11 @@ SMODS.Joker {
     blueprint_compat = false,
     config = {
 		mcount = 0,
-		tsuit = "ne",
-		trank = "No",
+		tsuit = "-",
+		trank = "-",
 		cards = {}
     },
-    loc_txt = {
-        name = "Memory Card",
-        text = {"Memorizes up to {C:attention}8{} of the {C:attention}first{} scored",  
-                "card each round. Sell to convert a card",
-				"in hand into each memorized card, {C:attention}in order{}",
-				"{C:inactive}Memorized #1#. Last: #3##2#{}",
-				}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_memcard'},
 	loc_vars = function(self, info_queue, card)
         return {
             vars = {

@@ -17,11 +17,7 @@ SMODS.Joker {
         extra = { mult = 3, mult_gain = 2 },
 		numetal = true
     },
-    loc_txt = {
-        name = "White Pony",
-        text = {"{C:mult}+#1#{} Mult",
-                "Doubles each Ante"}
-    },
+    loc_txt = {set = 'Joker', key = 'j_buf_whitepony'},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {card.ability.extra.mult, card.ability.extra.mult_gain}

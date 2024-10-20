@@ -4,7 +4,7 @@
 --- MOD_DESCRIPTION: Listen, I wanted to make jokers too.
 --- MOD_AUTHOR: [PinkMaggit]
 --- PREFIX: buf
---- BADGE_COLOUR: 662222
+--- BADGE_COLOUR: dd463c
 --- LOADER_VERSION_GEQ: 1.0.0
 --- VERSION: 0.8.0
 
@@ -70,21 +70,9 @@ NFS.load(SMODS.current_mod.path .. 'jokers/maggit.lua')()
 -- 4) Have locs for at least en-us and pt-br (currently only en-us)
 
 
-------------------- LAST UPDATES ------------------------ 19/10/2024, v0.8.0
+------------------- LAST UPDATES ------------------------ 20/10/2024, v0.8.1
 
--- NEW CONTENT
--- Patronizing Joker
--- Maggit [Legendary Joker]
--- Arstotzkan Denial [Joker]
--- Jebediah Kerman [Joker]
--- Clown [Joker]
-
--- CHANGES
--- Laidback Joker now can't be bought if player has less than 2 free slots
--- Added Talisman compatibility to Cashout Voucher
--- Five fingers now accepts hands that contains a number of jokers that is a multiple of 5 (5,10,15,20...)
--- Korny Joker now has truly random chances of dying, beacuse you don't know the chances... What if he should diiiiiiiiiiiiiiiiiiiiiiiie????
--- Made Memory Card's art more compatible with stickers
--- Made Rerollin's artwork less horrible and added "Joker" to it
--- Made a placeholder art for joker with unfinished art during development
+-- Fixed Maggit crashing the game when creating a joker
+-- Translated the jokers to brazilian portuguese
+-- Made Jeb's art better
 
