@@ -8,6 +8,11 @@ return {
 						"of the scored ones, if",
 						"played hand is a {C:attention}Two Pair{}"}  
 			},
+			j_buf_blackstallion = {
+				name = "Black Stallion",
+				text = {"{E:1,C:dark_edition}+#1#{} Mult",
+						"Doubles each Ante"}
+			},
 			j_buf_cashout = {
 				name = "Cashout Voucher",
 				text = {"If {C:attention}winning hand{} triples the Blind's",
@@ -71,14 +76,22 @@ return {
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
-					"{C:inactive,s:0.7}(Must have room. #2# created.){}",
+					"{C:inactive,s:0.7}#2#{}",
 				},
 			},
 			j_buf_memcard = {
 				name = "Memory Card",
-				text = {"Memorizes up to {C:attention}8{} of the {C:attention}first{} scored",  
-						"card each round. Sell to convert a card",
-						"in hand into each memorized card, {C:attention}in order{}",
+				text = {"Memorizes the {C:attention}first{} scored card each {C:attention}round{}",  
+						"up to {C:attention}8{} times. Sell to convert a card in",
+						"hand into each memorized card, {C:attention}in order{}",
+						"{C:inactive}Memorized #1#. Last: #3##2#{}",
+						}
+			},
+			j_buf_dxmemcard = {
+				name = "Deluxe Memory Card",
+				text = {"Memorizes the {C:attention}first{} scored card each {E:1,C:dark_edition}hand{}",  
+						"up to {E:1,C:dark_edition}16{} times. Sell to convert a card in",
+						"hand into each memorized card, {C:attention}in order{}",
 						"{C:inactive}Memorized #1#. Last: #3##2#{}",
 						}
 			},
@@ -93,7 +106,7 @@ return {
 				name = "Rerollin'",
 				text = {"Earn {C:money}$#1#{} for your",          
 						"{C:attention}5th reroll{} each shop",
-						"{C:inactive}(#3# rerolls required){}"}
+						"{C:inactive}({}{C:green}#3#{}{C:inactive} rerolls left){}"}
 			},
 			j_buf_whitepony = {
 				name = "White Pony",
@@ -102,7 +115,19 @@ return {
 			}, 
         },
         Back = {
-        
+			b_buf_jstation = {
+				name = "JimboStation Deck",
+				text = {"Start run with",
+						"{E:1,C:red} Memory Card{}",
+						"{C:attention}+1{} hand size"
+				}
+			},
+			b_buf_galloping = {
+				name = "Galloping Deck",
+				text = {"Start run with",
+						"{E:1,C:green}Black Stallion{}",
+				}
+			},
         },
         Tarot = {
            
@@ -126,9 +151,43 @@ return {
 					"and White Pony"
 				}
 			},
+			special_info = {
+				name = "Special Joker",
+				text = {
+					"Normally unobtainable",
+					"Given under {E:1,C:dark_edition}special{}",
+					"conditions"
+				}
+			},
         },
         Sleeve = {
-            
+			sleeve_buf_jstation = {
+				name = "JimboStation Sleeve",
+				text = {"Start run with",
+						"{C:red}Memory Card{}",
+						"{C:attention}+1{} hand size"
+				}
+			},
+			sleeve_buf_jstation_alt = {
+				name = "JimboStation Sleeve",
+				text = {"Your {C:red}Memory Card{}",
+						"is a {E:1,C:dark_edition}Deluxe Version{}",
+						"{C:attention}+1{} hand size"
+				}
+			},
+			sleeve_buf_galloping = {
+				name = "Galloping Sleeve",
+				text = {"Start run with",
+						"{E:1,C:green}Black Stallion{}",
+				}
+			},
+			sleeve_buf_galloping_alt = {
+				name = "Galloping Sleeve",
+				text = {"You start with",
+						"{E:1,C:green}White Pony{} instead",
+						"{C:blue}-2{} hands"
+				}
+			}, 
         },
     },
     misc = {

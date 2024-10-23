@@ -18,7 +18,7 @@ SMODS.Joker{
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { Emult = 1.5, once = "Not yet" }        
+        extra = { Emult = 1.5, once = "(Must have room)" }        
     },
     loc_txt = {set = 'Joker', key = 'j_buf_maggit'},
 	loc_vars = function(self, info_queue, card)
@@ -38,7 +38,7 @@ SMODS.Joker{
 					check = false
 				end
 			end
-			if not check and card.ability.extra.once == "Not yet" and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+			if not check and card.ability.extra.once ~= "(Already created)" and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
 				local nujokies = { "j_buf_korny", "j_buf_whitepony", "j_buf_rerollin", "j_buf_fivefingers", "j_buf_clown" }
 				local jokers_to_create = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
                 G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
@@ -54,7 +54,7 @@ SMODS.Joker{
                         return true
                     end}))   
 					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
-					card.ability.extra.once = "Already"
+					card.ability.extra.once = "(Already created)"
 			end
 		end
         if context.joker_main then

@@ -8,6 +8,11 @@ return {
 						"uma das pontuadas, caso",
 						"a mão jogada for {C:attention}Dois Pares{}"}  
 			},
+			j_buf_blackstallion = {
+				name = "Black Stallion",
+				text = {"{E:1,C:dark_edition}+#1#{} Multi",
+						"Dobra a cada Aposta"}
+			},
 			j_buf_cashout = {
 				name = "Voucher de Saque",
 				text = {"Se a {C:attention}mão vencedora{} pontuar 3x",
@@ -71,13 +76,21 @@ return {
 					"um Curinga do {C:dark_edition}Nu Metal{}",
 					"Se não, {C:attention}só uma vez{}, crie um",
 					"quando o {C:attention}Blind{} for escolhido",
-					"{C:inactive,s:0.7}(Deve ter espaço.){}",
+					"{C:inactive,s:0.7}#2#{}",
 				},
 			},
 			j_buf_memcard = {
-				name = "Cartão de Memória",
-				text = {"Memoriza até {C:attention}8{} da {C:attention}primeira{} carta pontuada",  
-						"a cada rodada. Venda para converter uma",
+				name = "Memory Card",
+				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
+						"{C:attention}rodada{} por {C:attention}8{} rodadas. Venda para converter uma",
+						"carta na mão em uma memorizada, {C:attention}na ordem{}",
+						"{C:inactive}Memorizadas: #1#. Última: #3##2#{}",
+						}
+			},
+			j_buf_dxmemcard = {
+				name = "Memory Card Deluxe",
+				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
+						"{E:1,C:dark_edition}mão{} por {E:1,C:dark_edition}16{} mãos. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
 						"{C:inactive}Memorizadas: #1#. Última: #3##2#{}",
 						}
@@ -93,7 +106,7 @@ return {
 				name = "Rerollin'",
 				text = {"Ganhe {C:money}$#1#{} pela sua",          
 						"{C:attention}5ª atualização{} cada loja",
-						"{C:inactive}(Falta(m) #3# atualizações){}"}
+						"{C:inactive}(Falta(m){} {C:green}#3#{} {C:inactive}atualizações){}"}
 			},
 			j_buf_whitepony = {
 				name = "White Pony",
@@ -102,7 +115,19 @@ return {
 			}, 
         },
         Back = {
-        
+			b_buf_jstation = {
+				name = "Baralho do JimboStation",
+				text = {"Comece com um",
+						"{C:red}Memory Card{}",
+						"{C:attention}+1{} tamanho de mão"
+				}
+			},
+			b_buf_galloping = {
+				name = "Baralho Galopeiro",
+				text = {"Começe com um",
+						"{E:1,C:green} Black Stallion{}",
+				}
+			},
         },
         Tarot = {
            
@@ -126,9 +151,43 @@ return {
 					"e White Pony",
 				}
 			},
+			special_info = {
+				name = "Curinga Especial",
+				text = {
+					"Normalmente inacessível",
+					"Dado sob condições",
+					"{E:1,C:dark_edition}especiais{}"
+				}
+			},
         },
         Sleeve = {
-            
+			sleeve_buf_jstation = {
+				name = "Capa do JimboStation",
+				text = {"Comece com um",
+						"{C:red}Memory Card{}",
+						"{C:attention}+1{} tamanho de mão"
+				}
+			},
+			sleeve_buf_jstation_alt = {
+				name = "Capa do JimboStation",
+				text = {"Seu {C:red}Memory Card{}",
+						"é a versão {E:1,C:dark_edition}Deluxe{}",
+						"{C:attention}+1{} tamanho de mão"
+				}
+			},
+			sleeve_buf_galloping = {
+				name = "Capa Galopeira",
+				text = {"Comece com um",
+						"{C:green}Black Stallion{}",
+				}
+			},
+			sleeve_buf_galloping_alt = {
+				name = "Capa Galopeira",
+				text = {"Você começa com um",
+						"{C:green}White Pony{} em vez disso",
+						"{C:blue}-2{} mãos"
+				}
+			}, 
         },
     },
     misc = {
