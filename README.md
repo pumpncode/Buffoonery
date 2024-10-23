@@ -36,7 +36,8 @@ From left to right:
 --> *(Nu Metal Jokers: Clown, Five Fingers, Korny Joker, Rerollin' and White Pony.)*
 
 ### v0.9.0 Update:
-![showcase_special_jk](https://github.com/user-attachments/assets/7bb07d94-db53-472e-a609-7a1b0a3432d2)
+![showcase_special_jk](https://github.com/user-attachments/assets/4e2f2078-a646-4dbe-90e0-1e9ab1396f28)
+
 
 **Special Jokers** introduced! They do not spawn nor show up in the collection, but instead are granted to the player under special circumstances
 + Black Stallion: A nerfed version of White Pony. +1 Mult, doubles each Ante.
