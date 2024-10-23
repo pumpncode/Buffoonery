@@ -1,7 +1,7 @@
 # Buffoonery 
 A Balatro mod that aims to add vanilla-adjacent content while still having its own style.
 
-*This mod currently adds 13 jokers to the game. Two more jokers are currently planned for release. There will be stuff other than Jokers in future updates*
+*This mod currently adds 15 jokers, 2 decks and 2 sleeves to the game. Two more jokers are currently planned for release.
 
 ## Jokers
 ![Readme1](https://github.com/user-attachments/assets/d8d318ed-05e4-4a0a-8773-fbd0e9c7fd64)
@@ -34,3 +34,22 @@ From left to right:
 + Maggit: ^1.5 Mult if you own a  Nu Metal Joker. If you don't, creates one for you when Blind is selected, but only once. (legendary)
 
 --> *(Nu Metal Jokers: Clown, Five Fingers, Korny Joker, Rerollin' and White Pony.)*
+
+### v0.9.0 Update:
+![showcase_special_jk](https://github.com/user-attachments/assets/7bb07d94-db53-472e-a609-7a1b0a3432d2)
+
+**Special Jokers** introduced! They do not spawn nor show up in the collection, but instead are granted to the player under special circumstances
++ Black Stallion: A nerfed version of White Pony. +1 Mult, doubles each Ante.
++ Deluxe Memory Card: A buffed version of Memory Card. Memorizes 16 cards instead of 8 and memorizes one card each *hand*, instead of each *round*.
+
+## Decks / Sleeves
+### v0.9.0 Update
+![showcase_decksleeve](https://github.com/user-attachments/assets/5bc20aee-2e8d-4e16-ba3e-e62623236ac2)
+
+**Decks:**
++ Galloping Deck: You start the run with Black Stallion
++ JimboStation Deck: You start the run with Memory Card. +1 Hand size.
+
+**Sleeves:**
++ Galloping Sleeve: Same effect as deck. If combined with Galloping Deck, you start the run with White Pony instead, but lose 2 hands each round.
++ JimboStation Sleeve: Same effect as deck. If combined with Jimbostation Deck, You start the run with a Deluxe Memory Card instead.
