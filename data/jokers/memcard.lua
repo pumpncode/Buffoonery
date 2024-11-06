@@ -10,7 +10,7 @@ SMODS.Joker {
     cost = 8,
     unlocked = true,
     discovered = true,
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = false,
     config = {
@@ -38,8 +38,10 @@ SMODS.Joker {
             card.T.w = W*scale
     end,
     calculate = function(self, card, context)
+		local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+        juice_card_until(card, eval, true) --won't be quiet until you memorize a card
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and G.GAME.current_round.hands_played == 0 then
+		if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.cards[card.ability.mcount] = context.scoring_hand[1]  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
@@ -52,19 +54,19 @@ SMODS.Joker {
 				end
 				card.ability.trank = SMODS.Ranks[_card.base.value].key..' of '
 				return {
-					message = "Memorized!",
+					message = localize('buf_memory'),
 					colour = G.C.GREEN 
 				}
 			elseif card.ability.mcount >= 8 then
 				return {
-					message = "Memory Full!",
+					message = localize('buf_memfull'),
 					colour = G.C.RED
 				}
 			end
 		end
 		
 		-- CONVERT INTO MEMORIZED CARDS WHEN SELLING
-		if context.selling_self and #G.hand.cards ~= 0 then
+		if context.selling_self and #G.hand.cards ~= 0 and not context.blueprint then
 			local j = math.min((card.ability.mcount), #G.hand.cards) -- prevents getting a nil value for suit[i] and rank[i]
 			if j > 0 then
 				for i = 1, j do

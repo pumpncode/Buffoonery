@@ -36,7 +36,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
+        if context.setting_blind then
 			if G.GAME.blind:get_type() == 'Small' then
 				return {
 					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
@@ -77,13 +77,13 @@ SMODS.Joker {
                 }))
 				G.GAME.pool_flags.korny_dead = true
                 return {
-                    message = "Dead!",
+                    message = localize("buf_korny_dd"),
                     colour = G.C.RED,
                     card = card
                 }
             else
                 return {
-                    message = "He's okay",
+                    message = localize("buf_korny_ok"),
                     colour = G.C.GREEN,
                     card = card
                 }

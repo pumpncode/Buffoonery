@@ -38,9 +38,9 @@ SMODS.Joker {
         if G.playing_cards then
             for _, v in pairs(G.playing_cards) do
                 if v:get_seal() == "Red" then
-                    card.ability.extra.mult =  card.ability.extra.mult + 4
+                    card.ability.extra.mult =  card.ability.extra.mult + 6
 				elseif v:get_seal() == "Blue" then
-					card.ability.extra.chips = card.ability.extra.chips + 20
+					card.ability.extra.chips = card.ability.extra.chips + 40
                 end
             end
         end

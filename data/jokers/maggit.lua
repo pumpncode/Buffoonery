@@ -31,7 +31,7 @@ SMODS.Joker{
 		local check = false
 		if context.setting_blind and not self.getting_sliced then
 			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i].ability.numetal then
+				if G.jokers.cards[i].ability.numetal and not context.blueprint then
 					check = true
 					break
 				else
@@ -53,8 +53,8 @@ SMODS.Joker{
                         end
                         return true
                     end}))   
-					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
-					card.ability.extra.once = "(Already created)"
+				card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+				card.ability.extra.once = "(Already created)"
 			end
 		end
         if context.joker_main then

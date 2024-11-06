@@ -31,6 +31,7 @@ SMODS.Joker {
         end
         if free ~= 0 then
             card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chip_mod * free)
+			SMODS.eval_this(context.blueprint_card or card, {message = localize('k_upgrade_ex'), colour = G.C.BLUE})
         end
         card.ability.extra.jokers = num_jokers
 		if context.joker_main then

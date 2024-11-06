@@ -1,6 +1,14 @@
 return {
     descriptions = {
         Joker = {
+			j_buf_abyssalp = {
+				name = "Prisma Abissal",
+				text = {"Quando {C:attention}obtiver{} este curinga, {C:attention}exile{}",
+						"todos os outros. Um fica {C:dark_edition}Negativo{} a cada",
+						"3 turnos. Venda para reobter os curingas",
+						"{C:inactive}(Atualmente #1# curingas negativos){}"
+				}
+			},
 			j_buf_argument = {
 				name = "Discussão Acalourada",
 				text = {"{C:green}1 de 2{} chance de converter",
@@ -10,15 +18,15 @@ return {
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",
-				text = {"{E:1,C:dark_edition}+#1#{} Multi",
+				text = {"{C:buf_spc}+#1#{} Multi",
 						"Dobra a cada Aposta"}
 			},
 			j_buf_cashout = {
 				name = "Voucher de Saque",
 				text = {"Se a {C:attention}mão vencedora{} pontuar 3x",
-					"mais que o {C:attention}Blind{}, ganhe 0.25% dele",
-					"em {C:money}dinheiro{} e destrua este Curinga",
-					"{C:inactive}(No máximo{} {C:money}$50{}{C:inactive}){}"
+						"mais que o {C:attention}Blind{}, ganhe 0.25% dele",
+						"em {C:money}dinheiro{} e destrua este Curinga",
+						"{C:inactive}(No máximo{} {C:money}$50{}{C:inactive}){}"
 				}
 			},
 			j_buf_clown = {
@@ -31,9 +39,9 @@ return {
 			},
 			j_buf_denial = {
 				name = "Rejeição de Arstotzka",
-				text = {"{C:mult}+4{} Multi e {C:chips}+20{} Fichas por",
-						"cada selo {C:red}Vermelho{} e {C:blue}Azul{} no",
-						"baralho completo, respectivamente",
+				text = {"{C:mult}+6{} Multi ou {C:chips}+40{} Fichas por",
+						"cada selo {C:red}Vermelho{} ou {C:blue}Azul{} no",
+						"baralho completo, {C:attention}respectivamente{}",
 						"{C:inactive}(Atualmente{} {C:mult}+#1#{} {C:inactive}Multi/{}{C:chips}+#2#{} {C:inactive}Fichas){}",
 						}
 			},
@@ -90,7 +98,7 @@ return {
 			j_buf_dxmemcard = {
 				name = "Memory Card Deluxe",
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
-						"{E:1,C:dark_edition}mão{} por {E:1,C:dark_edition}16{} mãos. Venda para converter uma",
+						"{C:buf_spc}mão{} por {C:buf_spc}16{} mãos. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
 						"{C:inactive}Memorizadas: #1#. Última: #3##2#{}",
 						}
@@ -107,6 +115,15 @@ return {
 				text = {"Ganhe {C:money}$#1#{} pela sua",          
 						"{C:attention}5ª atualização{} cada loja",
 						"{C:inactive}(Falta(m){} {C:green}#3#{} {C:inactive}atualizações){}"}
+			},
+			j_buf_roulette = {
+				name = "Russian Roulette",
+				text = {"Ao jogar sua {C:attention}primeira{} mão, ganhe {C:money}$30{}",          
+						"{C:green}1 de #2#{} chance de {C:attention}perder o jogo{} ao invés",
+						"Se a chance chegar a {C:green}1 de 2{} e você",
+						"vencer, crie um Curinga {C:legendary}Lendário{} aleatório",
+						"{C:inactive,s:0.7}(A chance aumenta a cada rodada)"
+				}
 			},
 			j_buf_whitepony = {
 				name = "White Pony",
@@ -125,7 +142,7 @@ return {
 			b_buf_galloping = {
 				name = "Baralho Galopeiro",
 				text = {"Começe com um",
-						"{E:1,C:green} Black Stallion{}",
+						"{C:buf_spc} Black Stallion{}",
 				}
 			},
         },
@@ -156,7 +173,15 @@ return {
 				text = {
 					"Normalmente inacessível",
 					"Dado sob condições",
-					"{E:1,C:dark_edition}especiais{}"
+					"{E:1,C:buf_spc}especiais{}"
+				}
+			},
+			banish_info = {
+				name = "Exílio",
+				text = {
+					"Curingas exilados",
+					"retornam à sua",
+					"forma {C:attention}base{}"
 				}
 			},
         },
@@ -171,14 +196,14 @@ return {
 			sleeve_buf_jstation_alt = {
 				name = "Capa do JimboStation",
 				text = {"Seu {C:red}Memory Card{}",
-						"é a versão {E:1,C:dark_edition}Deluxe{}",
+						"é {C:buf_spc}especial{}",
 						"{C:attention}+1{} tamanho de mão"
 				}
 			},
 			sleeve_buf_galloping = {
 				name = "Capa Galopeira",
 				text = {"Comece com um",
-						"{C:green}Black Stallion{}",
+						"{C:buf_spc}Black Stallion{}",
 				}
 			},
 			sleeve_buf_galloping_alt = {
@@ -191,6 +216,18 @@ return {
         },
     },
     misc = {
-       
+		dictionary = {
+			buf_prism_eor = "+1 Negativo",
+			buf_korny_ok = "De boa!",
+			buf_korny_dd = "Morreu!",
+			buf_prism_sck = "Sumam!",
+			buf_memory = "Memorizada!",
+			buf_memfull = "Memória Cheia!",
+			buf_doubled = "Dobrou!",
+			buf_convert = "Convertido!",
+			buf_blowup = "C A B U M !",
+			buf_ydead = "Você morreu...",
+			buf_dry = "Sobreviveu!"
+		},
     },
 }

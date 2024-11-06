@@ -12,7 +12,7 @@ SMODS.Joker {
     discovered = true,
     eternal_compat = true,
     perishable_compat = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     config = {
         extra = { Xchip = 5 }        
     },

@@ -58,7 +58,7 @@ SMODS.Joker {
 				  end
 				}))
 				return {
-					message = localize('$')..earned,
+					message = '$'..earned,
                     colour = G.C.MONEY,
 				}
 			end

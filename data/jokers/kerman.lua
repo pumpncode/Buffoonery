@@ -1,5 +1,3 @@
-SMODS.Sound({key = 'explosion', path = 'explosion.ogg'})
-
 SMODS.Joker {
     key = "kerman",
     name = "Jebediah Kerman",
@@ -12,7 +10,7 @@ SMODS.Joker {
     cost = 4,
     unlocked = true,
     discovered = true,
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = true,
 	no_pool_flag = 'kerman_went_boom',
@@ -36,7 +34,7 @@ SMODS.Joker {
 			if pseudorandom("kerman") < G.GAME.probabilities.normal/card.ability.extra.odds then
 				G.E_MANAGER:add_event(Event({
                     func = function()
-						card_eval_status_text(card, 'extra', nil, nil, nil, {message = "B O O M !"})  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
+						card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('buf_blowup')})  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
                         play_sound('buf_explosion')
                         card.T.r = -0.2
                         card:juice_up(0.3, 0.4)

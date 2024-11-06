@@ -6,11 +6,11 @@ SMODS.Joker {
         x = 0,
         y = 2,
     },
-    rarity = 3,
+    rarity = 'buf_spc',
     cost = 8,
     unlocked = true,
     discovered = true,
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = false,
 	in_pool = false,
@@ -41,7 +41,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before then
+		if context.before and not context.blueprint then
 			if card.ability.mcount < 16 then  --limits to 16 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.cards[card.ability.mcount] = context.scoring_hand[1]  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
@@ -54,19 +54,19 @@ SMODS.Joker {
 				end
 				card.ability.trank = SMODS.Ranks[_card.base.value].key..' of '
 				return {
-					message = "Memorized!",
+					message = localize('buf_memory'),
 					colour = G.C.GREEN 
 				}
 			elseif card.ability.mcount >= 16 then
 				return {
-					message = "Memory Full!",
+					message = localize('buf_memfull'),
 					colour = G.C.RED
 				}
 			end
 		end
 		
 		-- CONVERT INTO MEMORIZED CARDS WHEN SELLING
-		if context.selling_self and #G.hand.cards ~= 0 then
+		if context.selling_self and #G.hand.cards ~= 0 and not context.blueprint then
 			local j = math.min((card.ability.mcount), #G.hand.cards) -- prevents getting a crash if memorized cards > cards in hand
 			if j > 0 then
 				for i = 1, j do

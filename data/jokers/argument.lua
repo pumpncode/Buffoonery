@@ -24,7 +24,7 @@ SMODS.Joker {
 	end,
 	
     calculate = function(self, card, context)
-		if context.before and not context.blueprint then
+		if context.before and not card.getting_sliced then
 			if not next(context.poker_hands["Full House"]) and next(context.poker_hands["Two Pair"]) and #context.full_hand == 5 then  -- Full House crashes the game without the first condition (if not next..."Full House"...)
 				if pseudorandom('argument'..G.GAME.round_resets.ante) < G.GAME.probabilities.normal / card.ability.extra then
 					local played_ranks = {}
@@ -58,7 +58,7 @@ SMODS.Joker {
                     return true end }))
 					
 					return {
-                      message = "Converted!",
+                      message = localize('buf_convert'),
                       colour = G.C.RED
 					}	
 				end

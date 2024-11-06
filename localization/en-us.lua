@@ -1,6 +1,14 @@
 return {
     descriptions = {
         Joker = {
+			j_buf_abyssalp = {
+				name = "Abyssal Prism",
+				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}banish{} all",
+						"others. One becomes {C:dark_edition}Negative{} each 3",
+						"turns. Sell this to return jokers",
+						"{C:inactive}(Currently #1# negative jokers){}"
+				}
+			},
 			j_buf_argument = {
 				name = "Pertinent Argument",
 				text = {"{C:green}1 in 2{} chance to convert",
@@ -10,7 +18,7 @@ return {
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",
-				text = {"{E:1,C:dark_edition}+#1#{} Mult",
+				text = {"{C:buf_spc}+#1#{} Mult",
 						"Doubles each Ante"}
 			},
 			j_buf_cashout = {
@@ -31,9 +39,9 @@ return {
 			},
 			j_buf_denial = {
 				name = "Arstotzkan Denial",
-				text = {"{C:mult}+4{} Mult and {C:chips}+20#{} Chips",
-						"for each {C:red}Red{} and {C:blue}Blue{} seal",
-						"in full deck, respectively",
+				text = {"{C:mult}+6{} Mult or {C:chips}+40{} Chips",
+						"for each {C:red}Red{} or {C:blue}Blue{} seal",
+						"in full deck, {C:attention}respectively{}",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult /{} {C:chips}+#2#{} {C:inactive}Chips){}",
 						}
 			},
@@ -89,8 +97,8 @@ return {
 			},
 			j_buf_dxmemcard = {
 				name = "Deluxe Memory Card",
-				text = {"Memorizes the {C:attention}first{} scored card each {E:1,C:dark_edition}hand{}",  
-						"up to {E:1,C:dark_edition}16{} times. Sell to convert a card in",
+				text = {"Memorizes the {C:attention}first{} scored card each {C:buf_spc}hand{}",  
+						"up to {C:buf_spc}16{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
 						"{C:inactive}Memorized #1#. Last: #3##2#{}",
 						}
@@ -108,6 +116,15 @@ return {
 						"{C:attention}5th reroll{} each shop",
 						"{C:inactive}({}{C:green}#3#{}{C:inactive} rerolls left){}"}
 			},
+			j_buf_roulette = {
+				name = "Russian Roulette",
+				text = {"After you play your {C:attention}first{} hand, earn {C:money}$30{}",          
+						"{C:green}1 in #2#{} chance you {C:attention}lose the game{} instead",
+						"If chance reaches {C:green}1 in 2{} and you win,",
+						"create a random {C:legendary}Legendary{} Joker",
+						"{C:inactive,s:0.7}(Chance increases each round)"
+				}
+			},
 			j_buf_whitepony = {
 				name = "White Pony",
 				text = {"{C:mult}+#1#{} Mult",
@@ -118,14 +135,14 @@ return {
 			b_buf_jstation = {
 				name = "JimboStation Deck",
 				text = {"Start run with",
-						"{E:1,C:red} Memory Card{}",
+						"{C:red} Memory Card{}",
 						"{C:attention}+1{} hand size"
 				}
 			},
 			b_buf_galloping = {
 				name = "Galloping Deck",
 				text = {"Start run with",
-						"{E:1,C:green}Black Stallion{}",
+						"{C:buf_spc}Black Stallion{}",
 				}
 			},
         },
@@ -155,8 +172,16 @@ return {
 				name = "Special Joker",
 				text = {
 					"Normally unobtainable",
-					"Given under {E:1,C:dark_edition}special{}",
+					"Given under {E:1,C:buf_spc}special{}",
 					"conditions"
+				}
+			},
+			banish_info = {
+				name = "Banished",
+				text = {
+					"Banished Jokers",
+					"Return to their",
+					"{C:attention}base{} state"
 				}
 			},
         },
@@ -171,26 +196,38 @@ return {
 			sleeve_buf_jstation_alt = {
 				name = "JimboStation Sleeve",
 				text = {"Your {C:red}Memory Card{}",
-						"is a {E:1,C:dark_edition}Deluxe Version{}",
+						"is {E:1,C:buf_spc}special{}",
 						"{C:attention}+1{} hand size"
 				}
 			},
 			sleeve_buf_galloping = {
 				name = "Galloping Sleeve",
 				text = {"Start run with",
-						"{E:1,C:green}Black Stallion{}",
+						"{C:buf_spc}Black Stallion{}",
 				}
 			},
 			sleeve_buf_galloping_alt = {
 				name = "Galloping Sleeve",
 				text = {"You start with",
-						"{E:1,C:green}White Pony{} instead",
+						"{C:green}White Pony{} instead",
 						"{C:blue}-2{} hands"
 				}
 			}, 
         },
     },
     misc = {
-       
+		dictionary = {
+			buf_korny_ok = "He's ok!",
+			buf_korny_dd = "Dead!",
+			buf_prism_eor = "+1 Negative!",
+			buf_prism_sck = "Begone!",
+			buf_memory = "Memorized!",
+			buf_memfull = "Memory Full!",
+			buf_doubled = "Doubled!",
+			buf_convert = "Converted!",
+			buf_blowup = "B O O M !",
+			buf_ydead = "You're dead...",
+			buf_dry = "Dry fire!"
+		}
     },
 }

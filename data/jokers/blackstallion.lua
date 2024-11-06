@@ -6,7 +6,7 @@ SMODS.Joker {
         x = 1,
         y = 2,
     },
-    rarity = 2,
+    rarity = "buf_spc",
     cost = 6,
     unlocked = true,
     discovered = true,
@@ -35,7 +35,7 @@ SMODS.Joker {
         if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and G.GAME.blind.boss then
             card.ability.extra.mult = card.ability.extra.mult * card.ability.extra.mult_gain
             return {
-                message = 'Doubled!',
+                message = loclaize('buf_doubled'),
                 colour = G.C.MULT,
                 card = card
             }
