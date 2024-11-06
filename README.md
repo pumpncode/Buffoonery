@@ -52,5 +52,9 @@ From left to right:
 + JimboStation Deck: You start the run with Memory Card. +1 Hand size.
 
 **Sleeves:**
+
+*To use sleeves, you must have [CardSleeves](https://github.com/larswijn/CardSleeves) by [Larswijn](https://github.com/larswijn) installed.*
 + Galloping Sleeve: Same effect as deck. If combined with Galloping Deck, you start the run with White Pony instead, but lose 2 hands each round.
 + JimboStation Sleeve: Same effect as deck. If combined with Jimbostation Deck, You start the run with a Deluxe Memory Card instead.
+
+
