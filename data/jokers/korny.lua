@@ -17,8 +17,8 @@ SMODS.Joker {
     config = {
         extra = { 
 		chips = 60, 
-		bgchips = 90, 
-		bschips = 160, 
+		bgchips = 100, 
+		bschips = 180, 
 		odds = 8 
 		},
 		numetal = true
