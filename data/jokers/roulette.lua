@@ -24,14 +24,14 @@ SMODS.Joker {
 	end,
 
     calculate = function(self, card, context)
-		local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end   
-        juice_card_until(card, eval, true)   -- Won't be quiet until activation
-		if context.joker_main and G.GAME.current_round.hands_played == 0 then
+		if context.setting_blind then
+			should_jiggle = false
 			if pseudorandom('roulette') < G.GAME.probabilities.normal / card.ability.extra.odds then
 				card:juice_up(0.8, 0.5)
 				card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('buf_ydead'), colour = G.C.RED})
 				play_sound('buf_roul2', 0.96+math.random()*0.08, 0.7)
 				card.config.center.pos.x = 1
+				card.ability.extra.odds = math.max(card.ability.extra.odds - 1, 1)
 				G.E_MANAGER:add_event(  -- Thanks WilsontheWolf for the help!
 					Event({
 						trigger = "after",

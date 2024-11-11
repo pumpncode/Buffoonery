@@ -20,7 +20,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = 'Other', key = 'banish_info'}
         return {
-            vars = { card.ability.extra.neg
+            vars = { card.ability.extra.neg, card.ability.extra.count % 3
 			}
         }
     end,
@@ -53,9 +53,15 @@ SMODS.Joker {
 		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card then
 			card.ability.extra.count = card.ability.extra.count + 1
 			card.ability.extra.neg = math.floor(card.ability.extra.count / 3)
-			if card.ability.extra.count % card.ability.extra.neg == 0 then
+			if card.ability.extra.count % 3 == 0 then
 				return {
-					message = localize("buf_prism_eor"),
+					message = localize("buf_prism_eor2"),
+					colour = G.C.DARK_EDITION,
+					card = card
+				}
+			else
+				return {
+					message = localize("buf_prism_eor1"),
 					colour = G.C.DARK_EDITION,
 					card = card
 				}

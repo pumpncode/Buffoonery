@@ -53,7 +53,7 @@ SMODS.Joker {
 			else
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
 				G.E_MANAGER:add_event(Event({
-					func = function() card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize{type='variable',key='a_mult',vars={card.ability.extra.gain}}, colour = G.C.MULT}); return true
+					func = function() card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.MULT}); return true
 					end}))
 				return
 			end

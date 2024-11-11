@@ -17,7 +17,7 @@ SMODS.Joker {
 		mcount = 0,
 		tsuit = "-",
 		trank = "-",
-		extra = { cards = {} }
+		extra = { bases = {}, abils = {}, edits = {}, seals = {}, params = {} }
     },
     loc_txt = {set = 'Joker', key = 'j_buf_memcard'},
 	loc_vars = function(self, info_queue, card)
@@ -38,21 +38,29 @@ SMODS.Joker {
             card.T.w = W*scale
     end,
     calculate = function(self, card, context)
-		local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
-        juice_card_until(card, eval, true) --won't be quiet until you memorize a card
+		local eval = function() return G.GAME.current_round.hands_played == 0 and card.ability.mcount < 8 and not G.RESET_JIGGLES end
+        juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
 		-- MEMORIZE FIRST SCORING CARD
 		if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
-				card.ability.extra.cards[card.ability.mcount] = context.scoring_hand[1]  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
+				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
+				card.ability.extra.abils[card.ability.mcount] = context.scoring_hand[1].config.center
+				card.ability.extra.edits[card.ability.mcount] = context.scoring_hand[1].edition
+				card.ability.extra.seals[card.ability.mcount] = context.scoring_hand[1].seal
+				if context.scoring_hand[1].params then
+					card.ability.extra.params[card.ability.mcount] = context.scoring_hand[1].params
+				end
 				local _card = context.scoring_hand[1]
 				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
 				if underscore_pos then
-					card.ability.tsuit = string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1)  
+					card.ability.tsuit = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
 				else
-					card.ability.tsuit = SMODS.Suits[_card.base.suit].key  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
+					card.ability.tsuit =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
 				end
-				card.ability.trank = SMODS.Ranks[_card.base.value].key..' of '
+				local key = SMODS.Ranks[_card.base.value].key
+				local tkey = localize('buf_'..key)
+				card.ability.trank =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
 				return {
 					message = localize('buf_memory'),
 					colour = G.C.GREEN 
@@ -72,8 +80,21 @@ SMODS.Joker {
 				for i = 1, j do
 					G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function()
 						local hcard = G.hand.cards[i]
-						local mcard = card.ability.extra.cards[i]
-						copy_card(mcard, hcard)
+						hcard:set_base(card.ability.extra.bases[i]) -- copy_card wasn't working
+						hcard:set_ability(card.ability.extra.abils[i])
+						for k, v in pairs(card.ability.extra.abils[i]) do
+							if type(v) == 'table' then 
+								hcard.ability[k] = copy_table(v)
+							else
+								hcard.ability[k] = v
+							end
+						end
+						hcard:set_edition(card.ability.extra.edits[i] or {}, nil, true)
+						hcard:set_seal(card.ability.extra.seals[i], true)
+						hcard.params = card.ability.extra.params[i]
+						hcard.params.playing_card = playing_card
+						-- local mcard = card.ability.extra.cards[i]
+						-- copy_card(mcard, hcard)
 						G.hand.cards[i]:flip();play_sound('tarot2', percent, 0.6);G.hand.cards[i]:juice_up(0.3, 0.3);G.hand.cards[i]:flip(); -- Animation stuff
 						return true 
 					end }))

@@ -35,7 +35,7 @@ SMODS.Joker {
         if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and G.GAME.blind.boss then
             card.ability.extra.mult = card.ability.extra.mult * card.ability.extra.mult_gain
             return {
-                message = loclaize('buf_doubled'),
+                message = localize('buf_doubled'),
                 colour = G.C.MULT,
                 card = card
             }

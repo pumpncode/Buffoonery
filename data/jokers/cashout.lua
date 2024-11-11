@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-        extra = { money = 0.0025, xscore = 3 }        
+        extra = { money = 0.004, xscore = 3 }        
     },
     loc_txt = {set = 'Joker', key = 'j_buf_cashout'},
     calculate = function(self, card, context)

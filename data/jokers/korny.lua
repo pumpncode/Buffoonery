@@ -16,7 +16,7 @@ SMODS.Joker {
 	no_pool_flag = 'korny_dead',
     config = {
         extra = { 
-		chips = 50, 
+		chips = 60, 
 		bgchips = 90, 
 		bschips = 160, 
 		odds = 8 
@@ -36,7 +36,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.setting_blind then
+        if context.joker_main then
 			if G.GAME.blind:get_type() == 'Small' then
 				return {
 					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },

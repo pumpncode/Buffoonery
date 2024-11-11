@@ -67,7 +67,7 @@ NFS.load(SMODS.current_mod.path .. 'data/jokers/maggit.lua')()
 SMODS.Rarity{
 	key = "spc",
 	loc_txt = {
-		name = "Special"
+		name = localize('k_buf_spc')
 	},
 	badge_colour = HEX('ee8f8d'),
 	pools = {["Joker"] = false},
@@ -133,8 +133,14 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- Added Russian Roulette
 -- Added mod icon
 -- Updated mod description
+-- Fully translated every piece of text in the mod to Brazilian Portuguese
 -- Misc polish
 -- Clown now tells player when upgraded
--- (Deluxe) Memory Card now jiggles until a card is memorized
+-- Memory Card now jiggles until a card is memorized
 -- Buffed Arstotzkan Denial and made its description more clear
--- Updated pt_BR locs
+-- Buffed Cashout Voucher to make it more useable early game
+-- Slight buff to Korny
+-- Fixed Korny not working
+-- Fixed Memory Card keeping changes made after memorizing the card(s)
+-- Fixed a game-crashing typo in Black Stallion
+

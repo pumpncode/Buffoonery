@@ -6,7 +6,7 @@ return {
 				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}banish{} all",
 						"others. One becomes {C:dark_edition}Negative{} each 3",
 						"turns. Sell this to return jokers",
-						"{C:inactive}(Currently #1# negative jokers){}"
+						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}"
 				}
 			},
 			j_buf_argument = {
@@ -24,7 +24,7 @@ return {
 			j_buf_cashout = {
 				name = "Cashout Voucher",
 				text = {"If {C:attention}winning hand{} triples the Blind's",
-					"score {C:attention}requirement{}, earn 0.25% of it",
+					"score {C:attention}requirement{}, earn 0.4% of it",
 					"as {C:money}money{} and destroy this Joker",
 					"{C:inactive}(Max of{} {C:money}$50{}{C:inactive}){}"
 				}
@@ -39,7 +39,7 @@ return {
 			},
 			j_buf_denial = {
 				name = "Arstotzkan Denial",
-				text = {"{C:mult}+6{} Mult or {C:chips}+40{} Chips",
+				text = {"{C:mult}+5{} Mult or {C:chips}+30{} Chips",
 						"for each {C:red}Red{} or {C:blue}Blue{} seal",
 						"in full deck, {C:attention}respectively{}",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult /{} {C:chips}+#2#{} {C:inactive}Chips){}",
@@ -84,7 +84,17 @@ return {
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
-					"{C:inactive,s:0.7}#2#{}",
+					"{C:inactive,s:0.7}(Must have room){}",
+				},
+			},
+			j_buf_maggit_alt = { 
+				name = "Maggit",
+				text = {
+					"{X:dark_edition,C:white}^#1#{} Mult if you own a",
+					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
+					"{C:attention}only once{}, create one",
+					"when {C:attention}Blind{} is selected{}",
+					"{C:inactive,s:0.7}(Already created){}",
 				},
 			},
 			j_buf_memcard = {
@@ -112,13 +122,13 @@ return {
 			},
 			j_buf_rerollin = {
 				name = "Rerollin'",
-				text = {"Earn {C:money}$#1#{} for your",          
-						"{C:attention}5th reroll{} each shop",
+				text = {"Earn {C:money}$#1#{} for your fifth",          
+						"{C:green}reroll{} each shop",
 						"{C:inactive}({}{C:green}#3#{}{C:inactive} rerolls left){}"}
 			},
 			j_buf_roulette = {
 				name = "Russian Roulette",
-				text = {"After you play your {C:attention}first{} hand, earn {C:money}$30{}",          
+				text = {"When {C:attention}Blind{} is selected, earn {C:money}$30{}",          
 						"{C:green}1 in #2#{} chance you {C:attention}lose the game{} instead",
 						"If chance reaches {C:green}1 in 2{} and you win,",
 						"create a random {C:legendary}Legendary{} Joker",
@@ -217,9 +227,11 @@ return {
     },
     misc = {
 		dictionary = {
+			-------- CARD MESSAGES --------
 			buf_korny_ok = "He's ok!",
 			buf_korny_dd = "Dead!",
-			buf_prism_eor = "+1 Negative!",
+			buf_prism_eor1 = "Torment...",
+			buf_prism_eor2 = "+1 Negative!",
 			buf_prism_sck = "Begone!",
 			buf_memory = "Memorized!",
 			buf_memfull = "Memory Full!",
@@ -227,7 +239,23 @@ return {
 			buf_convert = "Converted!",
 			buf_blowup = "B O O M !",
 			buf_ydead = "You're dead...",
-			buf_dry = "Dry fire!"
-		}
+			buf_dry = "Dry fire!",
+			-------- MAGGIT STUFF --------
+			k_buf_notyet = "(Must have room)",
+			-------- MEMCARD STUFF --------
+			buf_Ace = "Ace",
+			buf_Jack = "Jack",
+			buf_Queen = "Queen",
+			buf_King = "King",
+			buf_of = " of ",
+			buf_Spades = "Spades",
+			buf_Hearts = "Hearts",
+			buf_Clubs = "Clubs",
+			buf_Diamonds = "Diamonds",
+			buf_Fleurons = "Fleurons",
+			buf_Halberds = "Halberds",
+			-------- RARITY LABEL --------
+			k_buf_spc = "Special",
+		},
     },
 }
