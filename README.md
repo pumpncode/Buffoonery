@@ -1,4 +1,4 @@
-![logo2x](https://github.com/user-attachments/assets/1a5ee07a-5044-45f6-b06a-3494dc874668)
+![logo2x](https://github.com/user-attachments/assets/b44fe6cd-28de-4951-be59-23c52754aa55)
 
 ### A Balatro mod that aims to add vanilla-adjacent content while maintaining its own style.
 
