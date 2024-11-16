@@ -4,6 +4,8 @@
 
 *17 jokers (2 of which are hidden) and 2 decks and 2 sleeves!*
 
+**<ins>Recommended: download from the [releases](https://github.com/pinkmaggit-hub/Buffoonery/releases) section (use latest)</ins>**
+
 ## Jokers
 ![Readme1](https://github.com/user-attachments/assets/d8d318ed-05e4-4a0a-8773-fbd0e9c7fd64)
 
