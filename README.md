@@ -27,7 +27,7 @@ From left to right:
 + Pertinent Argument: When played hand is a two pair and has 5 cards, 1 in 2 chance of converting the unpaired card into a paired one. (uncommon)
 
 ### v0.8.0 Update:
-![Showcase0-8-0](https://github.com/user-attachments/assets/dc676cf6-f4c2-4397-8773-007cddc7a4b1)
+![Showcase0-8-0](https://github.com/user-attachments/assets/f0e21d73-22d0-45db-bf3a-b1cb2f3a079b)
 
 From left to right:
 + Jebediah Kerman: Gains +10 Mult whenever a Planet card is used. 1 in 5 chance to EXPLODE instead. (common)
