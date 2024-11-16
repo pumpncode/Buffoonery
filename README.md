@@ -2,7 +2,7 @@
 
 ### A Balatro mod that aims to add vanilla-adjacent content while maintaining its own style.
 
-*17 jokers (2 of which are hidden) and 2 decks and 2 sleeves!*
+*17 jokers (2 of which are hidden), 2 decks, and 2 sleeves!*
 
 **<ins>Recommended: download from the [releases](https://github.com/pinkmaggit-hub/Buffoonery/releases) section (use latest)</ins>**
 
