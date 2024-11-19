@@ -7,8 +7,7 @@
 **<ins>Recommended: download from the [releases](https://github.com/pinkmaggit-hub/Buffoonery/releases) section (use latest)</ins>**
 
 ## Jokers
-![Readme1](https://github.com/user-attachments/assets/d8d318ed-05e4-4a0a-8773-fbd0e9c7fd64)
-
+![github](https://github.com/user-attachments/assets/67bee398-1f8c-4da1-a6f1-d4aef7bcf9bc)
 
 From left to right:
 + *White Pony:* +3 Mult. Doubles each ante (uncommon)
