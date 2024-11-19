@@ -33,7 +33,7 @@ From left to right:
 + Jebediah Kerman: Gains +10 Mult whenever a Planet card is used. 1 in 5 chance to EXPLODE instead. (common)
 + Arstotzkan Denial: Gains +5 Mult and +30 Chips for each red and blue seal, respectively, in full deck. (uncommon)
 + Clown: +20 Chips. Gains +20 Chips whenever a joker is added. (uncommon)
-+ Patronizing Joker: X4 Chips. Selects as many cards as he can for you. (rare)
++ Patronizing Joker: X5 Chips. Forces 5 cards to always be selected. (rare)
 + Maggit: ^1.5 Mult if you own a  Nu Metal Joker. If you don't, creates one for you when Blind is selected, but only once. (legendary)
 
 --> *(Nu Metal Jokers: Clown, Five Fingers, Korny Joker, Rerollin' and White Pony.)*
