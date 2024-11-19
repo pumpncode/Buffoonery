@@ -40,8 +40,8 @@ return {
 			j_buf_denial = {
 				name = "Rejeição de Arstotzka",
 				text = {"{C:mult}+5{} Multi ou {C:chips}+30{} Fichas por",
-						"cada selo {C:red}Vermelho{} ou {C:blue}Azul{} no",
-						"baralho completo, {C:attention}respectivamente{}",
+						"cada selo {C:red}Vermelho{} ou {C:blue}Azul{}",
+						"{C:attention}respectivamente{}, no baralho completo",
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi/{}{C:chips}+#2#{} {C:inactive}Fichas){}",
 						}
 			},
@@ -57,7 +57,7 @@ return {
 				name = "Jebediah Kerman",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
-						"{C:green}1 de 5{} chance de {C:attention}EXPLODIR{} em vez",
+						"{C:green}1 de 5{} chance de {C:attention}EXPLODIR{} no uso",
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}"
 				}
 			},
@@ -116,8 +116,8 @@ return {
 			j_buf_patronizing = {
 				name = "Curinga Intrometido",
 				text = {"{X:chips,C:white}X#1#{} Fichas",
-						"{C:attention}Seleciona{} quantas cartas",
-						"puder para você"
+						"{C:attention}Obriga{} 5 cartas a sempre",
+						"serem {C:attention}selecionadas{}"
 				}
 			},
 			j_buf_rerollin = {
@@ -151,7 +151,7 @@ return {
 			},
 			b_buf_galloping = {
 				name = "Baralho Galopeiro",
-				text = {"Começe com um",
+				text = {"Comece com um",
 						"{C:buf_spc} Black Stallion{}",
 				}
 			},

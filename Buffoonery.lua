@@ -7,7 +7,7 @@
 --- PREFIX: buf
 --- BADGE_COLOUR: ee8f8d
 --- LOADER_VERSION_GEQ: 1.0.0
---- VERSION: 1.0.0
+--- VERSION: 1.0.1
 
 -- ATLASES --
 buf = {}
@@ -41,7 +41,6 @@ SMODS.Atlas {
 buf.compat = {
 	talisman = (SMODS.Mods['Talisman'] or {}).can_load,
 	sleeves = (SMODS.Mods['CardSleeves'] or {}).can_load,
-	pampa = (SMODS.Mods['mtl_jkr2'] or {}).can_load,
 }
 
 -- JOKERS --
@@ -117,6 +116,9 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 --				Gave the shading some more work on Jebediah Kerman's artwork
 -- 0.9) PRE-1.0 UPDATE FEATURING EVERYTHING PLANNED FOR 1.0 EXCEPT THE LAST TWO JOKERS.
 -- 1.0) Final content update for this mod. 2 new jokers, aesthetic fixes, balance changes, made pt_BR loc more thorough.
+-- 		1.0.1 - Artwork and localization polish
+-- 			  - Five Fingers costs 5$
+--			  - Finally made patronizing joker have its initial planned effect, similar to the Cerulean Bell boss blind
 
 --- GOALS FOR 1.0.0 (in order of priority, descending) ---
 -- 1) Have a whole page (15) of fully implemented and working jokers (D O N E)
@@ -127,20 +129,10 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- [Enhancement idea scrapped. Should be used in a new mod in the future]
 
 
-------------------- LAST UPDATES ------------------------ 05/11/2024, v1.0.0
+------------------- LAST UPDATES ------------------------ 19/11/2024, v1.0.1
 
--- Added Abyssal Prism
--- Added Russian Roulette
--- Added mod icon
--- Updated mod description
--- Fully translated every piece of text in the mod to Brazilian Portuguese
--- Misc polish
--- Clown now tells player when upgraded
--- Memory Card now jiggles until a card is memorized
--- Buffed Arstotzkan Denial and made its description more clear
--- Buffed Cashout Voucher to make it more useable early game
--- Slight buff to Korny
--- Fixed Korny not working
--- Fixed Memory Card keeping changes made after memorizing the card(s)
--- Fixed a game-crashing typo in Black Stallion
+-- Patronizing Joker now always selects 5 cards, like a Cerulean Bell on steroids
+-- Five Fingers now costs 5$
+-- Artwork polish (Jebediah Kerman and Laidback Joker)
+-- Localization polish
 

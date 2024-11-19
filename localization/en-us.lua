@@ -116,8 +116,8 @@ return {
 			j_buf_patronizing = {
 				name = "Patronizing Joker",
 				text = {"{X:chips,C:white}X#1#{} Chips",
-						"{C:attention}Selects{} as many cards",
-						"for you as possible"
+						"{C:attention}Forces{} 5 cards to",
+						"always be {C:attention}selected{}"
 				}
 			},
 			j_buf_rerollin = {
