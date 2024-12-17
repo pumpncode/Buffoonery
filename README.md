@@ -1,3 +1,5 @@
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.pt-br.md)
+
 ![logo2x](https://github.com/user-attachments/assets/5951da16-f6e7-45a4-ab87-a13ffbf16dfa)
 
 ### A Balatro mod that aims to add vanilla-adjacent content while maintaining its own style.
