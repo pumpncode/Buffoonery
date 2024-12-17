@@ -12,9 +12,9 @@
 ![github](https://github.com/user-attachments/assets/67bee398-1f8c-4da1-a6f1-d4aef7bcf9bc)  
 
 Da esquerda para a direita:  
-+ *White Pony:* +3 Multi. Dobra cada Ante (incomum).  
++ *White Pony:* +3 Multi. Dobra cada Aposta (incomum).  
 + *Rerollin':* Dá +$20 no seu 5º reroll por loja (incomum).  
-+ *Kornringa* Concede +60 Fichas durante Small Blind, +100 durante Big Blind e +180 durante Boss Blind. Chance secreta de ser destruído no final do turno. (comum).  
++ *Kornringa* Concede +60 Fichas durante Small Blind, +100 durante Big Blind e +180 durante Blind de Chefe. Chance secreta de ser destruído no final do turno. (comum).  
 + *Memory Card:* Memoriza a primeira carta pontuada em cada rodada até 8 vezes. Ao vendê-lo, converte cada carta da mão em uma carta memorizada, na ordem. (raro).  
 + *Voucher de Saque:* Se a mão vencedora triplicar o requisito do Blind, este Curinga dá 0.4% desse valor como dinheiro e se destrói. (comum).  
 
@@ -42,7 +42,7 @@ Da esquerda para a direita:
 ![showcase_special_jk](https://github.com/user-attachments/assets/4e2f2078-a646-4dbe-90e0-1e9ab1396f28)  
 
 **Curingas Especiais** introduzidos! Eles não aparecem naturalmente nem na coleção, mas são concedidos ao jogador sob circunstâncias especiais:  
-+ Black Stallion: Uma versão nerfada do White Pony. +1 Multi, dobra cada Ante.  
++ Black Stallion: Uma versão nerfada do White Pony. +1 Multi, dobra cada Aposta.  
 + Memory Card Deluxe: Uma versão melhorada do Memory Card. Memoriza 16 cartas em vez de 8 e memoriza uma carta por *mão*, em vez de por *rodada*.  
 
 ### Atualização v1.0.0:  
