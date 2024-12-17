@@ -1,3 +1,7 @@
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.md)
+
+![logo2x](https://github.com/user-attachments/assets/5951da16-f6e7-45a4-ab87-a13ffbf16dfa)
+
 ### Um mod de Balatro que busca adicionar conteúdo semelhante ao estilo "vanilla", mantendo a sua própria identidade.
 
 *17 curingas (2 deles são secretos), 2 baralhos e 2 capas!*  
