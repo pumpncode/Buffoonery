@@ -14,7 +14,7 @@
 Da esquerda para a direita:  
 + *White Pony:* +3 Multi. Dobra cada Aposta (incomum).  
 + *Rerollin':* Dá +$20 no seu 5º reroll por loja (incomum).  
-+ *Kornringa* Concede +60 Fichas durante Small Blind, +100 durante Big Blind e +180 durante Blind de Chefe. Chance secreta de ser destruído no final do turno. (comum).  
++ *Kornringa:* Concede +60 Fichas durante Small Blind, +100 durante Big Blind e +180 durante Blind de Chefe. Chance secreta de ser destruído no final do turno. (comum).  
 + *Memory Card:* Memoriza a primeira carta pontuada em cada rodada até 8 vezes. Ao vendê-lo, converte cada carta da mão em uma carta memorizada, na ordem. (raro).  
 + *Voucher de Saque:* Se a mão vencedora triplicar o requisito do Blind, este Curinga dá 0.4% desse valor como dinheiro e se destrói. (comum).  
 
