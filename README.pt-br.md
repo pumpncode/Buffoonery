@@ -30,7 +30,7 @@ Da esquerda para a direita:
 ![Showcase0-8-0](https://github.com/user-attachments/assets/f0e21d73-22d0-45db-bf3a-b1cb2f3a079b)  
 
 Da esquerda para a direita:  
-+ Jebediah Kerman: Ganha +10 Multi sempre que uma carta Planet é usada. 20% de chance de EXPLODIR em vez disso. (comum).  
++ Jebediah Kerman: Ganha +10 Multi sempre que uma carta de planeta é usada. 20% de chance de EXPLODIR em vez disso. (comum).  
 + Rejeicção de Arstotzka: Ganha +5 Multi e +30 Fichas para cada selo vermelho e azul, respectivamente, no baralho completo. (incomum).  
 + Palhaço: +20 Fichas. Ganha +20 Fichas sempre que um curinga é adicionado. (incomum).  
 + Curinga Intrometido: X5 Fichas. Força a seleção de sempre 5 cartas. (raro).  
