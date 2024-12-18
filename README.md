@@ -1,4 +1,4 @@
-<sup>Supported Languages:</sup> [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.pt-br.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.md)
+<sup>Supported languages:</sup> [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.pt-br.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/README.md)
 
 ![logo2x](https://github.com/user-attachments/assets/5951da16-f6e7-45a4-ab87-a13ffbf16dfa)
 
