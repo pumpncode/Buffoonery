@@ -63,6 +63,6 @@ Da esquerda para a direita:
 
 **Capas:**  
 
-*Para usar capas, você deve ter o mod [CardCapas](https://github.com/larswijn/CardSleeves) do [Larswijn](https://github.com/larswijn) instalado.*  
+*Para usar capas, você deve ter o mod [CardSleeves](https://github.com/larswijn/CardSleeves) do [Larswijn](https://github.com/larswijn) instalado.*  
 + Capa Galopeira: Mesmo efeito do baralho. Se combinado com o Baralho Galopeiro, você começa a partida com o White Pony, mas perde 2 mãos por rodada.  
 + Capa do JimboStation: Mesmo efeito do baralho. Se combinado com o Baralho do JimboStation, você começa a partida com um Memory Card Deluxe.  
