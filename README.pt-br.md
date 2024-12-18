@@ -24,7 +24,7 @@ Da esquerda para a direita:
 Da esquerda para a direita:  
 + Cinco Dedos: X2.5 Multi se você tiver um múltiplo de 5 curingas e a mão pontuada tiver exatamente 5 cartas. (comum).  
 + Curinga Folgado: X2 Multi. -1 Espaço de Curinga. (comum).  
-+ Discussão Acalourada: Quando a mão jogada for um Two Pair com 5 cartas, há 50% de chance de converter a carta fora do par em uma que combine. (incomum).  
++ Discussão Acalourada: Quando a mão jogada for Dois Pares e tiver 5 cartas, 1 de 2 chance de converter a carta fora dos pares em uma das pareadas. (incomum).  
 
 ### Atualização v0.8.0:  
 ![Showcase0-8-0](https://github.com/user-attachments/assets/f0e21d73-22d0-45db-bf3a-b1cb2f3a079b)  
@@ -34,9 +34,9 @@ Da esquerda para a direita:
 + Rejeicção de Arstotzka: Ganha +5 Multi e +30 Fichas para cada selo vermelho e azul, respectivamente, no baralho completo. (incomum).  
 + Palhaço: +20 Fichas. Ganha +20 Fichas sempre que um curinga é adicionado. (incomum).  
 + Curinga Intrometido: X5 Fichas. Força a seleção de sempre 5 cartas. (raro).  
-+ Maggit: ^1.5 Multi se você possuir um Nu Metal Curinga. Se não possuir, cria um ao selecionar o Blind, mas apenas uma vez. (lendário).  
++ Maggit: ^1.5 Multi se você possuir um Curinga do Nu Metal. Se não possuir, cria um ao selecionar o Blind, mas apenas uma vez. (lendário).  
 
---> *(Nu Metal Curingas: Clown, Five Fingers, Korny Curinga, Rerollin' e White Pony.)*  
+--> *(Curingas do Nu Metal: Palhaço, Cinco Dedos, Kornringa, Rerollin' e White Pony.)*  
 
 ### Atualização v0.9.0:  
 ![showcase_special_jk](https://github.com/user-attachments/assets/4e2f2078-a646-4dbe-90e0-1e9ab1396f28)  
@@ -49,9 +49,9 @@ Da esquerda para a direita:
 ![showcase_1-0](https://github.com/user-attachments/assets/9f853dbc-0d86-4852-96b2-85ece1c6c82a)  
 
 + Roleta Russa: Ao selecionar o Blind, ganha $30. 1 em 6 chance de perder o jogo. A chance aumenta a cada rodada. Se a chance chegar a 1 em 2 e você vencer, recebe um Curinga Lendário aleatório. (incomum).  
-+ Prisma Abissal: Ao adquirir este curinga, bane todos os outros. A cada 3 turnos, um curinga ganha negativo enquanto estiver banido. Venda para devolver os curingas. (raro).  
++ Prisma Abissal: Ao adquirir este curinga, exile todos os outros. A cada 3 turnos, um curinga ganha negativo enquanto estiver exilado. Venda para devolver os curingas. (raro).  
 
---> *(Curingas banidos perdem permanentemente todos os upgrades/edições e são removidos temporariamente até que você venda o Abyssal Prism.)*  
+--> *(Curingas exilados perdem permanentemente todos os upgrades/edições e são removidos temporariamente até que você venda o Prisma Abissal.)*  
 
 ## Baralhos / Capas  
 ### Atualização v0.9.0  
@@ -63,6 +63,6 @@ Da esquerda para a direita:
 
 **Capas:**  
 
-*Para usar capas, você deve ter o mod [CardCapas](https://github.com/larswijn/CardCapas) do [Larswijn](https://github.com/larswijn) instalado.*  
+*Para usar capas, você deve ter o mod [CardCapas](https://github.com/larswijn/CardSleeves) do [Larswijn](https://github.com/larswijn) instalado.*  
 + Capa Galopeira: Mesmo efeito do baralho. Se combinado com o Baralho Galopeiro, você começa a partida com o White Pony, mas perde 2 mãos por rodada.  
 + Capa do JimboStation: Mesmo efeito do baralho. Se combinado com o Baralho do JimboStation, você começa a partida com um Memory Card Deluxe.  
