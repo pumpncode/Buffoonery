@@ -7,7 +7,7 @@
 --- PREFIX: buf
 --- BADGE_COLOUR: ee8f8d
 --- LOADER_VERSION_GEQ: 1.0.0
---- VERSION: 1.0.1
+--- VERSION: 1.0.2
 
 -- ATLASES --
 buf = {}
@@ -93,6 +93,44 @@ SMODS.Sound({key = 'explosion', path = 'explosion.ogg'})
 SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 
+-- ENHANCEMENT --
+SMODS.Enhancement {  -- Porcelain Cards
+	key = "porcelain",
+	atlas = "maggitsmiscatlas",
+	pos = {x=2, y = 0},
+	
+    replace_base_card = false,
+    no_suit = false,
+    no_rank = false,
+    always_scores = false,
+	
+	config = {extra = {Xmult = 1.25, limit = 5, played = 0}},
+	
+	loc_vars = function(self, info_queue, card)
+        return {
+            vars = { card.ability.extra.Xmult, card.ability.extra.limit}
+        }
+    end,
+	
+	calculate = function(self, card, context, ret)
+		if context.cardarea == G.play and not context.repetition then
+			card.ability.extra.played = #context.full_hand
+			SMODS.eval_this(card, {Xmult_mod = card.ability.extra.Xmult, message = localize{type='variable',key='a_xmult',vars={card.ability.extra.Xmult}}} )
+			if card.ability.extra.played >= card.ability.extra.limit then
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.4,
+					func = function() 
+						card:shatter()
+						return true 
+					end 
+				}))
+			end
+		end
+	end,
+	
+}
+
 ------------------------------------ CHANGELOG (KINDA) ------------------------------------
 
 -- 0.1) INITIAL PRIVATE BUILD WITH 2 WORKING JOKERS
@@ -115,7 +153,7 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 --              Fixed Maggit crashing the game when creating a joker
 --				Gave the shading some more work on Jebediah Kerman's artwork
 -- 0.9) PRE-1.0 UPDATE FEATURING EVERYTHING PLANNED FOR 1.0 EXCEPT THE LAST TWO JOKERS.
--- 1.0) Final content update for this mod. 2 new jokers, aesthetic fixes, balance changes, made pt_BR loc more thorough.
+-- 1.0) Final content update for this mod. 2 new jokers, aesthetic fixes, balance changes, made pt_BR loc more thorough.                 -- SIKE, I'M ADDING MOAR STUFF LETS GOOOOOOOOOOOOOOOOOOO
 -- 		1.0.1 - Artwork and localization polish
 -- 			  - Five Fingers costs 5$
 --			  - Finally made patronizing joker have its initial planned effect, similar to the Cerulean Bell boss blind
@@ -126,13 +164,12 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- 3) Add 2 decks to the game with sleeve compat (D O N E)
 -- 4) Have locs for at least en-us and pt-br (D O N E)
 
--- [Enhancement idea scrapped. Should be used in a new mod in the future]
+-- [Enhancement idea scrapped. Should be used in a new mod in the future]    -- ALSO SIKE, WE HAVE SMODS.ENHANCEMENT NOW LETS GOOOOOOOOOOOOOOOOOOOOOO
 
 
-------------------- LAST UPDATES ------------------------ 19/11/2024, v1.0.1
+------------------- LAST UPDATES ------------------------ 06/01/2025, v1.1.0
 
--- Patronizing Joker now always selects 5 cards, like a Cerulean Bell on steroids
--- Five Fingers now costs 5$
--- Artwork polish (Jebediah Kerman and Laidback Joker)
--- Localization polish
-
+-- Made Memory Card's description better fit with Bunco's suit icons if they're present
+-- Made Memory Card's description compatible with UnStable's ranks
+-- Fixed Memory Card crashing the game with modded enhancements
+-- Introduced the Porcelain Card enhancement

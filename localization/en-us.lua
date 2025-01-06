@@ -102,7 +102,7 @@ return {
 				text = {"Memorizes the {C:attention}first{} scored card each {C:attention}round{}",  
 						"up to {C:attention}8{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
-						"{C:inactive}Memorized #1#. Last: #3##2#{}",
+						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
 						}
 			},
 			j_buf_dxmemcard = {
@@ -224,6 +224,15 @@ return {
 				}
 			}, 
         },
+		Enhanced = {
+			m_buf_porcelain = {
+				name = "Porcelain Card",
+				text = {"{X:mult,C:white}X#1#{} Mult",
+						"Breaks if played hand",
+						"hand has {C:attention}#2#{} cards",
+				}
+			},
+		},
     },
     misc = {
 		dictionary = {
@@ -247,6 +256,13 @@ return {
 			buf_Jack = "Jack",
 			buf_Queen = "Queen",
 			buf_King = "King",
+			buf_0 = "0",
+			buf_half = "Half",
+			buf_1 = "1",
+			buf_r2 = "Root 2",
+			buf_e = "e",
+			buf_Pi  = "Pi",
+			buf_21 = "21",
 			buf_of = " of ",
 			buf_Spades = "Spades",
 			buf_Hearts = "Hearts",

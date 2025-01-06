@@ -41,7 +41,7 @@ SMODS.Joker {
 		local eval = function() return G.GAME.current_round.hands_played == 0 and card.ability.mcount < 8 and not G.RESET_JIGGLES end
         juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and G.GAME.current_round.hands_played == 0 and not context.blueprint then
+		if context.before and not context.blueprint then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
@@ -61,6 +61,12 @@ SMODS.Joker {
 				local key = SMODS.Ranks[_card.base.value].key
 				local tkey = localize('buf_'..key)
 				card.ability.trank =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
+				local underscore_pos2 = string.find(card.ability.trank, "_")
+				if underscore_pos2 then
+					local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
+					if langkey == 'buf_0.5' then langkey = 'buf_half' end
+					card.ability.trank = localize(langkey) .. localize('buf_of')
+				end
 				return {
 					message = localize('buf_memory'),
 					colour = G.C.GREEN 
@@ -82,13 +88,13 @@ SMODS.Joker {
 						local hcard = G.hand.cards[i]
 						hcard:set_base(card.ability.extra.bases[i]) -- copy_card wasn't working
 						hcard:set_ability(card.ability.extra.abils[i])
-						for k, v in pairs(card.ability.extra.abils[i]) do
-							if type(v) == 'table' then 
-								hcard.ability[k] = copy_table(v)
-							else
-								hcard.ability[k] = v
-							end
-						end
+						-- for k, v in pairs(card.ability.extra.abils[i]) do  -- I can't remember why tf I made this part, but this was crashing the game with modded enchancements
+							-- if type(v) == 'table' then 
+								-- hcard.ability[k] = copy_table(v)
+							-- else
+								-- hcard.ability[k] = v
+							-- end
+						-- end
 						hcard:set_edition(card.ability.extra.edits[i] or {}, nil, true)
 						hcard:set_seal(card.ability.extra.seals[i], true)
 						hcard.params = card.ability.extra.params[i]

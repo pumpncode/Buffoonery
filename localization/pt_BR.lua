@@ -224,6 +224,15 @@ return {
 				}
 			}, 
         },
+		Enhanced = {
+			m_buf_porcelain = {
+				name = "Carta de Porcelana",
+				text = {"{X:mult,C:white}X#1#{} Multi",
+						"Quebra se a mão jogada",
+						"possuir {C:attention}#2#{} cartas",
+				}
+			},
+		},
     },
     misc = {
 		dictionary = {
@@ -247,6 +256,13 @@ return {
 			buf_Jack = "Valete",
 			buf_Queen = "Dama",
 			buf_King = "Rei",
+			buf_0 = "0",
+			buf_half = "Meio",
+			buf_1 = "1",
+			buf_r2 = "Raiz de 2",
+			buf_e = "e",
+			buf_Pi  = "Pi",
+			buf_21 = "21",
 			buf_of = " de ",			
 			buf_Spades = "Espadas",
 			buf_Hearts = "Copas",
