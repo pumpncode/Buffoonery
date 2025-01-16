@@ -2,7 +2,7 @@ SMODS.Back{
     key = 'galloping',
     unlocked = true,
     discovered = true,
-    atlas = 'maggitsmiscatlas',
+    atlas = 'buf_decks',
     pos = {
         x = 1,
         y = 0,

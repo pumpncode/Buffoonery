@@ -6,12 +6,20 @@ return {
 				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}banish{} all",
 						"others. One becomes {C:dark_edition}Negative{} each 3",
 						"turns. Sell this to return jokers",
-						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}"
+						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}",
+						"{C:inactive,s:0.7}Must have room{}"
 				}
+			},
+			j_buf_afan = {
+				name = "Adoring Fan",
+				text = {"{C:mult}+#1#{} Mult",
+						"Costs {C:money}$6{} to be {C:attention}sold{}",
+						"{C:green}#2# in #3#{} chance to {C:attention}return{}",
+						"after being {C:attention}sold{}"}  
 			},
 			j_buf_argument = {
 				name = "Pertinent Argument",
-				text = {"{C:green}1 in 2{} chance to convert",
+				text = {"{C:green}#1# in #2#{} chance to convert",
 						"an unscored card into one",
 						"of the scored ones, if",
 						"played hand is a {C:attention}Two Pair{}"}  
@@ -27,6 +35,24 @@ return {
 					"score {C:attention}requirement{}, earn 0.4% of it",
 					"as {C:money}money{} and destroy this Joker",
 					"{C:inactive}(Max of{} {C:money}$50{}{C:inactive}){}"
+				}
+			},
+			j_buf_clays_alt = {
+				name = "Clay Shooting",
+				text = {"Earn {C:money}$#1#{} at",
+						"end of round",
+						"if you win in",
+						"exactly {C:attention}#2#{} hands",
+						"{C:inactive,s:0.7}Changes each round{}"
+				}
+			},
+			j_buf_clays = {
+				name = "Clay Shooting",
+				text = {"Earn {C:money}$#1#{} at",
+						"end of round if you",
+						"win in a specified",
+						"number of hands",
+						"{C:inactive,s:0.7}(Changes each round){}"
 				}
 			},
 			j_buf_clown = {
@@ -45,12 +71,44 @@ return {
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult /{} {C:chips}+#2#{} {C:inactive}Chips){}",
 						}
 			},
+			j_buf_dorkshire = {
+				name = "Dorkshire Tea",
+				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
+						"become {C:attention}Porcelain Cards{} after",
+						"scoring, if poker hand ",
+						"is a {C:attention}Three of a Kind{}",
+						}
+			},
+			j_buf_dorkshire_g = {
+				name = "Dorkshire Gold",
+				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
+						"become {C:buf_spc}Royal Porcelain Cards{} after",
+						"scoring if poker hand",
+						"is a {C:attention}Three of a Kind{}",
+						}
+			},
 			j_buf_fivefingers = {
 				name = "Five Fingers",
 				text = {"{X:mult,C:white}X#1#{} Mult if you own a",
 						"multiple of {C:attention}5 Jokers{}",
 						"and scored hand",
 						"has exactly {C:attention}5 cards{}"
+				}
+			},
+			j_buf_gfondue = {
+				name = "Gold Fondue",
+				text = {"Earn {C:money}#1#${} at",
+						"{C:attention}first hand{} of",
+						"round, {C:money}-#2#${} per",
+						"round played",
+				}
+			},
+			j_buf_camarosa = {
+				name = "Camarosa",
+				text = {"{X:dark_edition,C:white}^#1#{} Mult",
+						"{C:green}#2# in #3#{} chance this",
+						"card is destroyed",
+						"at end of round",
 				}
 			},
 			j_buf_kerman = {
@@ -110,7 +168,7 @@ return {
 				text = {"Memorizes the {C:attention}first{} scored card each {C:buf_spc}hand{}",  
 						"up to {C:buf_spc}16{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
-						"{C:inactive}Memorized #1#. Last: #3##2#{}",
+						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
 						}
 			},
 			j_buf_patronizing = {
@@ -120,10 +178,19 @@ return {
 						"always be {C:attention}selected{}"
 				}
 			},
+			j_buf_porcelainj = {
+				name = "Porcelain Joker",
+				text = {"Gains {X:chips,C:white}X#2#{} Chips",
+						"for every {C:attention}3 Porcelain Cards{}",
+						"in your {C:attention}full deck{}",
+						"{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}"
+				}
+			},
 			j_buf_rerollin = {
 				name = "Rerollin'",
-				text = {"Earn {C:money}$#1#{} for your fifth",          
-						"{C:green}reroll{} each shop",
+				text = {"Earn {C:money}$#1#{} for",          
+						"your fifth {C:green}reroll{}",
+						"once per shop",
 						"{C:inactive}({}{C:green}#3#{}{C:inactive} rerolls left){}"}
 			},
 			j_buf_roulette = {
@@ -155,14 +222,31 @@ return {
 						"{C:buf_spc}Black Stallion{}",
 				}
 			},
+			b_buf_porcelain = {
+				name = "Porcelain Deck",
+				text = {"Start run with",
+						"{C:red}Dorkshire Tea{}",
+						"and 1 less",
+						"full {C:attention}Suit{}"
+				}
+			},
         },
         Tarot = {
-           
+			c_buf_nobility = {
+				name = "Nobility",
+				text = {
+					"Enhances {C:attention}#1#{} selected card",
+					"into a {C:attention}Porcelain Card{}",
+					"or a {C:attention}Royal Porcelain Card{}",
+					"if you own at least {C:money}$#2#{}"
+				}
+			},
         },
         Spectral = {
            
         },
         Other = {
+		-------- INFO QUEUE --------
             korny_info = {
                 name = "Credit",
                 text = {
@@ -187,11 +271,27 @@ return {
 				}
 			},
 			banish_info = {
-				name = "Banished",
+				name = "Banish",
 				text = {
 					"Banished Jokers",
 					"Return to their",
 					"{C:attention}base{} state"
+				}
+			},
+			porc_info = {
+				name = "Porcelain Card",
+				text = {
+						"{X:chips,C:white}X1.75{} Chips",
+						"Destroyed if played",
+						"hand contains more", 
+						"than {C:attention}3{} cards",
+				}
+			},
+			porcg_info = {
+				name = "Royal Version",
+				text = {
+						"{X:chips,C:white}X2{} Chips instead",
+						"Counts as a {C:attention}face{} card",
 				}
 			},
         },
@@ -222,20 +322,63 @@ return {
 						"{C:green}White Pony{} instead",
 						"{C:blue}-2{} hands"
 				}
-			}, 
+			},
+			sleeve_buf_porcelain = {
+				name = "Porcelain Sleeve",
+				text = {"Start run with",
+						"{C:red}Dorkshire Tea{}",
+						"and 1 less",
+						"full {C:attention}Suit{}"
+				}
+			},
+			sleeve_buf_porcelain_alt = {
+				name = "Porcelain Sleeve",
+				text = {"Start run with",
+						"{C:buf_spc}Dorkshire Gold{}",
+						"and 1 less",
+						"full {C:attention}Suit{}"
+				}
+			},
         },
 		Enhanced = {
 			m_buf_porcelain = {
 				name = "Porcelain Card",
-				text = {"{X:mult,C:white}X#1#{} Mult",
-						"Breaks if played hand",
-						"hand has {C:attention}#2#{} cards",
+				text = {"{X:chips,C:white}X#1#{} Chips",
+						"Destroyed if played",
+						"hand contains more", 
+						"than {C:attention}#2#{} cards",
+				}
+			},
+			m_buf_porcelain_g = {
+				name = "Royal Porcelain Card",
+				text = {"{X:chips,C:white}X#1#{} Chips, is a {C:attention}face{} card",
+						"Destroyed if played",
+						"hand contains more", 
+						"than {C:attention}#2#{} cards",
 				}
 			},
 		},
     },
     misc = {
 		dictionary = {
+			-------- CONFIG --------
+			buf_cf_info_info = {
+				"Precisely: artist credits, special rarity",
+				"tooltips and 'Banish' mechanic tooltip",
+				"Restart required to take effect",
+			},
+			buf_cf_perf_info = {
+				"Disables Memory Card's constant jiggle",
+				"whenever it's ready to memorize.",
+				"Enabling this may improve your framerate",
+				"while Memory Card is present"
+			},
+			buf_cf_req_restart = {
+				"Restart required to take effect",
+			},
+			buf_cf_show_spc = "Show Special cards in collection",
+			buf_cf_show_info = "Show info queue tooltips",
+			buf_cf_memcard_perf = "Memory Card performance mode",
 			-------- CARD MESSAGES --------
 			buf_korny_ok = "He's ok!",
 			buf_korny_dd = "Dead!",
@@ -248,10 +391,18 @@ return {
 			buf_convert = "Converted!",
 			buf_blowup = "B O O M !",
 			buf_ydead = "You're dead...",
-			buf_dry = "Dry fire!",
-			-------- MAGGIT STUFF --------
-			k_buf_notyet = "(Must have room)",
+			buf_dry = "Dry fire!",			
+			buf_afan_annoy1 = "But.., But...",
+			buf_afan_annoy2 = "Aw, Gee...",
+			buf_afan_annoy3 = "You sure?",
+			buf_afan_annoy4 = "One more round",
+			buf_tea = "Tea!",
+			buf_gfondue_licked = "Licked!",
+			buf_camarosa_surprise = "Surprise!",
+			buf_hit = "Hit!",
+			buf_miss = "Miss!",
 			-------- MEMCARD STUFF --------
+			buf_ready = "Ready",
 			buf_Ace = "Ace",
 			buf_Jack = "Jack",
 			buf_Queen = "Queen",
@@ -270,8 +421,14 @@ return {
 			buf_Diamonds = "Diamonds",
 			buf_Fleurons = "Fleurons",
 			buf_Halberds = "Halberds",
-			-------- RARITY LABEL --------
+			-------- MISC --------
 			k_buf_spc = "Special",
+			k_buf_notyet = "(Must have room)",
+		},
+		v_dictionary = {
+			a_buf_emult = "^#1# Mult",
+			a_buf_xchips = "X#1# Chips",
+			a_buf_echips = "^#1# Chips",
 		},
     },
 }

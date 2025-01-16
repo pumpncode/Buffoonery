@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "argument",
     name = "Pertinent Argument",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 1,
         y = 2,

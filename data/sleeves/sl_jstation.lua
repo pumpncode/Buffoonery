@@ -2,10 +2,10 @@ CardSleeves.Sleeve {
     key = 'jstation',
     unlocked = true,
     discovered = true,
-    atlas = 'maggitsmiscatlas',
+    atlas = 'buf_sleeves',
     pos = {
         x = 0,
-        y = 1,
+        y = 0,
     },
     config = {},
 	loc_vars = function(self)

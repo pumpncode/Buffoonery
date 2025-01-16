@@ -24,15 +24,15 @@ SMODS.Joker {
 	end,
 
     calculate = function(self, card, context)
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint then
 			should_jiggle = false
 			if pseudorandom('roulette') < G.GAME.probabilities.normal / card.ability.extra.odds then
 				card:juice_up(0.8, 0.5)
-				card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('buf_ydead'), colour = G.C.RED})
+				SMODS.calculate_effect({message = localize('buf_ydead'), colour = G.C.RED}, card)
 				play_sound('buf_roul2', 0.96+math.random()*0.08, 0.7)
 				card.config.center.pos.x = 1
 				card.ability.extra.odds = math.max(card.ability.extra.odds - 1, 1)
-				G.E_MANAGER:add_event(  -- Thanks WilsontheWolf for the help!
+				G.E_MANAGER:add_event(  -- Thanks WilsontheWolf for the help! (and code!)
 					Event({
 						trigger = "after",
 						delay = 0.2,
@@ -66,10 +66,10 @@ SMODS.Joker {
 							end
 							return true
 						end}))   
-					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_plus_joker'), colour = G.C.BLUE})
+					SMODS.calculate_effect({message = localize('k_plus_joker'), colour = G.C.BLUE}, card)
 				else
 					card:juice_up(0.8, 0.5)
-					card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('buf_dry'), colour = G.C.GREEN})
+					SMODS.calculate_effect({message = localize('buf_dry'), colour = G.C.GREEN}, card)
 					play_sound('buf_roul1', 0.96+math.random()*0.08)
 					delay(0.8)
 					ease_dollars(30)

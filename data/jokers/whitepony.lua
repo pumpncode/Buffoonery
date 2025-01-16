@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "whitepony",
     name = "White Pony",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 0,
         y = 1,
@@ -26,8 +26,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-                mult_mod = card.ability.extra.mult
+                mult = card.ability.extra.mult
             }
         end
         if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and G.GAME.blind.boss then

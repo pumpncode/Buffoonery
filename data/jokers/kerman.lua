@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "kerman",
     name = "Jebediah Kerman",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 3,
         y = 1,
@@ -26,20 +26,19 @@ SMODS.Joker {
     calculate = function(card, card, context)
         if context.joker_main then
             return {
-                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-                mult_mod = card.ability.extra.mult
+                mult = card.ability.extra.mult
             }
         end
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' then      
 			if pseudorandom("kerman") < G.GAME.probabilities.normal/card.ability.extra.odds then
 				G.E_MANAGER:add_event(Event({
                     func = function()
-						card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('buf_blowup')})  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
-                        play_sound('buf_explosion')
                         card.T.r = -0.2
                         card:juice_up(0.3, 0.4)
                         card.states.drag.is = true
                         card.children.center.pinch.x = true
+						SMODS.calculate_effect({message = localize('buf_blowup'), colour = G.C.FILTER}, card)  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
+                        play_sound('buf_explosion')
                         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
                             func = function()
                                     G.jokers:remove_card(card)
@@ -53,7 +52,7 @@ SMODS.Joker {
 			else
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
 				G.E_MANAGER:add_event(Event({
-					func = function() card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.MULT}); return true
+					func = function() SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.MULT}, card); return true
 					end}))
 				return
 			end

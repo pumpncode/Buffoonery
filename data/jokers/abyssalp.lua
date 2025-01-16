@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "abyssalp",
     name = "Abyssal Prism",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 2,
         y = 3,
@@ -18,7 +18,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_abyssalp'},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = 'Other', key = 'banish_info'}
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'banish_info'}
+		end
         return {
             vars = { card.ability.extra.neg, card.ability.extra.count % 3
 			}
@@ -45,7 +47,7 @@ SMODS.Joker {
 		end
 		card.ability.extra.done = true
 		play_sound('buf_phase', 0.96+math.random()*0.08)
-		SMODS.eval_this(card, {message = localize("buf_prism_sck"), colour = G.C.DARK_EDITION})
+		SMODS.calculate_effect({message = localize("buf_prism_sck"), colour = G.C.DARK_EDITION}, card)
 	end,
 	
     calculate = function(self, card, context)

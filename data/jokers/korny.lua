@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "korny",
     name = "Korny Joker",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 1,
         y = 0,
@@ -16,16 +16,18 @@ SMODS.Joker {
 	no_pool_flag = 'korny_dead',
     config = {
         extra = { 
-		chips = 60, 
+		chips = 60,
 		bgchips = 100, 
-		bschips = 180, 
+		bschips = 180,
 		odds = 8 
 		},
 		numetal = true
     },
     loc_txt = {set = 'Joker', key = 'j_buf_korny'},
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = 'Other', key = 'korny_info'}   --Credit original artwork author [Snakey] (adapted by me for balatro)
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'korny_info'}   --Credit original artwork author [Snakey] (adapted by me for balatro)
+		end
         return {
             vars = {card.ability.extra.chips, 
 					card.ability.extra.bgchips,
@@ -39,20 +41,17 @@ SMODS.Joker {
         if context.joker_main then
 			if G.GAME.blind:get_type() == 'Small' then
 				return {
-					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
-					chip_mod = card.ability.extra.chips
+					chips = card.ability.extra.chips
 				}
 			end
 			if G.GAME.blind:get_type() == 'Big' then
 				return {
-					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.bgchips } },
-					chip_mod = card.ability.extra.bgchips
+					chips = card.ability.extra.bgchips
 				}
 			end
 			if G.GAME.blind:get_type() == 'Boss' then
 				return {
-					message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.bschips } },
-					chip_mod = card.ability.extra.bschips
+					chips = card.ability.extra.bschips
 				}
 			end
 		end

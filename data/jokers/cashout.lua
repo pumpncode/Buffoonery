@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "cashout",
     name = "Cashout Voucher",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 0,
         y = 2,
@@ -19,19 +19,23 @@ SMODS.Joker {
     loc_txt = {set = 'Joker', key = 'j_buf_cashout'},
     calculate = function(self, card, context)
 		if context.after and not context.blueprint and not context.repetition and not context.other_card then
-			local hand_score = hand_chips * mult
-			local req_chips = G.GAME.blind.chips
-			if buf.compat.talisman then
-				hand_score = to_number(hand_score)
-				req_chips = to_number(req_chips)
-			end
+			-- local hand_score = hand_chips * mult
+			-- local req_chips = G.GAME.blind.chips
+			local hand_score = to_number(hand_chips * mult)
+			local req_chips = to_number(G.GAME.blind.chips)
+			-- if buf.compat.talisman then
+				-- local hand_score = to_number(hand_score)
+				-- local req_chips = to_number(req_chips)
+			-- end
 			if hand_score > card.ability.extra.xscore * req_chips then
-				local earned = card.ability.extra.money * G.GAME.blind.chips
-				local check = 50
-				if buf.compat.talisman then
-					earned = to_number(earned)
-					check = to_number(check)
-				end
+				-- local earned = card.ability.extra.money * G.GAME.blind.chips
+				-- local check = 50
+				local earned = to_number(card.ability.extra.money * G.GAME.blind.chips)
+				local check = to_number(50)
+				-- if buf.compat.talisman then
+					-- earned = to_number(earned)
+					-- check = to_number(check)
+				-- end
 				if earned > check then
 					earned = 50
 				end

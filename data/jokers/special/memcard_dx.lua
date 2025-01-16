@@ -1,10 +1,10 @@
 SMODS.Joker {
     key = "dxmemcard",
     name = "Deluxe Memory Card",
-    atlas = 'maggitsmiscatlas',
+    atlas = 'buf_special',
     pos = {
         x = 0,
-        y = 2,
+        y = 0,
     },
     rarity = 'buf_spc',
     cost = 8,
@@ -22,6 +22,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_memcard'},
 	loc_vars = function(self, info_queue, card)
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		end
         return {
             vars = {
 					card.ability.mcount,
@@ -39,9 +42,7 @@ SMODS.Joker {
             card.T.w = W*scale
     end,
     calculate = function(self, card, context)
-		local eval = function() return G.GAME.current_round.hands_played == 0 and card.ability.mcount < 8 and not G.RESET_JIGGLES end
-        juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
-		-- MEMORIZE FIRST SCORING CARD
+		-- MEMORIZE FIRST SCORING CARD EACH HAND
 		if context.before and not context.blueprint then
 			if card.ability.mcount < 16 then  --limits to 16 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
@@ -55,13 +56,19 @@ SMODS.Joker {
 				local _card = context.scoring_hand[1]
 				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
 				if underscore_pos then
-					card.ability.tsuit = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))  
+					card.ability.tsuit = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
 				else
-					card.ability.tsuit = localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
+					card.ability.tsuit =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
 				end
 				local key = SMODS.Ranks[_card.base.value].key
 				local tkey = localize('buf_'..key)
 				card.ability.trank =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
+				local underscore_pos2 = string.find(card.ability.trank, "_")
+				if underscore_pos2 then
+					local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
+					if langkey == 'buf_0.5' then langkey = 'buf_half' end
+					card.ability.trank = localize(langkey) .. localize('buf_of')
+				end
 				return {
 					message = localize('buf_memory'),
 					colour = G.C.GREEN 
@@ -83,13 +90,13 @@ SMODS.Joker {
 						local hcard = G.hand.cards[i]
 						hcard:set_base(card.ability.extra.bases[i]) -- copy_card wasn't working
 						hcard:set_ability(card.ability.extra.abils[i])
-						for k, v in pairs(card.ability.extra.abils[i]) do
-							if type(v) == 'table' then 
-								hcard.ability[k] = copy_table(v)
-							else
-								hcard.ability[k] = v
-							end
-						end
+						-- for k, v in pairs(card.ability.extra.abils[i]) do  -- I can't remember why tf I made this part, but this was crashing the game with modded enchancements
+							-- if type(v) == 'table' then 
+								-- hcard.ability[k] = copy_table(v)
+							-- else
+								-- hcard.ability[k] = v
+							-- end
+						-- end
 						hcard:set_edition(card.ability.extra.edits[i] or {}, nil, true)
 						hcard:set_seal(card.ability.extra.seals[i], true)
 						hcard.params = card.ability.extra.params[i]
@@ -106,10 +113,14 @@ SMODS.Joker {
 		end
     end,
 	
-		-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
+	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
 	inject = function(self)
-		SMODS.Joker.super.inject(self)
-		G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		else
+			SMODS.Joker.super.inject(self)
+		end
 	end
 	
 }

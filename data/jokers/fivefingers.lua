@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "fivefingers",
     name = "Five Fingers",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 1,
         y = 3,
@@ -28,8 +28,7 @@ SMODS.Joker {
         if context.joker_main and context.cardarea == G.jokers then
 			if #context.scoring_hand == 5 and math.fmod(#G.jokers.cards, 5) == 0 then
 				return {
-					message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
-					Xmult_mod = card.ability.extra.Xmult
+					xmult = card.ability.extra.Xmult
 				}
 			end
         end

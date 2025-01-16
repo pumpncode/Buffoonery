@@ -1,7 +1,7 @@
 SMODS.Joker{
 	key = "maggit",
     name = "Maggit",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 3,
         y = 2,
@@ -22,15 +22,17 @@ SMODS.Joker{
     },
     loc_txt = {set = 'Joker', key = 'j_buf_maggit'},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = 'Other', key = 'maggit_info'}
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'maggit_info'}
+		end
 		if card.ability.extra.once == 1 then
             return {key = self.key .. '_alt', 
 					vars = {card.ability.extra.Emult},
 			}
 		else
-        return {
-            vars = {card.ability.extra.Emult}
-        }
+			return {
+				vars = {card.ability.extra.Emult}
+			}
 		end
     end,
 	calculate = function(self, card, context)
@@ -74,9 +76,7 @@ SMODS.Joker{
 			end
 			if check then
 				return {
-					message = "^"..card.ability.extra.Emult.." Mult",
-					colour = G.C.DARK_EDITION,
-					buf_Emult_mod = card.ability.extra.Emult
+					emult = card.ability.extra.Emult
 				}
 			end
 		end

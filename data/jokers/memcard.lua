@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "memcard",
     name = "Memory Card",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 1,
         y = 1,
@@ -38,10 +38,16 @@ SMODS.Joker {
             card.T.w = W*scale
     end,
     calculate = function(self, card, context)
-		local eval = function() return G.GAME.current_round.hands_played == 0 and card.ability.mcount < 8 and not G.RESET_JIGGLES end
-        juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
+		if Buffoonery.config.memcard_perf then
+			if context.first_hand_drawn then
+				SMODS.calculate_effect({message = localize('buf_ready'), colour = G.C.ATTENTION}, card)
+			end
+		else
+			local eval = function() return G.GAME.current_round.hands_played == 0 and card.ability.mcount < 8 and not G.RESET_JIGGLES end
+			juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
+		end
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and not context.blueprint then
+		if G.GAME.current_round.hands_played == 0 and context.before and not context.blueprint then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.

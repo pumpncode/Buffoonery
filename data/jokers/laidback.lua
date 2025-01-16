@@ -1,7 +1,7 @@
 SMODS.Joker{
 	key = "laidback",
     name = "Laidback Joker",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 0,
         y = 0,
@@ -35,8 +35,7 @@ SMODS.Joker{
 	calculate = function(self, card, context)
         if context.joker_main then
             return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
-                Xmult_mod = card.ability.extra.Xmult
+                xmult = card.ability.extra.Xmult
             }
         end
 	end

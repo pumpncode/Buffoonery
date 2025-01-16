@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "patronizing",
     name = "Patronizing Joker",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 2,
         y = 0,
@@ -25,12 +25,10 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-				message = "X" .. card.ability.extra.Xchip .. " Chips",
-				colour = G.C.CHIPS,
-                buf_Xchip_mod = card.ability.extra.Xchip
+				xchips = card.ability.extra.Xchip
             }
         end
-		if context.first_hand_drawn and #G.hand.cards > 0 and not context.blueprint then
+		if context.first_hand_drawn and not context.blueprint then
 		G.E_MANAGER:add_event(Event({
 		    func = function() 
 				card:juice_up(0.8, 0.5)
@@ -66,6 +64,7 @@ SMODS.Joker {
 				return true
 			end}))
 		end
+		
 		if (context.after or context.pre_discard) and #G.hand.cards > 0 and not context.blueprint then
 			G.E_MANAGER:add_event(  -- Thanks WilsontheWolf for the help!
 				Event({
@@ -117,6 +116,20 @@ SMODS.Joker {
 				}),
 				"other"
 			)
+		end
+		
+		if context.selling_self or card.getting_sliced then -- DESELECT CARDS WHEN SOLD
+			G.E_MANAGER:add_event(Event({
+				func = function() 
+					for k, v in ipairs(G.hand.cards) do
+						if v.ability.forced_selection then
+							v.ability.forced_selection = false 
+						end
+					end
+					G.hand:unhighlight_all()
+					return true
+				end
+			}))
 		end
     end
 }

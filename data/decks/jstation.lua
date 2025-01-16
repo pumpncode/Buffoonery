@@ -2,7 +2,7 @@ SMODS.Back{
     key = 'jstation',
     unlocked = true,
     discovered = true,
-    atlas = 'maggitsmiscatlas',
+    atlas = 'buf_decks',
     pos = {
         x = 0,
         y = 0,

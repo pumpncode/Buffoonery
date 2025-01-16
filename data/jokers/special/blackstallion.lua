@@ -1,10 +1,10 @@
 SMODS.Joker {
     key = "blackstallion",
     name = "Black Stallion",
-    atlas = 'maggitsmiscatlas',
+    atlas = 'buf_special',
     pos = {
         x = 1,
-        y = 2,
+        y = 0,
     },
     rarity = "buf_spc",
     cost = 6,
@@ -20,7 +20,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_blackstallion'},
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		end
         return {
             vars = {card.ability.extra.mult, card.ability.extra.mult_gain}
         }
@@ -28,8 +30,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             return {
-                message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-                mult_mod = card.ability.extra.mult
+                mult = card.ability.extra.mult
             }
         end
         if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and G.GAME.blind.boss then
@@ -44,10 +45,13 @@ SMODS.Joker {
 	
 	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
 	inject = function(self)
-		SMODS.Joker.super.inject(self)
-		G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		else
+			SMODS.Joker.super.inject(self)
+		end
 	end
-	
 }
 
 --DONE

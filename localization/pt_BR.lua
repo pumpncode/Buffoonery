@@ -45,6 +45,13 @@ return {
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi/{}{C:chips}+#2#{} {C:inactive}Fichas){}",
 						}
 			},
+			j_buf_dorkshire = {
+				name = "Chá Dorkshire",
+				text = {"Todos os {C:attention}2s{}, {C:attention}3s{} e {C:attention}10s{} se tornam",
+						"{C:attention}Cartas de Porcelana{} depois de pontuadas",
+						"se a mão de pôquer for uma {C:attention}Trinca{}",
+						}
+			},
 			j_buf_fivefingers = {
 				name = "Cinco Dedos",
 				text = {"{X:mult,C:white}X#1#{} Multi se você tem",
@@ -229,7 +236,7 @@ return {
 				name = "Carta de Porcelana",
 				text = {"{X:mult,C:white}X#1#{} Multi",
 						"Quebra se a mão jogada",
-						"possuir {C:attention}#2#{} cartas",
+						"tiver {C:attention}#2#{} ou mais cartas",
 				}
 			},
 		},
@@ -272,6 +279,11 @@ return {
 			buf_Halberds = "Alabardas",
 			-------- RARITY LABEL --------
 			k_buf_spc = "Especial",
+		},
+		v_dictionary = {
+			a_buf_emult = "^#1# Multi",
+			a_buf_xchips = "X#1# Fichas",
+			a_buf_echips = "^#1# Fichas",
 		},
     },
 }

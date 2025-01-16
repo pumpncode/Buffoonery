@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "clown",
     name = "Clown",
-    atlas = 'maggitsjokeratlas',
+    atlas = 'buf_jokers',
     pos = {
         x = 2,
         y = 2,
@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { chip_mod = 20, jokers = 0, chips = 20 },
+        extra = { chip_mod = 20, jokers = 0, chips = 20, check = false },
 		numetal = true
     },
     loc_txt = {set = 'Joker', key = 'j_buf_clown'},
@@ -24,25 +24,30 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        local num_jokers = #G.jokers.cards
-        local free = 0
-        if num_jokers > card.ability.extra.jokers then
-            free = num_jokers - card.ability.extra.jokers
-        end
-        if free ~= 0 and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chip_mod * free)
-			SMODS.eval_this(card, {message = localize('k_upgrade_ex'), colour = G.C.BLUE})
-        end
-        card.ability.extra.jokers = num_jokers
+	
+		if context.cardarea == G.jokers then
+			card.ability.extra.check = true
+		else
+			card.ability.extra.check = false
+		end
+		
+		if context.selling_self then
+			clown_count = -1
+		end
+		
 		if context.joker_main then
-		chip_mod = card.ability.extra.chips
-		return {
-                message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
-                chip_mod = card.ability.extra.chips
-        }
-		end		
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+		
 	end,
-    add_to_deck = function(self, card, from_debuff)
-		card.ability.extra.jokers = #G.jokers.cards + 1
-    end
+	
+	update = function(self, card, dt)
+		if card.ability.extra.jokers < clown_count and card.ability.extra.check then
+			SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.BLUE}, card)
+			card.ability.extra.jokers = clown_count
+			card.ability.extra.chips = 20 + (card.ability.extra.chip_mod * card.ability.extra.jokers)
+		end
+    end,
 }
