@@ -162,7 +162,7 @@ return {
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
 						"{C:attention}rodada{} por {C:attention}8{} rodadas. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
-						"{C:inactive}Memorizadas: #1#. Última: #3##2#{}",
+						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
 						}
 			},
 			j_buf_dxmemcard = {
@@ -170,7 +170,7 @@ return {
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
 						"{C:buf_spc}mão{} por {C:buf_spc}16{} mãos. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
-						"{C:inactive}Memorizadas: #1#. Última: #3##2#{}",
+						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
 						}
 			},
 			j_buf_patronizing = {
