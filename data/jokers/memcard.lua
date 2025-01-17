@@ -47,7 +47,7 @@ SMODS.Joker {
 			juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
 		end
 		-- MEMORIZE FIRST SCORING CARD
-		if G.GAME.current_round.hands_played == 0 and context.before and not context.blueprint then
+		if context.before and not context.blueprint then
 			if card.ability.mcount < 8 then  --limits to 8 cards memorized
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
@@ -70,7 +70,7 @@ SMODS.Joker {
 				local underscore_pos2 = string.find(card.ability.trank, "_")
 				if underscore_pos2 then
 					local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
-					if langkey == 'buf_0.5' then langkey = 'buf_half' end
+					-- if langkey == 'buf_0.5' then langkey = 'buf_half' end
 					card.ability.trank = localize(langkey) .. localize('buf_of')
 				end
 				return {

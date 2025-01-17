@@ -26,8 +26,10 @@ return {
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",
-				text = {"{C:buf_spc}+#1#{} Mult",
-						"Doubles each Ante"}
+				text = {"{C:mult}+#1#{} Mult",
+						"Doubles",
+						"each {C:attention}Ante{}"
+				}
 			},
 			j_buf_cashout = {
 				name = "Cashout Voucher",
@@ -42,7 +44,7 @@ return {
 				text = {"Earn {C:money}$#1#{} at",
 						"end of round",
 						"if you win in",
-						"exactly {C:attention}#2#{} hands",
+						"exactly {C:attention}#2#{} Hands",
 						"{C:inactive,s:0.7}Changes each round{}"
 				}
 			},
@@ -74,15 +76,15 @@ return {
 			j_buf_dorkshire = {
 				name = "Dorkshire Tea",
 				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
-						"become {C:attention}Porcelain Cards{} after",
-						"scoring, if poker hand ",
+						"become {C:attention}Porcelain Cards{} before",
+						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
 						}
 			},
 			j_buf_dorkshire_g = {
 				name = "Dorkshire Gold",
 				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
-						"become {C:buf_spc}Royal Porcelain Cards{} after",
+						"become {C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
 						}
@@ -115,7 +117,7 @@ return {
 				name = "Jebediah Kerman",
 				text = {"Gains {C:mult}+#2#{} Mult every time",
 						"any {C:planet}Planet{} card is used",
-						"{C:green}1 in 5{} chance to {C:attention}EXPLODE{} on use",
+						"{C:green}#4# in #3#{} chance to {C:attention}EXPLODE{} on use",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}"
 				}
 			},
@@ -179,8 +181,8 @@ return {
 				}
 			},
 			j_buf_porcelainj = {
-				name = "Porcelain Joker",
-				text = {"Gains {X:chips,C:white}X#2#{} Chips",
+				name = "Curinga de Porcelana",
+				text = {"Gives {X:chips,C:white}X#2#{} Chips",
 						"for every {C:attention}3 Porcelain Cards{}",
 						"in your {C:attention}full deck{}",
 						"{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}"
@@ -196,7 +198,7 @@ return {
 			j_buf_roulette = {
 				name = "Russian Roulette",
 				text = {"When {C:attention}Blind{} is selected, earn {C:money}$30{}",          
-						"{C:green}1 in #2#{} chance you {C:attention}lose the game{} instead",
+						"{C:green}#1# in #2#{} chance you {C:attention}lose the game{} instead",
 						"If chance reaches {C:green}1 in 2{} and you win,",
 						"create a random {C:legendary}Legendary{} Joker",
 						"{C:inactive,s:0.7}(Chance increases each round)"
@@ -205,7 +207,9 @@ return {
 			j_buf_whitepony = {
 				name = "White Pony",
 				text = {"{C:mult}+#1#{} Mult",
-						"Doubles each Ante"}
+						"Doubles",
+						"each {C:attention}Ante{}"
+				}
 			}, 
         },
         Back = {
@@ -391,14 +395,13 @@ return {
 			buf_convert = "Converted!",
 			buf_blowup = "B O O M !",
 			buf_ydead = "You're dead...",
-			buf_dry = "Dry fire!",			
-			buf_afan_annoy1 = "But.., But...",
+			buf_dry = "Dry fire!",		
+			buf_afan_annoy1 = "But, but...",
 			buf_afan_annoy2 = "Aw, Gee...",
 			buf_afan_annoy3 = "You sure?",
 			buf_afan_annoy4 = "One more round",
 			buf_tea = "Tea!",
 			buf_gfondue_licked = "Licked!",
-			buf_camarosa_surprise = "Surprise!",
 			buf_hit = "Hit!",
 			buf_miss = "Miss!",
 			-------- MEMCARD STUFF --------
@@ -407,18 +410,27 @@ return {
 			buf_Jack = "Jack",
 			buf_Queen = "Queen",
 			buf_King = "King",
+			-- UnStable compat --
 			buf_0 = "0",
-			buf_half = "Half",
+			['buf_0.5'] = "Half",
 			buf_1 = "1",
 			buf_r2 = "Root 2",
 			buf_e = "e",
 			buf_Pi  = "Pi",
+			buf_11 = "11",
+			buf_12 = "12",
+			buf_13 = "13",
 			buf_21 = "21",
+			buf_25 = "25",
+			buf_161 = "161",
+			["buf_???"] = "???",
+			--------------------
 			buf_of = " of ",
 			buf_Spades = "Spades",
 			buf_Hearts = "Hearts",
 			buf_Clubs = "Clubs",
 			buf_Diamonds = "Diamonds",
+			-- Bunco compat --
 			buf_Fleurons = "Fleurons",
 			buf_Halberds = "Halberds",
 			-------- MISC --------

@@ -15,7 +15,6 @@ CardSleeves.Sleeve {
     end,
     apply = function(self)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.8, func = function()
-			G.hand:change_size(1)
             play_sound('timpani')
 			local card = nil
 			if self.get_current_deck_key() == "b_buf_porcelain" then

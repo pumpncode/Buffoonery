@@ -6,20 +6,30 @@ return {
 				text = {"Quando {C:attention}obtiver{} este curinga, {C:attention}exile{}",
 						"todos os outros. Um fica {C:dark_edition}Negativo{} a cada",
 						"3 turnos. Venda para reobter os curingas",
-						"{C:inactive}(#2#/3 Rodadas. #1# Curinga(s) negativo(s)){}"
+						"{C:inactive}(#2#/3 Rodadas. #1# Curinga(s) negativo(s)){}",
+						"{C:inactive,s:0.7}Deve ter espaço{}"
 				}
+			},
+			j_buf_afan = {
+				name = "Fã Adorador",
+				text = {"{C:mult}+#1#{} Mult",
+						"Perca {C:money}$6{} ao {C:attention}vender{} este Curinga",
+						"{C:green}#2# de #3#{} chance de {C:attention}retornar{}",
+						"depois de {C:attention}vendido{}"}  
 			},
 			j_buf_argument = {
 				name = "Discussão Acalourada",
-				text = {"{C:green}1 de 2{} chance de converter",
+				text = {"{C:green}#1# de #2#{} chance de converter",
 						"uma carta não-pontuada em",
 						"uma das pontuadas, caso",
 						"a mão jogada for {C:attention}Dois Pares{}"}  
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",
-				text = {"{C:buf_spc}+#1#{} Multi",
-						"Dobra a cada Aposta"}
+				text = {"{C:mult}+#1#{} Multi",
+						"Dobra a", 
+						"cada {C:attention}Aposta{}"
+				}
 			},
 			j_buf_cashout = {
 				name = "Voucher de Saque",
@@ -27,6 +37,24 @@ return {
 						"mais que o {C:attention}Blind{}, ganhe 0.4% dele",
 						"em {C:money}dinheiro{} e destrua este Curinga",
 						"{C:inactive}(No máximo{} {C:money}$50{}{C:inactive}){}"
+				}
+			},
+			j_buf_clays_alt = {
+				name = "Tiro ao Prato",
+				text = {"Ganhe {C:money}$#1#{} no",
+						"fim da rodada",
+						"se você vencer em",
+						"exatamente {C:attention}#2#{} Mãos",
+						"{C:inactive,s:0.7}Muda a cada rodada{}"
+				}
+			},
+			j_buf_clays = {
+				name = "Tiro ao Prato",
+				text = {"Ganhe {C:money}$#1#{} no",
+						"fim da rodada",
+						"você vencer em um",
+						"número específico de Mãos",
+						"{C:inactive,s:0.7}Muda a cada rodada{}"
 				}
 			},
 			j_buf_clown = {
@@ -47,10 +75,19 @@ return {
 			},
 			j_buf_dorkshire = {
 				name = "Chá Dorkshire",
-				text = {"Todos os {C:attention}2s{}, {C:attention}3s{} e {C:attention}10s{} se tornam",
-						"{C:attention}Cartas de Porcelana{} depois de pontuadas",
-						"se a mão de pôquer for uma {C:attention}Trinca{}",
-						}
+				text = {"Todos os {C:attention}2{}, {C:attention}3{} e {C:attention}10{} jogados se",
+						"tornam {C:attention}Cartas de Porcelana{}",
+						"antes de pontuar, se a",
+						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				}
+			},
+			j_buf_dorkshire_g = {
+				name = "Dorkshire Gold",
+				text = {"Todos os {C:attention}2{}, {C:attention}3{} e {C:attention}10{} jogados se",
+						"tornam {C:attention}Cartas de Porcelana Real{}",
+						"antes de pontuar, se a",
+						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				}
 			},
 			j_buf_fivefingers = {
 				name = "Cinco Dedos",
@@ -60,11 +97,27 @@ return {
 						"tem exatamente {C:attention}5 cartas{}"
 				}
 			},
+			j_buf_gfondue = {
+				name = "Fondue Dourado",
+				text = {"Ganhe {C:money}#1#${} na",
+						"{C:attention}primeira mão{} da",
+						"rodada, {C:money}-#2#${} por",
+						"rodada jogada",
+				}
+			},
+			j_buf_camarosa = {
+				name = "Camarosa",
+				text = {"{X:dark_edition,C:white}^#1#{} Multi",
+						"{C:green}#2# de #3#{} chance desta",
+						"carta ser destruída",
+						"no fim da rodada",
+				}
+			},
 			j_buf_kerman = {
 				name = "Jebediah Kerman",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
-						"{C:green}1 de 5{} chance de {C:attention}EXPLODIR{} no uso",
+						"{C:green}#4# de #3#{} chance de {C:attention}EXPLODIR{} no uso",
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}"
 				}
 			},
@@ -127,16 +180,25 @@ return {
 						"serem {C:attention}selecionadas{}"
 				}
 			},
+			j_buf_porcelainj = {
+				name = "Porcelain Joker",
+				text = {"Dá {X:chips,C:white}X#2#{} Fichas para",
+						"cada {C:attention}3 Cartas de Porcelana{}",
+						"no seu {C:attention}baralho completo{}",
+						"{C:inactive}(No momento,{} {X:chips,C:white}X#1#{} {C:inactive}Fichas){}"
+				}
+			},
 			j_buf_rerollin = {
 				name = "Rerollin'",
-				text = {"Ganhe {C:money}$#1#{} na sua quinta",          
-						"{C:green}atualização{} cada loja",
+				text = {"Ganhe {C:money}$#1#{} na",          
+						"sua quinta {C:green}atualização{}",
+						"uma vez por loja",
 						"{C:inactive}(Falta(m){} {C:green}#3#{} {C:inactive}atualizações){}"}
 			},
 			j_buf_roulette = {
 				name = "Roleta Russa",
 				text = {"Quando o {C:attention}Blind{} for selecionado, ganhe {C:money}$30{}",          
-						"{C:green}1 de #2#{} chance de {C:attention}perder o jogo{} ao invés",
+						"{C:green}#1# de #2#{} chance de {C:attention}perder o jogo{} ao invés",
 						"disso. Se a chance chegar a {C:green}1 de 2{} e você",
 						"vencer, crie um Curinga {C:legendary}Lendário{} aleatório",
 						"{C:inactive,s:0.7}(A chance aumenta a cada rodada)"
@@ -145,7 +207,9 @@ return {
 			j_buf_whitepony = {
 				name = "White Pony",
 				text = {"{C:mult}+#1#{} Multi",
-						"Dobra a cada Aposta"}
+						"Dobra a", 
+						"cada {C:attention}Aposta{}"
+				}
 			}, 
         },
         Back = {
@@ -162,14 +226,31 @@ return {
 						"{C:buf_spc} Black Stallion{}",
 				}
 			},
+			b_buf_porcelain = {
+				name = "Baralho de Porcelana",
+				text = {"Comece com um",
+						"{C:red}Chá Dorkshire{}",
+						"e 1 {C:attention}Naipe{} a",
+						"menos no baralho"
+				}
+			},
         },
         Tarot = {
-           
+			c_buf_nobility = {
+				name = "Nobreza",
+				text = {
+					"Aprimora {C:attention}#1#{} carta selecionada",
+					"para {C:attention}Carta de Pocelana{}",
+					"ou {C:attention}Carta de Porcelana Real{}",
+					"se você tiver ao menos {C:money}$#2#{}"
+				}
+			},
         },
         Spectral = {
            
         },
         Other = {
+		-------- INFO QUEUE --------
             korny_info = {
                 name = "Créditos",
                 text = {
@@ -201,6 +282,23 @@ return {
 					"forma {C:attention}base{}"
 				}
 			},
+			porc_info = {
+				name = "Carta de Porcelana",
+				text = {
+						"{X:chips,C:white}X1.75{} Fichas",
+						"Destruída se a mão",
+						"jogada contém mais", 
+						"que {C:attention}3{} cartas",
+				}
+			},
+			porcg_info = {
+				name = "Versão Real",
+				text = {
+						"{X:chips,C:white}X2{} Fichas",
+						"Conta como  uma",
+						"carta de {C:attention}realeza{}",
+				}
+			},
         },
         Sleeve = {
 			sleeve_buf_jstation = {
@@ -229,20 +327,63 @@ return {
 						"{C:green}White Pony{} em vez disso",
 						"{C:blue}-2{} mãos"
 				}
-			}, 
+			},
+			sleeve_buf_porcelain = {
+				name = "Capa de Porcelana",
+				text = {"Comece com um",
+						"{C:red}Chá Dorkshire{}",
+						"e 1 {C:attention}Naipe{} a",
+						"menos no baralho"
+				}
+			},
+			sleeve_buf_porcelain_alt = {
+				name = "Capa de Porcelana",
+				text = {"Comece com um",
+						"{C:buf_spc}Dorkshire Gold{}",
+						"e 1 {C:attention}Naipe{} a",
+						"menos no baralho"
+				}
+			},
         },
 		Enhanced = {
 			m_buf_porcelain = {
 				name = "Carta de Porcelana",
-				text = {"{X:mult,C:white}X#1#{} Multi",
-						"Quebra se a mão jogada",
-						"tiver {C:attention}#2#{} ou mais cartas",
+				text = {"{X:chips,C:white}X#1#{} Fichas",
+						"Destruída se a mão",
+						"jogada contém mais", 
+						"que {C:attention}#2#{} cartas",		
+				}
+			},
+			m_buf_porcelain_g = {
+				name = "Carta de Porcelana Real",
+				text = {"{X:chips,C:white}X#1#{} Fichas, é carta de {C:attention}realeza{}",
+						"Destruída se a mão",
+						"jogada contém mais", 
+						"que {C:attention}#2#{} cartas",
 				}
 			},
 		},
     },
     misc = {
 		dictionary = {
+			-------- CONFIG --------
+			buf_cf_info_info = {
+				"Precisamente: créditos, informações sobre a",
+				"raridade 'Especial' e a mecânica de 'Exílio'",
+				"Reinício necessário para fazer efeito",
+			},
+			buf_cf_perf_info = {
+				"Desativa o balançar constante do Memory Card",
+				"quando ele está pronto para memorizar.",
+				"Ativar isto pode melhorar seu framerate",
+				"quando o Memory Card estiver presente"
+			},
+			buf_cf_req_restart = {
+				"Reinício necessário para fazer efeito",
+			},
+			buf_cf_show_spc = "Mostrar cartas Especiais na Coleção",
+			buf_cf_show_info = "Mostrar informações adicionais",
+			buf_cf_memcard_perf = "Modo de desempenho do Memory Card",
 			-------- CARD MESSAGES --------
 			buf_korny_ok = "De boa!",
 			buf_korny_dd = "Morreu!",
@@ -256,29 +397,46 @@ return {
 			buf_blowup = "C A B U M !",
 			buf_ydead = "Você morreu...",
 			buf_dry = "Sobreviveu!",
-			-------- MAGGIT STUFF --------
-			k_buf_notyet = "(Deve ter espaço)",
+			buf_afan_annoy1 = "Mas... mas...",
+			buf_afan_annoy2 = "Ah não...",
+			buf_afan_annoy3 = "Tem certeza?",
+			buf_afan_annoy4 = "Só mais uma",
+			buf_tea = "Chá!",
+			buf_gfondue_licked = "Lambeu!",
+			buf_hit = "Acertou!",
+			buf_miss = "Errrouuu!",
 			-------- MEMCARD STUFF --------
+			buf_ready = "Pronto",
 			buf_Ace = "Ás",
 			buf_Jack = "Valete",
 			buf_Queen = "Dama",
 			buf_King = "Rei",
+			-- UnStable compat --
 			buf_0 = "0",
-			buf_half = "Meio",
+			['buf_0.5'] = "Meio",
 			buf_1 = "1",
 			buf_r2 = "Raiz de 2",
 			buf_e = "e",
 			buf_Pi  = "Pi",
+			buf_11 = "11",
+			buf_12 = "12",
+			buf_13 = "13",
 			buf_21 = "21",
+			buf_25 = "25",
+			buf_161 = "161",
+			["buf_???"] = "???",
+			--------------------
 			buf_of = " de ",			
 			buf_Spades = "Espadas",
 			buf_Hearts = "Copas",
 			buf_Clubs = "Paus",
 			buf_Diamonds = "Ouros",
+			-- Bunco compat --
 			buf_Fleurons = "Florões",
 			buf_Halberds = "Alabardas",
-			-------- RARITY LABEL --------
+			-------- MISC --------
 			k_buf_spc = "Especial",
+			k_buf_notyet = "(Deve ter espaço)",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1# Multi",

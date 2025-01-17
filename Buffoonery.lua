@@ -206,8 +206,11 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- Fixed Memory Card crashing the game with modded enhancements
 -- Fixed Clown not upgrading when it should in some instances
 -- Fixed Rerrolin' bugging out with Blueprint
+-- Fixed the text on jokers with "1 in X chance" to update with Oops All 6s
+-- Aesthetic changes to some jokers' descriptions to better fit vanilla style
 -- Rewrote Clown to fix buggy code
 -- New Enhancement: Porcelain Cards
+-- New Tarot: Nobility
 -- New Deck / Sleeve: Porcelain
 -- New Jokers: Dorkshire Tea and its Special version
 -- New Joker: Porcelain Joker
@@ -216,6 +219,5 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- New Joker: Clay Shooting
 
 
--- todo: porcelain tarot art, porcelain deck/sleeve royal alt art, locs
-
+-- todo: porcelain tarot art, porcelain deck/sleeve royal alt art
 

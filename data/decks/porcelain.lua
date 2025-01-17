@@ -33,11 +33,6 @@ SMODS.Back{
 			for i = 1, #keys_to_remove do
 				keys_to_remove[i]:remove()
 			end
-			-- for k, v in pairs(G.playing_cards) do
-				-- if v.base.suit == random then 
-					-- v:remove()
-				-- end
-			-- end
         return true end }))
     end,
 }

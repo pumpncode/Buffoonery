@@ -1,7 +1,7 @@
 SMODS.Consumable{
 	set = 'Tarot', 
 	atlas = 'buf_consumables',
-	pos = {x = 1, y = 0},
+	pos = {x = 0, y = 0},
 	key = 'nobility',
 	discovered = true,
 	set_card_type_badge = function(self, card, badges)
