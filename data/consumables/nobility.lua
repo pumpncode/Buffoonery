@@ -7,7 +7,7 @@ SMODS.Consumable{
 	set_card_type_badge = function(self, card, badges)
         badges[1] = create_badge(localize("k_tarot_exclaim"), get_type_colour(self or card.config, card), nil, 1.2)
     end,
-	config = {extra = {count = 1, royal = 30}},
+	config = {extra = {count = 1, royal = 50}},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = 'Other', key = 'porc_info'}
 		info_queue[#info_queue+1] = {set = 'Other', key = 'porcg_info'}

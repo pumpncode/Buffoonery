@@ -204,7 +204,6 @@ SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 -- Made Memory Card's description better fit with Bunco's suit icons if they're present
 -- Made Memory Card's description compatible with UnStable's ranks
 -- Fixed Memory Card crashing the game with modded enhancements
--- Fixed Clown not upgrading when it should in some instances
 -- Fixed Rerrolin' bugging out with Blueprint
 -- Fixed the text on jokers with "1 in X chance" to update with Oops All 6s
 -- Aesthetic changes to some jokers' descriptions to better fit vanilla style
