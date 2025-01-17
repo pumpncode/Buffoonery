@@ -181,7 +181,7 @@ return {
 				}
 			},
 			j_buf_porcelainj = {
-				name = "Curinga de Porcelana",
+				name = "Porcelain Joker",
 				text = {"Gives {X:chips,C:white}X#2#{} Chips",
 						"for every {C:attention}3 Porcelain Cards{}",
 						"in your {C:attention}full deck{}",
@@ -378,6 +378,7 @@ return {
 				"while Memory Card is present"
 			},
 			buf_cf_req_restart = {
+				"3 Jokers & 1 Enchancement",
 				"Restart required to take effect",
 			},
 			buf_cf_show_spc = "Show Special cards in collection",

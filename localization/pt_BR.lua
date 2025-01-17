@@ -181,7 +181,7 @@ return {
 				}
 			},
 			j_buf_porcelainj = {
-				name = "Porcelain Joker",
+				name = "Curinga de Porcelana",
 				text = {"Dá {X:chips,C:white}X#2#{} Fichas para",
 						"cada {C:attention}3 Cartas de Porcelana{}",
 						"no seu {C:attention}baralho completo{}",
@@ -379,6 +379,7 @@ return {
 				"quando o Memory Card estiver presente"
 			},
 			buf_cf_req_restart = {
+				"3 Curingas e 1 Aprimoramento",
 				"Reinício necessário para fazer efeito",
 			},
 			buf_cf_show_spc = "Mostrar cartas Especiais na Coleção",

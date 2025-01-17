@@ -19,6 +19,9 @@ SMODS.Enhancement {  -- Royal Porcelain Cards
     no_suit = false,
     no_rank = false,
     always_scores = false,
+	in_pool = function(self)
+		return false
+    end,
 	
 	config = {extra = {Xchips = 2, limit = 3, played = 0, marked = false}},
 	
@@ -53,6 +56,15 @@ SMODS.Enhancement {  -- Royal Porcelain Cards
 			return {
 				remove = true
 			}
+		end
+	end,
+	
+	inject = function(self)
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Enhanced[#G.P_CENTER_POOLS.Enhanced] = nil
+		else
+			SMODS.Enhancement.super.inject(self)
 		end
 	end
 }
