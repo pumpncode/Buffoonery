@@ -47,8 +47,9 @@ SMODS.Joker {
 			juice_card_until(card, eval, true) --won't be quiet until you memorize a card, will not jiggle if memory full
 		end
 		-- MEMORIZE FIRST SCORING CARD
-		if context.before and not context.blueprint then
-			if card.ability.mcount < 8 then  --limits to 8 cards memorized
+		if G.GAME.current_round.hands_played == 0 and context.before and not context.blueprint then
+			local _card = context.scoring_hand[1]
+			if card.ability.mcount < 8 and _card.config.center ~= G.P_CENTERS.m_pc_trading then  --limits to 8 cards memorized and prevents CustomCards' cards from being memorized, as they crash the game with memcard
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.
 				card.ability.extra.abils[card.ability.mcount] = context.scoring_hand[1].config.center
@@ -57,7 +58,6 @@ SMODS.Joker {
 				if context.scoring_hand[1].params then
 					card.ability.extra.params[card.ability.mcount] = context.scoring_hand[1].params
 				end
-				local _card = context.scoring_hand[1]
 				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
 				if underscore_pos then
 					card.ability.tsuit = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
@@ -80,6 +80,11 @@ SMODS.Joker {
 			elseif card.ability.mcount >= 8 then
 				return {
 					message = localize('buf_memfull'),
+					colour = G.C.RED
+				}
+			elseif _card.config.center == G.P_CENTERS.m_pc_trading then
+				return {
+					message = 'Invalid',
 					colour = G.C.RED
 				}
 			end
