@@ -4,7 +4,7 @@
 
 ### A Balatro mod that aims to add vanilla-adjacent content while maintaining its own style.
 
-*17 jokers (2 of which are hidden), 2 decks, and 2 sleeves!*
+*24 jokers (3 of which are hidden), 3 decks, 3 sleeves, 2 Enhancements and 1 Tarot!*
 
 **<ins>Recommended: download from the [releases](https://github.com/pinkmaggit-hub/Buffoonery/releases) section (use latest)</ins>**
 
@@ -39,13 +39,6 @@ From left to right:
 
 --> *(Nu Metal Jokers: Clown, Five Fingers, Korny Joker, Rerollin' and White Pony.)*
 
-### v0.9.0 Update:
-![showcase_special_jk](https://github.com/user-attachments/assets/4e2f2078-a646-4dbe-90e0-1e9ab1396f28)
-
-**Special Jokers** introduced! They do not spawn nor show up in the collection, but instead are granted to the player under special circumstances
-+ Black Stallion: A nerfed version of White Pony. +1 Mult, doubles each Ante.
-+ Deluxe Memory Card: A buffed version of Memory Card. Memorizes 16 cards instead of 8 and memorizes one card each *hand*, instead of each *round*.
-
 ### v1.0.0 Update:
 ![showcase_1-0](https://github.com/user-attachments/assets/9f853dbc-0d86-4852-96b2-85ece1c6c82a)
 
@@ -53,17 +46,45 @@ From left to right:
 + Abyssal Prism: When you acquire this joker, banish all others. Each 3 turns, one gains negative while banished. Sell to return jokers. (rare)
 
 --> *(Banished Jokers permanently lose all upgrades/editions and are temporarily removed until you sell Abyssal Prism.)*
+### v1.1.0 Update
+![jokers](https://github.com/user-attachments/assets/8f1f9b66-8d9a-4592-a150-55560acebcd2)
+
++ Adoring Fan: +15 Mult. Costs $6 to be sold. 1 in 2 chance to return after being sold. (common)
++ Clay Shooting: Earn $8 at end of round if you win in the specified number of Hands. Number changes each round. (common)
++ Gold Fondue: Earn 8$ at first hand of round, -2$ per round. (common)
++ Camarosa: ^1.25 Mult. 1 in 1000 chance to be destroyed at end of round. Only spawns if Gold Fondue has been depleted. (common)
++ Porcelain Joker: Gives 0.75X Mult for every 3 Porcelain Cards in your full deck. Starts at 1X Mult. (uncommon)
++ Dorkshire Tea: All 2s, 3s and 10s become Porcelain Cards before scoring, if poker hand is a Three of a Kind. (rare)
+
+### Special Jokers
+![special](https://github.com/user-attachments/assets/b016f53f-9cb3-4d80-aad9-7e5749d561ca)
+
+*They do not spawn nor show up in the collection, but instead are granted to the player under special circumstances*
++ Black Stallion: A nerfed version of White Pony. +1 Mult, doubles each Ante.
++ Dorkshire Gold: Same as its non-special counterpart, but transforms the cards into Royal Porcelain Cards instead.
++ Deluxe Memory Card: A buffed version of Memory Card. Memorizes 16 cards instead of 8 and memorizes one card each *hand*, instead of each *round*.
+
+## Enhancements and Tarot
+![enhancements](https://github.com/user-attachments/assets/3a8882d8-08ca-4eb0-bb65-acb1e1a6042d)
+
++ Porcelain Card: X1.75 Chips. Breaks if scored when played hand has more than 3 cards.
++ Royal Porcelain Card: X2 Chips, is considered a face card. Breaks if scored when played hand has more than 3 cards. *(doesn't spawn inside booster packs)*
++ Nobility: Enhances 1 selected card into a Porcelain Card or a Royal Porcelain Card if you own $50 or more.
 
 ## Decks / Sleeves
-### v0.9.0 Update
-![showcase_decksleeve](https://github.com/user-attachments/assets/5bc20aee-2e8d-4e16-ba3e-e62623236ac2)
-
 **Decks:**
+
+![decks](https://github.com/user-attachments/assets/70efe379-3357-4bf5-892c-2d3bd835e0ec)
+
 + Galloping Deck: You start the run with Black Stallion
 + JimboStation Deck: You start the run with Memory Card. +1 Hand size.
++ Porcelain Deck: Start run with a Dorkshire Tea. Your deck has 1 less full Suit. (39 cards)
 
 **Sleeves:**
+
+![sleeves](https://github.com/user-attachments/assets/850b9fe1-ac5f-4993-b790-8c17be7954d9)
 
 *To use sleeves, you must have [CardSleeves](https://github.com/larswijn/CardSleeves) by [Larswijn](https://github.com/larswijn) installed.*
 + Galloping Sleeve: Same effect as deck. If combined with Galloping Deck, you start the run with White Pony instead, but lose 2 hands each round.
 + JimboStation Sleeve: Same effect as deck. If combined with Jimbostation Deck, You start the run with a Deluxe Memory Card instead.
++ Porcelain Sleeve: Same effect as deck. When paired with the Porcelain Deck, you start the run with a Dorkshire Gold instead.
