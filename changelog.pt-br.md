@@ -1,0 +1,146 @@
+# Latest Changes (dev build)
+**(As of 19/01/2025)**
+
+- Artwork polish: *Nobility* and *Gold Fondue*
+
+# v1.1.0
+**REQUIREMENTS: STEAMODDED 1.0.0~ALPHA-1315b OR NEWER *AND* [TALISMAN](https://github.com/MathIsFun0/Talisman/)** 
+### Additions
+**Jokers:**
++ Adoring Fan (Common)
++ Gold Fondue (Common)
++ Camarosa (Common)
++ Clay Shooting (Common)
++ Porcelain Joker (Uncommon)
++ Dorkshire Tea (Rare)
++ Dorkshire Gold (Special)
+
+**Enhancements:**
++ Porcelain Card
++ Royal Porcelain Card (Special)
+
+*Tarot:*
++ Nobility
+
+**Deck / Sleeve:**
++ Porcelain
+### New config options
++ Show *Special* cards in collection (3 Jokers and 1 Enhancement)  **-- Default: off**
++ Show tooltips (arist credits and new mechanics explanations)       **-- Default: on**
++ Memory card performance mode                                                   **-- Default: off**
+### Polish & Fixes
++ Aesthetic changes to some jokers' descriptions to better fit vanilla style
++ Made *Memory Card's* description better fit with [Bunco's](https://github.com/Firch/Bunco) suit icons if they're present
++ Made *Memory Card's* description compatible with [UnStable's](https://github.com/kirbio/UnStable) ranks
++ Fixed stray pixels and wrong spacing in some artworks
++ Fixed *Memory Card* crashing the game with modded enhancements
++ Rewrote *Clown* to fix buggy code
++ Fixed *Rerrolin'* bugging out with *Blueprint*
++ Fixed the text on jokers with "1 in X chance" to update with *Oops! All 6s*
++ All content is translated to Brazilian Portuguese
+## v1.1.0-hotfix
++ Fixed an oversight in *Memory Card*'s code during development (it was memorizing not only during the first hand, as it should)
++ Add pseudo-compatibility between Memory Card and [Collector's Cards](https://github.com/Mathguy23/CollectorsCards) (crash prevention)
+
+# v1.0.0
+**REQUIREMENT: STEAMODDED 1.0.0~ALPHA-1103a OR NEWER**
+## Additions
+**Jokers:**
++ Russian Roulette (Uncommon)
++ Abyssal Prism (Rare)
+### Polish & Fixes
++ Fully translated every piece of text in the mod to Brazilian Portuguese
++ Updated mod description
++ Added mod icon
++ Clown now tells player when upgraded
++ Memory Card now jiggles until a card is memorized
++ Fixed Korny not working
++ Fixed Memory Card keeping changes made after memorizing the card(s)
++ Fixed a game-crashing typo in Black Stallion's code
+### Balance
++ Buffed Arstotzkan Denial and made its description more clear
++ Buffed Cashout Voucher to make it more useable early game
++ Slight buff to Korny
+## v1.0.1
++ Patronizing Joker now always selects 5 cards, like the Cerulean Bell blind on steroids. This is the original intended effect.
++ Five Fingers now costs $5, for flavor purposes
++ Artwork polish (Jeb and Laidback)
++ pt_BR localization polish
+
+# v0.9.0
+### Additions:
+- Special rarity
+
+**Jokers:**
+- Black Stallion (Special)
+- Deluxe Memory Card (Special)
+
+**Decks / Sleeves:**
+- JimboStation
+- Galloping
+
+
+### Fixes & Polish
+- Fixed Memory Card crashing the game when cards to convert > hand size
+- Made Maggit's description more concise
+- Added better color coding to Rerollin's description
+
+# v0.8.0
+### Additions
+**Jokers:**
+- Jebediah Kerman (Common)
+- Arstotzkan Denial (Uncommon)
+- Clown (Uncommon)
+- Patronizing Joker (Rare)
+- Maggit (Legendary)
+### Fixes & Polish
+- Laidback Joker now can't be bought if player has less than 2 free slots
+- Added Talisman compatibility to Cashout Voucher
+- Five fingers now accepts hands that contains a number of jokers that is a multiple of 5 (5,10,15,20...)
+- Korny Joker now has truly random chances of dying, beacuse you don't know the chances... What if he should diiiiiiiiiiiiiiiiiiiiiiiie????
+- Made Memory Card's art more compatible with stickers
+- Made Rerollin's artwork less horrible and added "Joker" to it
+- Made a placeholder art for jokers with unfinished art during development
+- Updated Korny Joker's description to be less horizontal and more vertical
+## v0.8.1
+- Fixed Maggit crashing the game when creating a joker (whoops)
+- Translated the jokers to Brazilian Portuguese
+- Made Jeb's art better
+
+# v0.5.0
+### Additions:
+**Jokers**
+- Five Fingers (Common)
+- Laidback Joker (Common)
+- Pertinent Agrument (Uncommon)
+### Fixes & Polish
+- Added original artwork credits to cards that have an original artwork by someone else and edited by me (korny and rerollin)
+- Updated Rerollin's description adding reroll count
+- Updated Rerrolin's artwork, making pinky finger more rounded
+- Updated Memory Card. It now copies cards' enhancements and editions (modded ones too)
+## v0.5.1
+- Minor tweaks to some of the artwork to better fit Balatro's artstyle
+- Changed Five Fingers from uncommon ($6) to common ($4)
+## v0.5.2
+- Added modded suit compatibility to Memory Card.
+
+# v0.2.0
+### Additions:
+**Jokers**
+- Cashout Voucher (Common)
+- Rerollin' (Uncommon)
+- Memory Card (Rare)
+## v0.2.2
+- Updated README.md to better fit joker descriptions
+- Added a flag to prevent Korny Joker from respawning
+- Added memorized card counter and last card memorized info to Memory Card's description
+- Added Xchips and Emult functionality
+## v0.2.3
+- Updated Memory Card's art (made the 8 higher res)
+- Made Korny Joker and Memory Card's descriptions less verbose
+
+# v0.1.0
+### Additions:
+**Jokers**
+- Korny Joker (Common)
+- White Pony (Uncommon)
