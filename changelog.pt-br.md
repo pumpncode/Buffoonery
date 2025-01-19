@@ -1,3 +1,5 @@
+<sup>Supported languages:</sup> [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.md) [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.pt-br.md) 
+
 # Latest Changes (dev build)
 **(As of 19/01/2025)**
 
