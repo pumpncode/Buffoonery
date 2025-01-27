@@ -49,6 +49,7 @@ SMODS.Joker {
 		-- MEMORIZE FIRST SCORING CARD
 		if G.GAME.current_round.hands_played == 0 and context.before and not context.blueprint then
 			local _card = context.scoring_hand[1]
+			-- print(_card:get_id())
 			if card.ability.mcount < 8 and _card.config.center ~= G.P_CENTERS.m_pc_trading then  --limits to 8 cards memorized and prevents CustomCards' cards from being memorized, as they crash the game with memcard
 				card.ability.mcount = card.ability.mcount + 1 
 				card.ability.extra.bases[card.ability.mcount] = context.scoring_hand[1].config.card  -- [UPDATE]:changed from local variable to table value, in order to store card edition and/or enhancement.

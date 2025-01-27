@@ -18,6 +18,7 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_porcelainj'},
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = 'Other', key = 'porc_info'}
         return {
             vars = {card.ability.extra.Xchip, card.ability.extra.Xchip_gain}
         }

@@ -81,9 +81,25 @@ return {
 						"is a {C:attention}Three of a Kind{}",
 						}
 			},
+			j_buf_dorkshire_alt = {
+				name = "Dorkshire Tea",
+				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}21s{} and {C:attention}25s{}",
+						"become {C:attention}Porcelain Cards{} before",
+						"scoring, if {C:attention}poker hand{}",
+						"is a {C:attention}Three of a Kind{}",
+						}
+			},
 			j_buf_dorkshire_g = {
 				name = "Dorkshire Gold",
 				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
+						"become {C:buf_spc}Royal Porcelain Cards{} before",
+						"scoring if poker hand",
+						"is a {C:attention}Three of a Kind{}",
+						}
+			},
+			j_buf_dorkshire_g_alt = {
+				name = "Dorkshire Gold",
+				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}21s{} and {C:attention}25s{}",
 						"become {C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
@@ -292,10 +308,12 @@ return {
 				}
 			},
 			porcg_info = {
-				name = "Royal Version",
+				name = "Royal Porcelain",
 				text = {
-						"{X:chips,C:white}X2{} Chips instead",
-						"Counts as a {C:attention}face{} card",
+						"{X:chips,C:white}X2{} Chips, is {C:attention}face{}",
+						"Destroyed if played",
+						"hand contains more", 
+						"than {C:attention}3{} cards",
 				}
 			},
         },

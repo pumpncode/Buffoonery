@@ -81,10 +81,26 @@ return {
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
 				}
 			},
+			j_buf_dorkshire_alt = {
+				name = "Chá Dorkshire",
+				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}21{} e {C:attention}25{} jogados",
+						"se tornam {C:attention}Cartas de Porcelana{}",
+						"antes de pontuar, se a",
+						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				}
+			},
 			j_buf_dorkshire_g = {
 				name = "Dorkshire Gold",
 				text = {"Todos os {C:attention}2{}, {C:attention}3{} e {C:attention}10{} jogados se",
 						"tornam {C:attention}Cartas de Porcelana Real{}",
+						"antes de pontuar, se a",
+						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				}
+			},
+			j_buf_dorkshire_g_alt = {
+				name = "Dorkshire Gold",
+				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}21{} e {C:attention}25{} jogados",
+						"se tornam {C:attention}Cartas de Porcelana Real{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
 				}
@@ -288,15 +304,16 @@ return {
 						"{X:chips,C:white}X1.75{} Fichas",
 						"Destruída se a mão",
 						"jogada contém mais", 
-						"que {C:attention}3{} cartas",
+						"de {C:attention}3{} cartas",
 				}
 			},
 			porcg_info = {
-				name = "Versão Real",
+				name = "Porcelana Real",
 				text = {
-						"{X:chips,C:white}X2{} Fichas",
-						"Conta como  uma",
-						"carta de {C:attention}realeza{}",
+						"{X:chips,C:white}X2{} Fichas, {C:attention}realeza{}",
+						"Destruída se a mão",
+						"jogada contém mais", 
+						"de {C:attention}3{} cartas",
 				}
 			},
         },

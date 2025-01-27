@@ -57,6 +57,7 @@ SMODS.Atlas {
 buf.compat = {
 	-- talisman = (SMODS.Mods['Talisman'] or {}).can_load,  -- deprecated, as Talisman became a requirement
 	sleeves = (SMODS.Mods['CardSleeves'] or {}).can_load,
+	unstable = (SMODS.Mods['UnStable'] or {}).can_load,
 }
 
 -- CONFIG --
