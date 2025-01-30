@@ -214,7 +214,7 @@ return {
 			j_buf_roulette = {
 				name = "Russian Roulette",
 				text = {"When {C:attention}Blind{} is selected, earn {C:money}$30{}",          
-						"{C:green}#1# in #2#{} chance you {C:attention}lose the game{} instead",
+						"{C:green}#1# in #2#{} chance you {E:1,C:mult}lose the game{} instead",
 						"If chance reaches {C:green}1 in 2{} and you win,",
 						"create a random {C:legendary}Legendary{} Joker",
 						"{C:inactive,s:0.7}(Chance increases each round)"
