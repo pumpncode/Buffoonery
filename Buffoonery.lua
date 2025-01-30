@@ -4,72 +4,72 @@ Buffoonery = SMODS.current_mod
 -- ATLASES --
 buf = {}
 SMODS.Atlas {
-    key = 'buf_jokers',
-    path = "jokers.png",
-    px = 71,
-    py = 95
+	key = 'buf_jokers',
+	path = "jokers.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = 'buf_special',
-    path = "special.png",
-    px = 71,
-    py = 95
+	key = 'buf_special',
+	path = "special.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = "buf_consumables",
-    path = "consumables.png",
-    px = 71,
-    py = 95
+	key = "buf_consumables",
+	path = "consumables.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = 'buf_enhancements',
-    path = "enhancements.png",
-    px = 71,
-    py = 95
+	key = 'buf_enhancements',
+	path = "enhancements.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = 'buf_decks',
-    path = "decks.png",
-    px = 71,
-    py = 95
+	key = 'buf_decks',
+	path = "decks.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = 'buf_sleeves',
-    path = "sleeves.png",
-    px = 73,
-    py = 95
+	key = 'buf_sleeves',
+	path = "sleeves.png",
+	px = 73,
+	py = 95
 }
 SMODS.Atlas {
-    key = 'rouletteatlas',
-    path = "roulette.png",
-    px = 71,
-    py = 95
+	key = 'rouletteatlas',
+	path = "roulette.png",
+	px = 71,
+	py = 95
 }
 SMODS.Atlas {
-    key = "modicon",
-    path = "buf_icon.png",
-    px = 34,
-    py = 34
+	key = "modicon",
+	path = "buf_icon.png",
+	px = 34,
+	py = 34
 }
 
 
 -- COMPAT SECTION --
 buf.compat = {
-	-- talisman = (SMODS.Mods['Talisman'] or {}).can_load,  -- deprecated, as Talisman became a requirement
 	sleeves = (SMODS.Mods['CardSleeves'] or {}).can_load,
 	unstable = (SMODS.Mods['UnStable'] or {}).can_load,
 }
 
+
 -- CONFIG --
 Buffoonery.config_tab = function()
-    return {n = G.UIT.ROOT, config = {r = 0.1, minw = 4, align = "tm", padding = 0.2, colour = G.C.BLACK}, nodes = {
-            { n=G.UIT.R, config = {align = 'cm'}, nodes={
-                create_toggle({label = localize('buf_cf_show_spc'), ref_table = Buffoonery.config, info = localize('buf_cf_req_restart'), ref_value = 'show_spc', active_colour = Buffoonery.badge_colour, right = true}),
+	return {n = G.UIT.ROOT, config = {r = 0.1, minw = 4, align = "tm", padding = 0.2, colour = G.C.BLACK}, nodes = {
+			{ n=G.UIT.R, config = {align = 'cm'}, nodes={
+				create_toggle({label = localize('buf_cf_show_spc'), ref_table = Buffoonery.config, info = localize('buf_cf_req_restart'), ref_value = 'show_spc', active_colour = Buffoonery.badge_colour, right = true}),
 				create_toggle({label = localize('buf_cf_show_info'), ref_table = Buffoonery.config, info = localize('buf_cf_info_info'), ref_value = 'show_info', active_colour = Buffoonery.badge_colour, right = true}),
 				create_toggle({label = localize('buf_cf_memcard_perf'), ref_table = Buffoonery.config, info = localize('buf_cf_perf_info'), ref_value = 'memcard_perf', active_colour = Buffoonery.badge_colour, right = true}),
-            },
 			},
-    }}
+			},
+	}}
 end
 
 -- RARITY --
@@ -162,3 +162,74 @@ SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 
 ------ CHANGELOG MOVED TO SEPARATE .md FILE ------
+
+
+function Card:get_chip_x_bonus()
+    if self.debuff then return 0 end
+    if self.ability.set == 'Joker' then return 0 end
+    if (self.ability.x_chips or 0) <= 1 then return 0 end
+    return self.ability.x_chips
+end
+function Card:get_chip_e_mult()
+    if self.debuff then return 0 end
+    if self.ability.set == 'Joker' then return 0 end
+    if (self.ability.e_mult or 0) <= 1 then return 0 end
+    return self.ability.e_mult
+end
+
+
+-- Steamodded calculation API: add extra operations
+if SMODS and SMODS.calculate_individual_effect then
+  local scie = SMODS.calculate_individual_effect
+  function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
+    -- For some reason, some keys' animations are completely removed
+    -- I think this is caused by a lovely patch conflict
+    --if key == 'chip_mod' then key = 'chips' end
+    --if key == 'mult_mod' then key = 'mult' end
+    --if key == 'Xmult_mod' then key = 'x_mult' end
+    local ret = scie(effect, scored_card, key, amount, from_edition)
+    if ret then
+      return ret
+    end
+    if (key == 'x_chips' or key == 'xchips' or key == 'Xchip_mod') and amount ~= 1 then 
+      if effect.card then juice_card(effect.card) end
+      hand_chips = mod_chips(hand_chips * amount)
+      update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+      if not effect.remove_default_message then
+          if from_edition then
+              card_eval_status_text(scored_card, 'jokers', nil, percent, nil, {message = "X"..amount, colour =  G.C.EDITION, edition = true})
+          elseif key ~= 'Xchip_mod' then
+              if effect.xchip_message then
+                  card_eval_status_text(scored_card or effect.card or effect.focus, 'extra', nil, percent, nil, effect.xchip_message)
+              else
+                  card_eval_status_text(scored_card or effect.card or effect.focus, 'x_chips', amount, percent)
+              end
+          end
+      end
+      return true
+    end
+	
+	if (key == 'e_mult' or key == 'emult' or key == 'Emult_mod') and amount ~= 1 then 
+      if effect.card then juice_card(effect.card) end
+      mult = mod_chips(mult ^ amount)
+      update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
+      if not effect.remove_default_message then
+          if from_edition then
+              card_eval_status_text(scored_card, 'jokers', nil, percent, nil, {message = "^"..amount.." Mult", colour =  G.C.EDITION, edition = true})
+          elseif key ~= 'Emult_mod' then
+              if effect.emult_message then
+                  card_eval_status_text(scored_card or effect.card or effect.focus, 'extra', nil, percent, nil, effect.emult_message)
+              else
+                  card_eval_status_text(scored_card or effect.card or effect.focus, 'e_mult', amount, percent)
+              end
+          end
+      end
+      return true
+    end
+  end
+  for _, v in ipairs({'x_chips', 'e_mult', 'xchips', 'emult', 'Xchip_mod', 'Emult_mod',}) do
+    table.insert(SMODS.calculation_keys, v)
+  end
+end
+	
+	
