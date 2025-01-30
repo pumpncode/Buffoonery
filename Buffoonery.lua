@@ -59,6 +59,43 @@ buf.compat = {
 	unstable = (SMODS.Mods['UnStable'] or {}).can_load,
 }
 
+-- FUNCTIONS --
+
+function buf.xchips(amt, card)
+  hand_chips = mod_chips(hand_chips * (amt or 1))
+  update_hand_text(
+    { delay = 0 },
+    { chips = hand_chips }
+  )
+
+  SMODS.calculate_effect({
+    message = localize {
+      type = 'variable',
+      key = 'a_buf_xchips',
+      vars = { (amt or 1) }
+    },
+    colour = G.C.CHIPS,
+    sound = 'chips1'
+  }, card)
+end
+
+function buf.emult(amt, card)
+  mult = mod_mult(mult ^ (amt or 1))
+  update_hand_text(
+    { delay = 0 },
+    { mult = mult }
+  )
+
+  SMODS.calculate_effect({
+    message = localize {
+      type = 'variable',
+      key = 'a_buf_emult',
+      vars = { (amt or 1) }
+    },
+    colour = G.C.MULT,
+    sound = 'multhit2'
+  }, card)
+end
 
 -- CONFIG --
 Buffoonery.config_tab = function()
@@ -162,74 +199,3 @@ SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 
 ------ CHANGELOG MOVED TO SEPARATE .md FILE ------
-
-
-function Card:get_chip_x_bonus()
-    if self.debuff then return 0 end
-    if self.ability.set == 'Joker' then return 0 end
-    if (self.ability.x_chips or 0) <= 1 then return 0 end
-    return self.ability.x_chips
-end
-function Card:get_chip_e_mult()
-    if self.debuff then return 0 end
-    if self.ability.set == 'Joker' then return 0 end
-    if (self.ability.e_mult or 0) <= 1 then return 0 end
-    return self.ability.e_mult
-end
-
-
--- Steamodded calculation API: add extra operations
-if SMODS and SMODS.calculate_individual_effect then
-  local scie = SMODS.calculate_individual_effect
-  function SMODS.calculate_individual_effect(effect, scored_card, key, amount, from_edition)
-    -- For some reason, some keys' animations are completely removed
-    -- I think this is caused by a lovely patch conflict
-    --if key == 'chip_mod' then key = 'chips' end
-    --if key == 'mult_mod' then key = 'mult' end
-    --if key == 'Xmult_mod' then key = 'x_mult' end
-    local ret = scie(effect, scored_card, key, amount, from_edition)
-    if ret then
-      return ret
-    end
-    if (key == 'x_chips' or key == 'xchips' or key == 'Xchip_mod') and amount ~= 1 then 
-      if effect.card then juice_card(effect.card) end
-      hand_chips = mod_chips(hand_chips * amount)
-      update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
-      if not effect.remove_default_message then
-          if from_edition then
-              card_eval_status_text(scored_card, 'jokers', nil, percent, nil, {message = "X"..amount, colour =  G.C.EDITION, edition = true})
-          elseif key ~= 'Xchip_mod' then
-              if effect.xchip_message then
-                  card_eval_status_text(scored_card or effect.card or effect.focus, 'extra', nil, percent, nil, effect.xchip_message)
-              else
-                  card_eval_status_text(scored_card or effect.card or effect.focus, 'x_chips', amount, percent)
-              end
-          end
-      end
-      return true
-    end
-	
-	if (key == 'e_mult' or key == 'emult' or key == 'Emult_mod') and amount ~= 1 then 
-      if effect.card then juice_card(effect.card) end
-      mult = mod_chips(mult ^ amount)
-      update_hand_text({delay = 0}, {chips = hand_chips, mult = mult})
-      if not effect.remove_default_message then
-          if from_edition then
-              card_eval_status_text(scored_card, 'jokers', nil, percent, nil, {message = "^"..amount.." Mult", colour =  G.C.EDITION, edition = true})
-          elseif key ~= 'Emult_mod' then
-              if effect.emult_message then
-                  card_eval_status_text(scored_card or effect.card or effect.focus, 'extra', nil, percent, nil, effect.emult_message)
-              else
-                  card_eval_status_text(scored_card or effect.card or effect.focus, 'e_mult', amount, percent)
-              end
-          end
-      end
-      return true
-    end
-  end
-  for _, v in ipairs({'x_chips', 'e_mult', 'xchips', 'emult', 'Xchip_mod', 'Emult_mod',}) do
-    table.insert(SMODS.calculation_keys, v)
-  end
-end
-	
-	
