@@ -214,7 +214,7 @@ return {
 			j_buf_roulette = {
 				name = "Roleta Russa",
 				text = {"Quando o {C:attention}Blind{} for selecionado, ganhe {C:money}$30{}",          
-						"{C:green}#1# de #2#{} chance de {C:attention}perder o jogo{} ao invés",
+						"{C:green}#1# de #2#{} chance de {E:1,C:mult}perder o jogo{} ao invés",
 						"disso. Se a chance chegar a {C:green}1 de 2{} e você",
 						"vencer, crie um Curinga {C:legendary}Lendário{} aleatório",
 						"{C:inactive,s:0.7}(A chance aumenta a cada rodada)"
