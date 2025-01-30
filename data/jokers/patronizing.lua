@@ -56,8 +56,10 @@ SMODS.Joker {
 					
 					for i = 1, #numbers do
 						local forced_card = G.hand.cards[numbers[i]]
+						local shutup = true
+						if i == 5 then shutup = false end
 						forced_card.ability.forced_selection = true
-						G.hand:add_to_highlighted(forced_card)
+						buf_add_to_highlighted(forced_card, shutup)  -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks this joker, so I made a separate function.
 					end
 				end
 				return true
@@ -102,8 +104,10 @@ SMODS.Joker {
 										
 										for i = 1, #numbers do
 											local forced_card = G.hand.cards[numbers[i]]
+											local shutup = true
+											if i == 5 then shutup = false end
 											forced_card.ability.forced_selection = true
-											G.hand:add_to_highlighted(forced_card)
+											buf_add_to_highlighted(forced_card, shutup)
 										end
 									end
 									return true

@@ -57,9 +57,21 @@ SMODS.Atlas {
 buf.compat = {
 	sleeves = (SMODS.Mods['CardSleeves'] or {}).can_load,
 	unstable = (SMODS.Mods['UnStable'] or {}).can_load,
+	talisman = (SMODS.Mods['Talisman'] or {}).can_load,
 }
 
+local soundfx_chip = 'chips1'
+local soundfx_mult = 'multhit2'
+if buf.compat.talisman then soundfx_chip = 'talisman_xchip' end
+if buf.compat.talisman then soundfx_mult = 'talisman_emult' end
+
 -- FUNCTIONS --
+
+local VanillaHighlight = CardArea.add_to_highlighted
+
+function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks this joker, so I made a separate function.
+    VanillaHighlight(G.hand, card, silent)
+end
 
 function buf.xchips(amt, card)
   hand_chips = mod_chips(hand_chips * (amt or 1))
@@ -75,7 +87,7 @@ function buf.xchips(amt, card)
       vars = { (amt or 1) }
     },
     colour = G.C.CHIPS,
-    sound = 'chips1'
+    sound = soundfx_chip
   }, card)
 end
 
@@ -93,7 +105,7 @@ function buf.emult(amt, card)
       vars = { (amt or 1) }
     },
     colour = G.C.MULT,
-    sound = 'multhit2'
+    sound = soundfx_mult
   }, card)
 end
 
