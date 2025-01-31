@@ -11,6 +11,7 @@
 + Cartas com alguma classe do [UnStable](https://github.com/kirbio/UnStable) que começam com "T" (em inglês) agora funcionam com *Chá Dorkshire / Dorkshire Gold*
 ### Balance
 + *Palhaço*: Fichas & Ganho de Fichas 20 --> 15
++ *Fondue Dourado*: Dinheiro $8 --> $9, Perda de dinheiro -$2 -> -$3
 + *Jebediah Kerman*: Ganho de Multi 10 --> 8, Chance 1 de 5 --> 1 de 6
 + *Discussão Acalourada*: chance 1 de 2 --> Sempre
 ### Melhorias & Correções
