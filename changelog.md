@@ -2,14 +2,16 @@
 
 # Latest Changes (dev build)
 **(As of 31/01/2025)**
-
 ### Compatibility
 - <ins>***[Talisman](https://github.com/MathIsFun0/Talisman/) is now optional***</ins> but recommended for the xchips and emult sound fx.
 
 *NOTE: If you decide to use Talisman, use v2.0.3. If it's not in the releases section of Talisman, download the source code and use that.*
 - Fixed Patronizing Joker not selecting 5 cards with [Bunco](https://github.com/Firch/Bunco) installed
 - Cards with a rank from [UnStable](https://github.com/kirbio/UnStable) that starts with "T" now work with *Dorkshire Tea/Gold*
-
+### Balance
++ *Clown*: Chips & Chip gain 20 --> 15
++ *Jebediah Kerman*: Mult gain 10 --> 8, Chance 1 in 5 --> 1 in 6
++ *Pertinent Argument*: chance 1 in 2 --> Always
 ### Polish & Fixes
 - Artwork polish: *Nobility* and *Gold Fondue*
 - *Clay Shooting* artwork polish
