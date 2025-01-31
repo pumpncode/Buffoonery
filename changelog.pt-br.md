@@ -1,8 +1,7 @@
-<sup>Supported languages:</sup> [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.md) [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.pt-br.md) 
+<sup>Supported languages:</sup> [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/changelog.md) [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/changelog.pt-br.md) 
 
-# Últimas Mudanças (versão de desenvolvimento)
-**(Atualizado em 31/01/2025)**
-
+# v1.1.2
+**REQUISITOS: STEAMODDED 1.0.0~ALPHA-1321c OU MAIS RECENTE**
 ### Compatibilidade
 + <ins>***O [Talisman](https://github.com/MathIsFun0/Talisman/) é opcional agora***</ins>, porém recomendado por conta dos sons de XFichas e EMulti.
 
