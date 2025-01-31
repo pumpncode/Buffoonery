@@ -37,8 +37,9 @@ SMODS.Enhancement {  -- Royal Porcelain Cards
 			if card.ability.extra.played > card.ability.extra.limit then
 				card.ability.extra.marked = true
 			end
-			buf.xchips(card.ability.extra.Xchips, context.blueprint_card or card)
-			return
+			return {
+				xchips = card.ability.extra.Xchips
+			}
 		end
 		
 		if context.final_scoring_step and card.ability.extra.marked then

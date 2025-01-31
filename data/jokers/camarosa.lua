@@ -26,8 +26,9 @@ SMODS.Joker {
 	
     calculate = function(self, card, context)
         if context.joker_main then
-            buf.emult(card.ability.extra.emult, context.blueprint_card or card)
-			return
+            return {
+				emult = card.ability.extra.emult
+			}
         end
         if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card then
             if pseudorandom('camarosa') < G.GAME.probabilities.normal / card.ability.extra.odds then

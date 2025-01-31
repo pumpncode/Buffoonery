@@ -60,53 +60,15 @@ buf.compat = {
 	talisman = (SMODS.Mods['Talisman'] or {}).can_load,
 }
 
-local soundfx_chip = 'chips1'
-local soundfx_mult = 'multhit2'
-if buf.compat.talisman then soundfx_chip = 'talisman_xchip' end
-if buf.compat.talisman then soundfx_mult = 'talisman_emult' end
+if not buf.compat.talisman then
+	NFS.load(Buffoonery.path .. 'notalisman.lua')()
+end
 
 -- FUNCTIONS --
-
 local VanillaHighlight = CardArea.add_to_highlighted
 
-function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks this joker, so I made a separate function.
+function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks Patronizing Joker, so I made a separate function.
     VanillaHighlight(G.hand, card, silent)
-end
-
-function buf.xchips(amt, card)
-  hand_chips = mod_chips(hand_chips * (amt or 1))
-  update_hand_text(
-    { delay = 0 },
-    { chips = hand_chips }
-  )
-
-  SMODS.calculate_effect({
-    message = localize {
-      type = 'variable',
-      key = 'a_buf_xchips',
-      vars = { (amt or 1) }
-    },
-    colour = G.C.CHIPS,
-    sound = soundfx_chip
-  }, card)
-end
-
-function buf.emult(amt, card)
-  mult = mod_mult(mult ^ (amt or 1))
-  update_hand_text(
-    { delay = 0 },
-    { mult = mult }
-  )
-
-  SMODS.calculate_effect({
-    message = localize {
-      type = 'variable',
-      key = 'a_buf_emult',
-      vars = { (amt or 1) }
-    },
-    colour = G.C.MULT,
-    sound = soundfx_mult
-  }, card)
 end
 
 -- CONFIG --

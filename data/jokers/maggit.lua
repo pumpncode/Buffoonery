@@ -75,8 +75,9 @@ SMODS.Joker{
 				end
 			end
 			if check then
-				buf.emult(card.ability.extra.Emult, context.blueprint_card or card)
-				return
+				return {
+					emult = card.ability.extra.Emult
+				}
 			end
 		end
 	end

@@ -24,8 +24,9 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            buf.xchips(card.ability.extra.Xchip, context.blueprint_card or card)
-			return
+			return {
+				xchips = card.ability.extra.Xchip
+			}
         end
 		if context.first_hand_drawn and not context.blueprint then
 		G.E_MANAGER:add_event(Event({

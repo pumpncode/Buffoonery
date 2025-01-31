@@ -25,8 +25,10 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            buf.xchips(card.ability.extra.Xchip, context.blueprint_card or card)
-        end
+			return {
+				xchips = card.ability.extra.Xchip
+			}
+		end
     end,
 	update = function(self, card)
         if G.playing_cards ~= nil then
