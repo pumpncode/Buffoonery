@@ -15,7 +15,7 @@ SMODS.Joker {
     blueprint_compat = true,
 	no_pool_flag = 'kerman_went_boom',
     config = {
-        extra = { mult = 0, gain = 10, odds = 5 },
+        extra = { mult = 0, gain = 8, odds = 6 },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_kerman'},
     loc_vars = function(card, info_queue, card)
