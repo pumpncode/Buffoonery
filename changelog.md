@@ -1,7 +1,7 @@
 <sup>Supported languages:</sup> [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.pt-br.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/dev/changelog.md)
 
-# Latest Changes (dev build)
-**(As of 31/01/2025)**
+# v1.1.2
+**REQUIREMENTS: STEAMODDED 1.0.0~ALPHA-1321c OR NEWER
 ### Compatibility
 - <ins>***[Talisman](https://github.com/MathIsFun0/Talisman/) is now optional***</ins> but recommended for the xchips and emult sound fx.
 
