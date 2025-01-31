@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { chip_mod = 20, jokers = 0, chips = 20, check = false },
+        extra = { chip_mod = 20, jokers = 0, chips = 0, check = false },
 		numetal = true
     },
     loc_txt = {set = 'Joker', key = 'j_buf_clown'},
