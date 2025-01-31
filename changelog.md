@@ -9,8 +9,9 @@
 - Fixed Patronizing Joker not selecting 5 cards with [Bunco](https://github.com/Firch/Bunco) installed
 - Cards with a rank from [UnStable](https://github.com/kirbio/UnStable) that starts with "T" now work with *Dorkshire Tea/Gold*
 ### Balance
-+ *Clown*: Chips & Chip gain 20 --> 15
-+ *Jebediah Kerman*: Mult gain 10 --> 8, Chance 1 in 5 --> 1 in 6
++ *Clown*: Chips & Chip gain 20(+20) --> 15(+15)
++ *Gold Fondue*: Gold $8 --> $9, Gold loss -$2 -> -$3
++ *Jebediah Kerman*: Mult gain +10 --> +8, Chance 1 in 5 --> 1 in 6
 + *Pertinent Argument*: chance 1 in 2 --> Always
 ### Polish & Fixes
 - Artwork polish: *Nobility* and *Gold Fondue*
