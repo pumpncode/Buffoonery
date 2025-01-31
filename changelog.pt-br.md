@@ -9,8 +9,11 @@
 *OBS: Se você decidir usar o Talisman, use a versão 2.0.3. Se não estiver na seção de "releases" do repositório do Talisman, baixe o código-fonte e use ele.*
 + Corrigido o Curinga Intrometido não selecionando 5 cartas quando o [Bunco](https://github.com/Firch/Bunco) estava instalado
 + Cartas com alguma classe do [UnStable](https://github.com/kirbio/UnStable) que começam com "T" (em inglês) agora funcionam com *Chá Dorkshire / Dorkshire Gold*
-
-### Polish & Fixes
+### Balance
++ *Palhaço*: Fichas & Ganho de Fichas 20 --> 15
++ *Jebediah Kerman*: Ganho de Multi 10 --> 8, Chance 1 de 5 --> 1 de 6
++ *Discussão Acalourada*: chance 1 de 2 --> Sempre
+### Melhorias & Correções
 + Melhoria de arte: *Nobreza* e *Fondue Dourado* 
 + Melhoria de arte: *Tiro ao Prato*
 + Melhora na descrição da *Roleta Russa*
@@ -47,7 +50,7 @@
 + Mostrar dicas (créditos de arte e explicações de novas mecânicas) **-- Padrão: ativado**  
 + Modo de desempenho para *Memory Card* **-- Padrão: desativado**  
 
-###  & Correções  
+### Melhorias & Correções  
 + Alterações estéticas nas descrições de alguns curingas para se alinharem melhor ao estilo do jogo original  
 + Ajustada a descrição de *Memory Card* para maior compatibilidade com os ícones de naipe de [Bunco's](https://github.com/Firch/Bunco)  
 + Compatibilidade da descrição de *Memory Card* com os rankings de [UnStable's](https://github.com/kirbio/UnStable)  
@@ -70,7 +73,7 @@
 + Roleta Russa (Incomum)  
 + Prisma Abissal (Raro)  
 
-###  & Correções  
+### Melhorias & Correções  
 + Tradução completa de todo o texto do mod para português do Brasil  
 + Atualizada a descrição do mod  
 + Adicionado ícone do mod  
@@ -102,7 +105,7 @@
 - JimboStation  
 - Galopeiro  
 
-### Correções &   
+### Correções & Melhorias
 - Corrigido *Memory Card* travando o jogo ao converter mais cartas que o tamanho da mão  
 - Descrição de *Maggit* mais concisa  
 - Melhor codificação de cores na descrição de *Rerrolin'*  
@@ -116,7 +119,7 @@
 - Curinga Intrometido (Raro)  
 - Maggit (Lendário)  
 
-### Correções &   
+### Correções & Melhorias
 - *Curinga Folgado* agora não pode ser comprado se o jogador tiver menos de 2 espaços livres  
 - Compatibilidade de *Voucher de Saque* com *Talisman*  
 - *Cinco Dedos* agora aceita mãos contendo múltiplos de 5 curingas (5, 10, 15, 20...)  
@@ -138,7 +141,7 @@
 - Curinga Folgado (Comum)  
 - Discussão Acalourada (Incomum)  
 
-### Correções &   
+### Correções & Melhorias
 - Adicionados créditos originais de arte às cartas com arte criada por terceiros e editadas por mim (*Korny* e *Rerrolin'*)  
 - Atualizada a descrição de *Rerrolin'* para incluir a contagem de rerolls  
 - Melhorada a arte de *Rerrolin'*, tornando o dedo mínimo mais arredondado  
