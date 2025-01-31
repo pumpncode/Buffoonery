@@ -75,15 +75,15 @@ return {
 			},
 			j_buf_dorkshire = {
 				name = "Dorkshire Tea",
-				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
-						"become {C:attention}Porcelain Cards{} before",
+				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{} become",
+						"{C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
 						}
 			},
 			j_buf_dorkshire_alt = {
 				name = "Dorkshire Tea",
-				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}21s{} and {C:attention}25s{}",
+				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}12s{}, {C:attention}13s{}, {C:attention}21s{} and {C:attention}25s{}",
 						"become {C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
@@ -91,15 +91,15 @@ return {
 			},
 			j_buf_dorkshire_g = {
 				name = "Dorkshire Gold",
-				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{}",
-						"become {C:buf_spc}Royal Porcelain Cards{} before",
+				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{} become",
+						"{C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
 						}
 			},
 			j_buf_dorkshire_g_alt = {
 				name = "Dorkshire Gold",
-				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}21s{} and {C:attention}25s{}",
+				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}12s{}, {C:attention}13s{}, {C:attention}21s{} and {C:attention}25s{}",
 						"become {C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",

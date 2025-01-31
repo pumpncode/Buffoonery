@@ -30,7 +30,9 @@ SMODS.Joker {
 			local tcards = {}
 			local check = false
 			for k, v in ipairs(context.scoring_hand) do
-				if v:get_id() == 2 or v:get_id() == 3 or v:get_id() == 10 or SMODS.Ranks[v.base.value].key == 'unstb_21' or SMODS.Ranks[v.base.value].key == 'unstb_25' then 
+				if v:get_id() == 2 or v:get_id() == 3 or v:get_id() == 10 or 
+				SMODS.Ranks[v.base.value].key == 'unstb_12' or SMODS.Ranks[v.base.value].key == 'unstb_13' or
+				SMODS.Ranks[v.base.value].key == 'unstb_21' or SMODS.Ranks[v.base.value].key == 'unstb_25' then 
 					check = true
 					tcards[#tcards+1] = v
 					v:set_ability(G.P_CENTERS.m_buf_porcelain_g, nil, true)

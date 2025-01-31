@@ -83,7 +83,7 @@ return {
 			},
 			j_buf_dorkshire_alt = {
 				name = "Chá Dorkshire",
-				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}21{} e {C:attention}25{} jogados",
+				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}12{}, {C:attention}13{}, {C:attention}21{} e {C:attention}25{} jogados",
 						"se tornam {C:attention}Cartas de Porcelana{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
@@ -99,7 +99,7 @@ return {
 			},
 			j_buf_dorkshire_g_alt = {
 				name = "Dorkshire Gold",
-				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}21{} e {C:attention}25{} jogados",
+				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}12{}, {C:attention}13{}, {C:attention}21{} e {C:attention}25{} jogados",
 						"se tornam {C:attention}Cartas de Porcelana Real{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
