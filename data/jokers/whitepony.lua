@@ -37,7 +37,6 @@ SMODS.Joker {
                 card = card
             }
         end
-		if context.after then SMODS.add_card{key = 'j_buf_rerollin'} end
     end
 }
 
