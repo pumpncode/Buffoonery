@@ -31,7 +31,7 @@ SMODS.Joker {
 			card.ability.extra.check = false
 		end
 		
-		if context.selling_self then
+		if context.selling_self or card.getting_sliced then
 			clown_count = -1
 		end
 		
