@@ -86,7 +86,11 @@ SMODS.Joker {
 											any_forced = true
 										end
 									end
-									if not any_forced then 
+									local check = false  -- This prevents forced selection after Patronizing Joker is sold
+									for i = 1, #G.jokers.cards do
+										if G.jokers.cards[i] == card then check = true end
+									end
+									if not any_forced and check then 
 										G.hand:unhighlight_all()
 										
 										local numbers = {}
@@ -122,7 +126,7 @@ SMODS.Joker {
 			)
 		end
 		
-		if context.selling_self or card.getting_sliced then -- DESELECT CARDS WHEN SOLD
+		if context.selling_self or card.getting_sliced or context.end_of_round then -- DESELECT CARDS WHEN SOLD
 			G.E_MANAGER:add_event(Event({
 				func = function() 
 					for k, v in ipairs(G.hand.cards) do
