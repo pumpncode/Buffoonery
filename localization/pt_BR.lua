@@ -19,10 +19,11 @@ return {
 			},
 			j_buf_argument = {
 				name = "Discussão Acalourada",
-				text = {"{C:green}#1# de #2#{} chance de converter",
-						"uma carta não-pontuada em",
-						"uma das pontuadas, caso",
-						"a mão jogada for {C:attention}Dois Pares{}"}  
+				text = {"Converte uma carta",
+						"não-pontuada em uma",
+						"das pontuadas, caso a",
+						"{C:attention}mão de pôquer{} for {C:attention}Dois Pares{}"
+				}  
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",

@@ -15,7 +15,7 @@ SMODS.Joker {
     blueprint_compat = true,
 	no_pool_flag = 'gfondue_licked',
     config = {
-        extra = { gold = 8, gold_loss = 2, },
+        extra = { gold = 9, gold_loss = 3, },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_whitepony'},
     loc_vars = function(self, info_queue, card)

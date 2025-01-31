@@ -19,10 +19,11 @@ return {
 			},
 			j_buf_argument = {
 				name = "Pertinent Argument",
-				text = {"{C:green}#1# in #2#{} chance to convert",
-						"an unscored card into one",
-						"of the scored ones, if",
-						"played hand is a {C:attention}Two Pair{}"}  
+				text = {"Converts an unscored",
+						"card into one of",
+						"the scored ones, if",
+						"{C:attention}poker hand{} is a {C:attention}Two Pair{}"
+				}  
 			},
 			j_buf_blackstallion = {
 				name = "Black Stallion",
