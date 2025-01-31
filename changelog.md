@@ -3,7 +3,21 @@
 # Latest Changes (dev build)
 **(As of 19/01/2025)**
 
+### Compatibility
+- <ins>***[Talisman](https://github.com/MathIsFun0/Talisman/) is now optional***</ins> but recommended for the xchips and emult sound fx.
+
+*NOTE: If you decide to use Talisman, use v2.0.3. If it's not in the releases section of Talisman, download the source code and use that.*
+- Fixed Patronizing Joker not selecting 5 cards with [Bunco](https://github.com/Firch/Bunco) installed
+- Cards with a rank from [UnStable](https://github.com/kirbio/UnStable) that starts with "T" now work with *Dorkshire Tea/Gold*
+
+### Polish & Fixes
 - Artwork polish: *Nobility* and *Gold Fondue*
+- *Clay Shooting* artwork polish
+- *Russian Roulette* description text polish
+- *Patronizing Joker* now Only plays the card selection sound once instead of 5 times
+- Made *Patronizing Joker* deselect cards when sold
+- Added Porcelain Card info to *Porcelain Joker*
+- *Dorkshire Tea/Gold* now only shows the "Tea!" message if the relevant cards are played and only once. 
 
 # v1.1.0
 **REQUIREMENTS: STEAMODDED 1.0.0~ALPHA-1315b OR NEWER *AND* [TALISMAN](https://github.com/MathIsFun0/Talisman/)** 
