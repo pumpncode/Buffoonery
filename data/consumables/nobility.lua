@@ -5,7 +5,7 @@ SMODS.Consumable{
 	key = 'nobility',
 	discovered = true,
 	set_card_type_badge = function(self, card, badges)
-        badges[1] = create_badge(localize("k_tarot_exclaim"), get_type_colour(self or card.config, card), nil, 1.2)
+        badges[1] = create_badge(localize("k_tarot").."!?", get_type_colour(self or card.config, card), nil, 1.2)
     end,
 	config = {extra = {count = 1, royal = 50}},
 	loc_vars = function(self, info_queue, card)
