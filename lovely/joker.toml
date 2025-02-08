@@ -56,3 +56,25 @@ if check then
 	clown_count = clown_count + 1
 end
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+for k, v in pairs(G.GAME.hands) do
+	level_up_hand(self, k, true)
+end
+update_hand_text({sound = 'button', volume = 0.7, pitch = 1.1, delay = 0}, {mult = 0, chips = 0, handname = '', level = ''})
+'''
+position = 'after'
+match_indent = true
+payload = '''
+if G.GAME.pool_flags.kerman_went_boom and not G.GAME.pool_flags.kerman_is_krakened then
+	local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_buf_kerman_spc')
+	_card:add_to_deck()
+	G.jokers:emplace(_card)
+	_card:start_materialize()
+	G.GAME.joker_buffer = 0
+	SMODS.calculate_effect({message = localize('buf_krakened'), colour = G.C.PURPLE}, _card)
+end
+'''

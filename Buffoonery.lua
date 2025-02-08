@@ -105,6 +105,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/fivefingers.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/gfondue.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/camarosa.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/kerman.lua')()  -- (Jebediah Kerman, a.k.a. Jeb)
+NFS.load(Buffoonery.path .. 'data/jokers/special/kerman_spc.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/korny.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
 -- uncommon

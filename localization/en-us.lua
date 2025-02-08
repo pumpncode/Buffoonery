@@ -135,7 +135,17 @@ return {
 				text = {"Gains {C:mult}+#2#{} Mult every time",
 						"any {C:planet}Planet{} card is used",
 						"{C:green}#4# in #3#{} chance to {C:attention}EXPLODE{} on use",
-						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}"
+						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
+						"{C:buf_spc,s:0.7}Scared of singularities{}",
+				}
+			},
+			j_buf_kerman_spc = {
+				name = "Jebediah Reborn",
+				text = {"Gains {C:mult}+#2#{} Mult every time",
+						"any {C:planet}Planet{} card is used",
+						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
+						"{C:buf_spc,s:0.7}Likes hanging around Singularities{}",
+						'{C:inactive,s:0.7}"I am one with the Kraken"{}'
 				}
 			},
 			j_buf_korny = {
@@ -424,6 +434,8 @@ return {
 			buf_gfondue_licked = "Licked!",
 			buf_hit = "Hit!",
 			buf_miss = "Miss!",
+			buf_krakened = "I am Reborn!",
+			buf_supergrade = "HUGE Upgrade!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Ready",
 			buf_Ace = "Ace",

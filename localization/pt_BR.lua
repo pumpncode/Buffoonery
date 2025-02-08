@@ -135,7 +135,17 @@ return {
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
 						"{C:green}#4# de #3#{} chance de {C:attention}EXPLODIR{} no uso",
-						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}"
+						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}",
+						"{C:buf_spc,s:0.7}Tem medo de singularidades{}",
+				}
+			},
+			j_buf_kerman_spc = {
+				name = "Jebediah Renascido",
+				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
+						"uma carta de {C:planet}Planeta{} é usada",
+						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}",
+						"{C:buf_spc,s:0.7}Gosta de ficar perto de singularidades{}",
+						'{C:inactive,s:0.7}"Eu e o Kraken somos o mesmo"{}'
 				}
 			},
 			j_buf_korny = {
@@ -424,6 +434,8 @@ return {
 			buf_gfondue_licked = "Lambeu!",
 			buf_hit = "Acertou!",
 			buf_miss = "Errrouuu!",
+			buf_krakened = "Eu Renasci!",
+			buf_supergrade = "GRANDE Melhoria!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Pronto",
 			buf_Ace = "Ás",
