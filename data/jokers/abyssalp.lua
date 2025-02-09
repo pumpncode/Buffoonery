@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-		extra = { jokies = {}, done = false, count = 0, neg = 0}
+		extra = { jokies = {}, abils = {}, done = false, count = 0, neg = 0}
     },
     loc_txt = {set = 'Joker', key = 'j_buf_abyssalp'},
 	loc_vars = function(self, info_queue, card)
@@ -33,6 +33,7 @@ SMODS.Joker {
 		for i = 1, #G.jokers.cards do
 			_card = G.jokers.cards[i]
 			card.ability.extra.jokies[i] = _card
+			card.ability.extra.abils[i] = _card.ability
 		end
 		for i = 1, #card.ability.extra.jokies do
 			if not card.ability.extra.jokies[i].ability.eternal and not card.ability.extra.jokies[i].getting_sliced then 
@@ -79,16 +80,17 @@ SMODS.Joker {
                     func = function() 
                         for i = 1, #card.ability.extra.jokies do
 							if jcards + buffer < limit then
-								local card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key, 'mag')
+								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key, 'mag')
+								_card.ability = card.ability.extra.abils[i]
 								if neg > 0 then
-									card:set_edition({negative = true})
+									_card:set_edition({negative = true})
 									neg = neg - 1
 								else
-									card:set_edition()
+									_card:set_edition()
 								end
-								card:add_to_deck()
-								G.jokers:emplace(card)
-								card:start_materialize({HEX("9a45f5")}, nil, 1.6)
+								_card:add_to_deck()
+								G.jokers:emplace(_card)
+								_card:start_materialize({HEX("9a45f5")}, nil, 1.6)
 								G.GAME.joker_buffer = 0
 								jcards = jcards + 1
 							end

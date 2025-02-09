@@ -47,7 +47,7 @@ SMODS.Joker {
 		if card.ability.extra.jokers < clown_count and card.ability.extra.check then
 			SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.BLUE}, card)
 			card.ability.extra.jokers = clown_count
-			card.ability.extra.chips = 20 + (card.ability.extra.chip_mod * card.ability.extra.jokers)
+			card.ability.extra.chips = 15 + (card.ability.extra.chip_mod * card.ability.extra.jokers)
 		end
     end,
 }

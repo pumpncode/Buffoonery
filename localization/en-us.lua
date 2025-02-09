@@ -3,7 +3,7 @@ return {
         Joker = {
 			j_buf_abyssalp = {
 				name = "Abyssal Prism",
-				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}banish{} all",
+				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}exile{} all",
 						"others. One becomes {C:dark_edition}Negative{} each 3",
 						"turns. Sell this to return jokers",
 						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}",
@@ -302,11 +302,12 @@ return {
 				}
 			},
 			banish_info = {
-				name = "Banish",
+				name = "Exile",
 				text = {
-					"Banished Jokers",
-					"Return to their",
-					"{C:attention}base{} state"
+					"Exiled Jokers are",
+					"C:attention}temporarily{}",
+					"destroyed and keep",
+					"all their upgrades"
 				}
 			},
 			porc_info = {
@@ -397,7 +398,7 @@ return {
 			-------- CONFIG --------
 			buf_cf_info_info = {
 				"Precisely: artist credits, special rarity",
-				"tooltips and 'Banish' mechanic tooltip",
+				"tooltips and 'Exile' mechanic tooltip",
 				"Restart required to take effect",
 			},
 			buf_cf_perf_info = {

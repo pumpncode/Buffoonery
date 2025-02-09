@@ -304,9 +304,10 @@ return {
 			banish_info = {
 				name = "Exílio",
 				text = {
-					"Curingas exilados",
-					"retornam à sua",
-					"forma {C:attention}base{}"
+					"Curingas exilados são",
+					"{C:attention}temporariamente{}",
+					"removidos e mantêm",
+					"suas melhorias"
 				}
 			},
 			porc_info = {
