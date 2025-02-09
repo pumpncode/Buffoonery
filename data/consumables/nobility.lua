@@ -27,7 +27,9 @@ SMODS.Consumable{
 			play_sound('tarot1')
 			card:juice_up(0.3, 0.5)
 			return true end }))
-		if G.GAME.dollars >= card.ability.extra.royal then
+		local gmoney = G.GAME.dollars
+		if buf.compat.talisman then gmoney = to_number(gmoney) end
+		if gmoney >= card.ability.extra.royal then
 			conversionTarot(G.hand.highlighted, 'm_buf_porcelain_g')
 		else
 			conversionTarot(G.hand.highlighted, 'm_buf_porcelain')
