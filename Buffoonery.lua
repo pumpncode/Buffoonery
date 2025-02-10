@@ -171,5 +171,6 @@ SMODS.Sound({key = 'phase', path = 'phase.ogg'})
 SMODS.Sound({key = 'explosion', path = 'explosion.ogg'})
 SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
+SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 
 ------ CHANGELOG MOVED TO SEPARATE .md FILE ------
