@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-        extra = { gold = 8, aim = 0, success = false, once = 0, add_check = nil },
+        extra = { gold = 8, aim = 0, success = false, once = 0, add_check = nil, dojiggle = true },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_clays'},
     loc_vars = function(self, info_queue, card)
@@ -35,13 +35,19 @@ SMODS.Joker {
 			card.ability.extra.once = 1 
 			card.ability.extra.aim = math.random(1, G.GAME.current_round.hands_left)
 			SMODS.calculate_effect({message = localize('k_reset'), colour = G.C.FILTER}, card)  -- resets when added to deck
-			if G.STATE == G.STATES.SHOP or G.STATE == G.STATES.BLIND_SELECT then card.ability.extra.add_check = true end -- This will make the next reset be skipped if the card was not added in-round
-		end
-		
+			if G.STATE == G.STATES.SHOP or G.STATE == G.STATES.BLIND_SELECT then 
+				card.ability.extra.add_check = true -- This will make the next reset be skipped if the card was not added in-round
+			end
+		end	
 	end,
 	
     calculate = function(self, card, context)
+		local eval = function() 
+		return G.GAME.current_round.hands_played == (card.ability.extra.aim - 1) and card.ability.extra.dojiggle end
+		juice_card_until(card, eval, true) --will jiggle when the relevant hand is current
+	
         if context.setting_blind and not card.getting_sliced then
+			card.ability.extra.dojiggle = true
 			if card.ability.extra.add_check then  -- skips first reset after added to deck
 				card.ability.extra.add_check = false  -- useful for when the card is added in the shop
 			else
@@ -54,6 +60,7 @@ SMODS.Joker {
 			end
 		end
 		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card then
+			card.ability.extra.dojiggle = false
 			if card.ability.extra.aim == G.GAME.current_round.hands_played then
 				card.ability.extra.success = true
 				card.ability.extra.add_check = false  -- prevents skipping next reset if added mid-round.
