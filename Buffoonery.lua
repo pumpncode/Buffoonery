@@ -110,7 +110,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/clays.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/fivefingers.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/gfondue.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/camarosa.lua')()
--- NFS.load(Buffoonery.path .. 'data/jokers/kerman.lua')()  -- (Jebediah Kerman, a.k.a. Jeb)
+NFS.load(Buffoonery.path .. 'data/jokers/kerman.lua')()  -- (Jebediah Kerman, a.k.a. Jeb)
 NFS.load(Buffoonery.path .. 'data/jokers/special/kerman_spc.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/korny.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
@@ -127,6 +127,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()  -- [SPEC
 NFS.load(Buffoonery.path .. 'data/jokers/abyssalp.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/dorkshire.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()  -- [SPECIAL]
+NFS.load(Buffoonery.path .. 'data/jokers/lemmesolo.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/memcard.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')()   -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/patronizing.lua')()
@@ -178,99 +179,222 @@ SMODS.Sound({key = 'phase', path = 'phase.ogg'})
 SMODS.Sound({key = 'explosion', path = 'explosion.ogg'})
 SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
+SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 
 ------ CHANGELOG MOVED TO SEPARATE .md FILE ------
 -- fixed clown upgrading by 20 the forst time
 -- abyssal prism no longer strips upgrades TODO: prevent eternal creation
 -- added Jeb reborn
+-- fixed clays not updating when added mid-round
+
+-- TODO: Jeb art: venus, earth, jupiter, saturn, uranus, neptune
+--		 lemmesolo art
+-- 		 8 more Special Jokers
+--		 sayajimbo art
+-- curr spc: Kerman, Dork, WP, Memcard (4/12)
+-- planned: roul, patron, saya, lmsh
+
+-- patron: if joker contains knife/dagger, transform
+
 SMODS.Joker {
-    key = "kerman",
-    name = "Jebediah Kerman",
-    atlas = 'kermanatlas',
+    key = "sayajimbo",
+    name = "Sayajimbo",
+    atlas = 'buf_jokers',
     pos = {
-        x = 0,
-        y = 0,
+        x = 7,
+        y = 3,
     },
-    rarity = 1,
-    cost = 4,
+    rarity = 2,
+    cost = 6,
     unlocked = true,
     discovered = true,
-    eternal_compat = false,
+    eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = true,
-	no_pool_flag = 'kerman_went_boom',
     config = {
-        extra = { mult = 0, gain = 8, odds = 6 },
+        extra = { chips = 20, mult = 25, xmult = 3, emult = 1.4, curr = 0, need = 1, hand = 'Pair', level = 0},
+		check1 = true
     },
-	sprite = {
-		['Default'] = 0,
-		['Mercury'] = 1,
-		['Venus'] = 2,
-		['Earth'] =3,
-		['Mars'] = 4,
-		['Jupiter'] = 5,
-		['Saturn'] = 6,
-		['Uranus'] = 7,
-		['Neptune'] = 8,
-		['Pluto'] = 9,
-	},
-    loc_txt = {set = 'Joker', key = 'j_buf_kerman'},
-    loc_vars = function(card, info_queue, card)
-        return {
-            vars = {card.ability.extra.mult, card.ability.extra.gain, card.ability.extra.odds, (G.GAME.probabilities.normal or 1)}
-        }
+    loc_txt = {set = 'Joker', key = 'j_buf_sayajimbo'},
+    loc_vars = function(self, info_queue, card)
+		if card.ability.extra.level ~= 0 then
+			return {
+				key = self.key..'_s'..tostring(card.ability.extra.level),
+				vars = {
+					card.ability.extra.mult, card.ability.extra.xmult, card.ability.extra.emult, 
+					card.ability.extra.curr, card.ability.extra.need, localize(card.ability.extra.hand, 'poker_hands')
+				}
+			}
+		else
+			return {
+				vars = {
+					card.ability.extra.chips, localize(card.ability.extra.hand, 'poker_hands')
+				}
+			}
+		end
     end,
-	add_to_deck = function(self,card,context)
-		card.config.center.pos.x = card.config.center.sprite['Default'] -- Set to default sprite when added to deck, just in case
-	end,
-    calculate = function(card, card, context)
+	update = function(self, card)
+		if card.ability.check1 then
+			local _poker_hands = {}
+				for k, v in pairs(G.GAME.hands) do
+					if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
+				end
+			card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('ssj'))
+			card.ability.check1 = nil
+		end
+    end,
+    calculate = function(self, card, context)
         if context.joker_main then
-            return {
-                mult = card.ability.extra.mult
-            }
+			local level = {
+				[0] = {chips = card.ability.extra.chips},
+				[1] = {mult = card.ability.extra.mult},
+				[2] = {xmult = card.ability.extra.xmult},
+				[3] = {emult = card.ability.extra.emult}
+			}
+            return level[card.ability.extra.level]
         end
-        if context.using_consumeable and not context.blueprint and (context.consumeable.ability.set == 'Planet' or context.consumeable.ability.name == 'Black Hole') then      
-			if pseudorandom("kerman") < G.GAME.probabilities.normal/card.ability.extra.odds or context.consumeable.ability.name == 'Black Hole' then
-				G.E_MANAGER:add_event(Event({
-                    func = function()
-                        card.T.r = -0.2
-                        card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
-                        card.children.center.pinch.x = true
-						if context.consumeable.ability.set == 'Planet' then
-							SMODS.calculate_effect({message = localize('buf_blowup'), colour = G.C.FILTER}, card)  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
-							play_sound('buf_explosion')
-						else
-							SMODS.calculate_effect({message = localize('buf_prism_eor1'), colour = G.C.PURPLE}, card)
-							play_sound('buf_phase')
-						end
-                        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-                            func = function()
-                                    G.jokers:remove_card(card)
-                                    card:remove()
-                                    card = nil
-                                    return true; end})) 
-                        return true
-                    end
-                }))
-				G.GAME.pool_flags.kerman_went_boom = true
-				G.GAME.pool_flags.kermans_mult = card.ability.extra.mult -- This mult is carried over to Jebediah Reborn and reset every run
-			else
-				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
-				G.E_MANAGER:add_event(Event({
-					func = function()
-					G.E_MANAGER:add_event(Event({
-						func = function()
-						card:juice_up(1, 0.5)
-						card.config.center.pos.x = card.config.center.sprite[context.consumeable.ability.name] or card.config.center.sprite['Default']
-					return true end}))
-					SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.MULT}, card)
-					return true
-					end}))
-				return
+		if context.after and context.scoring_name == card.ability.extra.hand then
+		card.ability.extra.curr = card.ability.extra.curr + 1
+			if card.ability.extra.curr >= card.ability.extra.need then
+				card.ability.extra.curr = 0
+				card.ability.extra.need = card.ability.extra.need + 2
+				local _poker_hands = {}
+					for k, v in pairs(G.GAME.hands) do
+						if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
+					end
+				card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('ssj'))
+				card.ability.extra.level = card.ability.extra.level + 1
+				return {
+					message = localize('k_upgrade_ex'),
+					colour = G.C.FILTER
+				}
 			end
-        end
+		end
     end
+}
+
+SMODS.Joker {
+    key = "cotom",
+    name = "COTOM",
+    atlas = 'buf_jokers',
+    pos = {
+        x = 7,
+        y = 3,
+    },
+    rarity = 2,
+    cost = 7,
+    unlocked = true,
+    discovered = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    blueprint_compat = true,
+    config = {
+        extra = { check = true, mult_amount = 0, mult_joker = nil },
+    },
+    loc_txt = {set = 'Joker', key = 'j_buf_cotom'},
+    calculate = function(self, card, context)  -- BEWARE: JANKY CODE BELOW!!!!1!11
+		local origCalcIndiv = SMODS.calculate_individual_effect
+		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
+			origCalcIndiv(effect, scored_card, key, amount, from_edition)
+			if scored_card.area ~= G.play then  -- prevents playing cards from interfering, eg. Mult cards
+				if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and amount then
+					if from_edition then  -- if the scored joker has an edition that adds mult, add the amount to calculation
+						card.ability.extra.mult_amount = amount * 5
+					elseif card.ability.extra.check and card.ability.extra.mult_amount ~= nil then
+						card.ability.extra.mult_amount = (card.ability.extra.mult_amount) + amount * 5
+						card.ability.extra.check = false
+					end
+				end
+			end
+		end
+	
+        if context.before and not card.getting_sliced then  -- switch to modified scoring func before scoring
+			if not context.blueprint then
+				SMODS.calculate_individual_effect = moddedCalcIndiv
+			end
+		end
+		
+		if context.joker_main and not card.getting_sliced then
+			return {
+				chips = card.ability.extra.mult_amount
+			}
+        end
+		
+		if context.after and not context.blueprint then  -- go back to original func at EoR
+			SMODS.calculate_individual_effect = origCalcIndiv
+			card.ability.extra.check = true
+			card.ability.extra.mult_amount = 0
+			card.ability.extra.mult_joker = nil
+		end
+    end,
+}
+
+SMODS.Joker {
+    key = "supportive",
+    name = "Supportive Joker",
+    atlas = 'buf_special',
+    pos = {
+        x = 1,
+        y = 0,
+    },
+    rarity = "buf_spc",
+    cost = 6,
+    unlocked = true,
+    discovered = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    blueprint_compat = true,
+	in_pool = false,
+    config = {
+        extra = { xchips = 4, peek = {}, scry = false },
+    },
+    loc_txt = {set = 'Joker', key = 'j_buf_supportive'},
+    loc_vars = function(self, info_queue, card)
+		if card.ability.extra.scry == true then
+			return {
+				key = self.key .. '_alt',
+				vars = {card.ability.extra.peek[1], card.ability.extra.peek[2], card.ability.extra.peek[3], card.ability.extra.xchips}
+			}
+		else
+			return { vars = { card.ability.extra.xchips } }
+		end
+    end,
+	update = function(self, card, dt)
+		for i = 1, 3 do
+			card.ability.extra.peek[i] = G.deck.cards[#G.deck.cards-(i-1)].base.name
+		end
+	end,
+	add_to_deck = function(self, card, context)
+		if G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.HAND_PLAYED then
+			card.ability.extra.scry = true
+		end
+	end,
+    calculate = function(self, card, context)
+		if context.setting_blind then
+			card.ability.extra.scry = true
+			for i = 1, 3 do
+				card.ability.extra.peek[i] = G.deck.cards[#G.deck.cards-(i-1)].base.name
+			end
+		end
+        if context.joker_main then
+			return {
+				xchips = card.ability.extra.xchips
+			}
+        end
+		if context.end_of_round then
+			card.ability.extra.scry = false
+		end
+    end,
+	
+	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
+	inject = function(self)
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		else
+			SMODS.Joker.super.inject(self)
+		end
+	end
 }
 
 --DONE

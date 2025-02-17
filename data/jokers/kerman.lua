@@ -28,7 +28,7 @@ SMODS.Joker {
 		['Uranus'] = 7,
 		['Neptune'] = 8,
 		['Pluto'] = 9,
-	}
+	},
     loc_txt = {set = 'Joker', key = 'j_buf_kerman'},
     loc_vars = function(card, info_queue, card)
         return {
@@ -36,7 +36,7 @@ SMODS.Joker {
         }
     end,
 	add_to_deck = function(self,card,context)
-		card.config.center.pos.x = card.ability.sprite['Default'] -- Set to default sprite when added to deck, just in case
+		card.config.center.pos.x = card.config.center.sprite['Default'] -- Set to default sprite when added to deck, just in case
 	end,
     calculate = function(card, card, context)
         if context.joker_main then
@@ -73,8 +73,12 @@ SMODS.Joker {
 			else
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
 				G.E_MANAGER:add_event(Event({
-					func = function() 
-					-- card.config.center.pos.x = card.ability.sprite[context.consumeable.ability.name]
+					func = function()
+					G.E_MANAGER:add_event(Event({
+						func = function()
+						card:juice_up(1, 0.5)
+						card.config.center.pos.x = card.config.center.sprite[context.consumeable.ability.name] or card.config.center.sprite['Default']
+					return true end}))
 					SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.MULT}, card)
 					return true
 					end}))
@@ -83,5 +87,3 @@ SMODS.Joker {
         end
     end
 }
-
---DONE

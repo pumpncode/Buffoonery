@@ -1,6 +1,14 @@
 return {
     descriptions = {
         Joker = {
+			j_buf_cotom = {
+				name = "COTOM",
+				text = {"This Joker gives {C:chips}Chips{} equal to",
+						"5X the {C:mult}Mult{} given by the {C:attention}first{}",
+						"{C:attention}scoring Joker{} to the right",
+						"{C:inactive}(If possible){}"
+				}
+			},
 			j_buf_abyssalp = {
 				name = "Abyssal Prism",
 				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}exile{} all",
@@ -24,13 +32,6 @@ return {
 						"the scored ones, if",
 						"{C:attention}poker hand{} is a {C:attention}Two Pair{}"
 				}  
-			},
-			j_buf_blackstallion = {
-				name = "Black Stallion",
-				text = {"{C:mult}+#1#{} Mult",
-						"Doubles",
-						"each {C:attention}Ante{}"
-				}
 			},
 			j_buf_cashout = {
 				name = "Cashout Voucher",
@@ -139,7 +140,7 @@ return {
 						"{C:buf_spc,s:0.7}Scared of singularities{}",
 				}
 			},
-			j_buf_kerman_spc = {
+			j_buf_kerman_spc = { -- Special (Jebediah Kerman)
 				name = "Jebediah Reborn",
 				text = {"Gains {C:mult}+#2#{} Mult every time",
 						"any {C:planet}Planet{} card is used",
@@ -162,6 +163,15 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
 					"Occupies 2 slots",
+				},
+			},
+			j_buf_lemmesolo = { 
+				name = "Let Me Solo Her",
+				text = {
+					"{C:mult}+#1#{} Mult, {C:mult}debuffed{} if not alone",
+					"When a {C:attention}Boss Blind{} is defeated,",
+					"create #2# random Jokers with at",
+					"least #3# {C:mult}Rares{} and destroy this one",
 				},
 			},
 			j_buf_maggit = { 
@@ -192,7 +202,7 @@ return {
 						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
 						}
 			},
-			j_buf_dxmemcard = {
+			j_buf_dxmemcard = { -- Special (Memory Card)
 				name = "Deluxe Memory Card",
 				text = {"Memorizes the {C:attention}first{} scored card each {C:buf_spc}hand{}",  
 						"up to {C:buf_spc}16{} times. Sell to convert a card in",
@@ -205,6 +215,22 @@ return {
 				text = {"{X:chips,C:white}X#1#{} Chips",
 						"{C:attention}Forces{} 5 cards to",
 						"always be {C:attention}selected{}"
+				}
+			},
+			j_buf_supportive = { -- Special (Patronizing Joker)
+				name = "Supportive Joker", 
+				text = {"{X:chips,C:white}X#1#{} Chips",
+						"Tells you the top",
+						"3 cards in deck",
+				}
+			},
+			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
+				name = "Supportive Joker", 
+				text = {"{X:chips,C:white}X#4#{} Chips, tells you the",
+						"top 3 cards in deck",
+						"{C:inactive,s:0.6}#1#{}",
+						"{C:inactive,s:0.6}#2#{}",
+						"{C:inactive,s:0.6}#3#{}",
 				}
 			},
 			j_buf_porcelainj = {
@@ -231,13 +257,51 @@ return {
 						"{C:inactive,s:0.7}(Chance increases each round)"
 				}
 			},
+			j_buf_sayajimbo = {
+				name = "Sayajimbo",
+				text = {"{C:chips}+#1#{} Chips",
+						"Play a {C:attention}#2#{}",
+						"to {C:attention}transform{}",
+						"{C:inactive,s:0.7}Hand changes each level{}",
+						"{C:inactive,s:0.7}and is never High Card{}"
+				}
+			},
+			j_buf_sayajimbo_s1 = {
+				name = "Super Sayajimbo",
+				text = {"{C:mult}+#1#{} Mult",
+						"Play a {C:attention}#6#{}",
+						"to {C:attention}transform{}",
+						"{C:inactive}(#4#/#5# needed){}",
+						"{C:inactive,s:0.7}Hand changes each level{}"
+				}
+			},
+			j_buf_sayajimbo_s2 = {
+				name = "Super Sayajimbo 2",
+				text = {"{X:mult,C:white}X#2#{} Mult",
+						"Play a {C:attention}#6#{}",
+						"to {C:attention}transform{}",
+						"{C:inactive}(#4#/#5# needed){}",
+						"{C:inactive,s:0.7}Hand changes each level{}"
+				}
+			},
+			j_buf_sayajimbo_s3 = {
+				name = "Super Sayajimbo 3",
+				text = {"{X:dark_edition,C:white}^#3#{} Mult"}
+			},
 			j_buf_whitepony = {
 				name = "White Pony",
 				text = {"{C:mult}+#1#{} Mult",
 						"Doubles",
 						"each {C:attention}Ante{}"
 				}
-			}, 
+			},
+			j_buf_blackstallion = { -- Special (White Pony)
+				name = "Black Stallion",
+				text = {"{C:mult}+#1#{} Mult",
+						"Doubles",
+						"each {C:attention}Ante{}"
+				}
+			},
         },
         Back = {
 			b_buf_jstation = {
