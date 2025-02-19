@@ -80,7 +80,7 @@ SMODS.Joker {
                     func = function() 
                         for i = 1, #card.ability.extra.jokies do
 							if jcards + buffer < limit then
-								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key, 'mag')
+								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key)
 								_card.ability = card.ability.extra.abils[i]
 								if neg > 0 then
 									_card:set_edition({negative = true})

@@ -29,42 +29,43 @@ SMODS.Joker {
 			}
         end
 		if context.first_hand_drawn and not context.blueprint then
-		G.E_MANAGER:add_event(Event({
-		    func = function() 
-				card:juice_up(0.8, 0.5)
-				local any_forced = nil
-				for k, v in ipairs(G.hand.cards) do
-					if v.ability.forced_selection then
-						any_forced = true
+			G.E_MANAGER:add_event(Event({
+				func = function() 
+					card:juice_up(0.8, 0.5)
+					local any_forced = nil
+					for k, v in ipairs(G.hand.cards) do
+						if v.ability.forced_selection then
+							any_forced = true
+						end
 					end
+					if not any_forced then 
+						G.hand:unhighlight_all()
+						
+						local numbers = {}
+						for i = 1, #G.hand.cards do
+							numbers[i] = i
+						end
+						
+						for i = #numbers, 2, -1 do
+							local j = math.random(1, i)
+							numbers[i], numbers[j] = numbers[j], numbers[i]
+						end
+						
+						for i = 6, #numbers do
+							numbers[i] = nil
+						end
+						
+						for i = 1, #numbers do
+							local forced_card = G.hand.cards[numbers[i]]
+							local shutup = true
+							if i == 5 then shutup = false end
+							forced_card.ability.forced_selection = true
+							buf_add_to_highlighted(forced_card, shutup)  -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks this joker, so I made a separate function.
+						end
+					end
+					return true
 				end
-				if not any_forced then 
-					G.hand:unhighlight_all()
-					
-					local numbers = {}
-					for i = 1, #G.hand.cards do
-						numbers[i] = i
-					end
-					
-					for i = #numbers, 2, -1 do
-						local j = math.random(1, i)
-						numbers[i], numbers[j] = numbers[j], numbers[i]
-					end
-					
-					for i = 6, #numbers do
-						numbers[i] = nil
-					end
-					
-					for i = 1, #numbers do
-						local forced_card = G.hand.cards[numbers[i]]
-						local shutup = true
-						if i == 5 then shutup = false end
-						forced_card.ability.forced_selection = true
-						buf_add_to_highlighted(forced_card, shutup)  -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks this joker, so I made a separate function.
-					end
-				end
-				return true
-			end}))
+			}))
 		end
 		
 		if (context.after or context.pre_discard) and #G.hand.cards > 0 and not context.blueprint then

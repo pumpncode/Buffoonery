@@ -38,6 +38,7 @@ SMODS.Joker{
             }
         end
 		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and G.GAME.blind.boss then
+			SMODS.calculate_effect({message = 'Boss Felled', colour = G.C.FILTER}, card)
 			G.E_MANAGER:add_event(Event({
                     func = function() 
 						local _rarity = nil

@@ -105,6 +105,7 @@ SMODS.Rarity{
 -- JOKERS --
 -- common
 NFS.load(Buffoonery.path .. 'data/jokers/afan.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/afan_spc.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/cashout.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/clays.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/fivefingers.lua')()
@@ -192,9 +193,10 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- 		 8 more Special Jokers
 --		 sayajimbo art
 -- curr spc: Kerman, Dork, WP, Memcard (4/12)
--- planned: roul, patron, saya, lmsh
+-- planned: roul, patron, saya, afan(D)
 
 -- patron: if joker contains knife/dagger, transform
+-- afan: JYMBROME (SYNDROME) if sold more than 5 times
 
 SMODS.Joker {
     key = "sayajimbo",
@@ -396,5 +398,3 @@ SMODS.Joker {
 		end
 	end
 }
-
---DONE

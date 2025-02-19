@@ -23,7 +23,16 @@ return {
 				text = {"{C:mult}+#1#{} Mult",
 						"Costs {C:money}$6{} to be {C:attention}sold{}",
 						"{C:green}#2# in #3#{} chance to {C:attention}return{}",
-						"after being {C:attention}sold{}"}  
+						"after being {C:attention}sold{}",
+						"{C:buf_spc,s:0.6}Rejection-sensitive{}"}  
+			},
+			j_buf_afan_spc = {
+				name = "Bitter Ex-Fan",  -- Special (Adoring Fan)
+				text = {"Flips and shuffles all {C:attention}Jokers{} or",
+						"{C:attention}playing cards{} each hand, at random",
+						"Costs {C:money}$25{} to be sold",
+						"In {C:attention}#1#{} rounds, sell price becomes positive",
+				}  
 			},
 			j_buf_argument = {
 				name = "Pertinent Argument",
@@ -494,13 +503,18 @@ return {
 			buf_afan_annoy1 = "But, but...",
 			buf_afan_annoy2 = "Aw, Gee...",
 			buf_afan_annoy3 = "You sure?",
-			buf_afan_annoy4 = "One more round",
+			buf_afan_annoy4 = "Please, no!",
+			buf_afan_monologue1 = "I WAS your fan!",
+			buf_afan_monologue2 = "I liked you!",
+			buf_afan_monologue3 = "You WERE my hero!",
 			buf_tea = "Tea!",
 			buf_gfondue_licked = "Licked!",
 			buf_hit = "Hit!",
 			buf_miss = "Miss!",
 			buf_krakened = "I am Reborn!",
 			buf_supergrade = "HUGE Upgrade!",
+			buf_disilluison = "Disillusioned!",
+			buf_defeated = "Defeated!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Ready",
 			buf_Ace = "Ace",

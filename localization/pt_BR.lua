@@ -17,6 +17,14 @@ return {
 						"{C:green}#2# de #3#{} chance de {C:attention}retornar{}",
 						"depois de {C:attention}vendido{}"}  
 			},
+			j_buf_afan_spc = {
+				name = "Ex-Fã Amargurado",  -- Special (Adoring Fan)
+				text = {"Vira e embaralha todos os {C:attention}Curingas{}",
+						"ou {C:attention}cartas de jogo{} a cada mão, aleatoriamente",
+						"Custa {C:money}$25{} para ser vendido",
+						"Em {C:attention}#1#{} rodadas, o preço de venda fica positivo",
+				}  
+			},
 			j_buf_argument = {
 				name = "Discussão Acalourada",
 				text = {"Converte uma carta",
@@ -431,12 +439,17 @@ return {
 			buf_afan_annoy2 = "Ah não...",
 			buf_afan_annoy3 = "Tem certeza?",
 			buf_afan_annoy4 = "Só mais uma",
+			buf_afan_monologue1 = "Eu ERA seu fã!",
+			buf_afan_monologue2 = "Te admirava!",
+			buf_afan_monologue3 = "Tu ERA meu herói!",
 			buf_tea = "Chá!",
 			buf_gfondue_licked = "Lambeu!",
 			buf_hit = "Acertou!",
 			buf_miss = "Errrouuu!",
 			buf_krakened = "Eu Renasci!",
 			buf_supergrade = "GRANDE Melhoria!",
+			buf_disilluison = "Desiludido!",
+			buf_defeated = "Derrotado!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Pronto",
 			buf_Ace = "Ás",
