@@ -35,27 +35,8 @@ SMODS.Joker {
 			if context.after and not context.blueprint then
 				card.ability.extra.gold = card.ability.extra.gold - card.ability.extra.gold_loss
 				if card.ability.extra.gold <= 0 then
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							play_sound('tarot1')
-							card.T.r = -0.2
-							card:juice_up(0.3, 0.4)
-							card.states.drag.is = true
-							card.children.center.pinch.x = true
-							G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-								func = function()
-										G.jokers:remove_card(card)
-										card:remove()
-										card = nil
-									return true; end})) 
-							return true
-						end
-						}))
-						G.GAME.pool_flags.gfondue_licked = true
-						return {
-							message = localize('buf_gfondue_licked'),
-							colour = G.C.FILTER
-						}
+					expire_card(card, localize('buf_gfondue_licked'), G.C.FILTER) -- custom function (see Buffoonery.lua)
+					G.GAME.pool_flags.gfondue_licked = true
 				else
 					return {
 						message = "-"..localize('$')..card.ability.extra.gold_loss,

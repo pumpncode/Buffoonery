@@ -215,6 +215,21 @@ return {
 						"serem {C:attention}selecionadas{}"
 				}
 			},
+			j_buf_supportive = { -- Special (Patronizing Joker)
+				name = "Curinga Prestativo", 
+				text = {"{X:chips,C:white}X#1#{} Fichas",
+						"Revela as três primeiras",
+						"cartas do baralho"
+				}
+			},
+			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
+				name = "Curinga Prestativo", 
+				text = {"{X:chips,C:white}X#7#{} Fichas",
+						"{s:0.8}#1##4#{}",
+						"{s:0.8}#2##5#{}",
+						"{s:0.8}#3##6#{}",
+				}
+			},
 			j_buf_porcelainj = {
 				name = "Curinga de Porcelana",
 				text = {"Dá {X:chips,C:white}X#2#{} Fichas para",
@@ -479,6 +494,8 @@ return {
 			-- Bunco compat --
 			buf_Fleurons = "Florões",
 			buf_Halberds = "Alabardas",
+			buf_Crowns = "Coroas",
+			buf_Stars = "Estrelas",
 			-------- MISC --------
 			k_buf_spc = "Especial",
 			k_buf_notyet = "(Deve ter espaço)",

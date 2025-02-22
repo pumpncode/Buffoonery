@@ -71,7 +71,29 @@ if not buf.compat.talisman then
 end
 
 -- FUNCTIONS --
-local VanillaHighlight = CardArea.add_to_highlighted
+local VanillaHighlight = CardArea.add_to_highlighted -- Fix Bunco incompat with Patronizing Joker
+
+function expire_card(_card, msg, color) -- function to remove card with the Cavendish animation and display a message
+	G.E_MANAGER:add_event(Event({
+		func = function()
+			if msg then SMODS.calculate_effect({message = msg, colour = color}, _card) end
+			play_sound('tarot1')
+			_card.T.r = -0.2
+			_card:juice_up(0.3, 0.4)
+			_card.states.drag.is = true
+			_card.children.center.pinch.x = true
+			G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
+				func = function()
+						G.jokers:remove_card(_card)
+						_card:remove()
+						_card = nil
+					return true; 
+				end})) 
+			return true
+		end
+	}))
+end
+
 
 function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks Patronizing Joker, so I made a separate function.
     VanillaHighlight(G.hand, card, silent)
@@ -118,6 +140,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
 -- uncommon
 NFS.load(Buffoonery.path .. 'data/jokers/denial.lua')() -- (Arstotzkan Denial)
 NFS.load(Buffoonery.path .. 'data/jokers/clown.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument)
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
@@ -182,21 +205,23 @@ SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 
------- CHANGELOG MOVED TO SEPARATE .md FILE ------
+-- CHANGELOG MOVED TO SEPARATE .md FILE ------
 -- fixed clown upgrading by 20 the forst time
+-- fixed clown's scaling bugging out or being lost when starting a new run
 -- abyssal prism no longer strips upgrades TODO: prevent eternal creation
--- added Jeb reborn
--- fixed clays not updating when added mid-round
 
 -- TODO: Jeb art: venus, earth, jupiter, saturn, uranus, neptune
---		 lemmesolo art
--- 		 8 more Special Jokers
---		 sayajimbo art
--- curr spc: Kerman, Dork, WP, Memcard (4/12)
--- planned: roul, patron, saya, afan(D)
+		 -- lemmesolo art
+		 -- 8 more Special Jokers
+		 -- sayajimbo art
+      -- special jokies discover reqs
+	  -- fix creulean patron
+-- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown (7/9)
+-- planned: clown, saya
 
 -- patron: if joker contains knife/dagger, transform
 -- afan: JYMBROME (SYNDROME) if sold more than 5 times
+-- clown: "Van" (fits 3 clowns)
 
 SMODS.Joker {
     key = "sayajimbo",
@@ -294,7 +319,7 @@ SMODS.Joker {
         extra = { check = true, mult_amount = 0, mult_joker = nil },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_cotom'},
-    calculate = function(self, card, context)  -- BEWARE: JANKY CODE BELOW!!!!1!11
+    calculate = function(self, card, context)  -- BEWARE: JANKY ASS CODE BELOW
 		local origCalcIndiv = SMODS.calculate_individual_effect
 		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
 			origCalcIndiv(effect, scored_card, key, amount, from_edition)
@@ -331,12 +356,32 @@ SMODS.Joker {
     end,
 }
 
+local function buf_scry(value)
+	for i = 1, value do
+		local _card = G.deck.cards[#G.deck.cards-(i-1)]
+		local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
+		if underscore_pos then
+			card.ability.extra.tsuit[i] = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
+		else
+			card.ability.extra.tsuit[i] =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
+		end
+		local key = SMODS.Ranks[_card.base.value].key
+		local tkey = localize('buf_'..key)
+		card.ability.extra.trank[i] =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
+		local underscore_pos2 = string.find(card.ability.extra.trank[i], "_")
+		if underscore_pos2 then
+			local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
+			card.ability.extra.trank[i] = localize(langkey) .. localize('buf_of')
+		end
+	end
+end
+
 SMODS.Joker {
     key = "supportive",
     name = "Supportive Joker",
     atlas = 'buf_special',
     pos = {
-        x = 1,
+        x = 5,
         y = 0,
     },
     rarity = "buf_spc",
@@ -348,22 +393,38 @@ SMODS.Joker {
     blueprint_compat = true,
 	in_pool = false,
     config = {
-        extra = { xchips = 4, peek = {}, scry = false },
+        extra = { xchips = 4, trank = {}, tsuit = {}, scry = false },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_supportive'},
     loc_vars = function(self, info_queue, card)
 		if card.ability.extra.scry == true then
 			return {
 				key = self.key .. '_alt',
-				vars = {card.ability.extra.peek[1], card.ability.extra.peek[2], card.ability.extra.peek[3], card.ability.extra.xchips}
+				vars = {card.ability.extra.trank[1], card.ability.extra.trank[2], card.ability.extra.trank[3], card.ability.extra.tsuit[1], card.ability.extra.tsuit[2], card.ability.extra.tsuit[3], card.ability.extra.xchips}
 			}
 		else
 			return { vars = { card.ability.extra.xchips } }
 		end
     end,
 	update = function(self, card, dt)
-		for i = 1, 3 do
-			card.ability.extra.peek[i] = G.deck.cards[#G.deck.cards-(i-1)].base.name
+		if G.deck then
+			for i = 1, 3 do
+				local _card = G.deck.cards[#G.deck.cards-(i-1)]
+				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
+				if underscore_pos then
+					card.ability.extra.tsuit[i] = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
+				else
+					card.ability.extra.tsuit[i] =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
+				end
+				local key = SMODS.Ranks[_card.base.value].key
+				local tkey = localize('buf_'..key)
+				card.ability.extra.trank[i] =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
+				local underscore_pos2 = string.find(card.ability.extra.trank[i], "_")
+				if underscore_pos2 then
+					local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
+					card.ability.extra.trank[i] = localize(langkey) .. localize('buf_of')
+				end
+			end
 		end
 	end,
 	add_to_deck = function(self, card, context)
@@ -374,9 +435,6 @@ SMODS.Joker {
     calculate = function(self, card, context)
 		if context.setting_blind then
 			card.ability.extra.scry = true
-			for i = 1, 3 do
-				card.ability.extra.peek[i] = G.deck.cards[#G.deck.cards-(i-1)].base.name
-			end
 		end
         if context.joker_main then
 			return {

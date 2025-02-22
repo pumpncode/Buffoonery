@@ -70,10 +70,26 @@ return {
 			},
 			j_buf_clown = {
 				name = "Clown",
-				text = {"This Joker gains {C:chips}+#1#{} Chips ",
+				text = {"This Joker gains {C:chips}+#1#{} Chips",
 						"when another Joker is added",
 						"{C:inactive}(Currently{} {C:chips}+#2#{} {C:inactive}Chips){}",
-						"{C:inactive,s:0.7}Jimbo = Chips{}"
+						"{C:buf_spc,s:0.7}Especially enjoys his own company{}"
+				}
+			},
+			j_buf_van_alt = {
+				name = "Van", -- Special (Clown) [ALT]
+				text = {"This Joker gains {C:chips}+#1#{} Chips",
+						"when another Joker is added",
+						"{C:inactive}(Currently{} {C:chips}+#2#{} {C:inactive}Chips){}",
+						"{C:inactive,s:0.7}Fits infinite Clowns{}"
+				}
+			},
+			j_buf_van = {
+				name = "Van", -- Special (Clown)
+				text = {"This Joker gains {C:chips}Chips{}",
+						"when another Joker is added",
+						"Amount depends on how",
+						"many {C:attention}Clowns{} are inside",
 				}
 			},
 			j_buf_denial = {
@@ -230,16 +246,15 @@ return {
 				name = "Supportive Joker", 
 				text = {"{X:chips,C:white}X#1#{} Chips",
 						"Tells you the top",
-						"3 cards in deck",
+						"3 cards in deck"
 				}
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
 				name = "Supportive Joker", 
-				text = {"{X:chips,C:white}X#4#{} Chips, tells you the",
-						"top 3 cards in deck",
-						"{C:inactive,s:0.6}#1#{}",
-						"{C:inactive,s:0.6}#2#{}",
-						"{C:inactive,s:0.6}#3#{}",
+				text = {"{X:chips,C:white}X#7#{} Chips",
+						"{s:0.8}#1##4#{}",
+						"{s:0.8}#2##5#{}",
+						"{s:0.8}#3##6#{}",
 				}
 			},
 			j_buf_porcelainj = {
@@ -296,6 +311,14 @@ return {
 			j_buf_sayajimbo_s3 = {
 				name = "Super Sayajimbo 3",
 				text = {"{X:dark_edition,C:white}^#3#{} Mult"}
+			},
+			j_buf_tailored = {
+				name = "Tailored Suit",
+				text = {"Gives {X:mult, C:white}X#2#{} Mult multiplied by",
+						"the percentage of cards of the",
+						"{C:attention}predominant suit{} in your {C:attention}full deck{}",
+						"{C:inactive}(Currently #3#,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+				}
 			},
 			j_buf_whitepony = {
 				name = "White Pony",
@@ -544,6 +567,8 @@ return {
 			-- Bunco compat --
 			buf_Fleurons = "Fleurons",
 			buf_Halberds = "Halberds",
+			buf_Crowns = "Crowns",
+			buf_Stars = "Stars",
 			-------- MISC --------
 			k_buf_spc = "Special",
 			k_buf_notyet = "(Must have room)",
