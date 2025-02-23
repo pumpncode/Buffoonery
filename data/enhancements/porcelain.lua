@@ -17,6 +17,10 @@ SMODS.Enhancement {  -- Porcelain Cards
     end,
 	
 	calculate = function(self, card, context, ret)
+		if card.area == G.hand then
+			card.ability.extra.marked = false
+		end
+		
 		if context.cardarea == G.play and context.main_scoring then
 			card.ability.extra.played = #context.full_hand
 			if card.ability.extra.played > card.ability.extra.limit and card.area == G.play then -- the 'card.area' part makes sure the card is only marked if it's in the scoring cards area
