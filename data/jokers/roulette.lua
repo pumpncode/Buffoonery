@@ -58,15 +58,12 @@ SMODS.Joker {
 					G.E_MANAGER:add_event(Event({
 						func = function() 
 							for i = 1, jokers_to_create do
-								local card = create_card('Joker', G.jokers, true, nil, nil, nil, nil, 'rou') -- the 'true' here refers to the 'legendary' boolean of the create_card() function
-								card:add_to_deck()
-								G.jokers:emplace(card)
-								card:start_materialize()
-								G.GAME.joker_buffer = 0
+								SMODS.add_card({set = 'Joker', rarity = 'Legendary'})
+								SMODS.calculate_effect({message = localize('k_plus_joker'), colour = G.C.BLUE}, card)
+								card:start_dissolve()
 							end
 							return true
 						end}))   
-					SMODS.calculate_effect({message = localize('k_plus_joker'), colour = G.C.BLUE}, card)
 				else
 					card:juice_up(0.8, 0.5)
 					SMODS.calculate_effect({message = localize('buf_dry'), colour = G.C.GREEN}, card)
