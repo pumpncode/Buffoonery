@@ -3,7 +3,7 @@ SMODS.Joker{
     name = "Let Me Solo Her",
     atlas = 'buf_jokers',
     pos = {
-        x = 7,
+        x = 4,
         y = 3,
     },
     rarity = 3,

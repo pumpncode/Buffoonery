@@ -1,21 +1,30 @@
 return {
     descriptions = {
         Joker = {
-			j_buf_cotom = {
-				name = "COTOM",
-				text = {"This Joker gives {C:chips}Chips{} equal to",
-						"5X the {C:mult}Mult{} given by the {C:attention}first{}",
-						"{C:attention}scoring Joker{} to the right",
-						"{C:inactive}(If possible){}"
+			j_buf_interpreter = {
+				name = "Interpreter",
+				text = {"Gives 5 times",
+						"the amount of {C:mult}Mult{}",
+						"given by the Joker",
+						"to the left as {C:chips}Chips{}"
 				}
 			},
 			j_buf_abyssalp = {
 				name = "Abyssal Prism",
-				text = {"Upon {C:attention}acquiring{} this joker, {C:attention}exile{} all",
-						"others. One becomes {C:dark_edition}Negative{} each 3",
-						"turns. Sell this to return jokers",
+				text = {"Upon {C:attention}acquiring{} this joker, spawn an {C:buf_spc}Echo{}",
+						"and {C:attention}exile{} all others. One becomes {C:dark_edition}Negative{}",
+						"each 3 turns. Sell to return jokers",
 						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}",
 						"{C:inactive,s:0.7}Must have room{}"
+				}
+			},
+			j_buf_abyssalecho = {
+				name = "Echo of The Abyss",
+				text = {"Gives {C:mult}+#2#{} Mult",
+						"for each Joker inside",
+						"the Abyssal Prism",
+						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
+						"{C:inactive,s:0.6}Destroyed when Abyssal Prism is removed{}"
 				}
 			},
 			j_buf_afan = {
@@ -401,9 +410,9 @@ return {
 				name = "Exile",
 				text = {
 					"Exiled Jokers are",
-					"C:attention}temporarily{}",
-					"destroyed and keep",
-					"all their upgrades"
+					"{C:attention}temporarily{} removed and",
+					"keep all their upgrades",
+					"{C:dark_edition}Negative{} Jokers can be exiled"
 				}
 			},
 			porc_info = {
@@ -538,6 +547,7 @@ return {
 			buf_supergrade = "HUGE Upgrade!",
 			buf_disilluison = "Disillusioned!",
 			buf_defeated = "Defeated!",
+			buf_hopin = "Hop in!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Ready",
 			buf_Ace = "Ace",

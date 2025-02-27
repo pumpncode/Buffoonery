@@ -18,6 +18,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_afan'},
     loc_vars = function(self, info_queue, card)
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		end
         return {
             vars = {card.ability.extra.rounds}
         }

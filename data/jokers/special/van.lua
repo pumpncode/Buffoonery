@@ -19,6 +19,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_clown'},
     loc_vars = function(self, info_queue, card)
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		end
 		if card.area == G.jokers then
             return {
 				key = self.key .. '_alt', 
@@ -31,7 +34,7 @@ SMODS.Joker {
 		end
     end,
 	add_to_deck = function(self, card, context)
-		SMODS.calculate_effect({message = 'Hop in!', colour = G.C.GREEN}, card)
+		SMODS.calculate_effect({message = localize('buf_hopin'), colour = G.C.BUF_SPC}, card)
 	end,
     calculate = function(self, card, context)
 	
@@ -62,4 +65,14 @@ SMODS.Joker {
 			card.ability.extra.chips = card.ability.extra.init 
 		end
     end,
+	
+	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
+	inject = function(self)
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		else
+			SMODS.Joker.super.inject(self)
+		end
+	end
 }

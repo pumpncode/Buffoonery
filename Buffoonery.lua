@@ -52,6 +52,12 @@ SMODS.Atlas {
 	py = 95
 }
 SMODS.Atlas {
+	key = 'sayatlas',
+	path = "sayajimbo.png",
+	px = 71,
+	py = 95
+}
+SMODS.Atlas {
 	key = "modicon",
 	path = "buf_icon.png",
 	px = 34,
@@ -145,10 +151,12 @@ NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/roulette.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/sayajimbo.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/whitepony.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()  -- [SPECIAL]
 -- rare
 NFS.load(Buffoonery.path .. 'data/jokers/abyssalp.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/abyssalecho.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/dorkshire.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()  -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/lemmesolo.lua')()
@@ -208,7 +216,12 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- CHANGELOG MOVED TO SEPARATE .md FILE ------
 -- fixed clown upgrading by 20 the forst time
 -- fixed clown's scaling bugging out or being lost when starting a new run
--- abyssal prism no longer strips upgrades TODO: prevent eternal creation
+-- fixed patronizing joker not selecting cards during Cerulean Bell bossfight
+-- abyssal prism no longer strips upgrades
+-- Banish replaced with Exile
+-- Added Van
+-- Added Abyssal Echo
+-- Added Kerman Reborn
 
 -- TODO: Jeb art: venus, earth, jupiter, saturn, uranus, neptune
 		 -- lemmesolo art
@@ -216,97 +229,15 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 		 -- sayajimbo art
       -- special jokies discover reqs
 	  -- fix creulean patron
--- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown (7/9)
--- planned: clown, saya
-
--- patron: if joker contains knife/dagger, transform
--- afan: JYMBROME (SYNDROME) if sold more than 5 times
--- clown: "Van" (fits 3 clowns)
+-- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 
 SMODS.Joker {
-    key = "sayajimbo",
-    name = "Sayajimbo",
+    key = "interpreter",
+    name = "Interpreter",
     atlas = 'buf_jokers',
     pos = {
-        x = 7,
-        y = 3,
-    },
-    rarity = 2,
-    cost = 6,
-    unlocked = true,
-    discovered = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    blueprint_compat = true,
-    config = {
-        extra = { chips = 20, mult = 25, xmult = 3, emult = 1.4, curr = 0, need = 1, hand = 'Pair', level = 0},
-		check1 = true
-    },
-    loc_txt = {set = 'Joker', key = 'j_buf_sayajimbo'},
-    loc_vars = function(self, info_queue, card)
-		if card.ability.extra.level ~= 0 then
-			return {
-				key = self.key..'_s'..tostring(card.ability.extra.level),
-				vars = {
-					card.ability.extra.mult, card.ability.extra.xmult, card.ability.extra.emult, 
-					card.ability.extra.curr, card.ability.extra.need, localize(card.ability.extra.hand, 'poker_hands')
-				}
-			}
-		else
-			return {
-				vars = {
-					card.ability.extra.chips, localize(card.ability.extra.hand, 'poker_hands')
-				}
-			}
-		end
-    end,
-	update = function(self, card)
-		if card.ability.check1 then
-			local _poker_hands = {}
-				for k, v in pairs(G.GAME.hands) do
-					if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
-				end
-			card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('ssj'))
-			card.ability.check1 = nil
-		end
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-			local level = {
-				[0] = {chips = card.ability.extra.chips},
-				[1] = {mult = card.ability.extra.mult},
-				[2] = {xmult = card.ability.extra.xmult},
-				[3] = {emult = card.ability.extra.emult}
-			}
-            return level[card.ability.extra.level]
-        end
-		if context.after and context.scoring_name == card.ability.extra.hand then
-		card.ability.extra.curr = card.ability.extra.curr + 1
-			if card.ability.extra.curr >= card.ability.extra.need then
-				card.ability.extra.curr = 0
-				card.ability.extra.need = card.ability.extra.need + 2
-				local _poker_hands = {}
-					for k, v in pairs(G.GAME.hands) do
-						if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
-					end
-				card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('ssj'))
-				card.ability.extra.level = card.ability.extra.level + 1
-				return {
-					message = localize('k_upgrade_ex'),
-					colour = G.C.FILTER
-				}
-			end
-		end
-    end
-}
-
-SMODS.Joker {
-    key = "cotom",
-    name = "COTOM",
-    atlas = 'buf_jokers',
-    pos = {
-        x = 7,
-        y = 3,
+        x = 5,
+        y = 0,
     },
     rarity = 2,
     cost = 7,
@@ -318,12 +249,12 @@ SMODS.Joker {
     config = {
         extra = { check = true, mult_amount = 0, mult_joker = nil },
     },
-    loc_txt = {set = 'Joker', key = 'j_buf_cotom'},
+    loc_txt = {set = 'Joker', key = 'j_buf_whitepony'},
     calculate = function(self, card, context)  -- BEWARE: JANKY ASS CODE BELOW
 		local origCalcIndiv = SMODS.calculate_individual_effect
 		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
 			origCalcIndiv(effect, scored_card, key, amount, from_edition)
-			if scored_card.area ~= G.play then  -- prevents playing cards from interfering, eg. Mult cards
+			if scored_card == card.ability.extra.mult_joker then  -- prevents playing cards from interfering, eg. Mult cards
 				if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and amount then
 					if from_edition then  -- if the scored joker has an edition that adds mult, add the amount to calculation
 						card.ability.extra.mult_amount = amount * 5
@@ -336,6 +267,9 @@ SMODS.Joker {
 		end
 	
         if context.before and not card.getting_sliced then  -- switch to modified scoring func before scoring
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then card.ability.extra.mult_joker = G.jokers.cards[i-1] end
+			end
 			if not context.blueprint then
 				SMODS.calculate_individual_effect = moddedCalcIndiv
 			end
@@ -397,6 +331,9 @@ SMODS.Joker {
     },
     loc_txt = {set = 'Joker', key = 'j_buf_supportive'},
     loc_vars = function(self, info_queue, card)
+		if Buffoonery.config.show_info then
+			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
+		end
 		if card.ability.extra.scry == true then
 			return {
 				key = self.key .. '_alt',

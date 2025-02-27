@@ -1,0 +1,15 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Add buffoonery's special pink to G.C
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = "FILTER = HEX('ff9a00'),"
+position = "after"
+payload = '''
+BUF_SPC = HEX('ee8f8d'),
+'''
+match_indent = true

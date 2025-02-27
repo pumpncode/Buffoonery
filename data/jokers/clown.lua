@@ -40,7 +40,7 @@ SMODS.Joker {
 			elseif _card.config.center.key == 'j_buf_van' then
 				_card.ability.extra.chip_mod = _card.ability.extra.chip_mod + 15
 				expire_card(card)
-				SMODS.calculate_effect({message = 'Hop in!', colour = G.C.GREEN}, card)
+				SMODS.calculate_effect({message = localize('buf_hopin'), colour = G.C.BUF_SPC}, card)
 			end
 		end
 	end,

@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-		extra = { jokies = {}, abils = {}, done = false, count = 0, neg = 0}
+		extra = { jokies = {}, abils = {}, edits = {}, done = false, count = 0, neg = 0, echo = nil, echo_slot = 0}
     },
     loc_txt = {set = 'Joker', key = 'j_buf_abyssalp'},
 	loc_vars = function(self, info_queue, card)
@@ -34,9 +34,11 @@ SMODS.Joker {
 			_card = G.jokers.cards[i]
 			card.ability.extra.jokies[i] = _card
 			card.ability.extra.abils[i] = _card.ability
+			card.ability.extra.edits[i] = _card.edition
+			if _card.edition and _card.edition.negative then card.ability.extra.neg = card.ability.extra.neg + 1 end
 		end
 		for i = 1, #card.ability.extra.jokies do
-			if not card.ability.extra.jokies[i].ability.eternal and not card.ability.extra.jokies[i].getting_sliced then 
+			if not card.ability.extra.jokies[i].getting_sliced then 
 				local sliced_card = card.ability.extra.jokies[i]
 				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
 				G.E_MANAGER:add_event(Event({func = function()
@@ -49,11 +51,23 @@ SMODS.Joker {
 		card.ability.extra.done = true
 		play_sound('buf_phase', 0.96+math.random()*0.08)
 		SMODS.calculate_effect({message = localize("buf_prism_sck"), colour = G.C.DARK_EDITION}, card)
+		card.ability.extra.echo = SMODS.add_card({key = 'j_buf_abyssalecho'}) -- store the echo inside the ability table for easy reference
+		card.ability.extra.echo.ability.extra.mult = card.ability.extra.echo.ability.extra.mult + (card.ability.extra.echo.ability.extra.mult_gain * #card.ability.extra.jokies)
+		card.ability.extra.echo_slot = 1 -- This is a temporary joker slot used to counteract the Echo's presence 
+	end,
+	
+	remove_from_deck = function(self, card, context) -- Destroy the Echo when removed
+		for i = 1, #G.jokers.cards do
+			local _card = G.jokers.cards[i]
+			if _card.config.center.key == 'j_buf_abyssalecho' then
+				_card:start_dissolve()
+			end
+		end
 	end,
 	
     calculate = function(self, card, context)
 		-- Update values at EoR
-		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card then
+		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and card.ability.extra.neg < #card.ability.extra.jokies then
 			card.ability.extra.count = card.ability.extra.count + 1
 			card.ability.extra.neg = math.floor(card.ability.extra.count / 3)
 			if card.ability.extra.count % 3 == 0 then
@@ -74,7 +88,7 @@ SMODS.Joker {
 		-- Spit out them jokers when sold
 		if context.selling_self then
 			local jcards, buffer, neg = #G.jokers.cards, G.GAME.joker_buffer,  card.ability.extra.neg
-			local limit = (G.jokers.config.card_limit + 1 + neg) -- limit is temporarily raised to fit this joker and all the (to be) negative jokers 
+			local limit = (G.jokers.config.card_limit + 1 + neg + card.ability.extra.echo_slot)-- limit is temporarily raised to fit this joker, the Echo, and all the (to be) negative jokers 
 			play_sound('buf_phase', 0.96+math.random()*0.08)
 			G.E_MANAGER:add_event(Event({
                     func = function() 
@@ -82,11 +96,10 @@ SMODS.Joker {
 							if jcards + buffer < limit then
 								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key)
 								_card.ability = card.ability.extra.abils[i]
+								_card:set_edition(card.ability.extra.edits[i] or {}, nil, true)
 								if neg > 0 then
 									_card:set_edition({negative = true})
 									neg = neg - 1
-								else
-									_card:set_edition()
 								end
 								_card:add_to_deck()
 								G.jokers:emplace(_card)
@@ -99,4 +112,5 @@ SMODS.Joker {
                     end}))
 		end
     end
+	
 }

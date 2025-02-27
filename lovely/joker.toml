@@ -30,7 +30,19 @@ if (self.config.center.key == 'j_buf_afan' or self.config.center.key == 'j_buf_a
 end
 '''
 
-# Initialize/reset Clown and Van global variables when starting a new run
+# Initialize Clown and Van global variables when booting up the game
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'function Game:start_run(args)'
+position = 'before'
+match_indent = true
+payload = '''
+clown_count = -1
+van_count = 0
+'''
+
+# Reset Clown and Van global variables when starting a new run
 [[patches]]
 [patches.pattern]
 target = 'game.lua'

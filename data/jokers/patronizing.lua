@@ -23,6 +23,9 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
+		if context.setting_blind and G.GAME.blind.name == 'Cerulean Bell' then -- disables cerulean bell to avoid conflict
+			G.GAME.blind:disable()
+		end
         if context.joker_main then
 			return {
 				xchips = card.ability.extra.Xchip
@@ -136,6 +139,12 @@ SMODS.Joker {
 						end
 					end
 					G.hand:unhighlight_all()
+					if G.GAME.blind and G.GAME.blind.name == 'Cerulean Bell' then 
+						G.GAME.blind.disabled = false -- Re-enable Cerulean bell when selling during the boss fight
+						local forced_card = G.hand.cards[math.random(1, #G.hand.cards)] -- also selects one card, since the blind doesn't actually tigger whe this joker is sold
+						forced_card.ability.forced_selection = true
+						buf_add_to_highlighted(forced_card)
+					end 	
 					return true
 				end
 			}))
