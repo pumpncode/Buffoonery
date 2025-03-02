@@ -3,10 +3,10 @@ return {
         Joker = {
 			j_buf_interpreter = {
 				name = "Interpreter",
-				text = {"Gives 5 times",
+				text = {"Gives {C:attention}five times{}",
 						"the amount of {C:mult}Mult{}",
 						"given by the Joker",
-						"to the left as {C:chips}Chips{}"
+						"to the {C:attention}left{} as {C:chips}Chips{}"
 				}
 			},
 			j_buf_abyssalp = {
@@ -255,7 +255,8 @@ return {
 				name = "Supportive Joker", 
 				text = {"{X:chips,C:white}X#1#{} Chips",
 						"Tells you the top",
-						"3 cards in deck"
+						"3 cards in deck",
+						"during the round"
 				}
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
@@ -378,10 +379,41 @@ return {
 				}
 			},
         },
-        Spectral = {
-           
+        Stake = {
+			stake_buf_prismatic = {
+                name = 'Prismatic Stake',
+                text = {
+                    '{C:attention}Final{} Boss Blinds',
+                    'appear every {C:attention}4 Antes{}',
+					'{s:0.8}Applies all previous stakes'
+                }
+            },
+			stake_buf_platinum = {
+                name = 'Platinum Stake',
+                text = {
+                    'Win on {C:attention}Ante 12{}',
+					'{s:0.8}Applies all previous stakes'
+                }
+            },
         },
         Other = {
+		-------- STICKERS --------
+			buf_prismatic_sticker = {
+                name = 'Prismatic Sticker',
+                text= {
+                    'Used this Joker',
+                    'to win on {C:attention}Prismatic',
+                    '{C:attention}Stake{} difficulty'
+                }
+            },
+			buf_platinum_sticker = {
+                name = 'Platinum Sticker',
+                text= {
+                    'Used this Joker',
+                    'to win on {C:attention}Platinum',
+                    '{C:attention}Stake{} difficulty'
+                }
+            },
 		-------- INFO QUEUE --------
             korny_info = {
                 name = "Credit",

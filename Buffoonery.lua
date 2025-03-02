@@ -63,7 +63,18 @@ SMODS.Atlas {
 	px = 34,
 	py = 34
 }
-
+SMODS.Atlas {
+	key = 'buf_stakes', 
+	path = 'stakes.png', 
+	px = 29, 
+	py = 29
+}
+SMODS.Atlas {
+	key = 'buf_stickers', 
+	path = 'stickers.png', 
+	px = 71, 
+	py = 95
+}
 
 -- COMPAT SECTION --
 buf.compat = {
@@ -100,7 +111,6 @@ function expire_card(_card, msg, color) -- function to remove card with the Cave
 	}))
 end
 
-
 function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks Patronizing Joker, so I made a separate function.
     VanillaHighlight(G.hand, card, silent)
 end
@@ -128,6 +138,91 @@ SMODS.Rarity{
 	get_weight = function(self, weight, object_type)
 		return weight
 	end,
+}
+
+SMODS.Stake{ -- Prismatic Stake
+    key = 'prismatic',
+    applied_stakes = {'gold'},
+    above_stake = 'gold',
+    prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
+
+    modifiers = function()
+		function buf_get_new_boss()
+			G.GAME.perscribed_bosses = G.GAME.perscribed_bosses or {
+			}
+			if G.GAME.perscribed_bosses and G.GAME.perscribed_bosses[G.GAME.round_resets.ante] then 
+				local ret_boss = G.GAME.perscribed_bosses[G.GAME.round_resets.ante] 
+				G.GAME.perscribed_bosses[G.GAME.round_resets.ante] = nil
+				G.GAME.bosses_used[ret_boss] = G.GAME.bosses_used[ret_boss] + 1
+				return ret_boss
+			end
+			if G.FORCE_BOSS then return G.FORCE_BOSS end
+			
+			local eligible_bosses = {}
+			for k, v in pairs(G.P_BLINDS) do
+				if not v.boss then
+
+				elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%4 ~= 0 or G.GAME.round_resets.ante < 2)) then
+					eligible_bosses[k] = true
+				elseif v.boss.showdown and (G.GAME.round_resets.ante)%4 == 0 and G.GAME.round_resets.ante >= 2 then
+					eligible_bosses[k] = true
+				end
+			end
+			for k, v in pairs(G.GAME.banned_keys) do
+				if eligible_bosses[k] then eligible_bosses[k] = nil end
+			end
+
+			local min_use = 100
+			for k, v in pairs(G.GAME.bosses_used) do
+				if eligible_bosses[k] then
+					eligible_bosses[k] = v
+					if eligible_bosses[k] <= min_use then 
+						min_use = eligible_bosses[k]
+					end
+				end
+			end
+			for k, v in pairs(eligible_bosses) do
+				if eligible_bosses[k] then
+					if eligible_bosses[k] > min_use then 
+						eligible_bosses[k] = nil
+					end
+				end
+			end
+			local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
+			G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] + 1
+			
+			return boss
+		end
+		
+		get_new_boss = buf_get_new_boss
+    end,
+
+    colour = HEX('5e5b54'),
+	shader = 'shine',
+    pos = {x = 0, y = 0},
+    sticker_pos = {x = 0, y = 0},
+    atlas = 'buf_stakes',
+    sticker_atlas = 'buf_stickers',
+	shiny = true
+}
+
+SMODS.Stake{ -- Platinum Stake
+    key = 'platinum',
+    applied_stakes = {'buf_prismatic'},
+    above_stake = 'buf_prismatic',
+    prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
+
+    modifiers = function()
+		G.GAME.win_ante = 12
+    end,
+
+    colour = HEX('5e5b54'),
+	shader = 'shine',
+    pos = {x = 1, y = 0},
+    sticker_pos = {x = 1, y = 0},
+    atlas = 'buf_stakes',
+    sticker_atlas = 'buf_stickers',
+	shiny = true
 }
 
 -- JOKERS --
@@ -222,13 +317,18 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- Added Van
 -- Added Abyssal Echo
 -- Added Kerman Reborn
+-- Added Supportive Joker
+-- Added Bitter Fan
+-- Added Let Me Solo Her
+-- Added Sayajimbo
 
--- TODO: Jeb art: venus, earth, jupiter, saturn, uranus, neptune
-		 -- lemmesolo art
-		 -- 8 more Special Jokers
-		 -- sayajimbo art
-      -- special jokies discover reqs
-	  -- fix creulean patron
+-- TODO: Jeb art: earth, jupiter, saturn, uranus, neptune
+	-- 1 more Special Jokers
+    -- special jokies discover reqs
+	-- supportive jk condition
+	-- special spectral
+	-- plat stake
+	-- translation
 -- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 
 SMODS.Joker {
@@ -249,7 +349,7 @@ SMODS.Joker {
     config = {
         extra = { check = true, mult_amount = 0, mult_joker = nil },
     },
-    loc_txt = {set = 'Joker', key = 'j_buf_whitepony'},
+    loc_txt = {set = 'Joker', key = 'j_buf_interpreter'},
     calculate = function(self, card, context)  -- BEWARE: JANKY ASS CODE BELOW
 		local origCalcIndiv = SMODS.calculate_individual_effect
 		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
