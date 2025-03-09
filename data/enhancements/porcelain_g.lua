@@ -32,9 +32,9 @@ SMODS.Enhancement {  -- Royal Porcelain Cards
     end,
 	
 	calculate = function(self, card, context, ret)
-		if card.area == G.hand then
-			card.ability.extra.marked = false
-		end
+		if context.before and card.area == G.hand then  -- This code block makes sure the card is not marked while in hand,
+			card.ability.extra.marked = false			-- useful for when the card is detroyed and copied with Extra Credit's
+		end												-- Ship of Theseus, for example.
 		
 		if context.cardarea == G.play and context.main_scoring then
 			card.ability.extra.played = #context.full_hand
