@@ -14,17 +14,26 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { Xchip = 5 }        
+        extra = { Xchip = 5, hand = 'Full House' }        
     },
     loc_txt = {set = 'Joker', key = 'j_buf_patronizing'},
     loc_vars = function(self, info_queue, card)
         return {
-            vars = {card.ability.extra.Xchip}
+            vars = {card.ability.extra.Xchip, localize(card.ability.extra.hand, 'poker_hands')}
         }
     end,
     calculate = function(self, card, context)
-		if context.setting_blind and G.GAME.blind.name == 'Cerulean Bell' then -- disables cerulean bell to avoid conflict
-			G.GAME.blind:disable()
+		if context.setting_blind then
+			local _poker_hands = {}
+			for k, v in pairs(G.GAME.hands) do
+				if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' and k ~= 'Pair' and k ~= 'Three of a Kind' and k ~= 'Two pair' then 
+					_poker_hands[#_poker_hands+1] = k 
+				end
+			end
+			card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('pat'))
+			if G.GAME.blind.name == 'Cerulean Bell' then -- disables cerulean bell to avoid conflict
+				G.GAME.blind:disable()
+			end
 		end
         if context.joker_main then
 			return {
@@ -128,6 +137,26 @@ SMODS.Joker {
 				}),
 				"other"
 			)
+		end
+		
+		if context.after and context.scoring_name == card.ability.extra.hand then -- Special Joker req
+			G.E_MANAGER:add_event(
+				Event({
+					trigger = "after",
+					delay = 0.2,
+					func = function()
+						SMODS.calculate_effect({message = localize('buf_patspc'), colour = G.C.BUF_SPC}, card)
+						G.E_MANAGER:add_event(
+							Event({
+								trigger = "after",
+								delay = 0.2,
+								func = function()
+									SMODS.add_card({key = 'j_buf_supportive'})
+									card:start_dissolve()
+									return true
+								end}))
+						return true
+					end }))	
 		end
 		
 		if context.selling_self or card.getting_sliced or context.end_of_round then -- DESELECT CARDS WHEN SOLD

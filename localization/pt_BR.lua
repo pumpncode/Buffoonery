@@ -10,12 +10,22 @@ return {
 						"{C:inactive,s:0.7}Deve ter espaço{}"
 				}
 			},
+			j_buf_abyssalecho = {
+				name = "Eco do Abismo",
+				text = {"Dá {C:mult}+#2#{} Multi por",
+						"cada Curinga dentro",
+						"do Prisma Abissal",
+						"{C:inactive}(No momento,{} {C:mult}+#1#{} {C:inactive}Multi){}",
+						"{C:inactive,s:0.6}Destroyed when Abyssal Prism is removed{}"
+				}
+			},
 			j_buf_afan = {
 				name = "Fã Adorador",
 				text = {"{C:mult}+#1#{} Mult",
 						"Perca {C:money}$6{} ao {C:attention}vender{} este Curinga",
 						"{C:green}#2# de #3#{} chance de {C:attention}retornar{}",
-						"depois de {C:attention}vendido{}"}  
+						"depois de {C:attention}vendido{}",
+						"{C:buf_spc,s:0.7}Sensível a rejeição{}"} 
 			},
 			j_buf_afan_spc = {
 				name = "Ex-Fã Amargurado",  -- Special (Adoring Fan)
@@ -32,13 +42,6 @@ return {
 						"das pontuadas, caso a",
 						"{C:attention}mão de pôquer{} for {C:attention}Dois Pares{}"
 				}  
-			},
-			j_buf_blackstallion = {
-				name = "Black Stallion",
-				text = {"{C:mult}+#1#{} Multi",
-						"Dobra a", 
-						"cada {C:attention}Aposta{}"
-				}
 			},
 			j_buf_cashout = {
 				name = "Voucher de Saque",
@@ -72,6 +75,22 @@ return {
 						"outro Curinga é adicionado",
 						"{C:inactive}(No momento{} {C:chips}+#2#{} {C:inactive}Fichas){}",
 						"{C:inactive,s:0.7}Jimbo = Chips{}"
+				}
+			},
+			j_buf_van_alt = {
+				name = "Van", -- Special (Clown) [ALT]
+				text = {"Ganha {C:chips}+#1#{} Fichas quando",
+						"outro Curinga é adicionado",
+						"{C:inactive}(No momento{} {C:chips}+#2#{} {C:inactive}Fichas){}",
+						"{C:inactive,s:0.7}Comporta infinitos palhaços{}"
+				}
+			},
+			j_buf_van = {
+				name = "Van", -- Special (Clown)
+				text = {"Este Curinga ganha {C:chips}Fichas{} quando",
+						"outro Curinga é adicionado",
+						"A quantidade depende de",
+						"quantos {C:attention}Palhaços{} estão dentro",
 				}
 			},
 			j_buf_denial = {
@@ -138,6 +157,14 @@ return {
 						"no fim da rodada",
 				}
 			},
+			j_buf_interpreter = {
+				name = "Intérprete",
+				text = {"Dá {C:attention}cinco vezes{}",
+						"o valor de {C:mult}Multi{}",
+						"adicionado pelo Curinga",
+						"à {C:attention}esquerda{} em {C:chips}Fichas{}"
+				}
+			},
 			j_buf_kerman = {
 				name = "Jebediah Kerman",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
@@ -147,7 +174,7 @@ return {
 						"{C:buf_spc,s:0.7}Tem medo de singularidades{}",
 				}
 			},
-			j_buf_kerman_spc = {
+			j_buf_kerman_spc = { -- Special (Jebediah Kerman)
 				name = "Jebediah Renascido",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
@@ -170,6 +197,15 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Multi",
 					"Ocupa 2 espaços",
+				},
+			},
+			j_buf_lemmesolo = { 
+				name = "Let Me Solo Her",
+				text = {
+					"{C:mult}+#1#{} Multi, {C:mult}desvantagem{} se não estiver só",
+					"Quando um {C:attention}Blind de Chefe{} é derrotado,",
+					"cria #2# Curingas aleatórios com ao",
+					"menos #3# {C:mult}Raros{} e se autodestrói",
 				},
 			},
 			j_buf_maggit = { 
@@ -212,13 +248,15 @@ return {
 				name = "Curinga Intrometido",
 				text = {"{X:chips,C:white}X#1#{} Fichas",
 						"{C:attention}Obriga{} 5 cartas a sempre",
-						"serem {C:attention}selecionadas{}"
+						"serem {C:attention}selecionadas{}",
+						"{C:buf_spc,s:0.7}Quer jogar um(a) #2#{}"
 				}
 			},
 			j_buf_supportive = { -- Special (Patronizing Joker)
 				name = "Curinga Prestativo", 
 				text = {"{X:chips,C:white}X#1#{} Fichas",
-						"Revela as três primeiras",
+						"Revela as",
+						"três primeiras",
 						"cartas do baralho"
 				}
 			},
@@ -254,13 +292,59 @@ return {
 						"{C:inactive,s:0.7}(A chance aumenta a cada rodada)"
 				}
 			},
+			j_buf_sayajimbo = {
+				name = "Sayajimbo",
+				text = {"{C:chips}+#1#{} Fichas",
+						"Jogue um(a) {C:attention}#2#{}",
+						"para {C:attention}transformar{}",
+						"{C:inactive,s:0.7}A mão muda a cada nível{}",
+						"{C:inactive,s:0.7}e nunca é Carta Alta{}"
+				}
+			},
+			j_buf_sayajimbo_s1 = {
+				name = "Super Sayajimbo",
+				text = {"{C:mult}+#1#{} Multi",
+						"Jogue um(a) {C:attention}#6#{}",
+						"#5# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#5# vezes){}",
+						"{C:inactive,s:0.7}A mão muda a cada nível{}"
+				}
+			},
+			j_buf_sayajimbo_s2 = {
+				name = "Super Sayajimbo 2",
+				text = {"{X:mult,C:white}X#2#{} Multi",
+						"Jogue um(a) {C:attention}#6#{}",
+						"#5# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#5# vezes){}",
+						"{C:inactive,s:0.7}A mão muda a cada nível{}"
+				}
+			},
+			j_buf_sayajimbo_s3 = {
+				name = "Super Sayajimbo 3",
+				text = {"{X:dark_edition,C:white}^#3#{} Multi"}
+			},
+			j_buf_tailored = {
+				name = "Terno Sob Medida",
+				text = {"Dá {X:mult,C:white}X#1#{} Multi multiplicado pela",
+						"porcentagem de cartas do {C:attention}naipe{}",
+						"{C:attention}predominante{} no seu {C:attention}baralho completo{}",
+						"{C:inactive}(No momento #3#,{} {X:mult,C:white}X#2#{} {C:inactive}Multi){}",
+				}
+			},
 			j_buf_whitepony = {
 				name = "White Pony",
 				text = {"{C:mult}+#1#{} Multi",
 						"Dobra a", 
 						"cada {C:attention}Aposta{}"
 				}
-			}, 
+			},
+			j_buf_blackstallion = {  -- Special (White Pony)
+				name = "Black Stallion",
+				text = {"{C:mult}+#1#{} Multi",
+						"Dobra a", 
+						"cada {C:attention}Aposta{}"
+				}
+			},
         },
         Back = {
 			b_buf_jstation = {
@@ -284,6 +368,13 @@ return {
 						"menos no baralho"
 				}
 			},
+			b_buf_sandstone = {
+				name = "Baralho de Arenito",
+				text = {"Vença na {C:attention}metade{} do",
+						"número de {C:attention}Apostas{}",
+						"x2 tamanho base do Blind"
+				}
+			},
         },
         Tarot = {
 			c_buf_nobility = {
@@ -296,10 +387,42 @@ return {
 				}
 			},
         },
-        Spectral = {
-           
+        Stake = {
+			stake_buf_prismatic = {
+                name = 'Aposta Prismática',
+                text = {
+                    'Blinds de Chefe {C:attention}Finais{}',
+                    'têm sua frequência {C:attention}dobrada{}',
+					'{s:0.8}Aplica todas as apostas anteriores'
+                }
+            },
+			stake_buf_platinum = {
+                name = 'Aposta Platinada',
+                text = {
+                    'O jogo requer 50% mais',
+					'Apostas para ser vencido',
+					'{s:0.8}Aplica todas as apostas anteriores'
+                }
+            },
         },
         Other = {
+		-------- STICKERS --------
+			buf_prismatic_sticker = {
+                name = 'Adesivo Prismático',
+                text= {
+                    'Usou este Curinga',
+                    'para vencer na dificuldade',
+                    '{C:attention}Aposta Prismática{}'
+                }
+            },
+			buf_platinum_sticker = {
+                name = 'Adesivo Platinado',
+                text= {
+                    'Usou este Curinga',
+                    'para vencer na dificuldade',
+                    '{C:attention}Aposta Platinada{}'
+                }
+            },
 		-------- INFO QUEUE --------
             korny_info = {
                 name = "Créditos",
@@ -328,9 +451,9 @@ return {
 				name = "Exílio",
 				text = {
 					"Curingas exilados são",
-					"{C:attention}temporariamente{}",
-					"removidos e mantêm",
-					"suas melhorias"
+					"{C:attention}temporariamente{} removidos",
+					"e mantêm suas melhorias",
+					"Curingas {C:attention}Eternos{} podem ser exilados"
 				}
 			},
 			porc_info = {
@@ -465,6 +588,8 @@ return {
 			buf_supergrade = "GRANDE Melhoria!",
 			buf_disilluison = "Desiludido!",
 			buf_defeated = "Derrotado!",
+			buf_hopin = "Entra aí!",
+			buf_patspc = "Boaaaa!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Pronto",
 			buf_Ace = "Ás",
@@ -491,7 +616,7 @@ return {
 			buf_Hearts = "Copas",
 			buf_Clubs = "Paus",
 			buf_Diamonds = "Ouros",
-			-- Bunco compat --
+			-- Bunco/Paperback compat --
 			buf_Fleurons = "Florões",
 			buf_Halberds = "Alabardas",
 			buf_Crowns = "Coroas",
@@ -499,6 +624,7 @@ return {
 			-------- MISC --------
 			k_buf_spc = "Especial",
 			k_buf_notyet = "(Deve ter espaço)",
+			buf_uniform = "uniforme",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1# Multi",

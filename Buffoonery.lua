@@ -140,91 +140,6 @@ SMODS.Rarity{
 	end,
 }
 
-SMODS.Stake{ -- Prismatic Stake
-    key = 'prismatic',
-    applied_stakes = {'gold'},
-    above_stake = 'gold',
-    prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
-
-    modifiers = function()
-		function buf_get_new_boss()
-			G.GAME.perscribed_bosses = G.GAME.perscribed_bosses or {
-			}
-			if G.GAME.perscribed_bosses and G.GAME.perscribed_bosses[G.GAME.round_resets.ante] then 
-				local ret_boss = G.GAME.perscribed_bosses[G.GAME.round_resets.ante] 
-				G.GAME.perscribed_bosses[G.GAME.round_resets.ante] = nil
-				G.GAME.bosses_used[ret_boss] = G.GAME.bosses_used[ret_boss] + 1
-				return ret_boss
-			end
-			if G.FORCE_BOSS then return G.FORCE_BOSS end
-			
-			local eligible_bosses = {}
-			for k, v in pairs(G.P_BLINDS) do
-				if not v.boss then
-
-				elseif not v.boss.showdown and (v.boss.min <= math.max(1, G.GAME.round_resets.ante) and ((math.max(1, G.GAME.round_resets.ante))%4 ~= 0 or G.GAME.round_resets.ante < 2)) then
-					eligible_bosses[k] = true
-				elseif v.boss.showdown and (G.GAME.round_resets.ante)%4 == 0 and G.GAME.round_resets.ante >= 2 then
-					eligible_bosses[k] = true
-				end
-			end
-			for k, v in pairs(G.GAME.banned_keys) do
-				if eligible_bosses[k] then eligible_bosses[k] = nil end
-			end
-
-			local min_use = 100
-			for k, v in pairs(G.GAME.bosses_used) do
-				if eligible_bosses[k] then
-					eligible_bosses[k] = v
-					if eligible_bosses[k] <= min_use then 
-						min_use = eligible_bosses[k]
-					end
-				end
-			end
-			for k, v in pairs(eligible_bosses) do
-				if eligible_bosses[k] then
-					if eligible_bosses[k] > min_use then 
-						eligible_bosses[k] = nil
-					end
-				end
-			end
-			local _, boss = pseudorandom_element(eligible_bosses, pseudoseed('boss'))
-			G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] + 1
-			
-			return boss
-		end
-		
-		get_new_boss = buf_get_new_boss
-    end,
-
-    colour = HEX('5e5b54'),
-	shader = 'shine',
-    pos = {x = 0, y = 0},
-    sticker_pos = {x = 0, y = 0},
-    atlas = 'buf_stakes',
-    sticker_atlas = 'buf_stickers',
-	shiny = true
-}
-
-SMODS.Stake{ -- Platinum Stake
-    key = 'platinum',
-    applied_stakes = {'buf_prismatic'},
-    above_stake = 'buf_prismatic',
-    prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
-
-    modifiers = function()
-		G.GAME.win_ante = 12
-    end,
-
-    colour = HEX('5e5b54'),
-	shader = 'shine',
-    pos = {x = 1, y = 0},
-    sticker_pos = {x = 1, y = 0},
-    atlas = 'buf_stakes',
-    sticker_atlas = 'buf_stickers',
-	shiny = true
-}
-
 -- JOKERS --
 -- common
 NFS.load(Buffoonery.path .. 'data/jokers/afan.lua')()
@@ -242,22 +157,25 @@ NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/denial.lua')() -- (Arstotzkan Denial)
 NFS.load(Buffoonery.path .. 'data/jokers/clown.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')() -- [SPECIAL]
+NFS.load(Buffoonery.path .. 'data/jokers/interpreter.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument)
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/roulette.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/sayajimbo.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/tailored.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/whitepony.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()  -- [SPECIAL]
 -- rare
 NFS.load(Buffoonery.path .. 'data/jokers/abyssalp.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/abyssalecho.lua')() -- [SPECIAL]
+NFS.load(Buffoonery.path .. 'data/jokers/special/abyssalecho.lua')()  -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/dorkshire.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()  -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/lemmesolo.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/memcard.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')()   -- [SPECIAL]
+NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/patronizing.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/supportive.lua')() -- [SPECIAL]
 -- legendary
 NFS.load(Buffoonery.path .. 'data/jokers/maggit.lua')()
 
@@ -285,9 +203,13 @@ end
 
 NFS.load(Buffoonery.path .. 'data/consumables/nobility.lua')()
 
+-- STAKES --
+NFS.load(Buffoonery.path .. 'data/stakes.lua')()
+
 -- DECKS --
-NFS.load(Buffoonery.path .. 'data/decks/jstation.lua')()
 NFS.load(Buffoonery.path .. 'data/decks/galloping.lua')()
+NFS.load(Buffoonery.path .. 'data/decks/sandstone.lua')()
+NFS.load(Buffoonery.path .. 'data/decks/jstation.lua')()
 NFS.load(Buffoonery.path .. 'data/decks/porcelain.lua')()
 
 -- ENHANCEMENTS --
@@ -296,8 +218,8 @@ NFS.load(Buffoonery.path .. 'data/enhancements/porcelain_g.lua')()
 
 -- SLEEVES --
 if buf.compat.sleeves then
-	NFS.load(Buffoonery.path .. 'data/sleeves/sl_jstation.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_galloping.lua')()
+	NFS.load(Buffoonery.path .. 'data/sleeves/sl_jstation.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_porcelain.lua')()
 end
 
@@ -312,6 +234,7 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- fixed clown upgrading by 20 the forst time
 -- fixed clown's scaling bugging out or being lost when starting a new run
 -- fixed patronizing joker not selecting cards during Cerulean Bell bossfight
+-- fixed erosion not working properly with porcelain deck
 -- abyssal prism no longer strips upgrades
 -- Banish replaced with Exile
 -- Added Van
@@ -321,175 +244,13 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- Added Bitter Fan
 -- Added Let Me Solo Her
 -- Added Sayajimbo
+-- added 2 stakes
 
 -- TODO: Jeb art: earth, jupiter, saturn, uranus, neptune
-	-- 1 more Special Jokers
+	-- interpreter art
+	-- tailored suit art
+	-- 1 more Special Joker
     -- special jokies discover reqs
-	-- supportive jk condition
-	-- special spectral
-	-- plat stake
-	-- translation
 -- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 
-SMODS.Joker {
-    key = "interpreter",
-    name = "Interpreter",
-    atlas = 'buf_jokers',
-    pos = {
-        x = 5,
-        y = 0,
-    },
-    rarity = 2,
-    cost = 7,
-    unlocked = true,
-    discovered = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    blueprint_compat = true,
-    config = {
-        extra = { check = true, mult_amount = 0, mult_joker = nil },
-    },
-    loc_txt = {set = 'Joker', key = 'j_buf_interpreter'},
-    calculate = function(self, card, context)  -- BEWARE: JANKY ASS CODE BELOW
-		local origCalcIndiv = SMODS.calculate_individual_effect
-		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
-			origCalcIndiv(effect, scored_card, key, amount, from_edition)
-			if scored_card == card.ability.extra.mult_joker then  -- prevents playing cards from interfering, eg. Mult cards
-				if (key == 'mult' or key == 'h_mult' or key == 'mult_mod') and amount then
-					if from_edition then  -- if the scored joker has an edition that adds mult, add the amount to calculation
-						card.ability.extra.mult_amount = amount * 5
-					elseif card.ability.extra.check and card.ability.extra.mult_amount ~= nil then
-						card.ability.extra.mult_amount = (card.ability.extra.mult_amount) + amount * 5
-						card.ability.extra.check = false
-					end
-				end
-			end
-		end
-	
-        if context.before and not card.getting_sliced then  -- switch to modified scoring func before scoring
-			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] == card then card.ability.extra.mult_joker = G.jokers.cards[i-1] end
-			end
-			if not context.blueprint then
-				SMODS.calculate_individual_effect = moddedCalcIndiv
-			end
-		end
-		
-		if context.joker_main and not card.getting_sliced then
-			return {
-				chips = card.ability.extra.mult_amount
-			}
-        end
-		
-		if context.after and not context.blueprint then  -- go back to original func at EoR
-			SMODS.calculate_individual_effect = origCalcIndiv
-			card.ability.extra.check = true
-			card.ability.extra.mult_amount = 0
-			card.ability.extra.mult_joker = nil
-		end
-    end,
-}
-
-local function buf_scry(value)
-	for i = 1, value do
-		local _card = G.deck.cards[#G.deck.cards-(i-1)]
-		local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
-		if underscore_pos then
-			card.ability.extra.tsuit[i] = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
-		else
-			card.ability.extra.tsuit[i] =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
-		end
-		local key = SMODS.Ranks[_card.base.value].key
-		local tkey = localize('buf_'..key)
-		card.ability.extra.trank[i] =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
-		local underscore_pos2 = string.find(card.ability.extra.trank[i], "_")
-		if underscore_pos2 then
-			local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
-			card.ability.extra.trank[i] = localize(langkey) .. localize('buf_of')
-		end
-	end
-end
-
-SMODS.Joker {
-    key = "supportive",
-    name = "Supportive Joker",
-    atlas = 'buf_special',
-    pos = {
-        x = 5,
-        y = 0,
-    },
-    rarity = "buf_spc",
-    cost = 6,
-    unlocked = true,
-    discovered = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    blueprint_compat = true,
-	in_pool = false,
-    config = {
-        extra = { xchips = 4, trank = {}, tsuit = {}, scry = false },
-    },
-    loc_txt = {set = 'Joker', key = 'j_buf_supportive'},
-    loc_vars = function(self, info_queue, card)
-		if Buffoonery.config.show_info then
-			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
-		end
-		if card.ability.extra.scry == true then
-			return {
-				key = self.key .. '_alt',
-				vars = {card.ability.extra.trank[1], card.ability.extra.trank[2], card.ability.extra.trank[3], card.ability.extra.tsuit[1], card.ability.extra.tsuit[2], card.ability.extra.tsuit[3], card.ability.extra.xchips}
-			}
-		else
-			return { vars = { card.ability.extra.xchips } }
-		end
-    end,
-	update = function(self, card, dt)
-		if G.deck then
-			for i = 1, 3 do
-				local _card = G.deck.cards[#G.deck.cards-(i-1)]
-				local underscore_pos = string.find(SMODS.Suits[_card.base.suit].key, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
-				if underscore_pos then
-					card.ability.extra.tsuit[i] = localize('buf_'..string.sub(SMODS.Suits[_card.base.suit].key, underscore_pos + 1))
-				else
-					card.ability.extra.tsuit[i] =  localize('buf_'..SMODS.Suits[_card.base.suit].key)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
-				end
-				local key = SMODS.Ranks[_card.base.value].key
-				local tkey = localize('buf_'..key)
-				card.ability.extra.trank[i] =  ((tkey ~= 'ERROR' and tkey) or key) .. localize('buf_of')
-				local underscore_pos2 = string.find(card.ability.extra.trank[i], "_")
-				if underscore_pos2 then
-					local langkey = 'buf_'..string.sub(((tkey ~= 'ERROR' and tkey) or key), underscore_pos2 + 1)
-					card.ability.extra.trank[i] = localize(langkey) .. localize('buf_of')
-				end
-			end
-		end
-	end,
-	add_to_deck = function(self, card, context)
-		if G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.HAND_PLAYED then
-			card.ability.extra.scry = true
-		end
-	end,
-    calculate = function(self, card, context)
-		if context.setting_blind then
-			card.ability.extra.scry = true
-		end
-        if context.joker_main then
-			return {
-				xchips = card.ability.extra.xchips
-			}
-        end
-		if context.end_of_round then
-			card.ability.extra.scry = false
-		end
-    end,
-	
-	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
-	inject = function(self)
-		if not Buffoonery.config.show_spc then
-			SMODS.Joker.super.inject(self)
-			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
-		else
-			SMODS.Joker.super.inject(self)
-		end
-	end
-}
+-- Only the faceless wear uniforms

@@ -65,7 +65,7 @@ SMODS.Joker {
 		
 	end,
 	
-	update = function(self, card, dt)
+	update = function(self, card)
 		if card.ability.extra.jokers < clown_count and card.ability.extra.check and not card.ability.extra.otherc then
 			SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.BLUE}, card)
 			card.ability.extra.jokers = clown_count -- check continue run error txt

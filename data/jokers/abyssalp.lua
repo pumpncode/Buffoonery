@@ -32,14 +32,14 @@ SMODS.Joker {
 		local _card = nil
 		for i = 1, #G.jokers.cards do
 			_card = G.jokers.cards[i]
-			card.ability.extra.jokies[i] = _card
+			card.ability.extra.jokies[i] = _card.config.center.key
 			card.ability.extra.abils[i] = _card.ability
 			card.ability.extra.edits[i] = _card.edition
 			if _card.edition and _card.edition.negative then card.ability.extra.neg = card.ability.extra.neg + 1 end
 		end
 		for i = 1, #card.ability.extra.jokies do
-			if not card.ability.extra.jokies[i].getting_sliced then 
-				local sliced_card = card.ability.extra.jokies[i]
+			if G.jokers.cards[i] ~= card then 
+				local sliced_card = G.jokers.cards[i]
 				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
 				G.E_MANAGER:add_event(Event({func = function()
 					G.GAME.joker_buffer = 0
@@ -94,7 +94,7 @@ SMODS.Joker {
                     func = function() 
                         for i = 1, #card.ability.extra.jokies do
 							if jcards + buffer < limit then
-								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i].config.center.key)
+								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i])
 								_card.ability = card.ability.extra.abils[i]
 								_card:set_edition(card.ability.extra.edits[i] or {}, nil, true)
 								if neg > 0 then
@@ -114,3 +114,5 @@ SMODS.Joker {
     end
 	
 }
+
+--TODO: negative jokers bug fix

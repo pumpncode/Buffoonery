@@ -38,9 +38,9 @@ SMODS.Joker {
 	update = function(self, card)
 		if card.ability.check1 then
 			local _poker_hands = {}
-				for k, v in pairs(G.GAME.hands) do
-					if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
-				end
+			for k, v in pairs(G.GAME.hands) do
+				if v.visible and k ~= card.ability.extra.hand and k ~= 'High Card' then _poker_hands[#_poker_hands+1] = k end
+			end
 			card.ability.extra.hand = pseudorandom_element(_poker_hands, pseudoseed('ssj'))
 			card.ability.check1 = nil
 		end

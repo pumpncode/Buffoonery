@@ -1,14 +1,6 @@
 return {
     descriptions = {
         Joker = {
-			j_buf_interpreter = {
-				name = "Interpreter",
-				text = {"Gives {C:attention}five times{}",
-						"the amount of {C:mult}Mult{}",
-						"given by the Joker",
-						"to the {C:attention}left{} as {C:chips}Chips{}"
-				}
-			},
 			j_buf_abyssalp = {
 				name = "Abyssal Prism",
 				text = {"Upon {C:attention}acquiring{} this joker, spawn an {C:buf_spc}Echo{}",
@@ -33,7 +25,7 @@ return {
 						"Costs {C:money}$6{} to be {C:attention}sold{}",
 						"{C:green}#2# in #3#{} chance to {C:attention}return{}",
 						"after being {C:attention}sold{}",
-						"{C:buf_spc,s:0.6}Rejection-sensitive{}"}  
+						"{C:buf_spc,s:0.7}Rejection-sensitive{}"}  
 			},
 			j_buf_afan_spc = {
 				name = "Bitter Ex-Fan",  -- Special (Adoring Fan)
@@ -115,7 +107,7 @@ return {
 						"{C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
-						}
+				}
 			},
 			j_buf_dorkshire_alt = {
 				name = "Dorkshire Tea",
@@ -123,7 +115,7 @@ return {
 						"become {C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
-						}
+				}
 			},
 			j_buf_dorkshire_g = {
 				name = "Dorkshire Gold",
@@ -131,7 +123,7 @@ return {
 						"{C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
-						}
+				}
 			},
 			j_buf_dorkshire_g_alt = {
 				name = "Dorkshire Gold",
@@ -163,6 +155,14 @@ return {
 						"{C:green}#2# in #3#{} chance this",
 						"card is destroyed",
 						"at end of round",
+				}
+			},
+			j_buf_interpreter = {
+				name = "Interpreter",
+				text = {"Gives {C:attention}five times{}",
+						"the amount of {C:mult}Mult{}",
+						"given by the Joker",
+						"to the {C:attention}left{} as {C:chips}Chips{}"
 				}
 			},
 			j_buf_kerman = {
@@ -248,7 +248,8 @@ return {
 				name = "Patronizing Joker",
 				text = {"{X:chips,C:white}X#1#{} Chips",
 						"{C:attention}Forces{} 5 cards to",
-						"always be {C:attention}selected{}"
+						"always be {C:attention}selected{}",
+						"{C:buf_spc,s:0.7}Wants you to play a #2#{}"
 				}
 			},
 			j_buf_supportive = { -- Special (Patronizing Joker)
@@ -324,10 +325,10 @@ return {
 			},
 			j_buf_tailored = {
 				name = "Tailored Suit",
-				text = {"Gives {X:mult, C:white}X#2#{} Mult multiplied by",
+				text = {"Gives {X:mult,C:white}X#1#{} Mult times the",
 						"the percentage of cards of the",
 						"{C:attention}predominant suit{} in your {C:attention}full deck{}",
-						"{C:inactive}(Currently #3#,{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+						"{C:inactive}(Currently #3#,{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
 				}
 			},
 			j_buf_whitepony = {
@@ -367,6 +368,13 @@ return {
 						"full {C:attention}Suit{}"
 				}
 			},
+			b_buf_sandstone = {
+				name = "Sandstone Deck",
+				text = {"Win in {C:attention}half{}",
+						"as many {C:attention}Antes{}",
+						"x2 base Blind size"
+				}
+			},
         },
         Tarot = {
 			c_buf_nobility = {
@@ -384,14 +392,15 @@ return {
                 name = 'Prismatic Stake',
                 text = {
                     '{C:attention}Final{} Boss Blinds',
-                    'appear every {C:attention}4 Antes{}',
+                    'appear {C:attention}twice{} as often',
 					'{s:0.8}Applies all previous stakes'
                 }
             },
 			stake_buf_platinum = {
                 name = 'Platinum Stake',
                 text = {
-                    'Win on {C:attention}Ante 12{}',
+                    'The game requires 50% more',
+					'Antes for you to win',
 					'{s:0.8}Applies all previous stakes'
                 }
             },
@@ -444,7 +453,7 @@ return {
 					"Exiled Jokers are",
 					"{C:attention}temporarily{} removed and",
 					"keep all their upgrades",
-					"{C:dark_edition}Negative{} Jokers can be exiled"
+					"{C:attention}Eternal{} Jokers can be exiled"
 				}
 			},
 			porc_info = {
@@ -580,6 +589,7 @@ return {
 			buf_disilluison = "Disillusioned!",
 			buf_defeated = "Defeated!",
 			buf_hopin = "Hop in!",
+			buf_patspc = "Nice play!",
 			-------- MEMCARD STUFF --------
 			buf_ready = "Ready",
 			buf_Ace = "Ace",
@@ -606,7 +616,7 @@ return {
 			buf_Hearts = "Hearts",
 			buf_Clubs = "Clubs",
 			buf_Diamonds = "Diamonds",
-			-- Bunco compat --
+			-- Bunco/Paperback compat --
 			buf_Fleurons = "Fleurons",
 			buf_Halberds = "Halberds",
 			buf_Crowns = "Crowns",
@@ -614,6 +624,7 @@ return {
 			-------- MISC --------
 			k_buf_spc = "Special",
 			k_buf_notyet = "(Must have room)",
+			buf_uniform = "uniform",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1# Mult",
