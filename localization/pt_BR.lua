@@ -157,14 +157,6 @@ return {
 						"no fim da rodada",
 				}
 			},
-			j_buf_interpreter = {
-				name = "Intérprete",
-				text = {"Dá {C:attention}cinco vezes{}",
-						"o valor de {C:mult}Multi{}",
-						"adicionado pelo Curinga",
-						"à {C:attention}esquerda{} em {C:chips}Fichas{}"
-				}
-			},
 			j_buf_kerman = {
 				name = "Jebediah Kerman",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
@@ -181,6 +173,14 @@ return {
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}",
 						"{C:buf_spc,s:0.7}Gosta de ficar perto de singularidades{}",
 						'{C:inactive,s:0.7}"Eu e o Kraken somos o mesmo"{}'
+				}
+			},
+			j_buf_jokergebra = {
+				name = "JokerGebra",
+				text = {"Dá {C:attention}cinco vezes{}",
+						"o valor de {C:mult}Multi{}",
+						"adicionado pelo Curinga",
+						"à {C:attention}esquerda{} em {C:chips}Fichas{}"
 				}
 			},
 			j_buf_korny = {
@@ -370,8 +370,7 @@ return {
 			},
 			b_buf_sandstone = {
 				name = "Baralho de Arenito",
-				text = {"Vença na {C:attention}metade{} do",
-						"número de {C:attention}Apostas{}",
+				text = {"Vença na {C:attention}Aposta 6{}",
 						"x2 tamanho base do Blind"
 				}
 			},

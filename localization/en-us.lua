@@ -157,14 +157,6 @@ return {
 						"at end of round",
 				}
 			},
-			j_buf_interpreter = {
-				name = "Interpreter",
-				text = {"Gives {C:attention}five times{}",
-						"the amount of {C:mult}Mult{}",
-						"given by the Joker",
-						"to the {C:attention}left{} as {C:chips}Chips{}"
-				}
-			},
 			j_buf_kerman = {
 				name = "Jebediah Kerman",
 				text = {"Gains {C:mult}+#2#{} Mult every time",
@@ -181,6 +173,14 @@ return {
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
 						"{C:buf_spc,s:0.7}Likes hanging around Singularities{}",
 						'{C:inactive,s:0.7}"I am one with the Kraken"{}'
+				}
+			},
+			j_buf_jokergebra = {
+				name = "JokerGebra",
+				text = {"Gives {C:attention}five times{}",
+						"the amount of {C:mult}Mult{}",
+						"given by the Joker",
+						"to the {C:attention}left{} as {C:chips}Chips{}"
 				}
 			},
 			j_buf_korny = {
@@ -370,8 +370,7 @@ return {
 			},
 			b_buf_sandstone = {
 				name = "Sandstone Deck",
-				text = {"Win in {C:attention}half{}",
-						"as many {C:attention}Antes{}",
+				text = {"Win on {C:attention}Ante 6{}",
 						"x2 base Blind size"
 				}
 			},

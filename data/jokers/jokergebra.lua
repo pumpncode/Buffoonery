@@ -1,6 +1,6 @@
 SMODS.Joker {
-    key = "interpreter",
-    name = "Interpreter",
+    key = "jokergebra",
+    name = "JokerGebra",
     atlas = 'buf_jokers',
     pos = {
         x = 5,

@@ -58,6 +58,12 @@ SMODS.Atlas {
 	py = 95
 }
 SMODS.Atlas {
+	key = 'tailoratlas',
+	path = "tailored.png",
+	px = 71,
+	py = 95
+}
+SMODS.Atlas {
 	key = "modicon",
 	path = "buf_icon.png",
 	px = 34,
@@ -157,7 +163,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/denial.lua')() -- (Arstotzkan Denial)
 NFS.load(Buffoonery.path .. 'data/jokers/clown.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')() -- [SPECIAL]
-NFS.load(Buffoonery.path .. 'data/jokers/interpreter.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/jokergebra.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument)
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
@@ -244,13 +250,16 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- Added Bitter Fan
 -- Added Let Me Solo Her
 -- Added Sayajimbo
+-- added jokergebra
 -- added 2 stakes
+-- added sandstone deck
 
 -- TODO: Jeb art: earth, jupiter, saturn, uranus, neptune
-	-- interpreter art
-	-- tailored suit art
+	-- sandstone sleeve (ante 5, 3x)
 	-- 1 more Special Joker
     -- special jokies discover reqs
+	-- fix memcard nervous
+	-- fix aprism negatives
 -- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 
 -- Only the faceless wear uniforms
