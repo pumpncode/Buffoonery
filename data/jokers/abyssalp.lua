@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-		extra = { jokies = {}, abils = {}, edits = {}, done = false, count = 0, neg = 0, echo = nil, echo_slot = 0}
+		extra = { jokies = {}, abils = {}, edits = {}, count = 0, neg = 0, echo = nil, echo_slot = 0}
     },
     loc_txt = {set = 'Joker', key = 'j_buf_abyssalp'},
 	loc_vars = function(self, info_queue, card)
@@ -34,8 +34,12 @@ SMODS.Joker {
 			_card = G.jokers.cards[i]
 			card.ability.extra.jokies[i] = _card.config.center.key
 			card.ability.extra.abils[i] = _card.ability
-			card.ability.extra.edits[i] = _card.edition
-			if _card.edition and _card.edition.negative then card.ability.extra.neg = card.ability.extra.neg + 1 end
+			if _card.edition then
+				if _card.edition.negative then card.ability.extra.neg = card.ability.extra.neg + 1 end
+				card.ability.extra.edits[i] = _card.edition
+			else
+				card.ability.extra.edits[i] = 'nope'
+			end
 		end
 		for i = 1, #card.ability.extra.jokies do
 			if G.jokers.cards[i] ~= card then 
@@ -48,12 +52,24 @@ SMODS.Joker {
 				return true end }))
 			end
 		end
-		card.ability.extra.done = true
 		play_sound('buf_phase', 0.96+math.random()*0.08)
 		SMODS.calculate_effect({message = localize("buf_prism_sck"), colour = G.C.DARK_EDITION}, card)
 		card.ability.extra.echo = SMODS.add_card({key = 'j_buf_abyssalecho'}) -- store the echo inside the ability table for easy reference
 		card.ability.extra.echo.ability.extra.mult = card.ability.extra.echo.ability.extra.mult + (card.ability.extra.echo.ability.extra.mult_gain * #card.ability.extra.jokies)
-		card.ability.extra.echo_slot = 1 -- This is a temporary joker slot used to counteract the Echo's presence 
+		card.ability.extra.echo_slot = 1 -- This is a temporary joker slot used to counteract the Echo's presence
+		for i = 1, #card.ability.extra.edits do
+			if card.ability.extra.edits[i].negative then
+				local tempedit = card.ability.extra.edits[i]
+				local tempjokie = card.ability.extra.jokies[i]
+				local tempabil = card.ability.extra.abils[i]
+				table.remove(card.ability.extra.edits, i)
+				table.remove(card.ability.extra.jokies, i)
+				table.remove(card.ability.extra.abils, i)
+				table.insert(card.ability.extra.edits, 1, tempedit)
+				table.insert(card.ability.extra.jokies, 1, tempjokie)
+				table.insert(card.ability.extra.abils, 1, tempabil)
+			end
+		end
 	end,
 	
 	remove_from_deck = function(self, card, context) -- Destroy the Echo when removed
@@ -69,7 +85,7 @@ SMODS.Joker {
 		-- Update values at EoR
 		if context.end_of_round and not context.blueprint and not context.repetition and not context.other_card and card.ability.extra.neg < #card.ability.extra.jokies then
 			card.ability.extra.count = card.ability.extra.count + 1
-			card.ability.extra.neg = math.floor(card.ability.extra.count / 3)
+			card.ability.extra.neg = card.ability.extra.neg + math.floor(card.ability.extra.count / 3)
 			if card.ability.extra.count % 3 == 0 then
 				return {
 					message = localize("buf_prism_eor2"),
@@ -96,7 +112,7 @@ SMODS.Joker {
 							if jcards + buffer < limit then
 								local _card = create_card('Joker', G.jokers, nil, nil, nil, nil, card.ability.extra.jokies[i])
 								_card.ability = card.ability.extra.abils[i]
-								_card:set_edition(card.ability.extra.edits[i] or {}, nil, true)
+								_card:set_edition((card.ability.extra.edits[i]~='nope' and card.ability.extra.edits[i]) or {}, nil, true)
 								if neg > 0 then
 									_card:set_edition({negative = true})
 									neg = neg - 1

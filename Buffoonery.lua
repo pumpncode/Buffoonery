@@ -241,6 +241,8 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- fixed clown's scaling bugging out or being lost when starting a new run
 -- fixed patronizing joker not selecting cards during Cerulean Bell bossfight
 -- fixed erosion not working properly with porcelain deck
+-- fixed memory card / clay shooting jiggling too much
+-- fixed abyssal prism not properly accounting for already-negative jokers inside it when converting the others into negatives
 -- abyssal prism no longer strips upgrades
 -- Banish replaced with Exile
 -- Added Van
@@ -258,7 +260,6 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 	-- sandstone sleeve (ante 5, 3x)
 	-- 1 more Special Joker
     -- special jokies discover reqs
-	-- fix memcard nervous
 	-- fix aprism negatives
 -- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 

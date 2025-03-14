@@ -7,7 +7,7 @@ SMODS.Joker {
         y = 0,
     },
     rarity = "buf_spc",
-    cost = 4,
+    cost = 0,
     unlocked = true,
     discovered = true,
     eternal_compat = false,
@@ -15,7 +15,7 @@ SMODS.Joker {
     blueprint_compat = true,
 	in_pool = false,
     config = {
-        extra = { mult = 0, mult_gain = 6 },
+        extra = { mult = 0, mult_gain = 6, cost = 0 },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_blackstallion'},
     loc_vars = function(self, info_queue, card)

@@ -17,7 +17,7 @@ end
 '''
 match_indent = true
 
-# Adoring Fan/Bitter Ex-Fan negative cost
+# Adoring Fan/Bitter Ex-Fan negative cost and Echo of The Abyss no sell gain
 [[patches]]
 [patches.pattern]
 target = 'card.lua'
@@ -27,6 +27,8 @@ match_indent = true
 payload = '''
 if (self.config.center.key == 'j_buf_afan' or self.config.center.key == 'j_buf_afan_spc') and self.added_to_deck then
     self.sell_cost = self.ability.extra.cost + (self.ability.extra_value or 0)
+elseif self.config.center.key == 'j_buf_abyssalecho' then
+	self.sell_cost = 0
 end
 '''
 
