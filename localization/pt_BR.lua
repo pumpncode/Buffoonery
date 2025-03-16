@@ -181,6 +181,14 @@ return {
 						"o valor de {C:mult}Multi{}",
 						"adicionado pelo Curinga",
 						"à {C:attention}esquerda{} em {C:chips}Fichas{}"
+						"{C:buf_spc,s:0.7}#1# XMulti!{}"
+				}
+			},
+			j_buf_integral = { -- Special (JokerGebra)
+				name = "Integral",
+				text = {"Dá {C:attention}^0.02{} Fichas",
+						"por {X:mult,C:white}X1{} Multi",
+						"pontuado a cada mão",
 				}
 			},
 			j_buf_korny = {
@@ -516,6 +524,18 @@ return {
 						"{C:buf_spc}Dorkshire Gold{}",
 						"e 1 {C:attention}Naipe{} a",
 						"menos no baralho"
+				}
+			},
+			sleeve_buf_sandstone = {
+				name = "Capa de Arenito",
+				text = {"Vença na {C:attention}Aposta 6{}",
+						"x2 tamanho base do Blind"
+				}
+			},
+			sleeve_buf_sandstone_alt = {
+				name = "Capa de Arenito",
+				text = {"Vença na {C:attention}Aposta 5{}",
+						"x3 tamanho base do Blind"
 				}
 			},
         },

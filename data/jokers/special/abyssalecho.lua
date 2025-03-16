@@ -3,7 +3,7 @@ SMODS.Joker {
     name = "Echo of The Abyss",
     atlas = 'buf_special',
     pos = {
-        x = 6,
+        x = 5,
         y = 0,
     },
     rarity = "buf_spc",

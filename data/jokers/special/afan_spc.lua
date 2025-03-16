@@ -3,7 +3,7 @@ SMODS.Joker {
     name = "Bitter Ex-Fan",
     atlas = 'buf_special',
     pos = {
-        x = 4,
+        x = 3,
         y = 0,
     },
     rarity = 'buf_spc',

@@ -13,7 +13,6 @@ SMODS.Joker {
     eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = true,
-	no_pool_flag = 'kerman_went_boom',
     config = {
         extra = { mult = 0, gain = 8, odds = 6 },
     },
@@ -46,6 +45,7 @@ SMODS.Joker {
         end
         if context.using_consumeable and not context.blueprint and (context.consumeable.ability.set == 'Planet' or context.consumeable.ability.name == 'Black Hole') then      
 			if pseudorandom("kerman") < G.GAME.probabilities.normal/card.ability.extra.odds or context.consumeable.ability.name == 'Black Hole' then
+				local bhole = false
 				G.E_MANAGER:add_event(Event({
                     func = function()
                         card.T.r = -0.2
@@ -56,19 +56,19 @@ SMODS.Joker {
 							SMODS.calculate_effect({message = localize('buf_blowup'), colour = G.C.FILTER}, card)  -- This card is supposed to EMBODY THE FULL KERBAL EXPERIENCE
 							play_sound('buf_explosion')
 						else
-							SMODS.calculate_effect({message = localize('buf_prism_eor1'), colour = G.C.PURPLE}, card)
-							play_sound('buf_phase')
+							SMODS.calculate_effect({message = localize('buf_prism_eor1'), colour = G.C.BUF_SPC}, card)
+							bhole = true
 						end
                         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
                             func = function()
                                     G.jokers:remove_card(card)
                                     card:remove()
                                     card = nil
+									if bhole then SMODS.add_card({key = 'j_buf_kerman_spc'}) end
                                     return true; end})) 
                         return true
                     end
                 }))
-				G.GAME.pool_flags.kerman_went_boom = true
 				G.GAME.pool_flags.kermans_mult = card.ability.extra.mult -- This mult is carried over to Jebediah Reborn and reset every run
 			else
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain

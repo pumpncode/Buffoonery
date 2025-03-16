@@ -3,7 +3,7 @@ SMODS.Joker {
     name = "Van",
     atlas = 'buf_special',
     pos = {
-        x = 7,
+        x = 6,
         y = 0,
     },
     rarity = 'buf_spc',

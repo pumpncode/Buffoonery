@@ -151,7 +151,7 @@ return {
 			},
 			j_buf_camarosa = {
 				name = "Camarosa",
-				text = {"{X:dark_edition,C:white}^#1#{} Mult",
+				text = {"{X:expmult,C:white}^#1#{} Mult",
 						"{C:green}#2# in #3#{} chance this",
 						"card is destroyed",
 						"at end of round",
@@ -180,7 +180,15 @@ return {
 				text = {"Gives {C:attention}five times{}",
 						"the amount of {C:mult}Mult{}",
 						"given by the Joker",
-						"to the {C:attention}left{} as {C:chips}Chips{}"
+						"to the {C:attention}left{} as {C:chips}Chips{}",
+						"{C:buf_spc,s:0.7}#1# XMult!{}"
+				}
+			},
+			j_buf_integral = { -- Special (JokerGebra)
+				name = "Integral",
+				text = {"Gives {X:expchips,C:white}^0.02{} Chips",
+						"per {X:mult,C:white}X1{} Mult",
+						"triggered each hand",
 				}
 			},
 			j_buf_korny = {
@@ -211,7 +219,7 @@ return {
 			j_buf_maggit = { 
 				name = "Maggit",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Mult if you own a",
+					"{X:expmult,C:white}^#1#{} Mult if you own a",
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
@@ -516,6 +524,18 @@ return {
 						"{C:buf_spc}Dorkshire Gold{}",
 						"and 1 less",
 						"full {C:attention}Suit{}"
+				}
+			},
+			sleeve_buf_sandstone = {
+				name = "Sandstone Sleeve",
+				text = {"Win on {C:attention}Ante 6{}",
+						"x2 base Blind size"
+				}
+			},
+			sleeve_buf_sandstone_alt = {
+				name = "Sandstone Sleeve",
+				text = {"Win on {C:attention}Ante 5{}",
+						"x2.5 base Blind size"
 				}
 			},
         },

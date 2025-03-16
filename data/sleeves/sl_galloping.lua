@@ -20,6 +20,7 @@ CardSleeves.Sleeve {
 			if self.get_current_deck_key() == "b_buf_galloping" then
 				G.GAME.starting_params.hands = G.GAME.starting_params.hands - 2
 				G.GAME.round_resets.hands = G.GAME.round_resets.hands - 2
+				 G.GAME.current_round.hands_left = G.GAME.current_round.hands_left - 2
 				card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_buf_whitepony', 'jst')
 			else
 				card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_buf_blackstallion', 'jst')
@@ -32,5 +33,3 @@ CardSleeves.Sleeve {
         return true end }))
     end,
 }
-
--- sleeve_buf_jstation

@@ -62,7 +62,7 @@ SMODS.Stake{ -- Prismatic Stake
 		get_new_boss = buf_get_new_boss
     end,
 
-    colour = HEX('5e5b54'),
+    colour = HEX('d38bb8'),
 	shader = 'shine',
     pos = {x = 0, y = 0},
     sticker_pos = {x = 0, y = 0},
@@ -81,7 +81,7 @@ SMODS.Stake{ -- Platinum Stake
 		G.GAME.win_ante = G.GAME.win_ante * 1.5
     end,
 
-    colour = HEX('5e5b54'),
+    colour = HEX('aad7f7'),
 	shader = 'shine',
     pos = {x = 1, y = 0},
     sticker_pos = {x = 1, y = 0},

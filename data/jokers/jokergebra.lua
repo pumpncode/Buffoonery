@@ -14,11 +14,16 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { check = true, mult_amount = 0, mult_joker = nil },
+        extra = { check = true, mult_amount = 0, mult_joker = nil, spc_count = 0, spc_check = true },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_interpreter'},
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {( 5 - card.ability.extra.spc_count )}
+		}
+    end,
+	
     calculate = function(self, card, context)  -- BEWARE: JANKY ASS CODE BELOW
-		local origCalcIndiv = SMODS.calculate_individual_effect
 		local function moddedCalcIndiv(effect, scored_card, key, amount, from_edition)  -- Hooked this func to get the amount of mult provided by the scoring joker
 			origCalcIndiv(effect, scored_card, key, amount, from_edition)
 			if scored_card == card.ability.extra.mult_joker then  -- prevents playing cards from interfering, eg. Mult cards
@@ -27,7 +32,13 @@ SMODS.Joker {
 						card.ability.extra.mult_amount = amount * 5
 					elseif card.ability.extra.check and card.ability.extra.mult_amount ~= nil then
 						card.ability.extra.mult_amount = (card.ability.extra.mult_amount) + amount * 5
+						card.ability.extra.spc_count = 0
 						card.ability.extra.check = false
+					end
+				elseif (key == 'x_mult' or key == 'xmult' or key == 'Xmult' or key == 'x_mult_mod' or key == 'Xmult_mod') and amount ~= 1 then
+					if card.ability.extra.spc_check then 
+						card.ability.extra.spc_count = card.ability.extra.spc_count + 1 
+						card.ability.extra.spc_check = false
 					end
 				end
 			end
@@ -42,6 +53,10 @@ SMODS.Joker {
 			end
 		end
 		
+		if context.setting_blind then
+			card.ability.extra.spc_check = true
+		end
+		
 		if context.joker_main and not card.getting_sliced then
 			return {
 				chips = card.ability.extra.mult_amount
@@ -53,6 +68,28 @@ SMODS.Joker {
 			card.ability.extra.check = true
 			card.ability.extra.mult_amount = 0
 			card.ability.extra.mult_joker = nil
+			if card.ability.extra.spc_count >= 5 then
+				G.E_MANAGER:add_event(
+				Event({
+					trigger = "after",
+					delay = 0.2,
+					func = function()
+						SMODS.calculate_effect({message = localize('k_upgrade_ex'), colour = G.C.BUF_SPC}, card)
+						G.E_MANAGER:add_event(
+							Event({
+								trigger = "after",
+								delay = 0.2,
+								func = function()
+									SMODS.add_card({key = 'j_buf_integral'})
+									card:start_dissolve()
+									return true
+								end}))
+						return true
+					end }))	
+			end
 		end
     end,
+	remove_from_deck = function(self,card,context)
+		SMODS.calculate_individual_effect = origCalcIndiv -- Revert to original behavior if the card is removed
+	end
 }

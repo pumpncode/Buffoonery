@@ -87,14 +87,16 @@ buf.compat = {
 	sleeves = (SMODS.Mods['CardSleeves'] or {}).can_load,
 	unstable = (SMODS.Mods['UnStable'] or {}).can_load,
 	talisman = (SMODS.Mods['Talisman'] or {}).can_load,
+	bunco = (SMODS.Mods['Bunco'] or {}).can_load,
 }
 
 if not buf.compat.talisman then
 	NFS.load(Buffoonery.path .. 'notalisman.lua')()
 end
 
--- FUNCTIONS --
+-- UTILS / FUNCS --
 local VanillaHighlight = CardArea.add_to_highlighted -- Fix Bunco incompat with Patronizing Joker
+origCalcIndiv = SMODS.calculate_individual_effect -- Save original behavior of func to global (for JokerGebra/Integral)
 
 function expire_card(_card, msg, color) -- function to remove card with the Cavendish animation and display a message
 	G.E_MANAGER:add_event(Event({
@@ -120,6 +122,21 @@ end
 function buf_add_to_highlighted(card, silent) -- Fix Bunco incompatibility. Bunco modifies CadArea.add_to_highlighted and breaks Patronizing Joker, so I made a separate function.
     VanillaHighlight(G.hand, card, silent)
 end
+
+function buf_stake_order()
+	if buf.compat.bunco then
+		SMODS.Stakes.stake_bunc_cyan.order = SMODS.Stakes.stake_orange.order + 1
+		SMODS.Stakes.stake_bunc_pink.order = SMODS.Stakes.stake_bunc_cyan.order + 1
+	end
+	SMODS.Stakes.stake_buf_prismatic.order = SMODS.Stakes.stake_gold.order + 1
+	SMODS.Stakes.stake_buf_platinum.order = SMODS.Stakes.stake_buf_prismatic.order + 1
+end
+
+function buf_get_stake_order(_stake)
+	local order = SMODS.Stakes[_stake].order
+	return order
+end
+
 
 -- CONFIG --
 Buffoonery.config_tab = function()
@@ -164,6 +181,7 @@ NFS.load(Buffoonery.path .. 'data/jokers/denial.lua')() -- (Arstotzkan Denial)
 NFS.load(Buffoonery.path .. 'data/jokers/clown.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/jokergebra.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/integral.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument)
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
@@ -214,9 +232,9 @@ NFS.load(Buffoonery.path .. 'data/stakes.lua')()
 
 -- DECKS --
 NFS.load(Buffoonery.path .. 'data/decks/galloping.lua')()
-NFS.load(Buffoonery.path .. 'data/decks/sandstone.lua')()
 NFS.load(Buffoonery.path .. 'data/decks/jstation.lua')()
 NFS.load(Buffoonery.path .. 'data/decks/porcelain.lua')()
+NFS.load(Buffoonery.path .. 'data/decks/sandstone.lua')()
 
 -- ENHANCEMENTS --
 NFS.load(Buffoonery.path .. 'data/enhancements/porcelain.lua')()
@@ -227,6 +245,7 @@ if buf.compat.sleeves then
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_galloping.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_jstation.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_porcelain.lua')()
+	NFS.load(Buffoonery.path .. 'data/sleeves/sl_sandstone.lua')()
 end
 
 -- SOUNDS --
@@ -235,6 +254,22 @@ SMODS.Sound({key = 'explosion', path = 'explosion.ogg'})
 SMODS.Sound({key = 'roul1', path = 'roul1.ogg'})
 SMODS.Sound({key = 'roul2', path = 'roul2.ogg'})
 SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
+SMODS.Sound({key = 'echip', path = 'echip.wav'})  -- Sound effect by HexaCryonic
+
+-- Gradients for XChips and EMult text
+SMODS.Gradient{
+	key = 'expmult',
+	colours = { G.C.EMULT, G.C.RED },
+    cycle = 2.6,
+}
+SMODS.Gradient{
+	key = 'expchips',
+	colours = { G.C.ECHIP, G.C.BLUE },
+    cycle = 2.6,
+}
+loc_colour('') -- initializes args in case they're not there yet
+G.ARGS.LOC_COLOURS.expmult = SMODS.Gradients.buf_expmult
+G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 
 -- CHANGELOG MOVED TO SEPARATE .md FILE ------
 -- fixed clown upgrading by 20 the forst time
@@ -243,8 +278,12 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- fixed erosion not working properly with porcelain deck
 -- fixed memory card / clay shooting jiggling too much
 -- fixed abyssal prism not properly accounting for already-negative jokers inside it when converting the others into negatives
+-- fixed abyssal prism crashing the game when continuing a run and trying to sell it
+-- fixed galloping deck+sleeve showing 4 hands left before selecting a blind, instead of 2
 -- abyssal prism no longer strips upgrades
 -- Banish replaced with Exile
+-- Added custom gradients for Exponential Mult and Exponential Chips
+-- Corrected the outline in Adoring Fan's artwork to be pixel-perfect
 -- Added Van
 -- Added Abyssal Echo
 -- Added Kerman Reborn
@@ -252,15 +291,12 @@ SMODS.Sound({key = 'emult', path = 'emult.wav'})  -- Sound effect by HexaCryonic
 -- Added Bitter Fan
 -- Added Let Me Solo Her
 -- Added Sayajimbo
--- added jokergebra
--- added 2 stakes
--- added sandstone deck
+-- added JokerGebra
+-- Added Integral
+-- added Prismatic and Platinum stakes
+-- added Sandstone Deck/Sleeve
 
--- TODO: Jeb art: earth, jupiter, saturn, uranus, neptune
-	-- sandstone sleeve (ante 5, 3x)
-	-- 1 more Special Joker
-    -- special jokies discover reqs
-	-- fix aprism negatives
--- curr spc: Kerman, Dork, WP, Memcard, Patronizing, Afan, clown, prism (8/9)
 
--- Only the faceless wear uniforms
+-- TODO: Jeb art: jupiter, saturn, uranus, neptune, Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
+-- special jokies discover reqs
+

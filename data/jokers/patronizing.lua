@@ -140,6 +140,7 @@ SMODS.Joker {
 		end
 		
 		if context.after and context.scoring_name == card.ability.extra.hand then -- Special Joker req
+			print('stuff')
 			G.E_MANAGER:add_event(
 				Event({
 					trigger = "after",

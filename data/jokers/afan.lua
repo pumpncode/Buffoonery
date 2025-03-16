@@ -51,7 +51,7 @@ SMODS.Joker {
 				end
 			}))
 		elseif context.selling_self and card.ability.extra.count >= 4 then
-			SMODS.calculate_effect({message = localize('buf_disilluison'), colour = G.C.RED}, card)
+			SMODS.calculate_effect({message = localize('buf_disilluison'), colour = G.C.BUF_SPC}, card)
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 0.5,
