@@ -9,17 +9,17 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = false,
     config = {
-        extra = {money = 30, odds = 6} 
+        extra = {money = 15, odds = 6} 
     },
     loc_txt = {set = 'Joker', key = 'j_buf_roulette'},
 	loc_vars = function(self, info_queue, card)
 		return { 
-			vars = { G.GAME.probabilities.normal or 1, card.ability.extra.odds}
+			vars = { G.GAME.probabilities.normal or 1, card.ability.extra.odds, card.ability.extra.money}
 		}
 	end,
 
@@ -69,8 +69,9 @@ SMODS.Joker {
 					SMODS.calculate_effect({message = localize('buf_dry'), colour = G.C.GREEN}, card)
 					play_sound('buf_roul1', 0.96+math.random()*0.08)
 					delay(0.8)
-					ease_dollars(30)
+					ease_dollars(card.ability.extra.money)
 					card.ability.extra.odds = math.max(card.ability.extra.odds - 1, 1)
+					if card.ability.extra.odds > 2 then card.ability.extra.money = card.ability.extra.money + 5 end
 				end
 			end
 		end

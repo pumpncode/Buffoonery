@@ -8,13 +8,13 @@ SMODS.Joker {
     },
     rarity = 'buf_spc',
     cost = 0,
-    unlocked = true,
-    discovered = true,
+    unlocked = false,
+    discovered = false,
     eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = {cost = -25, rounds = 5, last = false },
+        extra = {cost = -30, rounds = 5, last = false },
     },
     loc_txt = {set = 'Joker', key = 'j_buf_afan'},
     loc_vars = function(self, info_queue, card)
@@ -105,6 +105,11 @@ SMODS.Joker {
 				SMODS.calculate_effect({message = localize('buf_defeated'), colour = G.C.GREEN}, card)
 				card.ability.extra.cost = card.ability.extra.cost * -1
 				card:set_cost()
+			else
+				return {
+					message = tostring(card.ability.extra.rounds),
+					colour = G.C.FILTER,
+				}
 			end
 		end
 		

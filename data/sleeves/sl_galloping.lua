@@ -1,7 +1,7 @@
 CardSleeves.Sleeve {
     key = 'galloping',
-    unlocked = true,
-    discovered = true,
+    unlocked = false,
+    unlock_condition = { deck = "b_buf_galloping", stake = "stake_green" },
     atlas = 'buf_sleeves',
     pos = {
         x = 1,
@@ -9,9 +9,14 @@ CardSleeves.Sleeve {
     },
     config = {},
 	loc_vars = function(self)
+		local key
+		local vars = {}
         if self.get_current_deck_key() == "b_buf_galloping" then
-            return {key = self.key .. '_alt', vars = {}}
-        end
+            key = self.key .. '_alt'
+        else
+			key = self.key
+		end
+		return {key = key, vars = vars}
     end,
     apply = function(self)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.8, func = function()

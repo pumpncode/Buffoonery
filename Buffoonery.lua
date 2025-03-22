@@ -1,3 +1,7 @@
+-- TODO: Jeb art: jupiter, saturn, uranus, neptune, Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
+-- test blueprint/eternal/rental
+-- make credits
+
 -- defs --
 Buffoonery = SMODS.current_mod
 
@@ -144,7 +148,6 @@ Buffoonery.config_tab = function()
 			{ n=G.UIT.R, config = {align = 'cm'}, nodes={
 				create_toggle({label = localize('buf_cf_show_spc'), ref_table = Buffoonery.config, info = localize('buf_cf_req_restart'), ref_value = 'show_spc', active_colour = Buffoonery.badge_colour, right = true}),
 				create_toggle({label = localize('buf_cf_show_info'), ref_table = Buffoonery.config, info = localize('buf_cf_info_info'), ref_value = 'show_info', active_colour = Buffoonery.badge_colour, right = true}),
-				create_toggle({label = localize('buf_cf_memcard_perf'), ref_table = Buffoonery.config, info = localize('buf_cf_perf_info'), ref_value = 'memcard_perf', active_colour = Buffoonery.badge_colour, right = true}),
 			},
 			},
 	}}
@@ -166,22 +169,18 @@ SMODS.Rarity{
 -- JOKERS --
 -- common
 NFS.load(Buffoonery.path .. 'data/jokers/afan.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/afan_spc.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/cashout.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/clays.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/fivefingers.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/gfondue.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/camarosa.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/kerman.lua')()  -- (Jebediah Kerman, a.k.a. Jeb)
-NFS.load(Buffoonery.path .. 'data/jokers/special/kerman_spc.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/korny.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/laidback.lua')()
 -- uncommon
 NFS.load(Buffoonery.path .. 'data/jokers/denial.lua')() -- (Arstotzkan Denial)
 NFS.load(Buffoonery.path .. 'data/jokers/clown.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/jokergebra.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/integral.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/argument.lua')() -- (Pertinent Argument)
 NFS.load(Buffoonery.path .. 'data/jokers/porcelainj.lua')() 
 NFS.load(Buffoonery.path .. 'data/jokers/rerollin.lua')()
@@ -189,19 +188,27 @@ NFS.load(Buffoonery.path .. 'data/jokers/roulette.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/sayajimbo.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/tailored.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/whitepony.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()  -- [SPECIAL]
 -- rare
 NFS.load(Buffoonery.path .. 'data/jokers/abyssalp.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/abyssalecho.lua')()  -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/dorkshire.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()  -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/lemmesolo.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/memcard.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')() -- [SPECIAL]
 NFS.load(Buffoonery.path .. 'data/jokers/patronizing.lua')()
-NFS.load(Buffoonery.path .. 'data/jokers/special/supportive.lua')() -- [SPECIAL]
 -- legendary
 NFS.load(Buffoonery.path .. 'data/jokers/maggit.lua')()
+-- special
+NFS.load(Buffoonery.path .. 'data/jokers/special/afan_spc.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/integral.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/kerman_spc.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/supportive.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')()
+-- Sleeve-Dependent Special Jokers:
+if buf.compat.sleeves then
+	NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()
+	NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')()
+	NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()
+end
+NFS.load(Buffoonery.path .. 'data/jokers/special/abyssalecho.lua')()
 
 -- CONSUMABLES
 function conversionTarot(hand, newcenter) -- For tarots that change enhancements. Directly stolen from Kirbio's UnStable mod (with his permission, ofc. thanks, Kirbio!)
@@ -245,7 +252,7 @@ if buf.compat.sleeves then
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_galloping.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_jstation.lua')()
 	NFS.load(Buffoonery.path .. 'data/sleeves/sl_porcelain.lua')()
-	NFS.load(Buffoonery.path .. 'data/sleeves/sl_sandstone.lua')()
+	NFS.load(Buffoonery.path .. 'data/sleeves/sl_sandstone.lua')()	
 end
 
 -- SOUNDS --
@@ -272,7 +279,7 @@ G.ARGS.LOC_COLOURS.expmult = SMODS.Gradients.buf_expmult
 G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 
 -- CHANGELOG MOVED TO SEPARATE .md FILE ------
--- fixed clown upgrading by 20 the forst time
+-- fixed clown upgrading by 20 the first time
 -- fixed clown's scaling bugging out or being lost when starting a new run
 -- fixed patronizing joker not selecting cards during Cerulean Bell bossfight
 -- fixed erosion not working properly with porcelain deck
@@ -282,8 +289,12 @@ G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 -- fixed galloping deck+sleeve showing 4 hands left before selecting a blind, instead of 2
 -- abyssal prism no longer strips upgrades
 -- Banish replaced with Exile
+-- Nerfed Roulette: money increases with chance, starts at $15
+-- Reverted Gold Fondue to $8/-$2
 -- Added custom gradients for Exponential Mult and Exponential Chips
 -- Corrected the outline in Adoring Fan's artwork to be pixel-perfect
+-- Jebediah Kerman's artwork now dynamically changes based on last planet used. All Vanilla planets included, Bunco/Paperback planets on the way
+-- Removed "Memory Card Performance Mode" as it is no longer needed
 -- Added Van
 -- Added Abyssal Echo
 -- Added Kerman Reborn
@@ -295,8 +306,3 @@ G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 -- Added Integral
 -- added Prismatic and Platinum stakes
 -- added Sandstone Deck/Sleeve
-
-
--- TODO: Jeb art: jupiter, saturn, uranus, neptune, Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
--- special jokies discover reqs
-

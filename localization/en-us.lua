@@ -14,9 +14,12 @@ return {
 				name = "Echo of The Abyss",
 				text = {"Gives {C:mult}+#2#{} Mult",
 						"for each Joker inside",
-						"the Abyssal Prism",
+						"the {C:attention}Abyssal Prism{}",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
 						"{C:inactive,s:0.6}Destroyed when Abyssal Prism is removed{}"
+				},
+				unlock = {"Acquire an",
+						"{C:attention}Abyssal Prism",
 				}
 			},
 			j_buf_afan = {
@@ -33,6 +36,10 @@ return {
 						"{C:attention}playing cards{} each hand, at random",
 						"Costs {C:money}$25{} to be sold",
 						"In {C:attention}#1#{} rounds, sell price becomes positive",
+				},
+				unlock = {"Solve the {E:1,C:buf_spc}special{}",
+						"requirement of",
+						"{C:attention}Adoring Fan"
 				}  
 			},
 			j_buf_argument = {
@@ -91,6 +98,10 @@ return {
 						"when another Joker is added",
 						"Amount depends on how",
 						"many {C:attention}Clowns{} are inside",
+				},
+				unlock = {"Solve the {E:1,C:buf_spc}special{}",
+						"requirement of",
+						"{C:attention}Clown"
 				}
 			},
 			j_buf_denial = {
@@ -107,6 +118,9 @@ return {
 						"{C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
+				},
+				unlock = {"Play a {C:attention}Three of a Kind",
+						  "of all {C:attention}Porcelain 3s"
 				}
 			},
 			j_buf_dorkshire_alt = {
@@ -117,21 +131,29 @@ return {
 						"is a {C:attention}Three of a Kind{}",
 				}
 			},
-			j_buf_dorkshire_g = {
+			j_buf_dorkshire_g = { -- Special (Dorkshire Tea) 
 				name = "Dorkshire Gold",
 				text = {"All {C:attention}2s{}, {C:attention}3s{} and {C:attention}10s{} become",
 						"{C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
+				},
+				unlock = {"Start a run",
+						"with {C:attention}Porcelain Deck",
+						"and {C:attention}Porcelain Sleeve"
 				}
 			},
-			j_buf_dorkshire_g_alt = {
+			j_buf_dorkshire_g_alt = { -- Special (Dorkshire Tea) [ALT]
 				name = "Dorkshire Gold",
 				text = {"{C:attention}2s{}, {C:attention}3s{}, {C:attention}10s{}, {C:attention}12s{}, {C:attention}13s{}, {C:attention}21s{} and {C:attention}25s{}",
 						"become {C:buf_spc}Royal Porcelain Cards{} before",
 						"scoring if poker hand",
 						"is a {C:attention}Three of a Kind{}",
-						}
+				},
+				unlock = {"Start a run",
+						"with {C:attention}Porcelain Deck",
+						"and {C:attention}Porcelain Sleeve"
+				}
 			},
 			j_buf_fivefingers = {
 				name = "Five Fingers",
@@ -170,9 +192,12 @@ return {
 				name = "Jebediah Reborn",
 				text = {"Gains {C:mult}+#2#{} Mult every time",
 						"any {C:planet}Planet{} card is used",
+						"{C:spectral}Black Hole{} gives {C:attention}#3#%{} of total Mult",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
-						"{C:buf_spc,s:0.7}Likes hanging around Singularities{}",
-						'{C:inactive,s:0.7}"I am one with the Kraken"{}'
+				},
+				unlock = {"Solve the {E:1,C:buf_spc}special{}",
+						"requirement of",
+						"{C:attention}Jebediah Kerman"
 				}
 			},
 			j_buf_jokergebra = {
@@ -189,6 +214,10 @@ return {
 				text = {"Gives {X:expchips,C:white}^0.02{} Chips",
 						"per {X:mult,C:white}X1{} Mult",
 						"triggered each hand",
+				},
+				unlock = {"Solve the {E:1,C:buf_spc}special{}",
+						"requirement of",
+						"{C:attention}JokerGebra"
 				}
 			},
 			j_buf_korny = {
@@ -225,6 +254,7 @@ return {
 					"when {C:attention}Blind{} is selected{}",
 					"{C:inactive,s:0.7}(Must have room){}",
 				},
+				unlock = {'{E:1,s:1.3}?????'}
 			},
 			j_buf_maggit_alt = { 
 				name = "Maggit",
@@ -250,7 +280,11 @@ return {
 						"up to {C:buf_spc}16{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
 						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
-						}
+				},
+				unlock = {"Start a run",
+						"with {C:attention}JimboStation Deck",
+						"and {C:attention}JimboStation Sleeve"
+				}
 			},
 			j_buf_patronizing = {
 				name = "Patronizing Joker",
@@ -266,6 +300,10 @@ return {
 						"Tells you the top",
 						"3 cards in deck",
 						"during the round"
+				},
+				unlock = {"Solve the {E:1,C:buf_spc}special{}",
+						"requirement of",
+						"{C:attention}Patronizing Joker"
 				}
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
@@ -293,43 +331,42 @@ return {
 			},
 			j_buf_roulette = {
 				name = "Russian Roulette",
-				text = {"When {C:attention}Blind{} is selected, earn {C:money}$30{}",          
+				text = {"When {C:attention}Blind{} is selected, earn {C:money}$#3#{}",          
 						"{C:green}#1# in #2#{} chance you {E:1,C:mult}lose the game{} instead",
 						"If chance reaches {C:green}1 in 2{} and you win,",
 						"create a random {C:legendary}Legendary{} Joker",
-						"{C:inactive,s:0.7}(Chance increases each round)"
+						"{C:inactive,s:0.7}(Chance and payout increase each round)"
 				}
 			},
 			j_buf_sayajimbo = {
 				name = "Sayajimbo",
 				text = {"{C:chips}+#1#{} Chips",
-						"Play a {C:attention}#2#{}",
+						"Score at least {C:attention}#2#{}",
 						"to {C:attention}transform{}",
-						"{C:inactive,s:0.7}Hand changes each level{}",
-						"{C:inactive,s:0.7}and is never High Card{}"
+						"{C:inactive}(Next level: {C:mult}+20{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s1 = {
 				name = "Super Sayajimbo",
 				text = {"{C:mult}+#1#{} Mult",
-						"Play a {C:attention}#6#{}",
-						"to {C:attention}transform{}",
-						"{C:inactive}(#4#/#5# needed){}",
-						"{C:inactive,s:0.7}Hand changes each level{}"
+						"Score at least {C:attention}#6#{}",
+						"#4# times to {C:attention}transform{}",
+						"{C:inactive}(#4#/#5#, Next level: {X:mult,C:white}X3{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s2 = {
 				name = "Super Sayajimbo 2",
 				text = {"{X:mult,C:white}X#2#{} Mult",
-						"Play a {C:attention}#6#{}",
-						"to {C:attention}transform{}",
-						"{C:inactive}(#4#/#5# needed){}",
-						"{C:inactive,s:0.7}Hand changes each level{}"
+						"Score at least {C:attention}#6#{}",
+						"#4# times to {C:attention}transform{}",
+						"{C:inactive}(#4#/#5#, Next level: {X:expmult,C:white}^1.3{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s3 = {
 				name = "Super Sayajimbo 3",
-				text = {"{X:dark_edition,C:white}^#3#{} Mult"}
+				text = {"{X:expmult,C:white}^#3#{} Mult",
+						"{C:inactive}Behold!"
+				}
 			},
 			j_buf_tailored = {
 				name = "Tailored Suit",
@@ -351,6 +388,10 @@ return {
 				text = {"{C:mult}+#1#{} Mult",
 						"Doubles",
 						"each {C:attention}Ante{}"
+				},
+				unlock = {"Start a run",
+						"with the",
+						"{C:attention}Galloping Deck"
 				}
 			},
         },
@@ -395,38 +436,38 @@ return {
 			},
         },
         Stake = {
-			stake_buf_prismatic = {
-                name = 'Prismatic Stake',
+			stake_buf_palladium = {
+                name = 'Palladium Stake',
                 text = {
                     '{C:attention}Final{} Boss Blinds',
                     'appear {C:attention}twice{} as often',
 					'{s:0.8}Applies all previous stakes'
                 }
             },
-			stake_buf_platinum = {
-                name = 'Platinum Stake',
+			stake_buf_spinel = {
+                name = 'Spinel Stake',
                 text = {
-                    'The game requires 50% more',
-					'Antes for you to win',
+                    'The game requires {C:attention}50% more',
+					'{C:attention}Antes{} for you to win',
 					'{s:0.8}Applies all previous stakes'
                 }
             },
         },
         Other = {
 		-------- STICKERS --------
-			buf_prismatic_sticker = {
-                name = 'Prismatic Sticker',
+			buf_palladium_sticker = {
+                name = 'Palladium Sticker',
                 text= {
                     'Used this Joker',
-                    'to win on {C:attention}Prismatic',
+                    'to win on {C:attention}Palladium',
                     '{C:attention}Stake{} difficulty'
                 }
             },
-			buf_platinum_sticker = {
-                name = 'Platinum Sticker',
+			buf_spinel_sticker = {
+                name = 'Spinel Sticker',
                 text= {
                     'Used this Joker',
-                    'to win on {C:attention}Platinum',
+                    'to win on {C:attention}Spinel',
                     '{C:attention}Stake{} difficulty'
                 }
             },
@@ -566,19 +607,12 @@ return {
 				"tooltips and 'Exile' mechanic tooltip",
 				"Restart required to take effect",
 			},
-			buf_cf_perf_info = {
-				"Disables Memory Card's constant jiggle",
-				"whenever it's ready to memorize.",
-				"Enabling this may improve your framerate",
-				"while Memory Card is present"
-			},
 			buf_cf_req_restart = {
 				"3 Jokers & 1 Enchancement",
 				"Restart required to take effect",
 			},
 			buf_cf_show_spc = "Show Special cards in collection",
 			buf_cf_show_info = "Show info queue tooltips",
-			buf_cf_memcard_perf = "Memory Card performance mode",
 			-------- CARD MESSAGES --------
 			buf_korny_ok = "He's ok!",
 			buf_korny_dd = "Dead!",

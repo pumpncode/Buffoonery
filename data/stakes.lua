@@ -1,5 +1,5 @@
-SMODS.Stake{ -- Prismatic Stake
-    key = 'prismatic',
+SMODS.Stake{ -- palladium Stake
+    key = 'palladium',
     applied_stakes = {'gold'},
     above_stake = 'gold',
     prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
@@ -62,7 +62,7 @@ SMODS.Stake{ -- Prismatic Stake
 		get_new_boss = buf_get_new_boss
     end,
 
-    colour = HEX('d38bb8'),
+    colour = HEX('ee8f8d'),
 	shader = 'shine',
     pos = {x = 0, y = 0},
     sticker_pos = {x = 0, y = 0},
@@ -72,16 +72,16 @@ SMODS.Stake{ -- Prismatic Stake
 }
 
 SMODS.Stake{ -- Platinum Stake
-    key = 'platinum',
-    applied_stakes = {'buf_prismatic'},
-    above_stake = 'buf_prismatic',
+    key = 'spinel',
+    applied_stakes = {'buf_palladium'},
+    above_stake = 'buf_palladium',
     prefix_config = {above_stake = {mod = false}, applied_stakes = {mod = false}},
 
     modifiers = function()
 		G.GAME.win_ante = G.GAME.win_ante * 1.5
     end,
 
-    colour = HEX('aad7f7'),
+    colour = HEX('e1345d'),
 	shader = 'shine',
     pos = {x = 1, y = 0},
     sticker_pos = {x = 1, y = 0},

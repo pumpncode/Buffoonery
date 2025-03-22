@@ -14,9 +14,12 @@ return {
 				name = "Eco do Abismo",
 				text = {"Dá {C:mult}+#2#{} Multi por",
 						"cada Curinga dentro",
-						"do Prisma Abissal",
+						"do {C:attention}Prisma Abissal{}",
 						"{C:inactive}(No momento,{} {C:mult}+#1#{} {C:inactive}Multi){}",
-						"{C:inactive,s:0.6}Destroyed when Abyssal Prism is removed{}"
+						"{C:inactive,s:0.6}Destruído quando o Prisma é removido{}"
+				},
+				unlock = {"Adquira um",
+						  "{C:attention}Prisma Abissal"
 				}
 			},
 			j_buf_afan = {
@@ -33,7 +36,11 @@ return {
 						"ou {C:attention}cartas de jogo{} a cada mão, aleatoriamente",
 						"Custa {C:money}$25{} para ser vendido",
 						"Em {C:attention}#1#{} rodadas, o preço de venda fica positivo",
-				}  
+				},
+				unlock = {"Resolva o requerimento",
+						"{E:1,C:buf_spc}especial{} do",
+						"{C:attention}Fã Adorador"
+				} 
 			},
 			j_buf_argument = {
 				name = "Discussão Acalourada",
@@ -74,7 +81,7 @@ return {
 				text = {"Ganha {C:chips}+#1#{} Fichas quando",
 						"outro Curinga é adicionado",
 						"{C:inactive}(No momento{} {C:chips}+#2#{} {C:inactive}Fichas){}",
-						"{C:inactive,s:0.7}Jimbo = Chips{}"
+						"{C:buf_spc,s:0.7}Prefere a própria companhia{}"
 				}
 			},
 			j_buf_van_alt = {
@@ -91,7 +98,11 @@ return {
 						"outro Curinga é adicionado",
 						"A quantidade depende de",
 						"quantos {C:attention}Palhaços{} estão dentro",
-				}
+				},
+				unlock = {"Resolva o requerimento",
+						"{E:1,C:buf_spc}especial{} do",
+						"{C:attention}Palhaço"
+				} 
 			},
 			j_buf_denial = {
 				name = "Rejeição de Arstotzka",
@@ -107,6 +118,9 @@ return {
 						"tornam {C:attention}Cartas de Porcelana{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				},
+				unlock = {"Jogue uma {C:attention}Trinca com",
+						  "três 3s de {C:attention}Porcelana"
 				}
 			},
 			j_buf_dorkshire_alt = {
@@ -117,20 +131,28 @@ return {
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
 				}
 			},
-			j_buf_dorkshire_g = {
+			j_buf_dorkshire_g = {  -- Special (Dorkshire Tea) 
 				name = "Dorkshire Gold",
 				text = {"Todos os {C:attention}2{}, {C:attention}3{} e {C:attention}10{} jogados se",
 						"tornam {C:attention}Cartas de Porcelana Real{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				},
+				unlock = {"Comece uma tentativa",
+						"com baralho e capa",
+						"de {C:attention}Porcelana"
 				}
 			},
-			j_buf_dorkshire_g_alt = {
+			j_buf_dorkshire_g_alt = { -- Special (Dorkshire Tea) [ALT]
 				name = "Dorkshire Gold",
 				text = {"Todos os {C:attention}2{}, {C:attention}3{}, {C:attention}10{}, {C:attention}12{}, {C:attention}13{}, {C:attention}21{} e {C:attention}25{} jogados",
 						"se tornam {C:attention}Cartas de Porcelana Real{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
+				},
+				unlock = {"Comece uma tentativa",
+						"com baralho e capa",
+						"de {C:attention}Porcelana"
 				}
 			},
 			j_buf_fivefingers = {
@@ -170,9 +192,12 @@ return {
 				name = "Jebediah Renascido",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
+						"{C:spectral}Buraco Negro{} dá {C:attention}#3#%{} do Multi total",
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}",
-						"{C:buf_spc,s:0.7}Gosta de ficar perto de singularidades{}",
-						'{C:inactive,s:0.7}"Eu e o Kraken somos o mesmo"{}'
+				},
+				unlock = {"Resolva o requerimento",
+						"{E:1,C:buf_spc}especial{} do",
+						"{C:attention}Jebediah Kerman"
 				}
 			},
 			j_buf_jokergebra = {
@@ -180,7 +205,7 @@ return {
 				text = {"Dá {C:attention}cinco vezes{}",
 						"o valor de {C:mult}Multi{}",
 						"adicionado pelo Curinga",
-						"à {C:attention}esquerda{} em {C:chips}Fichas{}"
+						"à {C:attention}esquerda{} em {C:chips}Fichas{}",
 						"{C:buf_spc,s:0.7}#1# XMulti!{}"
 				}
 			},
@@ -189,6 +214,10 @@ return {
 				text = {"Dá {C:attention}^0.02{} Fichas",
 						"por {X:mult,C:white}X1{} Multi",
 						"pontuado a cada mão",
+				},
+				unlock = {"Resolva o requerimento",
+						"{E:1,C:buf_spc}especial{} do",
+						"{C:attention}JokerGebra"
 				}
 			},
 			j_buf_korny = {
@@ -225,6 +254,7 @@ return {
 					"quando o {C:attention}Blind{} for escolhido",
 					"{C:inactive,s:0.7}(Deve ter espaço){}",
 				},
+				unlock = {'{E:1,s:1.3}?????'}
 			},
 			j_buf_maggit_alt = { 
 				name = "Maggit",
@@ -244,13 +274,17 @@ return {
 						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
 						}
 			},
-			j_buf_dxmemcard = {
+			j_buf_dxmemcard = { -- Special (Memory Card)
 				name = "Memory Card Deluxe",
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
 						"{C:buf_spc}mão{} por {C:buf_spc}16{} mãos. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
 						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
-						}
+				},
+				unlock = {"Comece uma tentativa",
+						"com baralho e capa",
+						"do {C:attention}JimboStation"
+				}
 			},
 			j_buf_patronizing = {
 				name = "Curinga Intrometido",
@@ -266,6 +300,10 @@ return {
 						"Revela as",
 						"três primeiras",
 						"cartas do baralho"
+				},
+				unlock = {"Resolva o requerimento",
+						"{E:1,C:buf_spc}especial{} do",
+						"{C:attention}Curinga Intrometido"
 				}
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
@@ -278,7 +316,7 @@ return {
 			},
 			j_buf_porcelainj = {
 				name = "Curinga de Porcelana",
-				text = {"Dá {X:chips,C:white}X#2#{} Fichas para",
+				text = {"Dá {X:chips,C:white}X#2#{} Fichas por",
 						"cada {C:attention}3 Cartas de Porcelana{}",
 						"no seu {C:attention}baralho completo{}",
 						"{C:inactive}(No momento,{} {X:chips,C:white}X#1#{} {C:inactive}Fichas){}"
@@ -293,43 +331,42 @@ return {
 			},
 			j_buf_roulette = {
 				name = "Roleta Russa",
-				text = {"Quando o {C:attention}Blind{} for selecionado, ganhe {C:money}$30{}",          
+				text = {"Quando o {C:attention}Blind{} for selecionado, ganhe {C:money}$#3#{}",          
 						"{C:green}#1# de #2#{} chance de {E:1,C:mult}perder o jogo{} ao invés",
 						"disso. Se a chance chegar a {C:green}1 de 2{} e você",
 						"vencer, crie um Curinga {C:legendary}Lendário{} aleatório",
-						"{C:inactive,s:0.7}(A chance aumenta a cada rodada)"
+						"{C:inactive,s:0.7}(Chance e pagamento aumentam a cada rodada)"
 				}
 			},
 			j_buf_sayajimbo = {
 				name = "Sayajimbo",
 				text = {"{C:chips}+#1#{} Fichas",
-						"Jogue um(a) {C:attention}#2#{}",
+						"Pontue ao menos {C:attention}#2#{}",
 						"para {C:attention}transformar{}",
-						"{C:inactive,s:0.7}A mão muda a cada nível{}",
-						"{C:inactive,s:0.7}e nunca é Carta Alta{}"
+						"{C:inactive}(Próximo Nível: {C:mult}+20{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s1 = {
 				name = "Super Sayajimbo",
 				text = {"{C:mult}+#1#{} Multi",
-						"Jogue um(a) {C:attention}#6#{}",
-						"#5# vezes para {C:attention}transformar{}",
-						"{C:inactive}(#4#/#5# vezes){}",
-						"{C:inactive,s:0.7}A mão muda a cada nível{}"
+						"Pontue ao menos {C:attention}#6#{}",
+						"#4# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#5#, Próx. Nível: {X:mult,C:white}X3{C:inactive} Multi)",
 				}
 			},
 			j_buf_sayajimbo_s2 = {
 				name = "Super Sayajimbo 2",
 				text = {"{X:mult,C:white}X#2#{} Multi",
-						"Jogue um(a) {C:attention}#6#{}",
-						"#5# vezes para {C:attention}transformar{}",
-						"{C:inactive}(#4#/#5# vezes){}",
-						"{C:inactive,s:0.7}A mão muda a cada nível{}"
+						"Pontue ao menos {C:attention}#6#{}",
+						"#4# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#5#, Próx. Nível: {X:expmult,C:white}^1.3{C:inactive} Multi)",
 				}
 			},
 			j_buf_sayajimbo_s3 = {
 				name = "Super Sayajimbo 3",
-				text = {"{X:dark_edition,C:white}^#3#{} Multi"}
+				text = {"{X:dark_edition,C:white}^#3#{} Multi",
+						"{C:inactive}Contemple!"
+				}
 			},
 			j_buf_tailored = {
 				name = "Terno Sob Medida",
@@ -351,6 +388,10 @@ return {
 				text = {"{C:mult}+#1#{} Multi",
 						"Dobra a", 
 						"cada {C:attention}Aposta{}"
+				},
+				unlock = {"Comece uma tentativa",
+						"com o {C:attention}Baralho",
+						"{C:attention}Galopeiro"
 				}
 			},
         },
@@ -395,35 +436,35 @@ return {
 			},
         },
         Stake = {
-			stake_buf_prismatic = {
-                name = 'Aposta Prismática',
+			stake_buf_palladium = {
+                name = 'Aposta de Paládio',
                 text = {
                     'Blinds de Chefe {C:attention}Finais{}',
                     'têm sua frequência {C:attention}dobrada{}',
 					'{s:0.8}Aplica todas as apostas anteriores'
                 }
             },
-			stake_buf_platinum = {
-                name = 'Aposta Platinada',
+			stake_buf_spinel = {
+                name = 'Aposta Espinela',
                 text = {
-                    'O jogo requer 50% mais',
-					'Apostas para ser vencido',
+                    'O jogo requer {C:attention}50% mais',
+					'{C:attention}Apostas{} para ser vencido',
 					'{s:0.8}Aplica todas as apostas anteriores'
                 }
             },
         },
         Other = {
 		-------- STICKERS --------
-			buf_prismatic_sticker = {
-                name = 'Adesivo Prismático',
+			buf_palladium_sticker = {
+                name = 'Adesivo de Paládio',
                 text= {
                     'Usou este Curinga',
                     'para vencer na dificuldade',
-                    '{C:attention}Aposta Prismática{}'
+                    '{C:attention}Aposta de Paládio{}'
                 }
             },
-			buf_platinum_sticker = {
-                name = 'Adesivo Platinado',
+			buf_spinel_sticker = {
+                name = 'Adesivo Espinela',
                 text= {
                     'Usou este Curinga',
                     'para vencer na dificuldade',
@@ -545,7 +586,7 @@ return {
 				text = {"{X:chips,C:white}X#1#{} Fichas",
 						"Destruída se a mão",
 						"jogada contém mais", 
-						"que {C:attention}#2#{} cartas",		
+						"de {C:attention}#2#{} cartas",		
 				}
 			},
 			m_buf_porcelain_g = {
@@ -553,7 +594,7 @@ return {
 				text = {"{X:chips,C:white}X#1#{} Fichas, é carta de {C:attention}realeza{}",
 						"Destruída se a mão",
 						"jogada contém mais", 
-						"que {C:attention}#2#{} cartas",
+						"de {C:attention}#2#{} cartas",
 				}
 			},
 		},

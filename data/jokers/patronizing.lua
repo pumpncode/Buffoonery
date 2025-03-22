@@ -9,7 +9,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 10,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = true,
@@ -140,7 +140,6 @@ SMODS.Joker {
 		end
 		
 		if context.after and context.scoring_name == card.ability.extra.hand then -- Special Joker req
-			print('stuff')
 			G.E_MANAGER:add_event(
 				Event({
 					trigger = "after",

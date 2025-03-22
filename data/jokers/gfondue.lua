@@ -9,15 +9,15 @@ SMODS.Joker {
     rarity = 1,
     cost = 4,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     eternal_compat = false,
     perishable_compat = true,
     blueprint_compat = true,
 	no_pool_flag = 'gfondue_licked',
     config = {
-        extra = { gold = 9, gold_loss = 3, },
+        extra = { gold = 8, gold_loss = 2, },
     },
-    loc_txt = {set = 'Joker', key = 'j_buf_whitepony'},
+    loc_txt = {set = 'Joker', key = 'j_buf_gfondue'},
     loc_vars = function(self, info_queue, card)
 		return {
 			vars = {card.ability.extra.gold, card.ability.extra.gold_loss}
@@ -25,6 +25,10 @@ SMODS.Joker {
     end,
 	
     calculate = function(self, card, context)
+		if context.first_hand_drawn then
+			local eval = function() return G.GAME.current_round.hands_played == 0 end
+			juice_card_until(card, eval, true)
+		end
 		if G.GAME.current_round.hands_played == 0 then
 			if context.before then
 				return {

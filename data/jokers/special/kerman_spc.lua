@@ -8,14 +8,14 @@ SMODS.Joker {
     },
     rarity = 'buf_spc',
     cost = 4,
-    unlocked = true,
-    discovered = true,
+    unlocked = false,
+    discovered = false,
     eternal_compat = true,
     perishable_compat = true,
     blueprint_compat = true,
 	in_pool = false,
     config = {
-        extra = { mult = 0, gain = 8, check = false, supergain = 1.5},
+        extra = { mult = 0, gain = 8, supergain = 1.25},
     },
 	sprite = {
 		['Default'] = 0,
@@ -35,7 +35,7 @@ SMODS.Joker {
 			info_queue[#info_queue+1] = {set = 'Other', key = 'special_info'}
 		end
         return {
-            vars = {card.ability.extra.mult, card.ability.extra.gain}
+            vars = {card.ability.extra.mult, card.ability.extra.gain, ((card.ability.extra.supergain - 1)*100)}
         }
     end,
 	
@@ -66,22 +66,18 @@ SMODS.Joker {
 					end}))
 				return
 			elseif context.consumeable.ability.name == 'Black Hole' then
-				if not card.ability.extra.check then -- prevents the super upgrade from happening when this joker is first added
-					card.ability.extra.check = true
-				else
-					card.ability.extra.mult = card.ability.extra.mult * card.ability.extra.supergain
+				card.ability.extra.mult = card.ability.extra.mult * card.ability.extra.supergain
+				G.E_MANAGER:add_event(Event({
+					func = function()
 					G.E_MANAGER:add_event(Event({
 						func = function()
-						G.E_MANAGER:add_event(Event({
-							func = function()
-							card:juice_up(1, 0.5)
-							card.config.center.pos.x = card.config.center.sprite['Default']
-						return true end}))
-						SMODS.calculate_effect({message = localize('buf_supergrade'), colour = G.C.DARK_EDITION}, card)
-						return true
-						end}))
-					return
-				end
+						card:juice_up(1, 0.5)
+						card.config.center.pos.x = card.config.center.sprite['Default']
+					return true end}))
+					SMODS.calculate_effect({message = localize('buf_supergrade'), colour = G.C.SECONDARY_SET.Spectral}, card)
+					return true
+					end}))
+				return
 			end
 		end
     end,
