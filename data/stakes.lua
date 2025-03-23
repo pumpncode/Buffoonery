@@ -1,4 +1,4 @@
-SMODS.Stake{ -- palladium Stake
+SMODS.Stake{ -- Palladium Stake
     key = 'palladium',
     applied_stakes = {'gold'},
     above_stake = 'gold',
@@ -62,7 +62,7 @@ SMODS.Stake{ -- palladium Stake
 		get_new_boss = buf_get_new_boss
     end,
 
-    colour = HEX('ee8f8d'),
+    colour = HEX('b0a190'),
 	shader = 'shine',
     pos = {x = 0, y = 0},
     sticker_pos = {x = 0, y = 0},
@@ -71,7 +71,7 @@ SMODS.Stake{ -- palladium Stake
 	shiny = true
 }
 
-SMODS.Stake{ -- Platinum Stake
+SMODS.Stake{ -- Spinel Stake
     key = 'spinel',
     applied_stakes = {'buf_palladium'},
     above_stake = 'buf_palladium',

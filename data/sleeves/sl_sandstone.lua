@@ -1,7 +1,7 @@
 CardSleeves.Sleeve {
     key = 'sandstone',
     unlocked = false,
-    unlock_condition = { deck = "b_buf_sandstone", stake = "stake_buf_prismatic" },
+    unlock_condition = { deck = "b_buf_sandstone", stake = "stake_buf_palladium" },
     atlas = 'buf_sleeves',
     pos = {
         x = 3,

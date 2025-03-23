@@ -8,7 +8,7 @@ SMODS.Joker {
     },
     rarity = 3,
     cost = 7,
-    unlocked = false,
+    unlocked = true,
     discovered = false,
     eternal_compat = true,
     perishable_compat = true,
@@ -21,20 +21,6 @@ SMODS.Joker {
 				key = self.key .. '_alt', 
 			}
 		end 
-    end,
-	check_for_unlock = function(self, args)
-        if args.type == 'hand_contents' then
-            local eval = evaluate_poker_hand(args.cards)
-			local check = true
-            if next(eval['Three of a Kind']) then
-				for i = 1, #args.cards do
-					if (args.cards[i].config.center ~= G.P_CENTERS.m_buf_porcelain) or
-					(args.cards[i].config.center ~= G.P_CENTERS.m_buf_porcelain_g) or
-					(args.cards[i]:get_id() ~= 3) then check = false end
-				end
-                if check then unlock_card(self) end
-            end
-        end
     end,
     calculate = function(self, card, context)
         if context.before and context.scoring_name == "Three of a Kind" and not context.blueprint then

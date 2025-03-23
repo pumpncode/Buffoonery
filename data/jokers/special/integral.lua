@@ -48,5 +48,15 @@ SMODS.Joker {
     end,
 	remove_from_deck = function(self,card,context)
 		SMODS.calculate_individual_effect = origCalcIndiv -- Revert to original behavior if the card is removed
+	end,
+	
+	-- HIDE JOKER IN COLLECTION (THANKS, EREMEL) --
+	inject = function(self)
+		if not Buffoonery.config.show_spc then
+			SMODS.Joker.super.inject(self)
+			G.P_CENTER_POOLS.Joker[#G.P_CENTER_POOLS.Joker] = nil
+		else
+			SMODS.Joker.super.inject(self)
+		end
 	end
 }

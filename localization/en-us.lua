@@ -10,7 +10,7 @@ return {
 						"{C:inactive,s:0.7}Must have room{}"
 				}
 			},
-			j_buf_abyssalecho = {
+			j_buf_abyssalecho = { -- Special (Abyssal Prism)
 				name = "Echo of The Abyss",
 				text = {"Gives {C:mult}+#2#{} Mult",
 						"for each Joker inside",
@@ -118,9 +118,6 @@ return {
 						"{C:attention}Porcelain Cards{} before",
 						"scoring, if {C:attention}poker hand{}",
 						"is a {C:attention}Three of a Kind{}",
-				},
-				unlock = {"Play a {C:attention}Three of a Kind",
-						  "of all {C:attention}Porcelain 3s"
 				}
 			},
 			j_buf_dorkshire_alt = {
@@ -350,7 +347,7 @@ return {
 				name = "Super Sayajimbo",
 				text = {"{C:mult}+#1#{} Mult",
 						"Score at least {C:attention}#6#{}",
-						"#4# times to {C:attention}transform{}",
+						"#5# times to {C:attention}transform{}",
 						"{C:inactive}(#4#/#5#, Next level: {X:mult,C:white}X3{C:inactive} Mult)",
 				}
 			},
@@ -358,7 +355,7 @@ return {
 				name = "Super Sayajimbo 2",
 				text = {"{X:mult,C:white}X#2#{} Mult",
 						"Score at least {C:attention}#6#{}",
-						"#4# times to {C:attention}transform{}",
+						"#5# times to {C:attention}transform{}",
 						"{C:inactive}(#4#/#5#, Next level: {X:expmult,C:white}^1.3{C:inactive} Mult)",
 				}
 			},
@@ -407,6 +404,9 @@ return {
 				name = "Galloping Deck",
 				text = {"Start run with",
 						"{C:buf_spc}Black Stallion{}",
+				},
+				unlock = {"Reach Ante",
+						  "level {C:attention}10"
 				}
 			},
 			b_buf_porcelain = {
@@ -415,6 +415,9 @@ return {
 						"{C:red}Dorkshire Tea{}",
 						"and 1 less",
 						"full {C:attention}Suit{}"
+				},
+				unlock = {"Play a {C:attention}Three of a kind",
+						  "of all {C:attenion}Porcelain 3s"
 				}
 			},
 			b_buf_sandstone = {

@@ -10,7 +10,7 @@ return {
 						"{C:inactive,s:0.7}Deve ter espaço{}"
 				}
 			},
-			j_buf_abyssalecho = {
+			j_buf_abyssalecho = { -- Special (Abyssal Prism)
 				name = "Eco do Abismo",
 				text = {"Dá {C:mult}+#2#{} Multi por",
 						"cada Curinga dentro",
@@ -118,9 +118,6 @@ return {
 						"tornam {C:attention}Cartas de Porcelana{}",
 						"antes de pontuar, se a",
 						"{C:attention}mão de pôquer{} for uma {C:attention}Trinca{}",
-				},
-				unlock = {"Jogue uma {C:attention}Trinca com",
-						  "três 3s de {C:attention}Porcelana"
 				}
 			},
 			j_buf_dorkshire_alt = {
@@ -407,6 +404,9 @@ return {
 				name = "Baralho Galopeiro",
 				text = {"Comece com um",
 						"{C:buf_spc} Black Stallion{}",
+				},
+				unlock = {"Alcance a Aposta",
+						  "Nível {C:attention}10"
 				}
 			},
 			b_buf_porcelain = {
@@ -415,6 +415,9 @@ return {
 						"{C:red}Chá Dorkshire{}",
 						"e 1 {C:attention}Naipe{} a",
 						"menos no baralho"
+				},
+				unlock = {"Jogue uma {C:attention}Trinca{} com",
+						  "três {C:attenion}3s de Porcelana"
 				}
 			},
 			b_buf_sandstone = {

@@ -1,6 +1,6 @@
--- TODO: Jeb art: jupiter, saturn, uranus, neptune, Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
--- test blueprint/eternal/rental
+-- TODO: Jeb art: Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
 -- make credits
+-- unlock reqs decks
 
 -- defs --
 Buffoonery = SMODS.current_mod
@@ -274,7 +274,7 @@ SMODS.Gradient{
 	colours = { G.C.ECHIP, G.C.BLUE },
     cycle = 2.6,
 }
-loc_colour('') -- initializes args in case they're not there yet
+loc_colour('') -- initializes args in case they're not there yet (thanks, aure!)
 G.ARGS.LOC_COLOURS.expmult = SMODS.Gradients.buf_expmult
 G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 
@@ -295,6 +295,9 @@ G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 -- Corrected the outline in Adoring Fan's artwork to be pixel-perfect
 -- Jebediah Kerman's artwork now dynamically changes based on last planet used. All Vanilla planets included, Bunco/Paperback planets on the way
 -- Removed "Memory Card Performance Mode" as it is no longer needed
+-- Special cards are now shown in collection by default
+-- All jokers are now undiscovered by default
+-- Added "Soul" card unlock requirement for Maggit
 -- Added Van
 -- Added Abyssal Echo
 -- Added Kerman Reborn

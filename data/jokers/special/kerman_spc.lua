@@ -28,6 +28,9 @@ SMODS.Joker {
 		['Uranus'] = 7,
 		['Neptune'] = 8,
 		['Pluto'] = 9,
+		['Planet X'] = 10,
+		['Ceres'] = 11,
+		['Eris'] = 12,
 	},
     loc_txt = {set = 'Joker', key = 'j_buf_kerman'},
     loc_vars = function(card, info_queue, card)
