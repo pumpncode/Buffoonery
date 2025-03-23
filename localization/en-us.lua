@@ -416,9 +416,6 @@ return {
 						"and 1 less",
 						"full {C:attention}Suit{}"
 				},
-				unlock = {"Play a {C:attention}Three of a kind",
-						  "of all {C:attenion}Porcelain 3s"
-				}
 			},
 			b_buf_sandstone = {
 				name = "Sandstone Deck",

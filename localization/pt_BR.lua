@@ -415,9 +415,6 @@ return {
 						"{C:red}Chá Dorkshire{}",
 						"e 1 {C:attention}Naipe{} a",
 						"menos no baralho"
-				},
-				unlock = {"Jogue uma {C:attention}Trinca{} com",
-						  "três {C:attenion}3s de Porcelana"
 				}
 			},
 			b_buf_sandstone = {

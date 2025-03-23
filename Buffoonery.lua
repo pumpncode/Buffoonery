@@ -1,6 +1,5 @@
--- TODO: Jeb art: Planet X, Eris, Ceres, Quaoar, Makemake, Sedna, Haumea
--- make credits
--- unlock reqs decks
+-- TODO: Jeb art: Quaoar, Makemake, Sedna, Haumea
+-- credits in config tab
 
 -- defs --
 Buffoonery = SMODS.current_mod
@@ -298,6 +297,7 @@ G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 -- Special cards are now shown in collection by default
 -- All jokers are now undiscovered by default
 -- Added "Soul" card unlock requirement for Maggit
+-- Added an unlock requirement for Galloping Deck
 -- Added Van
 -- Added Abyssal Echo
 -- Added Kerman Reborn
