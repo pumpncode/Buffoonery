@@ -1,5 +1,4 @@
 -- TODO: Jeb art: Quaoar, Makemake, Sedna, Haumea
--- credits in config tab
 
 -- defs --
 Buffoonery = SMODS.current_mod
