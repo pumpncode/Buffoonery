@@ -613,6 +613,11 @@ return {
 			},
 			buf_cf_show_spc = "Show Special cards in collection",
 			buf_cf_show_info = "Show info queue tooltips",
+			-------- CREDITS --------
+			buf_cr_artcode = "Art and Code",
+			buf_cr_localization = "Localization",
+			buf_cr_sfx = "Sound Effects",
+			buf_cr_misc = "Miscellaneous",
 			-------- CARD MESSAGES --------
 			buf_korny_ok = "He's ok!",
 			buf_korny_dd = "Dead!",

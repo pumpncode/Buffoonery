@@ -14,7 +14,7 @@ SMODS.Joker {
     perishable_compat = true,
     blueprint_compat = true,
     config = {
-        extra = { init_xmult = 4, xmult = 1, tsuit = '-', percent = 0, suit_counts = {} },
+        extra = { init_xmult = 4, xmult = 1, tsuit = '-', percent = 0, suit_counts = {}, suit = 'Default' },
     },
 	sprite = {
 		['Default'] = 0,
@@ -64,11 +64,12 @@ SMODS.Joker {
 						-- card.ability.extra.tsuit = suit
 						local underscore_pos = string.find(suit, "_")  -- Checks for mod prefixes in suit keys and removes them from printed string
 						if underscore_pos then
-							card.ability.extra.tsuit = localize('buf_'..string.sub(suit, underscore_pos + 1))
+							card.ability.extra.suit = string.sub(suit, underscore_pos + 1)
 						else
-							card.ability.extra.tsuit =  localize('buf_'..suit)  -- [UPDATE] Now uses SMODS functionality to improve mod compatibility
+							card.ability.extra.suit = suit
 						end
-						card.config.center.pos.x = card.config.center.sprite[card.ability.extra.tsuit]
+						card.ability.extra.tsuit = localize('buf_'..card.ability.extra.suit)
+						card.config.center.pos.x = card.config.center.sprite[card.ability.extra.suit]
 					end
 				end
 			end

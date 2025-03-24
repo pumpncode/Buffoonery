@@ -70,7 +70,7 @@ return {
 			j_buf_clays = {
 				name = "Tiro ao Prato",
 				text = {"Ganhe {C:money}$#1#{} no",
-						"fim da rodada",
+						"fim da rodada se",
 						"você vencer em um",
 						"número específico de Mãos",
 						"{C:inactive,s:0.7}Muda a cada rodada{}"
@@ -170,7 +170,7 @@ return {
 			},
 			j_buf_camarosa = {
 				name = "Camarosa",
-				text = {"{X:dark_edition,C:white}^#1#{} Multi",
+				text = {"{X:expmult,C:white}^#1#{} Multi",
 						"{C:green}#2# de #3#{} chance desta",
 						"carta ser destruída",
 						"no fim da rodada",
@@ -208,7 +208,7 @@ return {
 			},
 			j_buf_integral = { -- Special (JokerGebra)
 				name = "Integral",
-				text = {"Dá {C:attention}^0.02{} Fichas",
+				text = {"Dá {X:expchips,C:white}^0.02{} Fichas",
 						"por {X:mult,C:white}X1{} Multi",
 						"pontuado a cada mão",
 				},
@@ -245,7 +245,7 @@ return {
 			j_buf_maggit = { 
 				name = "Maggit",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Multi se você tem",
+					"{X:expmult,C:white}^#1#{} Multi se você tem",
 					"um Curinga do {C:dark_edition}Nu Metal{}",
 					"Se não, {C:attention}só uma vez{}, crie um",
 					"quando o {C:attention}Blind{} for escolhido",
@@ -607,12 +607,6 @@ return {
 				"raridade 'Especial' e a mecânica de 'Exílio'",
 				"Reinício necessário para fazer efeito",
 			},
-			buf_cf_perf_info = {
-				"Desativa o balançar constante do Memory Card",
-				"quando ele está pronto para memorizar.",
-				"Ativar isto pode melhorar seu framerate",
-				"quando o Memory Card estiver presente"
-			},
 			buf_cf_req_restart = {
 				"3 Curingas e 1 Aprimoramento",
 				"Reinício necessário para fazer efeito",
@@ -620,6 +614,11 @@ return {
 			buf_cf_show_spc = "Mostrar cartas Especiais na Coleção",
 			buf_cf_show_info = "Mostrar informações adicionais",
 			buf_cf_memcard_perf = "Modo de desempenho do Memory Card",
+			-------- CREDITS --------
+			buf_cr_artcode = "Arte & Código",
+			buf_cr_localization = "Tradução",
+			buf_cr_sfx = "Efeitos Sonoros",
+			buf_cr_misc = "Miscelânea",
 			-------- CARD MESSAGES --------
 			buf_korny_ok = "De boa!",
 			buf_korny_dd = "Morreu!",
