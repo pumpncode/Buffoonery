@@ -193,9 +193,9 @@ NFS.load(Buffoonery.path .. 'data/jokers/special/integral.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/kerman_spc.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/supportive.lua')()
 NFS.load(Buffoonery.path .. 'data/jokers/special/van.lua')()
+NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()
 -- Sleeve-Dependent Special Jokers:
 if buf.compat.sleeves then
-	NFS.load(Buffoonery.path .. 'data/jokers/special/blackstallion.lua')()
 	NFS.load(Buffoonery.path .. 'data/jokers/special/memcard_dx.lua')()
 	NFS.load(Buffoonery.path .. 'data/jokers/special/dorkshire_g.lua')()
 end
