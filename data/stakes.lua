@@ -6,7 +6,6 @@ SMODS.Stake{ -- Palladium Stake
 
     modifiers = function()
 		G.GAME.modifiers.buf_halfstep_bosses = true
-		-- get_new_boss = buf_get_new_boss
     end,
 
     colour = HEX('b0a190'),
