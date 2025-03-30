@@ -9,8 +9,8 @@ target = "functions/common_events.lua"
 pattern = "local extrafunc = nil"
 position = "after"
 payload = '''
-if (not buf.compat.talisman) and (not buf.compat.prism) then
-	if eval_type == 'e_mult' then 
+if (not buf.compat.talisman) then
+	if (not buf.compat.prism) and eval_type == 'e_mult' then 
 		sound = 'buf_emult'
 		amt = amt
 		text = '^' .. amt .. ' Mult'

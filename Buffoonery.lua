@@ -94,8 +94,11 @@ buf.compat = {
 	prism = (SMODS.Mods['Prism'] or {}).can_load,
 }
 
-if (not buf.compat.talisman) and (not buf.compat.prism) then
-	NFS.load(Buffoonery.path .. 'notalisman.lua')()
+if not buf.compat.talisman then
+	if not buf.compat.prism then
+		NFS.load(Buffoonery.path .. 'notalisman/emult.lua')()
+	end
+	NFS.load(Buffoonery.path .. 'notalisman/echips.lua')()
 end
 
 prestake_pldm = 'gold' -- Load palladium stake after vanilla gold stake by default
