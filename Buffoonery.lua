@@ -95,10 +95,7 @@ buf.compat = {
 }
 
 if not buf.compat.talisman then
-	if not buf.compat.prism then
-		NFS.load(Buffoonery.path .. 'notalisman/emult.lua')()
-	end
-	NFS.load(Buffoonery.path .. 'notalisman/echips.lua')()
+	NFS.load(Buffoonery.path .. 'notalisman.lua')()
 end
 
 prestake_pldm = 'gold' -- Load palladium stake after vanilla gold stake by default
