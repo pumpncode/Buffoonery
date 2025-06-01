@@ -257,7 +257,7 @@ return {
 			j_buf_maggit_alt = { 
 				name = "Maggit",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Multi se você tem",
+					"{X:expmult,C:white}^#1#{} Multi se você tem",
 					"um Curinga do {C:dark_edition}Nu Metal{}",
 					"Se não, {C:attention}só uma vez{}, crie um",
 					"quando o {C:attention}Blind{} for escolhido",
@@ -421,7 +421,7 @@ return {
 			b_buf_sandstone = {
 				name = "Baralho de Arenito",
 				text = {"Vença na {C:attention}Aposta 6{}",
-						"x2 tamanho base do Blind"
+						"{C:red}X2{} tamanho base do Blind"
 				}
 			},
         },
@@ -571,13 +571,13 @@ return {
 			sleeve_buf_sandstone = {
 				name = "Capa de Arenito",
 				text = {"Vença na {C:attention}Aposta 6{}",
-						"x2 tamanho base do Blind"
+						"{C:red}X2{} tamanho base do Blind"
 				}
 			},
 			sleeve_buf_sandstone_alt = {
 				name = "Capa de Arenito",
 				text = {"Vença na {C:attention}Aposta 5{}",
-						"x3 tamanho base do Blind"
+						"{C:red}X2.5{} tamanho base do Blind"
 				}
 			},
         },

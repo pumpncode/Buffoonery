@@ -257,7 +257,7 @@ return {
 			j_buf_maggit_alt = { 
 				name = "Maggit",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Mult if you own a",
+					"{X:expmult,C:white}^#1#{} Mult if you own a",
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
@@ -421,7 +421,7 @@ return {
 			b_buf_sandstone = {
 				name = "Sandstone Deck",
 				text = {"Win on {C:attention}Ante 6{}",
-						"x2 base Blind size"
+						"{C:red}X2{} base Blind size"
 				}
 			},
         },
@@ -571,13 +571,13 @@ return {
 			sleeve_buf_sandstone = {
 				name = "Sandstone Sleeve",
 				text = {"Win on {C:attention}Ante 6{}",
-						"x2 base Blind size"
+						"{C:red}Doubles{} Blind size"
 				}
 			},
 			sleeve_buf_sandstone_alt = {
 				name = "Sandstone Sleeve",
 				text = {"Win on {C:attention}Ante 5{}",
-						"x2.5 base Blind size"
+						"{C:red}X3{} base Blind size"
 				}
 			},
         },
