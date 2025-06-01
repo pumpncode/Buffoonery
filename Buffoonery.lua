@@ -363,3 +363,8 @@ G.ARGS.LOC_COLOURS.expchips = SMODS.Gradients.buf_expchips
 -- Added Integral
 -- added Palladium and Spinel stakes
 -- added Sandstone Deck/Sleeve
+
+-- RECENT CHANGES (01/06/2025)
+-- Sandstone sleeve now stacks with base Blind score-altering decks such as plasma
+-- Fixed text aesthetic inconsistencies
+-- Fixed Laidback Joker being selectable in a booster pack with less than 2 free spaces 
