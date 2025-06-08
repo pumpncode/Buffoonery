@@ -46,7 +46,7 @@ CardSleeves.Sleeve {
 			card:start_materialize()
 			card:set_edition()
             G.GAME.joker_buffer = 0
-			
+			G.GAME.starting_deck_size = #G.playing_cards
         return true end }))
     end,
 }
