@@ -53,17 +53,22 @@ SMODS.Joker {
 		-- Get Current Value
 		local current_power_value = '--'
 		for ret_type, ret_value in pairs(card.ability.extra.power.retfunc) do
-		--	current_power_type = ret_type    --> ex: "chips"
-			current_power_value = ret_value  --> ex: "40"
-			break --> Change if multiple values return
+			--print(ret_type); print(ret_value);
+			if ret_type and ret_type ~= "colour" then
+			--	current_power_type = ret_type    --> ex: "chips"
+				current_power_value = ret_value  --> ex: "40"
+				break
+			end
 		end
 		-- Get Next Value (if possible)
 		local next_power_value = '--'
 		if card.ability.extra.power.next_lvl ~= 'MAX' then
 			local next_power = buf_saya_power(card.ability.extra.power.next_lvl)
-			for _, next_val in pairs(next_power.retfunc) do
-				next_power_value = next_val
-				break
+			for next_type, next_value in pairs(next_power.retfunc) do
+				if next_type and next_type ~= "colour" then
+					next_power_value = next_value
+					break
+				end
 			end
 		end
 		-- Return State
