@@ -1,0 +1,36 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 10
+
+# If the other approach doesn't work, and
+# you really really really want this thing
+# to work, then this is the KISS-Approach:
+#   ->   Keep It *Stupid* Simple   <-
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "if G.FORCE_BOSS then return G.FORCE_BOSS end"
+position = "after"
+payload = '''
+local hacky_buffoon = nil
+if G.GAME.modifiers and G.GAME.modifiers.buf_halfstep_bosses
+and (G.GAME.round_resets.ante)%(math.floor(G.GAME.win_ante * 0.5 + 0.5)) == 0 then
+	hacky_buffoon = G.GAME.round_resets.ante
+	G.GAME.round_resets.ante = G.GAME.win_ante
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "G.GAME.bosses_used[boss] = G.GAME.bosses_used[boss] + 1"
+position = "after"
+payload = '''
+if hacky_buffoon then
+	G.GAME.round_resets.ante = hacky_buffoon
+end
+'''
+match_indent = true

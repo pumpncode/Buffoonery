@@ -1,0 +1,15 @@
+{
+	"id": "Buffoonery",
+	"name": "Buffoonery",
+	"author": ["PinkMaggit", "Flowire"],
+	"description": "A vanilla-adjacent content mod made with the help of the glorious Balatro modding community. Enjoy!",
+	"prefix": "buf",
+	"main_file": "Buffoonery.lua",
+	"badge_colour": "ee8f8d",
+    "badge_text_colour": "ffffff",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-1221a)", 
+		"Lovely (>=0.8.0)"
+	],
+	"version": "2.0.0"
+}
