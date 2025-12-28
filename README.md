@@ -79,6 +79,7 @@ For more Information, keep on scrolling or check out the [Buffoonery Wiki](https
 *They don't spawn, but are granted to the player under special circumstances.*
 <details>
 <summary>Click to show: Special/Hidden Jokers</summary>
+  
 ![Buffoonery Special Jokers](repo/j_Special.png)
 
 | Name | Effect | Source |
@@ -96,6 +97,7 @@ For more Information, keep on scrolling or check out the [Buffoonery Wiki](https
 
 ### Joker Textures
 ![Buffoonery Animated Info](repo/j_Animated.gif)
+
 **Keep an eye out**, some Jokers have changing Textures!
 
 ## Decks
@@ -110,6 +112,7 @@ For more Information, keep on scrolling or check out the [Buffoonery Wiki](https
 
 ### Sleeves
 ![Buffoonery Sleeves](repo/Sleeves.png)
+
 [Card Sleeves](https://github.com/larswijn/CardSleeves) apply their respective Decks effect.
 Combined with their Deck, they apply a different Effect:
 
@@ -128,6 +131,7 @@ Combined with their Deck, they apply a different Effect:
 | Tarot:<br>Nobility | Enhances 1 selected card<br>into a Porcelain Card<br>or Royal Porcelain Card<br>if you own at least $50 |
 | Porcelain Card | Fragile*<br>X1.75 Chips |
 | Royal Porcelain Card | Fragile*<br>X2.0 Chips and<br>considered<br>as Face-Card |
+
 ***Fragile**:
 Porcelain Cards are destroyed when
 played hand contains more than 3 cards.
