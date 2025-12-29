@@ -1,24 +1,24 @@
 local saya_powers = {
 	['0'] = {
-		retfunc = { chips = 40 },
+		ret_key = "chips", ret_val = 40,
 		lvl = '0', next_lvl = '1',
 		need = 1, score = 5000,
 		pos = { x = 8 , y = 0 }
 	},
 	['1'] = {
-		retfunc = { mult = 20 },
+		ret_key = "mult", ret_val = 20,
 		lvl = '1', next_lvl = '2',
 		need = 3, score = 50000,
 		pos = { x = 8 , y = 1 }
 	},
 	['2'] = {
-		retfunc = { xmult = 3.0 },
+		ret_key = "xmult", ret_val = 3.0,
 		lvl = '2', next_lvl = '3',
 		need = 5, score = 100000,
 		pos = { x = 8 , y = 2 }
 	},
 	['3'] = {
-		retfunc = { emult = 1.3 },
+		ret_key = "emult", ret_val = 1.3,
 		lvl = '3', next_lvl = 'MAX',
 		need = 0, score = 0,
 		pos = { x = 8 , y = 3 }
@@ -50,39 +50,21 @@ SMODS.Joker {
 		}
 	},
 	loc_vars = function(self, info_queue, card)
-		-- Get Current Value
-		local current_power_value = '--'
-		for ret_type, ret_value in pairs(card.ability.extra.power.retfunc) do
-			--print(ret_type); print(ret_value);
-			if ret_type and ret_type ~= "colour" then
-			--	current_power_type = ret_type    --> ex: "chips"
-				current_power_value = ret_value  --> ex: "40"
-				break
-			end
-		end
-		-- Get Next Value (if possible)
-		local next_power_value = '--'
+		local next_power_value = nil
 		if card.ability.extra.power.next_lvl ~= 'MAX' then
-			local next_power = buf_saya_power(card.ability.extra.power.next_lvl)
-			for next_type, next_value in pairs(next_power.retfunc) do
-				if next_type and next_type ~= "colour" then
-					next_power_value = next_value
-					break
-				end
-			end
+			next_power_value = saya_powers[card.ability.extra.power.next_lvl].ret_val
 		end
-		-- Return State
 		return {
 			key = self.key..(card.ability.extra.power.lvl ~= '0' and '_s'..card.ability.extra.power.lvl or ''),
 			vars = {
 				-- Current Ability
-				current_power_value,
+				card.ability.extra.power.ret_val,
 				-- Progress
 				card.ability.extra.power.score,
 				card.ability.extra.power.need,
 				card.ability.extra.progress,
 				-- Next Ability
-				next_power_value
+				(next_power_value or '--')
 			}
 		}
 	end,
@@ -105,7 +87,8 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            return card.ability.extra.power.retfunc
+			--local retfunc = { }; retfunc[card.ability.extra.power.ret_key] = card.ability.extra.power.ret_val; return retfunc
+            return { [card.ability.extra.power.ret_key] = card.ability.extra.power.ret_val }
         end
 		if context.after and not context.blueprint then
 			-- Simple check if there's even a next level;
