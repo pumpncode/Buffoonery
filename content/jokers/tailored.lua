@@ -78,21 +78,22 @@ SMODS.Joker {
 		extra = {
 			-- Effect
 			xmult = 4.0,
-			percent = 0.0,
+			percent = 0.0, --> Only for "joker_main"
 			suit_key = 'Default',
 			-- Texture
 			pos_overwrite = buf_tailored_texture()
 		}
 	},
 	loc_vars = function(self, info_queue, card)
-		local ret_suit = '--'
-		if not (card.ability.extra.suit_key == 'Default') then
-			ret_suit = localize(card.ability.extra.suit_key, 'suits_plural')
-		end
-		return { vars = { card.ability.extra.xmult, math.max(card.ability.extra.xmult * card.ability.extra.percent, 1.0), ret_suit } }
+		local tailor = (buf_tailored_percentages() or {0, 'Default', 'Default'})
+		return { vars = {
+			card.ability.extra.xmult,
+			math.max(card.ability.extra.xmult * tailor[1], 1.0),
+			tailor[2] ~= 'Default' and localize(tailor[2], 'suits_plural') or '--'
+		} }
 	end,
 	load = function(self, card, card_table, other_card)
-		-- Just load Texture.
+		-- Load Texture
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				if card.ability.extra.pos_overwrite then
@@ -103,27 +104,27 @@ SMODS.Joker {
 		}))
 	end,
     add_to_deck = function(self, card, from_debuff)
-		-- Flip & Change (if needed)
-		local tailor = (buf_tailored_percentages() or {0, 'Default', 'Default'}) --> percent, suit_key, pos_key
-		if not (tailor[2] == 'Default') then
-			card.ability.extra.precent = tailor[1]
-			card.ability.extra.suit_key = tailor[2]
-			-- Flip
-			G.E_MANAGER:add_event(Event({ func = function() card:flip() return true end }))
-			-- Texture + Animate & Flip
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.15,
-				func = function()
-					card.ability.extra.pos_overwrite = buf_tailored_texture(tailor[3])
-					card.children.center:set_sprite_pos(card.ability.extra.pos_overwrite)
-					-- Flip
-					card:flip()
-					return true
-				end
-			}))
-			-- Don't announce change
+		local tailor = (buf_tailored_percentages() or {0, 'Default', 'Default'})
+		card.ability.extra.percent = tailor[1]
+		card.ability.extra.pos_overwrite = buf_tailored_texture(tailor[3])
+		if from_debuff then
+			if (tailor[2] ~= card.ability.extra.suit_key) then
+				-- Update Texture with tiny Animation:
+				G.E_MANAGER:add_event(Event({ func = function() card:flip() return true end }))
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.15,
+					func = function()
+						card.children.center:set_sprite_pos(card.ability.extra.pos_overwrite)
+						card:flip()
+						return true
+					end
+				}))
+			end
+		else --> Just load new Texture:
+			card.children.center:set_sprite_pos(card.ability.extra.pos_overwrite)
 		end
+		card.ability.extra.suit_key = tailor[2]
     end,
     calculate = function(self, card, context)
         if context.joker_main then
@@ -131,16 +132,15 @@ SMODS.Joker {
             return { xmult = math.max(card.ability.extra.xmult * card.ability.extra.percent, 1.0) }
         end
 		if not context.blueprint then
-			-- Only updating the suit at specific points gives more planning power.
-			-- It's also less prone to crashing or "showing & doing different things".
-			if (context.setting_blind and not self.getting_sliced) or context.after --> Needed
-			or context.playing_card_added or context.remove_playing_cards           --> Optional
-			or context.starting_shop or context.ending_shop then                    --> Decoration
-				local tailor = (buf_tailored_percentages() or {0, 'Default', 'Default'}) --> percent, suit_key, pos_key
-
-				if not (card.ability.extra.suit_key == tailor[2]) then
+			-- Get accurate reading for Mult before scoring
+			-- & update internal values at specific points:
+			if (context.setting_blind and not self.getting_sliced) or context.before
+			or context.playing_card_added or context.remove_playing_cards
+			or context.starting_shop or context.ending_shop then --context.reroll_shop
+				local tailor = (buf_tailored_percentages() or {0, 'Default', 'Default'})
+				card.ability.extra.percent = tailor[1]
+				if tailor[2] ~= card.ability.extra.suit_key then
 					-- Update Texture and Announce change
-					card.ability.extra.percent = tailor[1]
 					card.ability.extra.suit_key = tailor[2]
 					-- Flip
 					G.E_MANAGER:add_event(Event({ func = function() card:flip() return true end }))
@@ -162,17 +162,7 @@ SMODS.Joker {
 						message = localize('buf_suit_change'),
 						colour = (tailor[2] == "Default" and G.C.RED or G.C.GREEN)
 					}
-				elseif not (card.ability.extra.percent == tailor[1]) then
-					-- Wiggle the Joker a little bit
-					card.ability.extra.percent = tailor[1]
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							card:juice_up(0.1)
-							return true
-						end
-					}))
 				end
-				
 				return
 			end
 		end
