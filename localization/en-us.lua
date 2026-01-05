@@ -5,8 +5,8 @@ return {
 				name = "Abyssal Prism",
 				text = {"Upon {C:attention}acquiring{} this joker, spawn an {C:buf_spc}Echo{}",
 						"and {C:attention}exile{} all others. One becomes {C:dark_edition}Negative{}",
-						"each 3 turns. Sell to return jokers",
-						"{C:inactive}(#2#/3 Rounds. #1# negative Joker(s)){}",
+						"every #1# turns. Sell to return jokers",
+						"{C:inactive}(#2#/#1# Rounds. #3# negative Joker(s)){}",
 						"{C:inactive,s:0.7}Must have room{}"
 				}
 			},
@@ -53,7 +53,7 @@ return {
 			j_buf_cashout = {
 				name = "Cashout Voucher",
 				text = {"If {C:attention}winning hand{} triples the Blind's",
-					"score {C:attention}requirement{}, earn 0.4% of it",
+					"score {C:attention}requirement{}, earn #1#% of it",
 					"as {C:money}money{} and destroy this Joker",
 					"{C:inactive}(Max of{} {C:money}$50{}{C:inactive}){}"
 				}
@@ -106,10 +106,10 @@ return {
 			},
 			j_buf_denial = {
 				name = "Arstotzkan Denial",
-				text = {"{C:mult}+5{} Mult or {C:chips}+30{} Chips",
+				text = {"{C:mult}+#1#{} Mult or {C:chips}+#2#{} Chips",
 						"for each {C:red}Red{} or {C:blue}Blue{} seal",
 						"in full deck, {C:attention}respectively{}",
-						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult /{} {C:chips}+#2#{} {C:inactive}Chips){}",
+						"{C:inactive}(Currently{} {C:mult}+#3#{} {C:inactive}Mult /{} {C:chips}+#4#{} {C:inactive}Chips){}",
 						}
 			},
 			j_buf_dorkshire = {
@@ -180,7 +180,7 @@ return {
 				name = "Jebediah Kerman",
 				text = {"Gains {C:mult}+#2#{} Mult every time",
 						"any {C:planet}Planet{} card is used",
-						"{C:green}#4# in #3#{} chance to {C:attention}EXPLODE{} on use",
+						"{C:green}#3# in #4#{} chance to {C:attention}EXPLODE{} on use",
 						"{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}",
 						"{C:buf_spc,s:0.7}Scared of singularities{}",
 				}
@@ -199,19 +199,32 @@ return {
 			},
 			j_buf_jokergebra = {
 				name = "JokerGebra",
-				text = {"Gives {C:attention}five times{}",
-						"the amount of {C:mult}Mult{}",
-						"given by the Joker",
-						"to the {C:attention}left{} as {C:chips}Chips{}",
-						"{C:buf_spc,s:0.7}#1# XMult!{}"
+				text = {
+					"Play {C:blue}+#1#{} Card per Hand",
+					"{s:0.2} {}",
+					"Gives {X:chips,C:white}X#2#{} Chips if the",
+					"played hand contains",
+					"as many cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:buf_spc,s:0.7}#4# more Tests...{}"
 				}
 			},
 			j_buf_integral = { -- Special (JokerGebra)
 				name = "Integral",
-				text = {"Gives {X:expchips,C:white}^0.02{} Chips",
-						"per {X:mult,C:white}X1{} Mult",
-						"triggered before this",
-						"Joker each hand",
+				text = {
+					"Play {C:blue}+#1#{} Cards per Hand",
+					"{s:0.2} {}",
+					"Gives {X:expchips,C:white}^#2#{} Chips,",
+					"affected by {C:expchips}Score{},",
+					"if the played hand",
+					"contains as many",
+					"cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:expchips}Score{}: +#4#"
 				},
 				unlock = {"Solve the {E:1,C:buf_spc}special{}",
 						"requirement of",
@@ -250,7 +263,7 @@ return {
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
-					"{C:inactive,s:0.7}(Must have room){}",
+					"{C:enhanced,s:0.8}(Must have room){}",
 				},
 				unlock = {'{E:1,s:1.3}?????'}
 			},
@@ -261,13 +274,13 @@ return {
 					"{C:dark_edition}Nu Metal{} Joker. Otherwise,",
 					"{C:attention}only once{}, create one",
 					"when {C:attention}Blind{} is selected{}",
-					"{C:inactive,s:0.7}(Already created){}",
+					"{C:inactive,s:0.8}(Already created){}",
 				},
 			},
 			j_buf_memcard = {
 				name = "Memory Card",
 				text = {"Memorizes the {C:attention}first{} scored card each {C:attention}round{}",  
-						"up to {C:attention}8{} times. Sell to convert a card in",
+						"up to {C:attention}#4#{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
 						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
 						}
@@ -275,7 +288,7 @@ return {
 			j_buf_dxmemcard = { -- Special (Memory Card)
 				name = "Deluxe Memory Card",
 				text = {"Memorizes the {C:attention}first{} scored card each {C:buf_spc}hand{}",  
-						"up to {C:buf_spc}16{} times. Sell to convert a card in",
+						"up to {C:buf_spc}#4#{} times. Sell to convert a card in",
 						"hand into each memorized card, {C:attention}in order{}",
 						"{C:inactive}Memorized #1#. Last: #3#{}{C:inactive}#2#{}",
 				},
@@ -306,18 +319,18 @@ return {
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
 				name = "Supportive Joker", 
-				text = {"{X:chips,C:white}X#7#{} Chips",
-						"{s:0.8}#1##4#{}",
-						"{s:0.8}#2##5#{}",
-						"{s:0.8}#3##6#{}",
+				text = {"{X:chips,C:white}X#1#{} Chips",
+						"{s:0.8}#2#{}",
+						"{s:0.8}#3#{}",
+						"{s:0.8}#4#{}",
 				}
 			},
 			j_buf_porcelainj = {
 				name = "Porcelain Joker",
-				text = {"Gives {X:chips,C:white}X#2#{} Chips",
-						"for every {C:attention}3 Porcelain Cards{}",
+				text = {"Gives {X:chips,C:white}X#1#{} Chips",
+						"for every {C:attention}#2# Porcelain Cards{}",
 						"in your {C:attention}full deck{}",
-						"{C:inactive}(Currently{} {X:chips,C:white}X#1#{} {C:inactive}Chips){}"
+						"{C:inactive}(Currently{} {X:chips,C:white}X#3#{} {C:inactive}Chips){}"
 				}
 			},
 			j_buf_rerollin = {
@@ -325,13 +338,13 @@ return {
 				text = {"Earn {C:money}$#1#{} for",          
 						"your fifth {C:green}reroll{}",
 						"once per shop",
-						"{C:inactive}({}{C:green}#3#{}{C:inactive} rerolls left){}"}
+						"{C:inactive}({}{C:green}#2#{}{C:inactive} rerolls left){}"}
 			},
 			j_buf_roulette = {
 				name = "Russian Roulette",
 				text = {"When {C:attention}Blind{} is selected, earn {C:money}$#3#{}",          
 						"{C:green}#1# in #2#{} chance you {E:1,C:mult}lose the game{} instead",
-						"If chance reaches {C:green}#1# in 2{} and you win,",
+						"If chance reaches {C:green}1 in 2{} and you win,",
 						"create a random {C:legendary}Legendary{} Joker",
 						"{C:inactive,s:0.7}(Chance and payout increase each round)"
 				}
@@ -341,28 +354,28 @@ return {
 				text = {"{C:chips}+#1#{} Chips",
 						"Score at least {C:attention}#2#{} in one",
 						"hand to {C:attention}transform{}",
-						"{C:inactive}(Next level: {C:mult}+20{C:inactive} Mult)",
+						"{C:inactive}(Next level: {C:mult}+#5#{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s1 = {
 				name = "Super Sayajimbo",
 				text = {"{C:mult}+#1#{} Mult",
-						"Score at least {C:attention}#6#{} in one",
-						"hand #5# times to {C:attention}transform{}",
-						"{C:inactive}(#4#/#5#, Next level: {X:mult,C:white}X3{C:inactive} Mult)",
+						"Score at least {C:attention}#2#{} in one",
+						"hand #3# times to {C:attention}transform{}",
+						"{C:inactive}(#4#/#3#, Next level: {X:mult,C:white}X#5#{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s2 = {
 				name = "Super Sayajimbo 2",
-				text = {"{X:mult,C:white}X#2#{} Mult",
-						"Score at least {C:attention}#6#{} in one",
-						"hand #5# times to {C:attention}transform{}",
-						"{C:inactive}(#4#/#5#, Next level: {X:expmult,C:white}^1.3{C:inactive} Mult)",
+				text = {"{X:mult,C:white}X#1#{} Mult",
+						"Score at least {C:attention}#2#{} in one",
+						"hand #3# times to {C:attention}transform{}",
+						"{C:inactive}(#4#/#3#, Next level: {X:expmult,C:white}^#5#{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s3 = {
 				name = "Super Sayajimbo 3",
-				text = {"{X:expmult,C:white}^#3#{} Mult",
+				text = {"{X:expmult,C:white}^#1#{} Mult",
 						"{C:inactive}Behold!"
 				}
 			},
@@ -420,8 +433,11 @@ return {
 			},
 			b_buf_sandstone = {
 				name = "Sandstone Deck",
-				text = {"Win on {C:attention}Ante 6{}",
-						"{C:red}X2{} base Blind size"
+				text = {
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
 				}
 			},
         },
@@ -429,10 +445,10 @@ return {
 			c_buf_nobility = {
 				name = "Nobility",
 				text = {
-					"Enhances {C:attention}#1#{} selected card",
+					"Enhances {C:attention}1{} selected card",
 					"into a {C:attention}Porcelain Card{}",
 					"or a {C:attention}Royal Porcelain Card{}",
-					"if you own at least {C:money}$#2#{}"
+					"if you own at least {C:money}$#1#{}"
 				}
 			},
         },
@@ -473,7 +489,7 @@ return {
                 }
             },
 		-------- INFO QUEUE --------
-            korny_info = {
+            snakey_info = {
                 name = "Credit",
                 text = {
                     "Original art",
@@ -486,6 +502,14 @@ return {
 					"Clown, Five Fingers",
 					"Korny Joker, Rerollin'",
 					"and White Pony"
+				}
+			},
+			nu_metal_info = {
+				name = "Nu Metal Joker",
+				text = {
+					"This is a",
+					"{E:2,C:expchips}Nu Metal",
+					"Joker",
 				}
 			},
 			special_info = {
@@ -535,7 +559,7 @@ return {
 			sleeve_buf_jstation_alt = {
 				name = "JimboStation Sleeve",
 				text = {"Start run with the",
-						"{C:buf_spc,T:j_buf_dxmemcard}#2#{} Joker instead",
+						"{C:buf_spc,T:j_buf_dxmemcard}#1#{} Joker instead",
 						"{C:attention}+1{} hand size"
 				}
 			},
@@ -548,7 +572,7 @@ return {
 			sleeve_buf_galloping_alt = {
 				name = "Galloping Sleeve",
 				text = {"Start run with the",
-						"{C:green,T:j_buf_whitepony}#2#{} Joker instead",
+						"{C:green,T:j_buf_whitepony}#1#{} Joker instead",
 						"{C:blue}-2{} hands every round"
 				}
 			},
@@ -563,21 +587,27 @@ return {
 			sleeve_buf_porcelain_alt = {
 				name = "Porcelain Sleeve",
 				text = {"Start run with the",
-						"{C:buf_spc,T:j_buf_dorkshire_g}#2#{} Joker",
+						"{C:buf_spc,T:j_buf_dorkshire_g}#1#{} Joker",
 						"and 1 less",
 						"full {C:attention}Suit{}"
 				}
 			},
 			sleeve_buf_sandstone = {
 				name = "Sandstone Sleeve",
-				text = {"Win on {C:attention}Ante 6{}",
-						"{C:red}Doubles{} Blind size"
+				text = {
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
 				}
 			},
 			sleeve_buf_sandstone_alt = {
 				name = "Sandstone Sleeve",
-				text = {"Win on {C:attention}Ante 5{}",
-						"{C:red}X3{} base Blind size"
+				text = {
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 5{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:purple}X#2#{} base Blind size",
 				}
 			},
         },
@@ -649,41 +679,17 @@ return {
 			buf_defeated = "Defeated!",
 			buf_hopin = "Hop in!",
 			buf_patspc = "Nice play!",
-			-------- MEMCARD STUFF --------
-			buf_ready = "Ready",
-			buf_Ace = "Ace",
-			buf_Jack = "Jack",
-			buf_Queen = "Queen",
-			buf_King = "King",
-			-- UnStable compat --
-			buf_0 = "0",
-			['buf_0.5'] = "Half",
-			buf_1 = "1",
-			buf_r2 = "Root 2",
-			buf_e = "e",
-			buf_Pi  = "Pi",
-			buf_11 = "11",
-			buf_12 = "12",
-			buf_13 = "13",
-			buf_21 = "21",
-			buf_25 = "25",
-			buf_161 = "161",
-			["buf_???"] = "???",
-			--------------------
-			buf_of = " of ",
-			buf_Spades = "Spades",
-			buf_Hearts = "Hearts",
-			buf_Clubs = "Clubs",
-			buf_Diamonds = "Diamonds",
-			-- Bunco/Paperback compat --
-			buf_Fleurons = "Fleurons",
-			buf_Halberds = "Halberds",
-			buf_Crowns = "Crowns",
-			buf_Stars = "Stars",
+			buf_rerollin = "Rerollin'",
+			buf_lemmesolo = "Boss Felled",
+			buf_suit_change = "Suit Change!",
+			buf_test_start = "Start Test",
+			buf_test_new = "New Test",
+			buf_test_correct = "Correct!",
+			buf_test_wrong = "Wrong.",
+			buf_test_upgrade = "Challenge up!",
 			-------- MISC --------
 			k_buf_spc = "Special",
-			k_buf_notyet = "(Must have room)",
-			buf_uniform = "uniform",
+			buf_of = " of ",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1# Mult",
