@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# How "buf_price_mod" works:
+# New Cost = (Cost - 1)
+# New Sell = (Sell - 1) + "buf_price_mod"
+# Allows Value Increase!
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if self.area and self.ability.couponed and (self.area == G.shop_jokers or self.area == G.shop_booster) then self.cost = 0 end"
+position = "after"
+payload = '''
+if self.ability.buf_price_mod then
+	self.cost = self.cost - 1
+	self.sell_cost = (self.sell_cost - 1) + self.ability.buf_price_mod
+end
+'''
+match_indent = true

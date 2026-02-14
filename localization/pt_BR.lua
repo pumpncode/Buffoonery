@@ -1,3 +1,6 @@
+-- Search for and Fix:
+--!! TRANSLATION REQUIRED
+--!! TRANSLATION REQUIRED
 return {
     descriptions = {
         Joker = {
@@ -5,8 +8,8 @@ return {
 				name = "Prisma Abissal",
 				text = {"Quando {C:attention}obtiver{} este curinga, {C:attention}exile{}",
 						"todos os outros. Um fica {C:dark_edition}Negativo{} a cada",
-						"3 turnos. Venda para reobter os curingas",
-						"{C:inactive}(#2#/3 Rodadas. #1# Curinga(s) negativo(s)){}",
+						"#1# turnos. Venda para reobter os curingas",
+						"{C:inactive}(#2#/#1# Rodadas. #3# Curinga(s) negativo(s)){}",
 						"{C:inactive,s:0.7}Deve ter espaço{}"
 				}
 			},
@@ -53,7 +56,7 @@ return {
 			j_buf_cashout = {
 				name = "Voucher de Saque",
 				text = {"Se a {C:attention}mão vencedora{} pontuar 3x",
-						"mais que o {C:attention}Blind{}, ganhe 0.4% dele",
+						"mais que o {C:attention}Blind{}, ganhe #1#% dele",
 						"em {C:money}dinheiro{} e destrua este Curinga",
 						"{C:inactive}(No máximo{} {C:money}$50{}{C:inactive}){}"
 				}
@@ -106,10 +109,10 @@ return {
 			},
 			j_buf_denial = {
 				name = "Rejeição de Arstotzka",
-				text = {"{C:mult}+5{} Multi ou {C:chips}+30{} Fichas por",
+				text = {"{C:mult}+#1#{} Multi ou {C:chips}+#2#{} Fichas por",
 						"cada selo {C:red}Vermelho{} ou {C:blue}Azul{}",
 						"{C:attention}respectivamente{}, no baralho completo",
-						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi/{}{C:chips}+#2#{} {C:inactive}Fichas){}",
+						"{C:inactive}(No momento{} {C:mult}+#3#{} {C:inactive}Multi/{}{C:chips}+#4#{} {C:inactive}Fichas){}",
 						}
 			},
 			j_buf_dorkshire = {
@@ -180,7 +183,7 @@ return {
 				name = "Jebediah Kerman",
 				text = {"Ganha {C:mult}+#2#{} Multi sempre que",
 						"uma carta de {C:planet}Planeta{} é usada",
-						"{C:green}#4# de #3#{} chance de {C:attention}EXPLODIR{} no uso",
+						"{C:green}#3# de #4#{} chance de {C:attention}EXPLODIR{} no uso",
 						"{C:inactive}(No momento{} {C:mult}+#1#{} {C:inactive}Multi){}",
 						"{C:buf_spc,s:0.7}Tem medo de singularidades{}",
 				}
@@ -199,19 +202,40 @@ return {
 			},
 			j_buf_jokergebra = {
 				name = "JokerGebra",
-				text = {"Dá {C:attention}cinco vezes{}",
-						"o valor de {C:mult}Multi{}",
-						"adicionado pelo Curinga",
-						"à {C:attention}esquerda{} em {C:chips}Fichas{}",
-						"{C:buf_spc,s:0.7}#1# XMulti!{}"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"Play {C:blue}+#1#{} Card per Hand",
+					"{s:0.2} {}",
+					"Gives {X:chips,C:white}X#2#{} Chips if the",
+					"played hand contains",
+					"as many cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:buf_spc,s:0.7}#4# more Tests...{}"
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
 			j_buf_integral = { -- Special (JokerGebra)
 				name = "Integral",
-				text = {"Dá {X:expchips,C:white}^0.02{} Fichas",
-						"por {X:mult,C:white}X1{} Multi",
-						"pontuado antes deste",
-						"Curinga cada mão",
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"Play {C:blue}+#1#{} Cards per Hand",
+					"{s:0.2} {}",
+					"Gives {X:expchips,C:white}^#2#{} Chips,",
+					"affected by {C:expchips}Score{},",
+					"if the played hand",
+					"contains as many",
+					"cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:expchips}Score{}: +#4#"
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				},
 				unlock = {"Resolva o requerimento",
 						"{E:1,C:buf_spc}especial{} do",
@@ -250,24 +274,24 @@ return {
 					"um Curinga do {C:dark_edition}Nu Metal{}",
 					"Se não, {C:attention}só uma vez{}, crie um",
 					"quando o {C:attention}Blind{} for escolhido",
-					"{C:inactive,s:0.7}(Deve ter espaço){}",
+					"{C:enhanced,s:0.8}(Deve ter espaço){}",
 				},
 				unlock = {'{E:1,s:1.3}?????'}
 			},
-			j_buf_maggit_alt = { 
+			j_buf_maggit_alt = {
 				name = "Maggit",
 				text = {
 					"{X:expmult,C:white}^#1#{} Multi se você tem",
 					"um Curinga do {C:dark_edition}Nu Metal{}",
 					"Se não, {C:attention}só uma vez{}, crie um",
 					"quando o {C:attention}Blind{} for escolhido",
-					"{C:inactive,s:0.7}(Já foi criado){}",
+					"{C:inactive,s:0.8}(Já foi criado){}",
 				},
 			},
 			j_buf_memcard = {
 				name = "Memory Card",
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
-						"{C:attention}rodada{} por {C:attention}8{} rodadas. Venda para converter uma",
+						"{C:attention}rodada{} por {C:attention}#4#{} rodadas. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
 						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
 						}
@@ -275,7 +299,7 @@ return {
 			j_buf_dxmemcard = { -- Special (Memory Card)
 				name = "Memory Card Deluxe",
 				text = {"Memoriza a {C:attention}primeira{} carta pontuada a cada",  
-						"{C:buf_spc}mão{} por {C:buf_spc}16{} mãos. Venda para converter uma",
+						"{C:buf_spc}mão{} por {C:buf_spc}#4#{} mãos. Venda para converter uma",
 						"carta na mão em uma memorizada, {C:attention}na ordem{}",
 						"{C:inactive}Memorizadas: #1#. Última: #3#{}{C:inactive}#2#{}",
 				},
@@ -306,18 +330,18 @@ return {
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
 				name = "Curinga Prestativo", 
-				text = {"{X:chips,C:white}X#7#{} Fichas",
-						"{s:0.8}#1##4#{}",
-						"{s:0.8}#2##5#{}",
-						"{s:0.8}#3##6#{}",
+				text = {"{X:chips,C:white}X#1#{} Fichas",
+						"{s:0.8}#2#{}",
+						"{s:0.8}#3#{}",
+						"{s:0.8}#4#{}",
 				}
 			},
 			j_buf_porcelainj = {
 				name = "Curinga de Porcelana",
-				text = {"Dá {X:chips,C:white}X#2#{} Fichas por",
-						"cada {C:attention}3 Cartas de Porcelana{}",
+				text = {"Dá {X:chips,C:white}X#1#{} Fichas por",
+						"cada {C:attention}#2# Cartas de Porcelana{}",
 						"no seu {C:attention}baralho completo{}",
-						"{C:inactive}(No momento,{} {X:chips,C:white}X#1#{} {C:inactive}Fichas){}"
+						"{C:inactive}(No momento,{} {X:chips,C:white}X#3#{} {C:inactive}Fichas){}"
 				}
 			},
 			j_buf_rerollin = {
@@ -325,13 +349,13 @@ return {
 				text = {"Ganhe {C:money}$#1#{} na",          
 						"sua quinta {C:green}atualização{}",
 						"uma vez por loja",
-						"{C:inactive}(Falta(m){} {C:green}#3#{} {C:inactive}atualizações){}"}
+						"{C:inactive}(Falta(m){} {C:green}#2#{} {C:inactive}atualizações){}"}
 			},
 			j_buf_roulette = {
 				name = "Roleta Russa",
 				text = {"Quando o {C:attention}Blind{} for selecionado, ganhe {C:money}$#3#{}",          
 						"{C:green}#1# de #2#{} chance de {E:1,C:mult}perder o jogo{} ao invés",
-						"disso. Se a chance chegar a {C:green}#1# de 2{} e você",
+						"disso. Se a chance chegar a {C:green}1 de 2{} e você",
 						"vencer, crie um Curinga {C:legendary}Lendário{} aleatório",
 						"{C:inactive,s:0.7}(Chance e pagamento aumentam a cada rodada)"
 				}
@@ -341,28 +365,28 @@ return {
 				text = {"{C:chips}+#1#{} Fichas",
 						"Pontue ao menos {C:attention}#2#{} em",
 						"uma mão para {C:attention}transformar{}",
-						"{C:inactive}(Próximo Nível: {C:mult}+20{C:inactive} Mult)",
+						"{C:inactive}(Próximo Nível: {C:mult}+#5#{C:inactive} Mult)",
 				}
 			},
 			j_buf_sayajimbo_s1 = {
 				name = "Super Sayajimbo",
 				text = {"{C:mult}+#1#{} Multi",
-						"Pontue ao menos {C:attention}#6#{} em uma",
-						"mão #5# vezes para {C:attention}transformar{}",
-						"{C:inactive}(#4#/#5#, Próx. Nível: {X:mult,C:white}X3{C:inactive} Multi)",
+						"Pontue ao menos {C:attention}#2#{} em uma",
+						"mão #3# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#3#, Próx. Nível: {X:mult,C:white}X#5#{C:inactive} Multi)",
 				}
 			},
 			j_buf_sayajimbo_s2 = {
 				name = "Super Sayajimbo 2",
-				text = {"{X:mult,C:white}X#2#{} Multi",
-						"Pontue ao menos {C:attention}#6#{} em uma",
-						"mão #5# vezes para {C:attention}transformar{}",
-						"{C:inactive}(#4#/#5#, Próx. Nível: {X:expmult,C:white}^1.3{C:inactive} Multi)",
+				text = {"{X:mult,C:white}X#1#{} Multi",
+						"Pontue ao menos {C:attention}#2#{} em uma",
+						"mão #3# vezes para {C:attention}transformar{}",
+						"{C:inactive}(#4#/#3#, Próx. Nível: {X:expmult,C:white}^#5#{C:inactive} Multi)",
 				}
 			},
 			j_buf_sayajimbo_s3 = {
 				name = "Super Sayajimbo 3",
-				text = {"{X:dark_edition,C:white}^#3#{} Multi",
+				text = {"{X:dark_edition,C:white}^#1#{} Multi",
 						"{C:inactive}Contemple!"
 				}
 			},
@@ -420,8 +444,15 @@ return {
 			},
 			b_buf_sandstone = {
 				name = "Baralho de Arenito",
-				text = {"Vença na {C:attention}Aposta 6{}",
-						"{C:red}X2{} tamanho base do Blind"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
         },
@@ -429,10 +460,10 @@ return {
 			c_buf_nobility = {
 				name = "Nobreza",
 				text = {
-					"Aprimora {C:attention}#1#{} carta selecionada",
+					"Aprimora {C:attention}1{} carta selecionada",
 					"para {C:attention}Carta de Pocelana{}",
 					"ou {C:attention}Carta de Porcelana Real{}",
-					"se você tiver ao menos {C:money}$#2#{}"
+					"se você tiver ao menos {C:money}$#1#{}"
 				}
 			},
         },
@@ -473,7 +504,7 @@ return {
                 }
             },
 		-------- INFO QUEUE --------
-            korny_info = {
+            snakey_info = {
                 name = "Créditos",
                 text = {
                     "Arte original",
@@ -488,6 +519,18 @@ return {
 					"e White Pony",
 				}
 			},
+			--!! TRANSLATION REQUIRED
+			--!! TRANSLATION REQUIRED
+			nu_metal_info = {
+				name = "Nu Metal Joker",
+				text = {
+					"This is a",
+					"{E:2,C:expchips}Nu Metal",
+					"Joker",
+				}
+			},
+			--!! TRANSLATION REQUIRED
+			--!! TRANSLATION REQUIRED
 			special_info = {
 				name = "Curinga Especial",
 				text = {
@@ -535,7 +578,7 @@ return {
 			sleeve_buf_jstation_alt = {
 				name = "Capa do JimboStation",
 				text = {"Comece com o Curinga",
-						"{C:buf_spc,T:j_buf_dxmemcard}#2#{}",
+						"{C:buf_spc,T:j_buf_dxmemcard}#1#{}",
 						"{C:attention}+1{} tamanho de mão"
 				}
 			},
@@ -548,7 +591,7 @@ return {
 			sleeve_buf_galloping_alt = {
 				name = "Capa Galopeira",
 				text = {"Comece com o Curinga",
-						"{C:green,T:j_buf_whitepony}#2#{}",
+						"{C:green,T:j_buf_whitepony}#1#{}",
 						"{C:blue}-2{} mãos cada rodada"
 				}
 			},
@@ -563,21 +606,35 @@ return {
 			sleeve_buf_porcelain_alt = {
 				name = "Capa de Porcelana",
 				text = {"Comece com o Curinga",
-						"{C:buf_spc,T:j_buf_dorkshire_g}#2#{}",
+						"{C:buf_spc,T:j_buf_dorkshire_g}#1#{}",
 						"e 1 {C:attention}Naipe{} a",
 						"menos no baralho"
 				}
 			},
 			sleeve_buf_sandstone = {
 				name = "Capa de Arenito",
-				text = {"Vença na {C:attention}Aposta 6{}",
-						"{C:red}X2{} tamanho base do Blind"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
 			sleeve_buf_sandstone_alt = {
 				name = "Capa de Arenito",
-				text = {"Vença na {C:attention}Aposta 5{}",
-						"{C:red}X2.5{} tamanho base do Blind"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 5{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:purple}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
         },
@@ -649,41 +706,17 @@ return {
 			buf_defeated = "Derrotado!",
 			buf_hopin = "Entra aí!",
 			buf_patspc = "Boaaaa!",
-			-------- MEMCARD STUFF --------
-			buf_ready = "Pronto",
-			buf_Ace = "Ás",
-			buf_Jack = "Valete",
-			buf_Queen = "Dama",
-			buf_King = "Rei",
-			-- UnStable compat --
-			buf_0 = "0",
-			['buf_0.5'] = "Meio",
-			buf_1 = "1",
-			buf_r2 = "Raiz de 2",
-			buf_e = "e",
-			buf_Pi  = "Pi",
-			buf_11 = "11",
-			buf_12 = "12",
-			buf_13 = "13",
-			buf_21 = "21",
-			buf_25 = "25",
-			buf_161 = "161",
-			["buf_???"] = "???",
-			--------------------
-			buf_of = " de ",			
-			buf_Spades = "Espadas",
-			buf_Hearts = "Copas",
-			buf_Clubs = "Paus",
-			buf_Diamonds = "Ouros",
-			-- Bunco/Paperback compat --
-			buf_Fleurons = "Florões",
-			buf_Halberds = "Alabardas",
-			buf_Crowns = "Coroas",
-			buf_Stars = "Estrelas",
+			buf_rerollin = "Rerollin'",
+			buf_lemmesolo = "Chefe abatido",
+			buf_suit_change = "O fato mudou!",
+			buf_test_start = "Iniciar Teste",
+			buf_test_new = "Novo Teste",
+			buf_test_correct = "Correto!",
+			buf_test_wrong = "Errado.",
+			buf_test_upgrade = "Atualização Desafio!",
 			-------- MISC --------
 			k_buf_spc = "Especial",
-			k_buf_notyet = "(Deve ter espaço)",
-			buf_uniform = "uniforme",
+			buf_of = " de ",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1# Multi",

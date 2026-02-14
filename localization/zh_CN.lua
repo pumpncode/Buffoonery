@@ -1,3 +1,6 @@
+-- Search for and Fix:
+--!! TRANSLATION REQUIRED
+--!! TRANSLATION REQUIRED
 return {
     descriptions = {
         Joker = {
@@ -5,9 +8,9 @@ return {
 				name = "深渊棱镜",
 				text = {"{C:attention}获得{}这张小丑牌时",
 						"生成一个{C:buf_spc}回响{}并{C:attention}放逐{}所有其他小丑",
-						"每三回合为一个小丑添加{C:dark_edition}负片{}",
+						"每#1#回合为一个小丑添加{C:dark_edition}负片{}",
 						"出售此小丑将还原其他小丑",
-						"{C:inactive}(#2#/3回合，#1#负片小丑){}",
+						"{C:inactive}(#2#/#1#回合，#3#负片小丑){}",
 						"{C:inactive,s:0.7}需要空间{}"
 				}
 			},
@@ -53,7 +56,7 @@ return {
 			j_buf_cashout = {
 				name = "支付条码",
 				text = {"如果{C:attention}取胜{}的那次出牌得分超过",
-					"盲注{C:attention}要求{}的三倍，获得得分0.4%的",
+					"盲注{C:attention}要求{}的三倍，获得得分#1#%的",
 					"{C:money}赏金{}并摧毁这张小丑牌",
 					"{C:inactive}(最高{}{C:money}$50{}{C:inactive}){}"
 				}
@@ -106,8 +109,8 @@ return {
 			j_buf_denial = {
 				name = "拒绝入境",
 				text = {"牌组中每个{C:red}红色{}和{C:blue}蓝色{}蜡封",
-						"分别提供{C:mult}+5{}倍率和{C:chips}+30{}筹码",
-						"{C:inactive}(当前{} {C:mult}+#1#{} {C:inactive}倍率 /{} {C:chips}+#2#{} {C:inactive}筹码){}"
+						"分别提供{C:mult}+#1#{}倍率和{C:chips}+#2#{}筹码",
+						"{C:inactive}(当前{} {C:mult}+#3#{} {C:inactive}倍率 /{} {C:chips}+#4#{} {C:inactive}筹码){}"
 				}
 			},
 			j_buf_dorkshire = {
@@ -172,7 +175,7 @@ return {
 				name = "Jebediah Kerman",
 				text = {"使用{C:planet}星球牌{}时",
 						"获得{C:mult}+#2#{}倍率",
-						"但有{C:green}#4#/#3#{}几率{C:attention}爆炸{}",
+						"但有{C:green}#3#/#4#{}几率{C:attention}爆炸{}",
 						"{C:inactive}(当前{} {C:mult}+#1#{} {C:inactive}倍率){}",
 						"{C:buf_spc,s:0.7}害怕奇点{}"
 				}
@@ -190,18 +193,40 @@ return {
 			},
 			j_buf_jokergebra = {
 				name = "代数小丑",
-				text = {"给予这张小丑牌",
-						"{C:attention}左侧{}的小丑牌",
-						"{C:mult}倍率{}{C:attention}五倍{}的{C:chips}筹码{}",
-						"{C:buf_spc,s:0.7}#1# ×倍率！{}"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"Play {C:blue}+#1#{} Card per Hand",
+					"{s:0.2} {}",
+					"Gives {X:chips,C:white}X#2#{} Chips if the",
+					"played hand contains",
+					"as many cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:buf_spc,s:0.7}#4# more Tests...{}"
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
 			j_buf_integral = { -- Special (JokerGebra)
 				name = "积分",
-				text = {"每次出牌",
-						"这张小丑牌触发之前",
-						"计算的每{X:mult,C:white}X1{}乘算倍率",
-						"使这张小丑牌给予{X:expchips,C:white}^0.02{}筹码"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"Play {C:blue}+#1#{} Cards per Hand",
+					"{s:0.2} {}",
+					"Gives {X:expchips,C:white}^#2#{} Chips,",
+					"affected by {C:expchips}Score{},",
+					"if the played hand",
+					"contains as many",
+					"cards as the",
+					"solution for {C:green}'X'{}:",
+					"{C:purple,s:1.1}#3#{}",
+					"{s:0.2} {}",
+					"{C:expchips}Score{}: +#4#"
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				},
 				unlock = {"满足{C:attention}代数小丑",
 						"的{E:1,C:buf_spc}特殊{}条件以解锁"
@@ -239,7 +264,7 @@ return {
 					"{X:expmult,C:white}^#1#{}倍率",
 					"否则在选择{C:attention}盲注{}时创造一张",
 					"（仅触发{C:attention}一次{}）",
-					"{C:inactive,s:0.7}(需要空间){}"
+					"{C:enhanced,s:0.8}(需要空间){}"
 				},
 				unlock = {'{E:1,s:1.3}?????'}
 			},
@@ -249,13 +274,13 @@ return {
 					"{X:expmult,C:white}^#1#{}倍率",
 					"否则在选择{C:attention}盲注{}时创造一张",
 					"（仅触发{C:attention}一次{}）",
-					"{C:inactive,s:0.7}(已创造){}"
+					"{C:inactive,s:0.8}(已创造){}"
 				}
 			},
 			j_buf_memcard = {
 				name = "存储卡",
 				text = {"记忆{C:attention}每回合{}的{C:attention}第一张{}计分牌",  
-						"至多记忆{C:attention}8{}张。卖掉这张卡",
+						"至多记忆{C:attention}#4#{}张。卖掉这张卡",
 						"将手牌{C:attention}按顺序{}转换为记忆的牌",
 						"{C:inactive}已记忆#1#张。上一张：#2#{}{C:inactive}#3#{}"
 				}
@@ -263,7 +288,7 @@ return {
 			j_buf_dxmemcard = { -- Special (Memory Card)
 				name = "扩容存储卡",
 				text = {"记忆{C:attention}每回合{}的{C:attention}第一张{}计分牌",  
-						"至多记忆{C:attention}16{}张。卖掉这张卡",
+						"至多记忆{C:attention}#4#{}张。卖掉这张卡",
 						"将手牌{C:attention}按顺序{}转换为记忆的牌",
 						"{C:inactive}已记忆#1#张。上一张：#2#{}{C:inactive}#3#{}"
 				},
@@ -291,18 +316,18 @@ return {
 			},
 			j_buf_supportive_alt = { -- Special (Patronizing Joker)[ALT]
 				name = "支持性小丑", 
-				text = {"{X:chips,C:white}X#7#{}筹码",
-						"{s:0.8}#1##4#{}",
-						"{s:0.8}#2##5#{}",
-						"{s:0.8}#3##6#{}",
+				text = {"{X:chips,C:white}X#1#{}筹码",
+						"{s:0.8}#2#{}",
+						"{s:0.8}#3#{}",
+						"{s:0.8}#4#{}",
 				}
 			},
 			j_buf_porcelainj = {
 				name = "瓷器小丑",
 				text = {"你的{C:attention}完整牌组{}中",
-						"每有{C:attention}3{}张{C:attention}瓷器牌{}",
-						"给予{X:chips,C:white}X#2#{}筹码",
-						"{C:inactive}(当前{} {X:chips,C:white}X#1#{} {C:inactive}筹码){}"
+						"每有{C:attention}#2#{}张{C:attention}瓷器牌{}",
+						"给予{X:chips,C:white}X#1#{}筹码",
+						"{C:inactive}(当前{} {X:chips,C:white}X#3#{} {C:inactive}筹码){}"
 				}
 			},
 			j_buf_rerollin = {
@@ -310,7 +335,7 @@ return {
 				text = {"第五次{C:green}重掷{}",          
 						"获得{C:money}$#1#{}",
 						"每个商店限一次",
-						"{C:inactive}(剩余{}{C:green}#3#{}{C:inactive}次){}"
+						"{C:inactive}(剩余{}{C:green}#2#{}{C:inactive}次){}"
 				}
 			},
 			j_buf_roulette = {
@@ -328,30 +353,30 @@ return {
 						"单次出牌得分",
 						"超过{C:attention}#2#{}",
 						"即可{C:attention}变身{}",
-						"{C:inactive}(下级：{C:mult}+20{C:inactive}倍率)",
+						"{C:inactive}(下级：{C:mult}+#5#{C:inactive}倍率)",
 				}
 			},
 			j_buf_sayajimbo_s1 = {
 				name = "超级赛亚小丑",
 				text = {"{C:mult}+#1#{}倍率",
 						"单次出牌得分",
-						"超过{C:attention}#6#{}共#5#次",
+						"超过{C:attention}#2#{}共#3#次",
 						"即可{C:attention}变身{}",
-						"{C:inactive}(#4#/#5#，下级：{X:mult,C:white}X3{C:inactive}倍率)",
+						"{C:inactive}(#4#/#3#，下级：{X:mult,C:white}X#5#{C:inactive}倍率)",
 				}
 			},
 			j_buf_sayajimbo_s2 = {
 				name = "超级赛亚小丑2",
-				text = {"{X:mult,C:white}X#2#{}倍率",
+				text = {"{X:mult,C:white}X#1#{}倍率",
 						"单次出牌得分",
-						"超过{C:attention}#6#{}共#5#次",
+						"超过{C:attention}#2#{}共#3#次",
 						"即可{C:attention}变身{}",
-						"{C:inactive}(#4#/#5#，下级：{X:expmult,C:white}^1.3{C:inactive}倍率)",
+						"{C:inactive}(#4#/#3#，下级：{X:expmult,C:white}^#5#{C:inactive}倍率)",
 				}
 			},
 			j_buf_sayajimbo_s3 = {
 				name = "超级赛亚小丑3",
-				text = {"{X:expmult,C:white}^#3#{}倍率",
+				text = {"{X:expmult,C:white}^#1#{}倍率",
 						"{C:inactive}看吧！"
 				}
 			},
@@ -408,9 +433,15 @@ return {
 			},
 			b_buf_sandstone = {
 				name = "沙石牌组",
-				text = {"达到{C:attention}底注6{}",
-						"即可获胜",
-						"基础盲注大小x2"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
         },
@@ -418,9 +449,9 @@ return {
 			c_buf_nobility = {
 				name = "贵族",
 				text = {
-					"增强{C:attention}#1#{}张选定",
+					"增强{C:attention}1{}张选定",
 					"卡牌成为{C:attention}瓷器牌{}",
-					"如果你拥有至少{C:money}$#2#{}",
+					"如果你拥有至少{C:money}$#1#{}",
 					"则增强为{C:attention}皇家瓷器牌{}"
 				}
 			},
@@ -462,7 +493,7 @@ return {
                 }
             },
 		-------- INFO QUEUE --------
-            korny_info = {
+            snakey_info = {
                 name = "致谢",
                 text = {
                     "美工：",
@@ -477,6 +508,18 @@ return {
 					"重（金属）掷"
 				}
 			},
+			--!! TRANSLATION REQUIRED
+			--!! TRANSLATION REQUIRED
+			nu_metal_info = {
+				name = "Nu Metal Joker",
+				text = {
+					"This is a",
+					"{E:2,C:expchips}Nu Metal",
+					"Joker",
+				}
+			},
+			--!! TRANSLATION REQUIRED
+			--!! TRANSLATION REQUIRED
 			special_info = {
 				name = "特殊小丑",
 				text = {
@@ -558,16 +601,28 @@ return {
 			},
 			sleeve_buf_sandstone = {
 				name = "沙石卡套",
-				text = {"达到{C:attention}底注6{}",
-						"即可获胜",
-						"基础盲注大小x2"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 6{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:red}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
 			sleeve_buf_sandstone_alt = {
 				name = "沙石卡套",
-				text = {"达到{C:attention}底注5{}",
-						"即可获胜",
-						"基础盲注大小x2.5"
+				text = {
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
+					"{C:attention}#1#%{} lowered Win Ante",
+					"{C:inactive,s:0.8}(ex: {s:0.8}Win Ante 8 {C:inactive,s:0.8}->{s:0.8} Win Ante 5{C:inactive,s:0.8})",
+					"{s:0.2} ",
+					"{C:purple}X#2#{} base Blind size",
+					--!! TRANSLATION REQUIRED
+					--!! TRANSLATION REQUIRED
 				}
 			},
         },
@@ -639,41 +694,17 @@ return {
 			buf_defeated = "击败！",
 			buf_hopin = "上来！",
 			buf_patspc = "妙手！",
-			-------- MEMCARD STUFF --------
-			buf_ready = "就绪",
-			buf_Ace = "A",
-			buf_Jack = "J",
-			buf_Queen = "Q",
-			buf_King = "K",
-			-- UnStable compat --
-			buf_0 = "0",
-			['buf_0.5'] = "0.5",
-			buf_1 = "1",
-			buf_r2 = "√2",
-			buf_e = "e",
-			buf_Pi  = "Pi",
-			buf_11 = "11",
-			buf_12 = "12",
-			buf_13 = "13",
-			buf_21 = "21",
-			buf_25 = "25",
-			buf_161 = "161",
-			["buf_???"] = "???",
-			--------------------
-			buf_of = " ",
-			buf_Spades = "黑桃",
-			buf_Hearts = "红桃",
-			buf_Clubs = "梅花",
-			buf_Diamonds = "方片",
-			-- Bunco/Paperback compat --
-			buf_Fleurons = "花饰",
-			buf_Halberds = "长戟",
-			buf_Crowns = "皇冠",
-			buf_Stars = "银星",
+			buf_rerollin = "重（金属）掷",
+			buf_lemmesolo = "首领倒下",
+			buf_suit_change = "换装！",
+			buf_test_start = "开始测试",
+			buf_test_new = "新测试",
+			buf_test_correct = "正确！",
+			buf_test_wrong = "错误。",
+			buf_test_upgrade = "严峻挑战！",
 			-------- MISC --------
 			k_buf_spc = "特殊",
-			k_buf_notyet = "(需要空间)",
-			buf_uniform = "统一",
+			buf_of = " ",
 		},
 		v_dictionary = {
 			a_buf_emult = "^#1#倍率",

@@ -1,4 +1,47 @@
+<!--
+Flowire Note: I can't speak Portuguese and using a Translator isn't a good choice. :>
 <sup>Supported languages:</sup> [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/changelog.pt-br.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/pinkmaggit-hub/Buffoonery/blob/main/changelog.md)
+-->
+
+# v2.0.0 : The Flowire Rework
+Flowire says: If you find any Bugs, it's my fault. :')
+Every single file in this Mod has been touched, so here's a general overview:
+**"Generic" Reworks:**
+- Boss Blinds for Halfstep-Bosses should now mostly respect Pools
+- Boss Blinds for Halfstep-Bosses are now managed by the Lovely-Patch "/lovely/halfstep_bosses.toml"
+- Cut some obsolete Lovely-Patches, simplified the Rest
+- Most functions from Buffoonery.lua have been moved to "/content/functions" or to their respective "Joker.lua"-files
+- The Sandstone-Deck and -Sleeve now work entirely %-based
+- All other Decks and Sleeves now use "SMODS.add_card()" for their Jokers
+- Added a "Numetal"-Pool for the Maggit-Joker, all Numetal Jokers are automatically Part of it.
+- Added a "Numetal_Special"-Pool for the Maggit-Joker, all Special Numetal Jokers are automatically Part of it.
+- Both Memory-Cards and the Abyss Prism now use a different and less Crash-Prone way of storing their respective Data.
+- All Chance-Based effects now use "SMODS.get_probability()"
+- All "Random()" calls have been replaced by seeded "PseudoRandom()" calls
+- Most Jokers using the "Update()"-Function have been reworked to remove said Function
+- All Jokers using a "Sprite"-Field have been reworked, since some Copy-Functions didn't copy the Sprite-Field leading to weird behaviour and Crashes.
+- Simplified many Destroy and Spawn events troughout the entire Mod
+- Updated E-Mult & E-Chips Functions
+- This rework should've also fixed: Issue-4, Issue-19, Issue-20, Issue-21, Issue-24 and Issue-25
+**Total Reworks:**
+- "JokerGebra" and "Integral" now function entirely differently, their old code broke retriggers "Schrödinger's Cat" style.
+**Asset Changes:**
+- All Joker Texture are now on one Atlas
+- Texture-Files have been changed to accomendate for Pixel-Bleed
+- Trimmed the "roul1.ogg" sound file
+**Language:**
+- Russian Translation has been updated (Thanks to AnotherNulLe0!)
+- Many more Descriptions now use the "#X#"-Placeholders!
+- Reworked all Jokers using Suit-Keys and therefore removed all Duplicate Entries in the Loc-Files
+- **NOTE**: "JokerGebra" and "Integral" are not Translated with this Update
+**Others:**
+- Updated the Folder structure, mainly to ease Development for the seperate files.
+- Mod-Tabs are now managed by seperate files under "/content/mod_tabs"
+- Joker-Order in Collection is Managed by "/content/joker_order.lua"
+- Created a "/repo"-Folder with bite-sized Images for the GitHub Page
+- Outdated "PT-BR.md"-Files have been moved to "/repo/OUTDATED"
+- Updated the English .MD files and Credits! :3
+
 
 # v1.2.0
 ### Additions
@@ -239,3 +282,38 @@
 **Jokers**
 - Korny Joker (Common)
 - White Pony (Uncommon)
+
+# Pre v0.1.0
+**Unsorted**
+- CHANGELOG MOVED TO SEPARATE .md FILE
+- fixed clown upgrading by 20 the first time
+- fixed clown's scaling bugging out or being lost when starting a new run
+- fixed patronizing joker not selecting cards during Cerulean Bell bossfight
+- fixed erosion not working properly with porcelain deck
+- fixed memory card / clay shooting jiggling too much
+- fixed abyssal prism not properly accounting for already-negative jokers inside it when converting the others into negatives
+- fixed abyssal prism crashing the game when continuing a run and trying to sell it
+- fixed galloping deck+sleeve showing 4 hands left before selecting a blind, instead of 2
+- abyssal prism no longer strips upgrades
+- Banish replaced with Exile
+- Nerfed Roulette: money increases with chance, starts at $15
+- Reverted Gold Fondue to $8/-$2
+- Added custom gradients for Exponential Mult and Exponential Chips
+- Corrected the outline in Adoring Fan's artwork to be pixel-perfect
+- Jebediah Kerman's artwork now dynamically changes based on last planet used. All Vanilla planets included, Bunco/Paperback planets on the way
+- Removed "Memory Card Performance Mode" as it is no longer needed
+- Special cards are now shown in collection by default
+- All jokers are now undiscovered by default
+- Added "Soul" card unlock requirement for Maggit
+- Added an unlock requirement for Galloping Deck
+- Added Van
+- Added Abyssal Echo
+- Added Kerman Reborn
+- Added Supportive Joker
+- Added Bitter Fan
+- Added Let Me Solo Her
+- Added Sayajimbo
+- added JokerGebra
+- Added Integral
+- added Palladium and Spinel stakes
+- added Sandstone Deck/Sleeve
